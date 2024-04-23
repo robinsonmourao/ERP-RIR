@@ -2,7 +2,7 @@ class CreateClientes < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE clientes(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        cliente_id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         endereco_cliente TEXT,
 

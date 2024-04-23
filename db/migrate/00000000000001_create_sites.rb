@@ -2,7 +2,7 @@ class CreateSites < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE sites(
-        site INTEGER PRIMARY KEY AUTOINCREMENT,
+        site_id INTEGER PRIMARY KEY AUTOINCREMENT,
         designacao TEXT UNIQUE NOT NULL,
         cliente INTEGER NOT NULL,
         nome TEXT NOT NULL,
