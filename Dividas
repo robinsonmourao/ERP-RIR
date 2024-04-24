@@ -1,0 +1,12 @@
+# Chaves compostas com sqlite3
+
+basta pesquisar no dicionario de dados pelo caractere "+"
+
+
+Tabela atendimentos
+PRIMARY KEY (designacao, codigo_fornecedor),
+
+Tabela contatos
+PRIMARY KEY(tabela, codigo_contato_tipo),
+
+OBS: FOI POSSÍVEL POREM ID NAO ESTA COM NOME PERSONALIZAVEL, ENTAO VERIFICAR COMO FICOU NAS CONSULTAS CASO PRECISA CHAMAR A VARIAVEL ID

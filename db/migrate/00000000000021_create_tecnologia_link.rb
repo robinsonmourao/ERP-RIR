@@ -3,7 +3,7 @@ class CreateTecnologiaLink < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE tecnologia_link (
         codigo_tecnologia_link INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao VARCHAR(1) NOT NULL,
+        descricao INTEGER NOT NULL,
 
         CHECK (descricao IN(1,2,3))
       );

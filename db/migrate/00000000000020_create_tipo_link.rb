@@ -3,7 +3,7 @@ class CreateTipoLink < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE tipo_link(
         codigo_tipo_link INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao VARCHAR(1) NOT NULL,
+        descricao INTEGER NOT NULL,
 
         CHECK (descricao IN(1,2,3))
       );

@@ -2,32 +2,38 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE atendimentos(
-        codigo_atendimento INTEGER PRIMARY KEY AUTOINCREMENT,
-        designacao TEXT NOT NULL,
-        fornecedor INTEGER NOT NULL,
-        tecnologia INTEGER,
-        tipo INTEGER,
+        designacao INTEGER NOT NULL,
+        codigo_fornecedor INTEGER NOT NULL,
+        codigo_tipo_tecnologia INTEGER NOT NULL,
+        codigo_tipo_link INTEGER NOT NULL,
         velocidade_down INTEGER NOT NULL,
         velocidade_up INTEGER,
         ip TEXT NOT NULL,
         ip_fixo TEXT,
         pppoe_login TEXT,
         pppoe_senha TEXT,
-        principal TEXT,
-        vencimento INTEGER NOT NULL DEFAULT 25,
+        link TEXT,
+        dia_vencimento INTEGER DEFAULT 25,
         valor_Mensal NUMERIC(11,2),
         valor_instalacao NUMERIC(11,2),
-        meio_pagamento INTEGER DEFAULT('boleto'),
+        codigo_meio_pagamento INTEGER NOT NULL,
         chave_pix TEXT,
         nota_fiscal INTEGER DEFAULT 0,
-        codigo_equipamento INTEGER,
-        mac_equipamento TEXT,
-        serial_equipamento TEXT,
+        codigo_equipamento INTEGER NOT NULL,
+
+        PRIMARY KEY (designacao, codigo_fornecedor),
+
+        FOREIGN KEY (designacao) REFERENCES sites(designacao),
+        FOREIGN KEY (codigo_fornecedor) REFERENCES fornecedores(codigo_fornecedor)
+        FOREIGN KEY (codigo_tipo_tecnologia) REFERENCES tipo_tecnologia(codigo_tipo_tecnologia),
+        FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_link(codigo_tipo_link),
+        FOREIGN KEY (codigo_meio_pagamento) REFERENCES meio_pagamento(codigo_meio_pagamento),
+        FOREIGN KEY (codigo_equipamento) REFERENCES equipamentos(codigo_equipamento),
 
         CHECK (velocidade_down > 0),
         CHECK (velocidade_up > 0),
         CHECK (ip IN('Fixo', 'Dinamico')),
-        CHECK (principal IN('link principal', 'link backup')),
+        CHECK (link IN('principal', 'backup')),
         CHECK (nota_fiscal IN(0, 1))
       );
     SQL

@@ -5,23 +5,26 @@ class CreateSites < ActiveRecord::Migration[7.1]
         codigo_site INTEGER PRIMARY KEY AUTOINCREMENT,
         designacao TEXT UNIQUE NOT NULL,
         codigo_cliente INTEGER NOT NULL,
-        nome TEXT NOT NULL,
-        endereco_site TEXT,
+        nome_site TEXT NOT NULL,
+        endereco TEXT,
 
         bairro TEXT,
-        cidade INTEGER,
-        cep TEXT,
+        codigo_municipio INTEGER,
+        cep VARCHAR(8),
         coordenadalt NUMERIC(10, 8),
         coordenadalg NUMERIC(10, 8),
 
-        velocidade INTEGER NOT NULL,
-        tipo INTEGER,
+        velocidade_contratada INTEGER NOT NULL,
+        codigo_tipo_link INTEGER NOT NULL,
         sla NUMERIC(3, 1),
-        mensal NUMERIC(11, 2),
-        instalacao NUMERIC(11, 2),
+        valor_mensal NUMERIC(11, 2),
+        valor_instalacao NUMERIC(11, 2),
 
         FOREIGN KEY (codigo_cliente) REFERENCES clientes(codigo_cliente),
-        CHECK (velocidade > 0)
+        FOREIGN KEY (codigo_municipio) REFERENCES municipios(codigo_municipio),
+        FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_link(codigo_tipo_link),
+
+        CHECK (velocidade_contratada > 0)
       );
     SQL
   end

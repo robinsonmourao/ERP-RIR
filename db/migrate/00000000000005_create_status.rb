@@ -13,6 +13,8 @@ class CreateStatus < ActiveRecord::Migration[7.1]
         FOREIGN KEY (codigo_sfca) REFERENCES clientes(id) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED,
         FOREIGN KEY (codigo_sfca) REFERENCES atendimento(id) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED,
 
+        FOREIGN KEY (situacao) REFERENCES status_codigo(codigo_status_codigo)
+
         CHECK (tabela IN('s', 'f', 'c', 'a'))
       );
     SQL

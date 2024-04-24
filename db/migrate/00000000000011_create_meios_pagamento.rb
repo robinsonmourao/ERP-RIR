@@ -3,7 +3,7 @@ class CreateMeiosPagamento < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE meios_pagamento(
         codigo_meio_pagamento INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao TEXT DEFAULT 1,
+        descricao INTEGER DEFAULT 1,
 
         CHECK (descricao IN(1, 2))
       )

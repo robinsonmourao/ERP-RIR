@@ -3,14 +3,14 @@ class CreateClientes < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE clientes(
         codigo_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
-        endereco_cliente TEXT,
+        nome_cliente TEXT NOT NULL,
+        endereco TEXT,
 
         bairro TEXT,
         cidade INTEGER,
-        cep TEXT(8),
+        cep VARCHAR(8),
 
-        cnpj TEXT(14) NOT NULL,
+        cnpj VARCHAR(14) NOT NULL,
         inscricao_estadual TEXT,
         inscricao_municipal TEXT
       );

@@ -3,6 +3,11 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE boletos(
         codigo_fatura INTEGER NOT NULL,
+
+        codigo_atendimento INTEGER NOT NULL,
+        vencimento INTEGER NOT NULL,
+        codigo_grupo INTEGER NOT NULL,
+
         grupo INTEGER NOT NULL,
         valor NUMERIC(11,2),
         chave TEXT,
@@ -11,7 +16,12 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         observacao TEXT,
         status INTEGER NOT NULL,
 
+        PRIMARY KEY (codigo_atendimento, vencimento, codigo_grupo),
+
         FOREIGN KEY (codigo_fatura) REFERENCES faturas(codigo_fatura)
+        FOREIGN KEY (codigo_atendimento) REFERENCES atendimentos(codigo_atendimento),
+        FOREIGN KEY (vencimento) REFERENCES faturas(vencimento),
+        FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo)
       );
     SQL
   end
