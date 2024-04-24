@@ -2,17 +2,17 @@ class CreateFornecedores < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE fornecedores(
-        fornecedor_id INTEGER PRIMARY KEY NOT NULL,
-        nome TEXT(2000) NOT NULL,
-        endereco_fornecedor TEXT(2000),
+        codigo_fornecedor INTEGER PRIMARY KEY NOT NULL,
+        nome TEXT NOT NULL,
+        endereco_fornecedor TEXT,
 
-        bairro TEXT(2000),
+        bairro TEXT,
         cidade INTEGER,
-        cep TEXT(8),
+        cep VARCHAR(8),
 
-        cnpj TEXT(14),
-        asn  TEXT(2000),
-        site_fornecedor TEXT(2000),
+        cnpj VARCHAR(14),
+        asn  TEXT,
+        site_fornecedor TEXT
       );
     SQL
   end

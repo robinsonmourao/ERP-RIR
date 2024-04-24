@@ -2,7 +2,7 @@ class CreateClientes < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE clientes(
-        cliente_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        codigo_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         endereco_cliente TEXT,
 
@@ -12,7 +12,7 @@ class CreateClientes < ActiveRecord::Migration[7.1]
 
         cnpj TEXT(14) NOT NULL,
         inscricao_estadual TEXT,
-        inscricao_municipal TEXT,
+        inscricao_municipal TEXT
       );
     SQL
   end

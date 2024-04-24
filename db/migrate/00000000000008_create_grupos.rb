@@ -2,7 +2,7 @@ class CreateGrupos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE grupos(
-        grupo_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        codigo_grupo INTEGER PRIMARY KEY AUTOINCREMENT,
         descricao INTEGER NOT NULL DEFAULT 1
       );
     SQL

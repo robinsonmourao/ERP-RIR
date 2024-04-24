@@ -1,4 +1,4 @@
-class CreateTipolink < ActiveRecord::Migration[7.1]
+class CreateTipoLink < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE tipo_link(

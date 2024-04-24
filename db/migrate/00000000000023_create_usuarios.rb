@@ -7,7 +7,7 @@ class CreateUsuarios < ActiveRecord::Migration[7.1]
         nome TEXT NOT NULL,
         permissao TEXT NOT NULL,
 
-        CHECK (descricao IN(1,2,3,4))
+        CHECK (permissao IN(1,2,3,4))
       );
     SQL
   end

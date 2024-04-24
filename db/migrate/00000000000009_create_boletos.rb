@@ -2,7 +2,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE boletos(
-        fatura_id INTEGER NOT NULL,
+        codigo_fatura INTEGER NOT NULL,
         grupo INTEGER NOT NULL,
         valor NUMERIC(11,2),
         chave TEXT,
@@ -11,7 +11,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         observacao TEXT,
         status INTEGER NOT NULL,
 
-        FOREIGN KEY fatura_id REFERENCES(faturas)
+        FOREIGN KEY (codigo_fatura) REFERENCES faturas(codigo_fatura)
       );
     SQL
   end

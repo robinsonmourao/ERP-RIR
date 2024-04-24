@@ -6,8 +6,8 @@ class CreateMidiaSocial < ActiveRecord::Migration[7.1]
         codigo_tipo_midia_social INTEGER,
         descricao TEXT NOT NULL,
 
-        CHECK (tabela IN('f', 'c'))
-        FOREIGN KEY codigo_tipo_midia_social REFERENCES(tipo_midia_social)
+        CHECK (tabela IN('f', 'c')),
+        FOREIGN KEY (codigo_tipo_midia_social) REFERENCES midia_social(codigo_midia_social)
       );
     SQL
   end

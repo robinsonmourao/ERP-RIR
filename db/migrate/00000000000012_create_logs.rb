@@ -3,10 +3,10 @@ class CreateLogs < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE logs(
         data CURRENT_TIMESTAMP NOT NULL,
-        usuario_id INTEGER NOT NULL,
+        codigo_usuario INTEGER NOT NULL,
         comando TEXT NOT NULL,
 
-        FOREIGN KEY usuario_id REFERENCES(usuarios)
+        FOREIGN KEY (codigo_usuario) REFERENCES usuarios(codigo_usuario)
       );
     SQL
   end

@@ -6,7 +6,7 @@ class CreateMunicipios < ActiveRecord::Migration[7.1]
         codigo_uf INTEGER NOT NULL,
         nome TEXT,
 
-        FOREIGN KEY codigo_uf REFERENCES(uf)
+        FOREIGN KEY (codigo_uf) REFERENCES ufs(codigo_uf)
       );
     SQL
   end
