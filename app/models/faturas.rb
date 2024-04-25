@@ -12,9 +12,9 @@ class Fatura < ApplicationRecord
   attribute :codigo_status, :integer
 
   belongs_to :atendimento, foreign_key: 'codigo_atendimento'
-  belongs_to :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
-  belongs_to :grupo, foreign_key: 'codigo_grupo'
-  belongs_to :status, foreign_key: 'codigo_status'
+  has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
+  has_one :grupo, foreign_key: 'codigo_grupo'
+  has_one :status, foreign_key: 'codigo_status'
 
   validates :codigo_atendimento, presence: true
   validates :codigo_meio_pagamento, presence: true

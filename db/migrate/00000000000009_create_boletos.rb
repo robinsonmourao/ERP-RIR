@@ -12,7 +12,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         valor NUMERIC(11,2),
         chave TEXT,
         data_pagamento DATE,
-        local_pagamento INTEGER,
+        codigo_local_pagamento INTEGER,
         observacao TEXT,
         status INTEGER NOT NULL,
 
@@ -21,7 +21,8 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         FOREIGN KEY (codigo_fatura) REFERENCES faturas(codigo_fatura)
         FOREIGN KEY (codigo_atendimento) REFERENCES atendimentos(codigo_atendimento),
         FOREIGN KEY (vencimento) REFERENCES faturas(vencimento),
-        FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo)
+        FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo),
+        FOREIGN KEY (codigo_local_pagamento) REFERENCES local_pagamento(codigo_local_pagamento)
       );
     SQL
   end

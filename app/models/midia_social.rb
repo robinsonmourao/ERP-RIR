@@ -6,5 +6,5 @@ class MidiaSocial < ApplicationRecord
   validates :tabela, presence: true, inclusion: { in: ['f', 'c'] }
   validates :descricao, presence: true
 
-  belongs_to :tipo_midia_social, foreign_key: 'codigo_tipo_midia_social', optional: true
+  has_one :tipo_midia_social, foreign_key: 'codigo_tipo_midia_social', optional: true
 end

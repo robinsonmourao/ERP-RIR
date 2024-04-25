@@ -5,6 +5,8 @@ class Uf < ApplicationRecord
   attribute :sigla, :string
   attribute :nome_estado, :string
 
+  belongs_to :municipio
+
   validates :sigla, presence: true, length: { maximum: 2 }
   validates :nome_estado, presence: true
 end

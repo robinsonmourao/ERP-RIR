@@ -4,7 +4,7 @@ class Grupo < ApplicationRecord
   attribute :codigo_grupo, :integer
   attribute :descricao, :integer, default: 1
 
-  has_many :faturas, foreign_key: 'codigo_grupo'
+  has_many :fatura
 
   validates :descricao, presence: true
 end

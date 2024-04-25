@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.decimal "valor", precision: 11, scale: 2
     t.text "chave"
     t.date "data_pagamento"
-    t.integer "local_pagamento"
+    t.integer "codigo_local_pagamento"
     t.text "observacao"
     t.integer "status", null: false
   end
@@ -162,7 +162,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.date "data", default: -> { "CURRENT_DATE" }, null: false
   end
 
-  create_table "status_codigo", primary_key: "codigo_status_codigo", force: :cascade do |t|
+  create_table "status_codigo", id: false, force: :cascade do |t|
+    t.integer "codigo_status", null: false
     t.text "descricao", default: "pendente", null: false
   end
 
@@ -174,7 +175,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "descricao", null: false
   end
 
-  create_table "tipo_midia_social", primary_key: "codigo_tipo_midia_social", force: :cascade do |t|
+  create_table "tipo_midia_social", id: false, force: :cascade do |t|
+    t.integer "codigo_midia_social"
     t.text "descricao", null: false
   end
 
@@ -199,6 +201,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "boletos", "faturas", column: "codigo_fatura", primary_key: "codigo_fatura"
   add_foreign_key "boletos", "faturas", column: "vencimento", primary_key: "vencimento"
   add_foreign_key "boletos", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
+  add_foreign_key "boletos", "local_pagamento", column: "codigo_local_pagamento", primary_key: "codigo_local_pagamento"
   add_foreign_key "contatos", "contato_meio", column: "codigo_contato_meio", primary_key: "codigo_contato_meio"
   add_foreign_key "contatos", "contato_tipo", column: "codigo_contato_tipo", primary_key: "codigo_contato_tipo"
   add_foreign_key "faturas", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
@@ -219,4 +222,5 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "status", "fornecedores", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "sites", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "status_codigo", column: "situacao", primary_key: "codigo_status_codigo"
+  add_foreign_key "status_codigo", "status", column: "codigo_status", primary_key: "codigo_status"
 end

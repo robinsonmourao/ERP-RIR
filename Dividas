@@ -10,3 +10,26 @@ Tabela contatos
 PRIMARY KEY(tabela, codigo_contato_tipo),
 
 OBS: FOI POSSÍVEL POREM ID NAO ESTA COM NOME PERSONALIZAVEL, ENTAO VERIFICAR COMO FICOU NAS CONSULTAS CASO PRECISA CHAMAR A VARIAVEL ID
+
+# Relações
+
+Status com Sites (Site), Fornecedores(Fornecedor), Atendimento(A) ou Clientes (Cliente)
+Contato F(Fornecedor), S(Site) ou C(Cliente)
+Atendimentos has_many :codigo_fatura, foreign_key: 'codigo_fatura'
+Fatura has_many :codigo_boleto, foreign_key: 'codigo_boleto'
+
+# Feature
+"Geração mensal das faturas"
+"Manutenção das tabelas auxiliares"
+
+# OBS
+
+Para uma relação ocorrer, basta ter o id de uma tabela na outra, ou seja NÃO é necessário ter id em ambas. Neste caso:
+
+Tabela owner
+'has_many :<entidade2>, foreign_key: 'codigo_<entidade2>''
+
+Tabela owned
+'has_one-belongs_to :<entidade1>' (sem indicação de foreign key)
+
+

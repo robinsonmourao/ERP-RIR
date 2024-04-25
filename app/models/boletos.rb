@@ -9,13 +9,14 @@ class Boleto < ApplicationRecord
   attribute :valor, :decimal, precision: 11, scale: 2
   attribute :chave, :text
   attribute :data_pagamento, :date
-  attribute :local_pagamento, :integer
+  attribute :codigo_local_pagamento, :integer
   attribute :observacao, :text
   attribute :status, :integer
 
-  belongs_to :fatura, foreign_key: 'codigo_fatura'
-  belongs_to :atendimento, foreign_key: 'codigo_atendimento'
-  belongs_to :grupo, foreign_key: 'codigo_grupo'
+  has_many :fatura, foreign_key: 'codigo_fatura'
+  has_many :atendimento, foreign_key: 'codigo_atendimento'
+  has_one :grupo, foreign_key: 'codigo_grupo'
+  has_one :local_pagamento, foreign_key: 'codigo_local_pagamento'
 
   validates :codigo_fatura, presence: true
   validates :codigo_atendimento, presence: true

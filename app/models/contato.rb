@@ -8,8 +8,8 @@ class Contato < ApplicationRecord
   attribute :descricao, :text
   attribute :observacao, :text
 
-  belongs_to :contato_tipo, foreign_key: 'codigo_contato_tipo'
-  belongs_to :contato_meio, foreign_key: 'codigo_contato_meio'
+  has_one :contato_tipo, foreign_key: 'codigo_contato_tipo'
+  has_one :contato_meio, foreign_key: 'codigo_contato_meio'
 
   validates :tabela, inclusion: { in: ['s', 'f', 'c'] }
   validates :codigo_contato_tipo, presence: true

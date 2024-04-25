@@ -20,12 +20,12 @@ class Atendimento < ApplicationRecord
   attribute :nota_fiscal, :integer, default: 0
   attribute :codigo_equipamento, :integer
 
-  belongs_to :site, foreign_key: 'designacao'
-  belongs_to :fornecedor, foreign_key: 'codigo_fornecedor'
-  belongs_to :tipo_tecnologia, foreign_key: 'codigo_tipo_tecnologia'
-  belongs_to :tipo_link, foreign_key: 'codigo_tipo_link'
-  belongs_to :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
-  belongs_to :equipamento, foreign_key: 'codigo_equipamento'
+  has_one :site, foreign_key: 'designacao'
+  has_one :fornecedor, foreign_key: 'codigo_fornecedor'
+  has_one :tipo_tecnologia, foreign_key: 'codigo_tipo_tecnologia'
+  has_one :tipo_link, foreign_key: 'codigo_tipo_link'
+  has_many :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
+  has_many :equipamento, foreign_key: 'codigo_equipamento'
 
   validates :designacao, presence: true
   validates :codigo_fornecedor, presence: true
