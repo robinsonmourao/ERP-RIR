@@ -7,14 +7,14 @@ class CreateFornecedores < ActiveRecord::Migration[7.1]
         endereco TEXT,
 
         bairro TEXT,
-        codigo_municipio INTEGER,
+        codigo_fornecedor_cidade INTEGER,
         cep VARCHAR(8),
 
         cnpj VARCHAR(14),
         asn TEXT,
         site_fornecedor TEXT,
 
-        FOREIGN KEY (codigo_municipio) REFERENCES municipios(codigo_municipio)
+        FOREIGN KEY (codigo_fornecedor_cidade) REFERENCES fornecedor_cidade(codigo_fornecedor_cidade)
       );
     SQL
   end

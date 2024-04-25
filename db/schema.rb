@@ -91,7 +91,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "codigo_status", null: false
   end
 
-  create_table "fornecedor_cidades", id: false, force: :cascade do |t|
+  create_table "fornecedor_cidades", primary_key: "codigo_fornecedor_cidade", force: :cascade do |t|
     t.integer "codigo_fornecedor", null: false
     t.integer "codigo_municipio", null: false
     t.integer "area"
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "nome", null: false
     t.text "endereco"
     t.text "bairro"
-    t.integer "codigo_municipio"
+    t.integer "codigo_fornecedor_cidade"
     t.string "cep", limit: 8
     t.string "cnpj", limit: 14
     t.text "asn"
@@ -207,7 +207,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "faturas", "status", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "fornecedor_cidades", "fornecedores", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
   add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
-  add_foreign_key "fornecedores", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
+  add_foreign_key "fornecedores", "fornecedor_cidade", column: "codigo_fornecedor_cidade", primary_key: "codigo_fornecedor_cidade"
   add_foreign_key "logs", "usuarios", column: "codigo_usuario", primary_key: "codigo_usuario"
   add_foreign_key "midia_social", "tipo_midia_social", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
   add_foreign_key "municipios", "ufs", column: "codigo_uf", primary_key: "codigo_uf"
