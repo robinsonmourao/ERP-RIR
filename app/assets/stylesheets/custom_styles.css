@@ -1,0 +1,75 @@
+html{
+  background-color: #3C5B6F;
+}
+body {
+  padding: 1px;
+}
+
+.container-yield{
+  background-color: #948979;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 10);
+}
+  .container-cadastrar-usuarios, .container-entrar-usuarios {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: inherit;
+    background-color: transparent;
+  }
+    .formulario-cadastrar-usuarios, .formulario-entrar-usuarios{
+      margin: 10px;
+      border-radius: 10px;
+      width: auto;
+      background-color: #DFD0B8;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 10);
+    }
+    .titulo-cadastrar-usuarios, .titulo-entrar-usuarios{
+      text-align: center;
+      font-size: 40px;
+      font-weight: 900;
+      padding: 0px 10px;
+      padding-bottom: 30px;
+      background-image: linear-gradient(to bottom, #000000, #DFD0B8);
+      color: white;
+      border-radius: 10px;
+    }
+      .signup-form-textboxes, .login-form-textboxes{
+        display: grid;
+        width: 500px;
+        height: 400px;
+      }
+      .signup-form-textboxes label, .login-form-textboxes label {
+        font-size: 40px;
+        margin: 10px;
+      }
+      .signup-form-textboxes, input[type="text"], input[type="password"],
+      .login-form-textboxes, input[type="text"], input[type="password"] {
+        padding: 10px;
+        margin: 10px;
+        font-size: 30px;
+      }
+      #signup-form-submit-button, #login-form-submit-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        color: white;
+        background-color: #153448;
+        border-radius: 5px;
+        border: 0;
+        cursor: pointer;
+        font-size: 30px;
+      }
+      .container-cadastrar-entrar-link{
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        font-size: 20px;
+      }
+        .cadastrar-entrar-link{
+          margin-left: 20px;
+          font-weight: bold;
+        }

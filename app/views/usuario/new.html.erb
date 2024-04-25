@@ -1,0 +1,20 @@
+<div class="container-cadastrar-usuarios">
+  <div class="formulario-cadastrar-usuarios">
+    <div class='titulo-cadastrar-usuarios'>Cadastro de usuário</div>
+    <%= form_with(model: @user, url: new_usuario_path) do |form| %>
+      <div class="signup-form-textboxes">
+        <%= form.label :nome %>
+        <%= form.text_field :nome, placeholder: "Nome" %>
+
+        <%= form.label :senha %>
+        <%= form.password_field :password, placeholder: "Senha" %>
+
+        <%= form.submit "Cadastrar", id: "signup-form-submit-button" %>
+      </div>
+      <div class='container-cadastrar-entrar-link'>
+        <div>Já possui cadastro?</div>
+        <div><%= link_to 'Entrar', entrar_path, class:'cadastrar-entrar-link' %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
