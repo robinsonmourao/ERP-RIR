@@ -1,6 +1,6 @@
 class Usuario < ApplicationRecord
   attribute :codigo_usuario, :integer
-  attribute :senha, :string
+  attribute :password_digest, :string
   attribute :nome, :string
   attribute :permissao, :integer
 
@@ -11,7 +11,9 @@ class Usuario < ApplicationRecord
   has_many :fatura
   has_many :boletos
 
-  validates :senha, presence: true
+  validates :password, presence: true
   validates :nome, presence: true
   validates :permissao, presence: true, inclusion: { in: [1, 2, 3, 4] }
+
+  has_secure_password
 end

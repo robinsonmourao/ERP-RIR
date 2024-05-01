@@ -9,8 +9,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
+  <body>    
     <div class="container-yield">
+      <div class=div-notice>
+      <% if flash[:notice] %>
+        <div id="notice"><%= flash[:notice] %></div>
+      <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>

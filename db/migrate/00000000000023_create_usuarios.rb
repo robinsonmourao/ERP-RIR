@@ -3,7 +3,7 @@ class CreateUsuarios < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE usuarios(
         codigo_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
-        senha TEXT NOT NULL,
+        password_digest TEXT NOT NULL,
         nome TEXT NOT NULL,
         permissao INTEGER NOT NULL,
 

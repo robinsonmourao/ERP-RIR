@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   resources :usuario
 
-  get 'entrar', to: 'usuario#entrar'
+  get 'entrar', to: 'usuario#login'
+  post 'usuarios', to: 'usuario#create'
+  get 'dashboard', to: 'dashboard#show'
 end

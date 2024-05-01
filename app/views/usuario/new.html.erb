@@ -1,13 +1,16 @@
 <div class="container-cadastrar-usuarios">
   <div class="formulario-cadastrar-usuarios">
     <div class='titulo-cadastrar-usuarios'>Cadastro de usuário</div>
-    <%= form_with(model: @user, url: new_usuario_path) do |form| %>
+    <%= form_with(model: @usuario, url: usuarios_path) do |form| %>
       <div class="signup-form-textboxes">
         <%= form.label :nome %>
         <%= form.text_field :nome, placeholder: "Nome" %>
 
         <%= form.label :senha %>
         <%= form.password_field :password, placeholder: "Senha" %>
+
+        <%= form.label :permissao_desejada %>
+        <%= form.select :permissao, options_for_select([['Super', 1], ['Administrativo', 2], ['Técnico', 3], ['Consulta', 4]]), {}, { class: 'custom-select-tag' } %>
 
         <%= form.submit "Cadastrar", id: "signup-form-submit-button" %>
       </div>

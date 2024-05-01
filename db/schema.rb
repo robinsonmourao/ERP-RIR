@@ -186,7 +186,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "usuarios", primary_key: "codigo_usuario", force: :cascade do |t|
-    t.text "senha", null: false
+    t.text "password_digest", null: false
     t.text "nome", null: false
     t.integer "permissao", null: false
   end

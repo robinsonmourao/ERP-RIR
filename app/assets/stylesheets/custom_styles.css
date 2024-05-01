@@ -10,6 +10,23 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 10);
 }
+  .div-notice{
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 10);
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    border-radius: 10px;
+    background-color: rgb(252, 70, 70, 0.8);
+    z-index: 1;
+  }
+    #notice{
+      font-weight: bold;
+      font-size: 20px;
+      color: rgb(32, 32, 32);
+      margin: 5px;
+    }
+
   .container-cadastrar-usuarios, .container-entrar-usuarios {
     margin: 10px;
     display: flex;
@@ -39,14 +56,15 @@ body {
       .signup-form-textboxes, .login-form-textboxes{
         display: grid;
         width: 500px;
-        height: 400px;
+        height: auto;
       }
       .signup-form-textboxes label, .login-form-textboxes label {
         font-size: 40px;
         margin: 10px;
       }
       .signup-form-textboxes, input[type="text"], input[type="password"],
-      .login-form-textboxes, input[type="text"], input[type="password"] {
+      .login-form-textboxes, input[type="text"], input[type="password"], 
+      .custom-select-tag {
         padding: 10px;
         margin: 10px;
         font-size: 30px;
