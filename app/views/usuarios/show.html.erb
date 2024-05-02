@@ -1,6 +1,17 @@
 <div class='container-account-overview'>
   <div>
-    <p>Usuário <strong><%= current_usuario.nome %></strong></p>
+    <p>Usuário: <strong><%= current_usuario.nome %></strong></p>
+
+    <% if current_usuario.permissao == 1 %>      
+      <p>Nível de permissão: <strong><%= 'Super' %></strong></p>
+    <% elsif current_usuario.permissao == 2 %>
+      <p>Nível de permissão: <strong><%= 'Administrativo' %></strong></p>
+    <% elsif current_usuario.permissao == 3 %>
+      <p>Nível de permissão: <strong><%= 'Técnico' %></strong></p>
+    <% elsif current_usuario.permissao == 4 %>
+      <p>Nível de permissão: <strong><%= 'Consulta' %></strong></p>
+    <% end %>
+
     <%= link_to 'Alterar dados cadastrais', '#', class: 'usuario-edit-button' %>
     <%= link_to 'Fechar minha conta', usuario_path(current_usuario), class: 'default-delete-button close-account-link-autohide' %>
   </div>

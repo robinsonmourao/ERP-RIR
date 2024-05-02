@@ -8,6 +8,10 @@
 ### Entrar
 ![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-entrar.png)
 
+### Visão geral da conta
+![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-usuário.png)
+
+
 # Estrutura de arquivos
 
 - **.vscode** -> Contém arquivos de configurações da IDE Visual Studio Code

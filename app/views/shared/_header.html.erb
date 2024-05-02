@@ -1,6 +1,72 @@
-<div class="container-header-buttons">
-  <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
-    <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>
-    <%= link_to "Sair", sair_path, method: :delete, class: "header-logout-button"%>
-  <% end %>
+<div class="header-container" >
+  <div class="menu-container">
+    <ul class="menu-bar">
+      <li class="menu-item">Clientes
+        <ul class="submenu">
+          <li><a href='clientes'>Listar todos</a></li>
+          <li><a href='clientes/new'>Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Sites
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Fornecedores
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Atendimentos
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Atendimentos
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Status
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Contatos
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Faturas
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Boletos
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Logs
+        <ul class="submenu">
+          <li><a href="#">Listar todos</a></li>
+          <li><a href="#">Novo</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="container-header-buttons">
+    <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
+      <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>
+      <%= link_to "Sair", sair_path, method: :delete, class: "header-logout-button"%>
+    <% end %>  
+  </div>
 </div>
