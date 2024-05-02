@@ -18,15 +18,11 @@ class UsuarioController < ApplicationController
 
         redirect_to dashboard_path, notice: "Bem-vindo, #{@usuario.nome}!"
       else
-        redirect_to root_path, notice: "Erro ao armazenar usuário"
+        redirect_to root_path, notice: 'Nome de usuário já está em uso, tente novamente informando outro'
       end
     rescue StandardError => e
       redirect_to root_path, notice: "Erro ao armazenar usuário: #{e.message}"
     end
-  end
-
-  def login
-    redirect_to dashboard_path
   end
 
   private

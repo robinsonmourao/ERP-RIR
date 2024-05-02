@@ -1,7 +1,7 @@
 <div class="container-entrar-usuarios">
   <div class="formulario-entrar-usuarios">
     <div class='titulo-entrar-usuarios'>Entrada de usuário</div>
-    <%= form_with(model: @session, url: entrar_path, method: :post) do |form| %>
+    <%= form_with(model: @usuario, url: login_path) do |form| %>
       <div class="login-form-textboxes">
 
         <%= form.label :nome %>

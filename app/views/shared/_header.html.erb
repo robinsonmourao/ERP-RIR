@@ -1,0 +1,5 @@
+<div class="container-header-buttons">
+  <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
+    <%= link_to "Sair", sair_path, method: :delete, class: "header-logout-button"%>
+  <% end %>
+</div>

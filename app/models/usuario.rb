@@ -12,7 +12,7 @@ class Usuario < ApplicationRecord
   has_many :boletos
 
   validates :password, presence: true
-  validates :nome, presence: true
+  validates :nome, presence: true, uniqueness: true
   validates :permissao, presence: true, inclusion: { in: [1, 2, 3, 4] }
 
   has_secure_password

@@ -4,7 +4,7 @@ class CreateUsuarios < ActiveRecord::Migration[7.1]
       CREATE TABLE usuarios(
         codigo_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
         password_digest TEXT NOT NULL,
-        nome TEXT NOT NULL,
+        nome TEXT NOT NULL UNIQUE,
         permissao INTEGER NOT NULL,
 
         CHECK (permissao IN(1,2,3,4))
