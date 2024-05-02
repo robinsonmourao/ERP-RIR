@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :current_usuario
 
-  def usuario_atual
-    @usuario_atual ||= Usuario.find_by(id: session[:codigo_usuario]) if session[:codigo_usuario]
+  def current_usuario
+    @current_usuario ||= Usuario.find_by(codigo_usuario: session[:codigo_usuario]) if session[:codigo_usuario]
   end
 
   def check_active_session
@@ -13,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def login
     @usuario = Usuario.find_by(nome: params[:nome])
-
+    Rails.logger.warn(current_usuario.inspect)
     if @usuario
       if @usuario.authenticate(params[:password])
         session[:codigo_usuario] = @usuario.codigo_usuario

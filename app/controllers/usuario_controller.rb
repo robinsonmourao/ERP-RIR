@@ -3,13 +3,12 @@ class UsuarioController < ApplicationController
     @usuario = Usuario.new
   end
 
+  def show
+    @usuario = current_usuario
+  end
+
   def create
     @usuario = Usuario.new(usuario_params)
-
-    # if check_taken_credentials(@user) || check_unacceptable_password_length(@user)
-    #   return
-    # end
-
     begin
       if @usuario.save
 
