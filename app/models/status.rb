@@ -7,10 +7,10 @@ class Status < ApplicationRecord
   attribute :situacao, :integer
   attribute :data, :date
 
-  belongs_to :site, foreign_key: 'codigo_sfca'
-  belongs_to :fornecedor, foreign_key: 'codigo_sfca'
-  belongs_to :cliente, foreign_key: 'codigo_sfca'
-  belongs_to :atendimento, foreign_key: 'codigo_sfca'
+  has_many :site, foreign_key: 'codigo_sfca'
+  has_many :fornecedor, foreign_key: 'codigo_sfca'
+  has_many :cliente, foreign_key: 'codigo_sfca'
+  has_many :atendimento, foreign_key: 'codigo_sfca'
 
   validates :codigo_sfca, presence: true
   validates :tabela, inclusion: { in: ['s', 'f', 'c', 'a'] }

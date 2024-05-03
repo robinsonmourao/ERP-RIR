@@ -11,16 +11,17 @@ class TipoContatosController < ApplicationController
     @tipo_contato = TipoContato.new
   end
 
-  # def create
-  #   @tipo_contato = TipoContato.new(params[:descricao])
-  #   if @tipo_contato.save
-  #     flash[:success] = 'TipoContato successfully created'
-  #     redirect_to @tipo_contato
-  #   else
-  #     flash[:error] = 'Something went wrong'
-  #     render 'new'
-  #   end
-  # end
+  def create
+    @tipo_contato = TipoContato.new(tipo_contato_params)
+
+    if @tipo_contato.save
+      flash[:notice] = "O TipoContato, '#{@tipo_contato.descricao}' foi criado com sucesso"
+      redirect_to dashboard_path
+    else
+      flash[:notice] = 'Não foi possivel salvar o TipoContato'
+      render 'new'
+    end
+  end
 
   private
 

@@ -1,4 +1,6 @@
 class Equipamento < ApplicationRecord
+  self.table_name = 'equipamentos'
+
   attribute :codigo_equipamento, :integer
   attribute :descricao, :integer
   attribute :mac_equipamento, :string

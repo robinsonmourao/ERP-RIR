@@ -1,4 +1,6 @@
 class MidiaSocial < ApplicationRecord
+  self.table_name = 'midias_sociais'
+
   attribute :tabela, :string
   attribute :codigo_tipo_midia_social, :integer
   attribute :descricao, :string

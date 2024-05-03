@@ -4,7 +4,7 @@ class Log < ApplicationRecord
   attribute :codigo_usuario, :integer
   attribute :comando, :text
 
-  belongs_to :usuario, foreign_key: 'codigo_usuario', class_name: 'Usuario'
+  has_one :usuario, foreign_key: 'codigo_usuario', class_name: 'Usuario'
 
   validates :codigo_usuario, presence: true
   validates :comando, presence: true

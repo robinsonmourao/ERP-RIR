@@ -3,7 +3,7 @@ class Atendimento < ApplicationRecord
 
   attribute :designacao, :integer
   attribute :codigo_fornecedor, :integer
-  attribute :codigo_tipo_tecnologia, :integer
+  attribute :codigo_tecnologia_link, :integer
   attribute :codigo_tipo_link, :integer
   attribute :velocidade_down, :integer
   attribute :velocidade_up, :integer

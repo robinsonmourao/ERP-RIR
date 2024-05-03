@@ -1,4 +1,6 @@
 class Usuario < ApplicationRecord
+  self.table_name = 'usuarios'
+
   attribute :codigo_usuario, :integer
   attribute :password_digest, :string
   attribute :nome, :string

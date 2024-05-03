@@ -22,7 +22,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         FOREIGN KEY (codigo_atendimento) REFERENCES atendimentos(codigo_atendimento),
         FOREIGN KEY (vencimento) REFERENCES faturas(vencimento),
         FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo),
-        FOREIGN KEY (codigo_local_pagamento) REFERENCES local_pagamento(codigo_local_pagamento)
+        FOREIGN KEY (codigo_local_pagamento) REFERENCES local_pagamentos(codigo_local_pagamento)
       );
     SQL
   end

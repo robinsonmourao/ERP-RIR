@@ -13,7 +13,7 @@ class CreateFaturas < ActiveRecord::Migration[7.1]
         codigo_status INTEGER NOT NULL,
 
         FOREIGN KEY (codigo_atendimento) REFERENCES atendimentos(codigo_atendimento),
-        FOREIGN KEY (codigo_meio_pagamento) REFERENCES meios_pagamento(codigo_meio_pagamento),
+        FOREIGN KEY (codigo_meio_pagamento) REFERENCES meio_pagamentos(codigo_meio_pagamento),
         FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo),
         FOREIGN KEY (codigo_status) REFERENCES status(codigo_status)
 

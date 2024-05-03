@@ -1,8 +1,10 @@
 class TipoContato < ApplicationRecord
-  attribute :codigo_contato_tipo, :integer
+  self.table_name = 'tipo_contatos'
+
+  attribute :codigo_tipo_contato, :integer
   attribute :descricao, :string
 
-  belongs_to :contato
+  has_many :contato
 
   validates :descricao, presence: true
 end

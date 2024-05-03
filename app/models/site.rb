@@ -17,7 +17,7 @@ class Site < ApplicationRecord
   attribute :valor_mensal, :decimal, precision: 11, scale: 2
   attribute :valor_instalacao, :decimal, precision: 11, scale: 2
 
-  belongs_to :cliente, foreign_key: 'codigo_cliente'
+  has_one :cliente, foreign_key: 'codigo_cliente'
   has_many :municipio, foreign_key: 'codigo_municipio'
   has_many :tipo_link, foreign_key: 'codigo_tipo_link'
 

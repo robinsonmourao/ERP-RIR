@@ -14,7 +14,7 @@ class CreateFornecedores < ActiveRecord::Migration[7.1]
         asn TEXT,
         site_fornecedor TEXT,
 
-        FOREIGN KEY (codigo_fornecedor_cidade) REFERENCES fornecedor_cidade(codigo_fornecedor_cidade)
+        FOREIGN KEY (codigo_fornecedor_cidade) REFERENCES fornecedor_cidades(codigo_fornecedor_cidade)
       );
     SQL
   end

@@ -2,7 +2,7 @@ class CreateMeioContatos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE meio_contatos(
-        codigo_contato_meio INTEGER PRIMARY KEY AUTOINCREMENT,
+        codigo_meio_contato INTEGER PRIMARY KEY AUTOINCREMENT,
         descricao TEXT NOT NULL,
 
         CHECK (descricao IN('email', 'telefone', 'whatsapp'))

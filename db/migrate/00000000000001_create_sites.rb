@@ -22,7 +22,7 @@ class CreateSites < ActiveRecord::Migration[7.1]
 
         FOREIGN KEY (codigo_cliente) REFERENCES clientes(codigo_cliente),
         FOREIGN KEY (codigo_municipio) REFERENCES municipios(codigo_municipio),
-        FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_link(codigo_tipo_link),
+        FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_links(codigo_tipo_link),
 
         CHECK (velocidade_contratada > 0)
       );

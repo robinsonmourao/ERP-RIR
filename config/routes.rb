@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :contatos
   resources :tipo_contatos
+  resources :meio_contatos
 
   resources :sites
 

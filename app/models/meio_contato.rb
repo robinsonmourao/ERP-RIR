@@ -1,8 +1,10 @@
 class MeioContato < ApplicationRecord
-  attribute :codigo_contato_meio, :integer
+  self.table_name = 'meio_contatos'
+
+  attribute :codigo_meio_contato, :integer
   attribute :descricao, :string
 
-  belongs_to :contato
+  has_many :contato
 
   validates :descricao, presence: true, inclusion: { in: ['email', 'telefone', 'whatsapp'] }
 end

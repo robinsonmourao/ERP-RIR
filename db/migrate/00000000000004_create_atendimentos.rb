@@ -4,7 +4,7 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
       CREATE TABLE atendimentos(
         designacao INTEGER NOT NULL,
         codigo_fornecedor INTEGER NOT NULL,
-        codigo_tipo_tecnologia INTEGER NOT NULL,
+        codigo_tecnologia_link INTEGER NOT NULL,
         codigo_tipo_link INTEGER NOT NULL,
         velocidade_down INTEGER NOT NULL,
         velocidade_up INTEGER,
@@ -25,9 +25,9 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
 
         FOREIGN KEY (designacao) REFERENCES sites(designacao),
         FOREIGN KEY (codigo_fornecedor) REFERENCES fornecedores(codigo_fornecedor)
-        FOREIGN KEY (codigo_tipo_tecnologia) REFERENCES tipo_tecnologia(codigo_tipo_tecnologia),
-        FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_link(codigo_tipo_link),
-        FOREIGN KEY (codigo_meio_pagamento) REFERENCES meio_pagamento(codigo_meio_pagamento),
+        FOREIGN KEY (codigo_tecnologia_link) REFERENCES tecnologia_links(codigo_tecnologia_link),
+        FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_links(codigo_tipo_link),
+        FOREIGN KEY (codigo_meio_pagamento) REFERENCES meio_pagamentos(codigo_meio_pagamento),
         FOREIGN KEY (codigo_equipamento) REFERENCES equipamentos(codigo_equipamento),
 
         CHECK (velocidade_down > 0),

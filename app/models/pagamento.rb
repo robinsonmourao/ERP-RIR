@@ -1,5 +1,5 @@
 class MeioPagamento < ApplicationRecord
-  self.table_name = 'meios_pagamento'
+  self.table_name = 'meio_pagamentos'
 
   attribute :codigo_meio_pagamento, :integer
   attribute :descricao, :integer, default: 1

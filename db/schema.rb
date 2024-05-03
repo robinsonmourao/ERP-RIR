@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   create_table "atendimentos", primary_key: ["designacao", "codigo_fornecedor"], force: :cascade do |t|
     t.integer "designacao", null: false
     t.integer "codigo_fornecedor", null: false
-    t.integer "codigo_tipo_tecnologia", null: false
+    t.integer "codigo_tecnologia_link", null: false
     t.integer "codigo_tipo_link", null: false
     t.integer "velocidade_down", null: false
     t.integer "velocidade_up"
@@ -57,10 +57,10 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "inscricao_municipal"
   end
 
-  create_table "contatos", primary_key: ["tabela", "codigo_contato_tipo"], force: :cascade do |t|
+  create_table "contatos", primary_key: "codigo_contato", force: :cascade do |t|
     t.string "tabela", limit: 1, null: false
-    t.integer "codigo_contato_tipo", null: false
-    t.integer "codigo_contato_meio", null: false
+    t.integer "codigo_tipo_contato", null: false
+    t.integer "codigo_meio_contato", null: false
     t.text "nome_pessoa"
     t.text "descricao", null: false
     t.text "observacao"
@@ -119,7 +119,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "descricao", null: false
   end
 
-  create_table "meio_contatos", primary_key: "codigo_contato_meio", force: :cascade do |t|
+  create_table "meio_contatos", primary_key: "codigo_meio_contato", force: :cascade do |t|
     t.text "descricao", null: false
   end
 
@@ -175,7 +175,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "descricao", null: false
   end
 
-  create_table "tipo_contatos", primary_key: "codigo_contato_tipo", force: :cascade do |t|
+  create_table "tipo_contatos", primary_key: "codigo_tipo_contato", force: :cascade do |t|
     t.text "descricao", null: false
   end
 
@@ -201,31 +201,31 @@ ActiveRecord::Schema[7.1].define(version: 23) do
 
   add_foreign_key "atendimentos", "equipamentos", column: "codigo_equipamento", primary_key: "codigo_equipamento"
   add_foreign_key "atendimentos", "fornecedores", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
-  add_foreign_key "atendimentos", "meio_pagamento", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
+  add_foreign_key "atendimentos", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "atendimentos", "sites", column: "designacao", primary_key: "designacao"
-  add_foreign_key "atendimentos", "tipo_link", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
-  add_foreign_key "atendimentos", "tipo_tecnologia", column: "codigo_tipo_tecnologia", primary_key: "codigo_tipo_tecnologia"
+  add_foreign_key "atendimentos", "tecnologia_links", column: "codigo_tecnologia_link", primary_key: "codigo_tecnologia_link"
+  add_foreign_key "atendimentos", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
   add_foreign_key "boletos", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
   add_foreign_key "boletos", "faturas", column: "codigo_fatura", primary_key: "codigo_fatura"
   add_foreign_key "boletos", "faturas", column: "vencimento", primary_key: "vencimento"
   add_foreign_key "boletos", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
-  add_foreign_key "boletos", "local_pagamento", column: "codigo_local_pagamento", primary_key: "codigo_local_pagamento"
-  add_foreign_key "contatos", "contato_meio", column: "codigo_contato_meio", primary_key: "codigo_contato_meio"
-  add_foreign_key "contatos", "contato_tipo", column: "codigo_contato_tipo", primary_key: "codigo_contato_tipo"
+  add_foreign_key "boletos", "local_pagamentos", column: "codigo_local_pagamento", primary_key: "codigo_local_pagamento"
+  add_foreign_key "contatos", "meio_contatos", column: "codigo_meio_contato", primary_key: "codigo_meio_contato"
+  add_foreign_key "contatos", "tipo_contatos", column: "codigo_tipo_contato", primary_key: "codigo_tipo_contato"
   add_foreign_key "faturas", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
   add_foreign_key "faturas", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
-  add_foreign_key "faturas", "meios_pagamento", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
+  add_foreign_key "faturas", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "faturas", "status", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "fornecedor_cidades", "fornecedores", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
   add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
-  add_foreign_key "fornecedores", "fornecedor_cidade", column: "codigo_fornecedor_cidade", primary_key: "codigo_fornecedor_cidade"
+  add_foreign_key "fornecedores", "fornecedor_cidades", column: "codigo_fornecedor_cidade", primary_key: "codigo_fornecedor_cidade"
   add_foreign_key "logs", "usuarios", column: "codigo_usuario", primary_key: "codigo_usuario"
-  add_foreign_key "midias_sociais", "tipo_midia_social", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
+  add_foreign_key "midias_sociais", "tipo_midias_sociais", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
   add_foreign_key "municipios", "ufs", column: "codigo_uf", primary_key: "codigo_uf"
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
   add_foreign_key "sites", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
-  add_foreign_key "sites", "tipo_link", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
-  add_foreign_key "status", "atendimento", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "sites", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
+  add_foreign_key "status", "atendimentos", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "clientes", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "fornecedores", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "sites", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade

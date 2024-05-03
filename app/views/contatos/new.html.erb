@@ -10,10 +10,10 @@
         <%= form.select :tabela, options_for_select([['Fornecedor', 'f'], ['Site', 's'], ['Cliente', 'c']]), {}, { class: 'custom-select-tag' } %>
 
         <%= form.label :Tipo_de_contato, class:'required'  %>
-        <%= form.text_field :codigo_contato_tipo, placeholder: "Tipo", required: true %>
+        <%= form.text_field :codigo_tipo_contato, placeholder: "Tipo", required: true %>
 
         <%= form.label :Meio_de_contato, class:'required'  %>
-        <%= form.text_field :codigo_contato_meio, placeholder: "Meio", required: true %>
+        <%= form.text_field :codigo_meio_contato, placeholder: "Meio", required: true %>
 
         <%= form.label :Nome_da_pessoa, class:'required'  %>
         <%= form.text_field :nome_pessoa, placeholder: "Nome", required: true %>

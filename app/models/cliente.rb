@@ -11,8 +11,8 @@ class Cliente < ApplicationRecord
   attribute :inscricao_estadual, :string
   attribute :inscricao_municipal, :string
 
-  has_many :contatos, dependent: destroy
-  has_many :sites, dependent: destroy
+  has_many :contato, dependent: destroy
+  has_many :site, dependent: destroy
 
   validates :nome_cliente, presence: true
   validates :cnpj, presence: true, uniqueness: true, length: { is: 14 }
