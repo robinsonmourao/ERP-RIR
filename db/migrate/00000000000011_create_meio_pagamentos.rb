@@ -1,7 +1,7 @@
-class CreateMeiosPagamento < ActiveRecord::Migration[7.1]
+class CreateMeioPagamentos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
-      CREATE TABLE meios_pagamento(
+      CREATE TABLE meio_pagamentos(
         codigo_meio_pagamento INTEGER PRIMARY KEY AUTOINCREMENT,
         descricao INTEGER DEFAULT 1,
 
@@ -12,7 +12,7 @@ class CreateMeiosPagamento < ActiveRecord::Migration[7.1]
 
   def down
     execute <<-SQL
-      DROP TABLE IF EXISTS meios_pagamento;
+      DROP TABLE IF EXISTS meio_pagamentos;
     SQL
   end
 end

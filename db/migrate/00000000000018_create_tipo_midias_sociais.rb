@@ -1,7 +1,7 @@
-class CreateTipoMidiaSocial < ActiveRecord::Migration[7.1]
+class CreateTipoMidiasSociais < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
-      CREATE TABLE tipo_midia_social(
+      CREATE TABLE tipo_midias_sociais(
         codigo_midia_social INTEGER,
         descricao TEXT NOT NULL
       );
@@ -10,7 +10,7 @@ class CreateTipoMidiaSocial < ActiveRecord::Migration[7.1]
 
   def down
     execute <<-SQL
-      DROP TABLE IF EXISTS tipo_midia_social;
+      DROP TABLE IF EXISTS tipo_midias_sociais;
     SQL
   end
 end

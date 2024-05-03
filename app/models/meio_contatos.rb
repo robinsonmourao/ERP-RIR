@@ -1,4 +1,4 @@
-class ContatoMeio < ApplicationRecord
+class MeioContato < ApplicationRecord
   attribute :codigo_contato_meio, :integer
   attribute :descricao, :string
 

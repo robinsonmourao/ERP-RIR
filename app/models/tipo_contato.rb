@@ -1,4 +1,4 @@
-class ContatoTipo < ApplicationRecord
+class TipoContato < ApplicationRecord
   attribute :codigo_contato_tipo, :integer
   attribute :descricao, :string
 

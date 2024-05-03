@@ -57,14 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "inscricao_municipal"
   end
 
-  create_table "contato_meio", primary_key: "codigo_contato_meio", force: :cascade do |t|
-    t.text "descricao", null: false
-  end
-
-  create_table "contato_tipo", primary_key: "codigo_contato_tipo", force: :cascade do |t|
-    t.text "descricao", null: false
-  end
-
   create_table "contatos", primary_key: ["tabela", "codigo_contato_tipo"], force: :cascade do |t|
     t.string "tabela", limit: 1, null: false
     t.integer "codigo_contato_tipo", null: false
@@ -113,7 +105,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "descricao", default: 1, null: false
   end
 
-  create_table "local_pagamento", primary_key: "codigo_local_pagamento", force: :cascade do |t|
+  create_table "local_pagamentos", primary_key: "codigo_local_pagamento", force: :cascade do |t|
     t.integer "descricao", null: false
   end
 
@@ -123,11 +115,19 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "comando", null: false
   end
 
-  create_table "meios_pagamento", primary_key: "codigo_meio_pagamento", force: :cascade do |t|
+  create_table "meio_contato", primary_key: "codigo_contato_meio", force: :cascade do |t|
+    t.text "descricao", null: false
+  end
+
+  create_table "meio_contatos", primary_key: "codigo_contato_meio", force: :cascade do |t|
+    t.text "descricao", null: false
+  end
+
+  create_table "meio_pagamentos", primary_key: "codigo_meio_pagamento", force: :cascade do |t|
     t.integer "descricao", default: 1
   end
 
-  create_table "midia_social", id: false, force: :cascade do |t|
+  create_table "midias_sociais", id: false, force: :cascade do |t|
     t.string "tabela", limit: 1, null: false
     t.integer "codigo_tipo_midia_social"
     t.text "descricao", null: false
@@ -167,15 +167,23 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "descricao", default: "pendente", null: false
   end
 
-  create_table "tecnologia_link", primary_key: "codigo_tecnologia_link", force: :cascade do |t|
+  create_table "tecnologia_links", primary_key: "codigo_tecnologia_link", force: :cascade do |t|
     t.integer "descricao", null: false
   end
 
-  create_table "tipo_link", primary_key: "codigo_tipo_link", force: :cascade do |t|
+  create_table "tipo_contato", primary_key: "codigo_contato_tipo", force: :cascade do |t|
+    t.text "descricao", null: false
+  end
+
+  create_table "tipo_contatos", primary_key: "codigo_contato_tipo", force: :cascade do |t|
+    t.text "descricao", null: false
+  end
+
+  create_table "tipo_links", primary_key: "codigo_tipo_link", force: :cascade do |t|
     t.integer "descricao", null: false
   end
 
-  create_table "tipo_midia_social", id: false, force: :cascade do |t|
+  create_table "tipo_midias_sociais", id: false, force: :cascade do |t|
     t.integer "codigo_midia_social"
     t.text "descricao", null: false
   end
@@ -212,7 +220,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "fornecedores", "fornecedor_cidade", column: "codigo_fornecedor_cidade", primary_key: "codigo_fornecedor_cidade"
   add_foreign_key "logs", "usuarios", column: "codigo_usuario", primary_key: "codigo_usuario"
-  add_foreign_key "midia_social", "tipo_midia_social", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
+  add_foreign_key "midias_sociais", "tipo_midia_social", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
   add_foreign_key "municipios", "ufs", column: "codigo_uf", primary_key: "codigo_uf"
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
   add_foreign_key "sites", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"

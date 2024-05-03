@@ -1,7 +1,7 @@
-class CreateContatoMeio < ActiveRecord::Migration[7.1]
+class CreateMeioContatos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
-      CREATE TABLE contato_meio(
+      CREATE TABLE meio_contatos(
         codigo_contato_meio INTEGER PRIMARY KEY AUTOINCREMENT,
         descricao TEXT NOT NULL,
 
@@ -12,7 +12,7 @@ class CreateContatoMeio < ActiveRecord::Migration[7.1]
 
   def down
     execute <<-SQL
-      DROP TABLE IF EXISTS contato_meio;
+      DROP TABLE IF EXISTS meio_contatos;
     SQL
   end
 end
