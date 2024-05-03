@@ -38,7 +38,7 @@ body {
     box-sizing: border-box;
   }
   
-  .menu-bar {
+  .menu-bar-tabelas-principais, .menu-bar-tabelas-auxiliares {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -92,6 +92,10 @@ body {
       margin: 5px;
     }
 
+  .required::after {
+    color: red;
+    content: "*";
+  }
   .container-cadastrar-usuarios, .container-entrar-usuarios {
     margin: 10px;
     display: flex;
@@ -108,15 +112,11 @@ body {
       background-color: #DFD0B8;
       box-shadow: 0 0 5px rgba(0, 0, 0, 10);
     }
-    .titulo-cadastrar-usuarios, .titulo-entrar-usuarios{
+    .titulo-formulario-cadastros, .titulo-formulario-login{
       text-align: center;
       font-size: 40px;
       font-weight: 900;
-      padding: 0px 10px;
-      padding-bottom: 30px;
-      background-image: linear-gradient(to bottom, #000000, #DFD0B8);
-      color: white;
-      border-radius: 10px;
+      padding-bottom: 20px;
     }
       .signup-form-textboxes, .login-form-textboxes{
         display: grid;
@@ -134,7 +134,7 @@ body {
         margin: 10px;
         font-size: 30px;
       }
-      #signup-form-submit-button, #login-form-submit-button {
+      #form-submit-button {
         display: inline-block;
         padding: 10px 20px;
         margin-top: 20px;
@@ -144,6 +144,9 @@ body {
         border: 0;
         cursor: pointer;
         font-size: 30px;
+      }
+      #form-submit-button:hover {
+        background-color: #0056b3;
       }
       .container-cadastrar-entrar-link{
         padding: 10px;
@@ -181,3 +184,39 @@ body {
           border-radius: 5px;
           background-color: #ff9c9c;
         }
+
+
+
+
+        /* Estilos para o formulário de cadastro de contatos */
+.container-cadastros {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-cadastros {
+  margin-bottom: 20px;
+}
+
+.textboxes-cadastros {
+  display: grid;
+  grid-gap: 0px;
+}
+
+.custom-select-tag {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.text_field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

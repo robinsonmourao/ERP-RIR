@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :usuarios
+
   resources :clientes
+
+  resources :contatos
+  resources :tipo_contatos
+
+  resources :sites
 
   root 'usuarios#login'
   get 'dashboard', to: 'dashboard#show'

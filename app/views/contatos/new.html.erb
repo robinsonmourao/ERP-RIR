@@ -1,0 +1,35 @@
+<h1>New contato</h1>
+
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Cadastro de contatos</div>
+    <%= form_with(model: @contato, url: contatos_path, method: :post) do |form| %>
+      <div class="textboxes-cadastros">
+
+        <%= form.label :Se_trata_de_um_Contato_de, class:'required' %>
+        <%= form.select :tabela, options_for_select([['Fornecedor', 'f'], ['Site', 's'], ['Cliente', 'c']]), {}, { class: 'custom-select-tag' } %>
+
+        <%= form.label :Tipo_de_contato, class:'required'  %>
+        <%= form.text_field :codigo_contato_tipo, placeholder: "Tipo", required: true %>
+
+        <%= form.label :Meio_de_contato, class:'required'  %>
+        <%= form.text_field :codigo_contato_meio, placeholder: "Meio", required: true %>
+
+        <%= form.label :Nome_da_pessoa, class:'required'  %>
+        <%= form.text_field :nome_pessoa, placeholder: "Nome", required: true %>
+
+        <%= form.label :Descricao_do_contato, class:'required' %>
+        <%= form.text_field :descricao, placeholder: "Descrição", required: true %>
+
+        <%= form.label :Observacao %>
+        <%= form.text_field :observacao, placeholder: "Observação" %>
+        
+        <%= form.submit "Cadastrar", id: "form-submit-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Back to contatos", contatos_path %>
+</div>

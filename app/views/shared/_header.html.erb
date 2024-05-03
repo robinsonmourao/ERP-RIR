@@ -1,6 +1,7 @@
 <div class="header-container" >
+  <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
   <div class="menu-container">
-    <ul class="menu-bar">
+    <ul class="menu-bar-tabelas-principais">
       <li class="menu-item">Clientes
         <ul class="submenu">
           <li><a href='clientes'>Listar todos</a></li>
@@ -9,17 +10,11 @@
       </li>
       <li class="menu-item">Sites
         <ul class="submenu">
-          <li><a href="#">Listar todos</a></li>
-          <li><a href="#">Novo</a></li>
+          <li><a href='sites'>Listar todos</a></li>
+          <li><a href="sites/new">Novo</a></li>
         </ul>
       </li>
       <li class="menu-item">Fornecedores
-        <ul class="submenu">
-          <li><a href="#">Listar todos</a></li>
-          <li><a href="#">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Atendimentos
         <ul class="submenu">
           <li><a href="#">Listar todos</a></li>
           <li><a href="#">Novo</a></li>
@@ -39,8 +34,8 @@
       </li>
       <li class="menu-item">Contatos
         <ul class="submenu">
-          <li><a href="#">Listar todos</a></li>
-          <li><a href="#">Novo</a></li>
+          <li><a href='contatos'>Listar todos</a></li>
+          <li><a href='contatos/new'>Novo</a></li>
         </ul>
       </li>
       <li class="menu-item">Faturas
@@ -62,7 +57,23 @@
         </ul>
       </li>
     </ul>
+
+    <ul class="menu-bar-tabelas-auxiliares">
+      <li class="menu-item">Contato tipos
+        <ul class="submenu">
+          <li><a href='tipo_contatos'>Listar todos</a></li>
+          <li><a href='tipo_contatos/new'>Novo</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">Contato meios
+        <ul class="submenu">
+          <li><a href='meio_contatos'>Listar todos</a></li>
+          <li><a href='meio_contatos/new'>Novo</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
+  <% end %>
   <div class="container-header-buttons">
     <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
       <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>

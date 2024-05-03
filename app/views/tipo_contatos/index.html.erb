@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tipo contatos</h1>
+
+<% if @contatos.present? %>
+  <div id="tipo_contatos">
+    <% @tipo_contatos.each do |tipo_contato| %>
+      <%= render tipo_contato %>
+      <p>
+        <%= link_to "Show this tipo contato", tipo_contato %>
+      </p>
+    <% end %>
+  </div>
+<% else %>
+  <p>Nenhum contato encontrado.</p>
+<% end %>
+<%= link_to "New tipo contato", new_tipo_contato_path %>

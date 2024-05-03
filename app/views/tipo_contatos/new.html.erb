@@ -1,0 +1,20 @@
+<h1>New tipo contato</h1>
+
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Cadastro de tipo de contatos</div>
+    <%= form_with(model: @tipo_contato, url: tipo_contatos_path, method: :post) do |form| %>
+      <div class="textboxes-cadastros">
+      
+        <%= form.label :Descricao_do_contato, class:'required' %>
+        <%= form.text_field :descricao, placeholder: "Descrição", required: true %>
+        
+        <%= form.submit "Cadastrar", id: "form-submit-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Back to tipo contatos", tipo_contatos_path %>
+</div>
