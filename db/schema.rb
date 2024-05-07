@@ -115,10 +115,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "comando", null: false
   end
 
-  create_table "meio_contato", primary_key: "codigo_contato_meio", force: :cascade do |t|
-    t.text "descricao", null: false
-  end
-
   create_table "meio_contatos", primary_key: "codigo_meio_contato", force: :cascade do |t|
     t.text "descricao", null: false
   end
@@ -169,10 +165,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
 
   create_table "tecnologia_links", primary_key: "codigo_tecnologia_link", force: :cascade do |t|
     t.integer "descricao", null: false
-  end
-
-  create_table "tipo_contato", primary_key: "codigo_contato_tipo", force: :cascade do |t|
-    t.text "descricao", null: false
   end
 
   create_table "tipo_contatos", primary_key: "codigo_tipo_contato", force: :cascade do |t|
