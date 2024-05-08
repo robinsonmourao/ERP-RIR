@@ -4,7 +4,7 @@ class ContatosController < ApplicationController
   end
 
   def show
-    @contato = Contato.find(contato_params[:codigo_contato])
+    @contato = Contato.find(params[:id])
   end
 
   def new
@@ -17,10 +17,10 @@ class ContatosController < ApplicationController
     @contato = Contato.new(contato_params)
     Rails.logger.warn(@contato.inspect)
     if @contato.save
-      flash[:success] = "O contato foi criado com sucesso."
+      flash[:success] = 'O contato foi criado com sucesso.'
       redirect_to @contato
     else
-      flash[:error] = "Não foi possível salvar o contato."
+      flash[:error] = 'Não foi possível salvar o contato.'
       render 'new'
     end
   end

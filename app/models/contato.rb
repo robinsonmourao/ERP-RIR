@@ -1,6 +1,8 @@
 class Contato < ApplicationRecord
   self.table_name = 'contatos'
 
+  attribute :codigo_contato_composto, :string
+  attribute :codigo_contato, :integer
   attribute :tabela, :string
   attribute :codigo_tipo_contato, :integer
   attribute :codigo_meio_contato, :integer

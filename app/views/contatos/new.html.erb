@@ -1,5 +1,3 @@
-<h1>New contato</h1>
-
 <div class="container-cadastros">
   <div class="formulario-cadastros">
     <div class='titulo-formulario-cadastros'>Cadastro de contatos</div>
@@ -7,7 +5,7 @@
       <div class="textboxes-cadastros">
 
         <%= form.label :Se_trata_de_um_Contato_de, class:'required' %>
-        <%= form.select :tabela, options_for_select([[FORNECEDOR, 'f'], [SITE, 's'], [CLIENTE, 'c']]), 
+        <%= form.select :tabela, options_for_select([["fornecedor", FORNECEDOR], ["site", SITE], ["cliente", CLIENTE]]), 
               { include_blank: '' }, { class: 'custom-select-tag' } %>
 
         <%= form.label :codigo_tipo_contato, "Tipo de Contato", class:'required' %>

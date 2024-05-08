@@ -13,9 +13,9 @@ class MeioContatosController < ApplicationController
 
   def create
     @meio_contato = MeioContato.new(meio_contato_params)
-    
+
     if @meio_contato.save
-      flash[:success] = "MeioContato successfully created"
+      flash[:success] = 'MeioContato successfully created'
       redirect_to request.path
     else
       flash[:error] = "Não foi possível criar o meio de contato descrito: #{@meio_contato.descricao}"

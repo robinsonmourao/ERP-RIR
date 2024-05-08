@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :sites
 
-  root 'usuarios#login'
+  root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'
 
   get '/entrar', to: 'usuarios#entrar'

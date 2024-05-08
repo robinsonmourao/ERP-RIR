@@ -1,0 +1,12 @@
+<div class='container-show'>
+  <h1>Nome da pessoa: <strong><%= @contato.nome_pessoa %></strong></h1>
+  <p>Descrição do contato: <%= @contato.descricao %></p>
+
+<div>
+  <%= link_to "Edit this contato", edit_contato_path(@contato) %> |
+  <%= link_to "Back to contatos", contatos_path %>
+
+  <%= button_to "Destroy this contato", @contato, method: :delete %>
+</div>
+
+</div>

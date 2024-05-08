@@ -6,8 +6,8 @@ module Permissao
 end
 
 module Categoria
-  ATENDIMENTO = 'a',
-  CLIENTE = 'c',
-  FORNECEDOR = 'f',
+  ATENDIMENTO = 'a'
+  CLIENTE = 'c'
+  FORNECEDOR = 'f'
   SITE = 's'
 end

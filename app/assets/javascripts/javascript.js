@@ -1,3 +1,5 @@
+const transicaoSaidaFlash = "slideDown"
+
 addEventListener("click", (event) => {});
 
 onclick = (event) => {
@@ -10,21 +12,21 @@ onclick = (event) => {
   if (flashDiv != null){
     if (presenteNaTela(divNotice)){
       
-      divNotice.style.animation = "slideLeft 0.2s ease-in forwards";
+      divNotice.style.animation = transicaoSaidaFlash+" 0.2s ease-in forwards";
       setTimeout(function() {
         divNotice.style.display = "none";
       }, 200);
     } 
     else if (presenteNaTela(divSuccess)){
 
-      divSuccess.style.animation = "slideLeft 0.2s ease-in forwards";
+      divSuccess.style.animation = transicaoSaidaFlash+" 0.2s ease-in forwards";
       setTimeout(function() {
         divSuccess.style.display = "none";
       }, 200);
     }
     else if (presenteNaTela(divError)){
 
-      divError.style.animation = "slideLeft 0.2s ease-in forwards";
+      divError.style.animation = transicaoSaidaFlash+" 0.2s ease-in forwards";
       setTimeout(function() {
         divError.style.display = "none";
       }, 200);
