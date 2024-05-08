@@ -1,0 +1,10 @@
+<div class="formulario-cadastrar-colecao">
+  <%= form_with(model: @tipo_contato, url: tipo_contatos_path, method: :post) do |form| %>
+  <div class="textboxes-cadastros">
+
+    <%= form.text_field :descricao, placeholder: "Novo tipo de contato", class:'required' %>            
+    <%= form.submit "Cadastrar novo tipo de contato", id: "permissions-form-submit-button" %>
+
+  </div>
+  <% end %>
+</div>

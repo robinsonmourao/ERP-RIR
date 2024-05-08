@@ -11,11 +11,24 @@
   </head>
 
   <body>    
-    <%= render "shared/header" %>  
+    <%= render "shared/header" %>
+
     <div class="container-yield">
       <div class=div-notice>
       <% if flash[:notice] %>
-        <div id="notice"><%= flash[:notice] %></div>
+        <div id="flash-text"><%= flash[:notice] %></div>
+      <% end %>
+      </div>
+
+      <div class=div-success>
+      <% if flash[:success] %>
+        <div id="flash-text"><%= flash[:success] %></div>
+      <% end %>
+      </div>
+
+      <div class=div-error>
+      <% if flash[:error] %>
+        <div id="flash-text"><%= flash[:error] %></div>
       <% end %>
       </div>
       <%= yield %>

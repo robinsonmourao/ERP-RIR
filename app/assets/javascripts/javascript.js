@@ -1,15 +1,35 @@
 addEventListener("click", (event) => {});
 
 onclick = (event) => {
-        var noticeDiv = document.getElementById("notice");
-        var divNoticeParent = document.querySelector(".div-notice");
+  var flashDiv = document.getElementById("flash-text");
 
-        if (noticeDiv == null){
-            divNoticeParent.style.display = "none";
-        }
-        else{
-            divNoticeParent.style.display = "none";
-        }
+  var divNotice = document.querySelector(".div-notice");
+  var divSuccess = document.querySelector(".div-success");
+  var divError = document.querySelector(".div-error");
+  
+  if (flashDiv != null){
+    if (presenteNaTela(divNotice)){
+      
+      divNotice.style.animation = "slideLeft 0.2s ease-in forwards";
+      setTimeout(function() {
+        divNotice.style.display = "none";
+      }, 200);
+    } 
+    else if (presenteNaTela(divSuccess)){
+
+      divSuccess.style.animation = "slideLeft 0.2s ease-in forwards";
+      setTimeout(function() {
+        divSuccess.style.display = "none";
+      }, 200);
+    }
+    else if (presenteNaTela(divError)){
+
+      divError.style.animation = "slideLeft 0.2s ease-in forwards";
+      setTimeout(function() {
+        divError.style.display = "none";
+      }, 200);
+    }
+  }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -41,3 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+function presenteNaTela(elemento){
+  return elemento.innerHTML.trim() !== '';
+}

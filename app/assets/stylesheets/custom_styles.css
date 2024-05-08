@@ -74,23 +74,48 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 10);
 }
-  .div-notice{
-    display: flex;
-    position: sticky;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 10);
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    border-radius: 10px;
-    background-color: rgb(252, 70, 70, 0.7);
-    z-index: 1;
+
+@keyframes slideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+@keyframes slideDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+@keyframes slideRight {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+@keyframes slideLeft {  
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.div-notice, .div-success, .div-error{
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 999;
+  animation: slideRight 0.2s ease-in forwards;
+}
+.div-notice{
+  background-color: rgba(255, 185, 56, 0.8);
+}
+.div-success{
+  background-color: rgba(96, 255, 56, 0.8);
+}
+.div-error{
+  background-color: rgba(255, 81, 81, 0.8);
+}
+  #flash-text{
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    margin: 5px;
   }
-    #notice{
-      font-weight: bold;
-      font-size: 20px;
-      color: aliceblue;
-      margin: 5px;
-    }
+
 
   .required::after {
     color: red;
@@ -134,7 +159,7 @@ body {
         margin: 10px;
         font-size: 30px;
       }
-      #form-submit-button {
+      #form-submit-button, #permissions-form-submit-button {
         display: inline-block;
         padding: 10px 20px;
         margin-top: 20px;
@@ -145,6 +170,9 @@ body {
         cursor: pointer;
         font-size: 30px;
       }
+        #permissions-form-submit-button{
+          background-color: #ff4646;
+        }
       #form-submit-button:hover {
         background-color: #0056b3;
       }
@@ -185,10 +213,6 @@ body {
           background-color: #ff9c9c;
         }
 
-
-
-
-        /* Estilos para o formulário de cadastro de contatos */
 .container-cadastros {
   max-width: 600px;
   margin: 0 auto;
@@ -198,25 +222,30 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.formulario-cadastros {
-  margin-bottom: 20px;
-}
+  .formulario-cadastros {
+    margin-bottom: 20px;
+  }
 
-.textboxes-cadastros {
-  display: grid;
-  grid-gap: 0px;
-}
+    .textboxes-cadastros {
+      display: grid;
+      grid-gap: 0px;
+    }
 
-.custom-select-tag {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+    .custom-select-tag {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-.text_field {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+    .text_field {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    } 
+
+  .formulario-cadastrar-colecao{
+    display: flex;
+    justify-content: end;
+  }

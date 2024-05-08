@@ -4,3 +4,10 @@ module Permissao
   TECNICO = 3
   CONSULTA = 4
 end
+
+module Categoria
+  ATENDIMENTO = 'a',
+  CLIENTE = 'c',
+  FORNECEDOR = 'f',
+  SITE = 's'
+end

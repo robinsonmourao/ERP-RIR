@@ -1,4 +1,4 @@
-include Permissao
+include Permissao, Categoria
 
 class ApplicationController < ActionController::Base  
 
@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
 
   def check_active_session
     return true if session[:codigo_usuario].present?
-
-    redirect_to root_path, notice: 'É necessário logar para acessar o sistema RIX'
+    
+    flash[:notice] = 'É necessário logar para acessar o sistema RIR'
+    redirect_to root_path
   end
 
   def login
@@ -21,10 +22,13 @@ class ApplicationController < ActionController::Base
     if @usuario
       if @usuario.authenticate(params[:password])
         session[:codigo_usuario] = @usuario.codigo_usuario
-        redirect_to dashboard_path, notice: "Bem-vindo, #{@usuario.nome}!"
+
+        flash[:success] = "Bem-vindo, #{@usuario.nome}!"
+        redirect_to dashboard_path
       end
     else
-      redirect_to entrar_path, notice: 'Usuário não encontrado!'
+      flash[:error] =  'Usuário não encontrado!'
+      redirect_to entrar_path
     end
   end
 
@@ -32,9 +36,11 @@ class ApplicationController < ActionController::Base
     if session[:codigo_usuario]
       session[:codigo_usuario] = nil
 
-      redirect_to root_path, notice: 'Você foi desconectado!'
+      flash[:notice] = 'Você foi desconectado!'
+      redirect_to root_path
     else
-      redirect_to root_path, notice: 'A sessão que você quis fechar já não existia previamente!'
+      flash[:error] = 'A sessão que você quis fechar já não existia previamente!'
+      redirect_to root_path
     end
   end
 end

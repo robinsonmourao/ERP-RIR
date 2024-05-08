@@ -8,6 +8,8 @@ class ContatosController < ApplicationController
   end
 
   def new
+    @tipo_contato = TipoContato.all
+    @meio_contato = MeioContato.all
     @contato = Contato.new
   end
 
@@ -15,10 +17,10 @@ class ContatosController < ApplicationController
     @contato = Contato.new(contato_params)
     Rails.logger.warn(@contato.inspect)
     if @contato.save
-      flash[:notice] = "Contato successfully created"
+      flash[:success] = "O contato foi criado com sucesso."
       redirect_to @contato
     else
-      flash[:notice] = "Something went wrong"
+      flash[:error] = "Não foi possível salvar o contato."
       render 'new'
     end
   end

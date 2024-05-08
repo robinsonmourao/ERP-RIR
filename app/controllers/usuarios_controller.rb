@@ -15,12 +15,15 @@ class UsuariosController < ApplicationController
         @usuario.authenticate(params[:password])
         session[:codigo_usuario] = @usuario.codigo_usuario
 
-        redirect_to dashboard_path, notice: "Bem-vindo, #{@usuario.nome}!"
+        flash[:success] = "Bem-vindo, #{@usuario.nome}!"
+        redirect_to dashboard_path
       else
-        redirect_to root_path, notice: 'Nome de usuário já está em uso, tente novamente informando outro'
+        flash[:notice] = 'Nome de usuário já está em uso ou com campos vazios'
+        redirect_to new_usuario_path
       end
     rescue StandardError => e
-      redirect_to root_path, notice: "Erro ao armazenar usuário: #{e.message}"
+      flash[:error] = "Erro ao armazenar usuário: #{e.message}"
+      redirect_to new_usuario_path
     end
   end
 

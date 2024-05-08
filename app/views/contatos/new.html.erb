@@ -7,15 +7,18 @@
       <div class="textboxes-cadastros">
 
         <%= form.label :Se_trata_de_um_Contato_de, class:'required' %>
-        <%= form.select :tabela, options_for_select([['Fornecedor', 'f'], ['Site', 's'], ['Cliente', 'c']]), {}, { class: 'custom-select-tag' } %>
+        <%= form.select :tabela, options_for_select([[FORNECEDOR, 'f'], [SITE, 's'], [CLIENTE, 'c']]), 
+              { include_blank: '' }, { class: 'custom-select-tag' } %>
 
-        <%= form.label :Tipo_de_contato, class:'required'  %>
-        <%= form.text_field :codigo_tipo_contato, placeholder: "Tipo", required: true %>
+        <%= form.label :codigo_tipo_contato, "Tipo de Contato", class:'required' %>
+        <%= form.select :codigo_tipo_contato, options_from_collection_for_select(@tipo_contato, :codigo_tipo_contato, :descricao), 
+              { include_blank: '' }, { class: 'custom-select-tag' } %>        
+        
+        <%= form.label :meio_do_contato, class:'required' %>
+        <%= form.select :codigo_meio_contato, options_from_collection_for_select(@meio_contato, :codigo_meio_contato, :descricao),
+              { include_blank: '' }, { class: 'custom-select-tag' } %>
 
-        <%= form.label :Meio_de_contato, class:'required'  %>
-        <%= form.text_field :codigo_meio_contato, placeholder: "Meio", required: true %>
-
-        <%= form.label :Nome_da_pessoa, class:'required'  %>
+        <%= form.label :Nome_da_pessoa, class:'required' %>
         <%= form.text_field :nome_pessoa, placeholder: "Nome", required: true %>
 
         <%= form.label :Descricao_do_contato, class:'required' %>
@@ -27,9 +30,17 @@
         <%= form.submit "Cadastrar", id: "form-submit-button" %>
       </div>
     <% end %>
+
+    <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
+      <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>
+      <%= render "/tipo_contatos/new" %>
+      <%= render "/meio_contatos/new" %>
+    <% end %>
   </div>
 </div>
 
+
+        
 <div>
   <%= link_to "Back to contatos", contatos_path %>
 </div>
