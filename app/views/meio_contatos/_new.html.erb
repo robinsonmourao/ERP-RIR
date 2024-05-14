@@ -2,8 +2,8 @@
   <%= form_with(model: @meio_contato, url: meio_contatos_path, method: :post) do |form| %>
   <div class="textboxes-cadastros">
 
-    <%= form.text_field :descricao, placeholder: "Novo meio de contato" %>
-    <%= form.submit "Cadastrar novo meio de contato", id: "permissions-form-submit-button" %>
+    <%= form.text_field :descricao, placeholder: "Novo meio de contato", class:'required' %>
+    <%= form.submit "Cadastrar novo meio de contato", id: "high-privileges-form-submit-button" %>
 
   </div>
   <% end %>

@@ -11,3 +11,9 @@ module Categoria
   FORNECEDOR = 'f'
   SITE = 's'
 end
+
+module ModuloMeioContato
+  EMAIL = 'email'
+  TELEFONE = 'telefone'
+  WHATSAPP = 'whatsapp'
+end

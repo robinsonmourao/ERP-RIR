@@ -170,7 +170,7 @@ body {
         margin: 10px;
         font-size: 30px;
       }
-      #form-submit-button, #permissions-form-submit-button {
+      #form-submit-button, #high-privileges-form-submit-button {
         display: inline-block;
         padding: 10px 20px;
         margin-top: 20px;
@@ -181,7 +181,7 @@ body {
         cursor: pointer;
         font-size: 30px;
       }
-        #permissions-form-submit-button{
+        #high-privileges-form-submit-button{
           background-color: #ff4646;
         }
       #form-submit-button:hover {

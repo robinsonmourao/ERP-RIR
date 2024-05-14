@@ -1,4 +1,4 @@
-include Permissao, Categoria
+include Permissao, Categoria, ModuloMeioContato
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, only: [:login, :logout]
@@ -39,5 +39,15 @@ class ApplicationController < ActionController::Base
       flash[:error] = 'A sessão que você quis fechar já não existia previamente!'
     end
     redirect_to root_path
+  end
+
+  def listar_opcoes_modulo(modulo)
+    return [] unless modulo.is_a?(Module)
+
+    lista = []
+    modulo.constants.each do |nome_constante|
+      lista << "\"#{nome_constante.to_s.downcase}\""
+    end
+    lista.join(', ')
   end
 end

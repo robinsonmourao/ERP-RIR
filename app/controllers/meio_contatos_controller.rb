@@ -1,25 +1,13 @@
 class MeioContatosController < ApplicationController
-  def index
-    @meio_contato = MeioContato.all
-  end
-
-  def show
-    @meio_contato = MeioContato.find(meio_contato_params[:codigo_tipo_contato])
-  end
-
-  def new
-    @meio_contato = MeioContato.new
-  end
-
   def create
     @meio_contato = MeioContato.new(meio_contato_params)
 
     if @meio_contato.save
-      flash[:success] = 'MeioContato successfully created'
-      redirect_to request.path
+      flash[:success] = "O MeioContato, '#{@meio_contato.descricao}' foi criado com sucesso"
     else
-      flash[:error] = "Não foi possível criar o meio de contato descrito: #{@meio_contato.descricao}"
+      flash[:error] = "O meio de contato '#{@meio_contato.descricao}', não está entre as opções permitidas #{listar_opcoes_modulo(ModuloMeioContato)}"
     end
+    redirect_to new_contato_path
   end
 
   private
