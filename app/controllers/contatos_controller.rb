@@ -1,10 +1,18 @@
 class ContatosController < ApplicationController
   def index
     @contatos = Contato.all
+    unless @contatos.any?
+      render 'not_found'
+    end
   end
 
   def show
-    @contato = Contato.find(params[:id])
+    begin
+      @contato = Contato.find(params[:id])
+    rescue StandardError => e
+      flash[:error] = "Contato não encontrado: '#{e.message}'"
+      render 'not_found'
+    end
   end
 
   def new
@@ -15,14 +23,27 @@ class ContatosController < ApplicationController
 
   def create
     @contato = Contato.new(contato_params)
-    Rails.logger.warn(@contato.inspect)
     if @contato.save
-      flash[:success] = 'O contato foi criado com sucesso.'
+      flash[:success] = "Um contato com '#{@contato.nome_pessoa}' foi criado com sucesso."
       redirect_to @contato
     else
       flash[:error] = 'Não foi possível salvar o contato.'
       render 'new'
     end
+  end
+
+  def destroy
+    begin
+      @contato = Contato.find(params[:id])
+      if @contato.destroy
+        flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi apagado com sucesso."
+      else
+        flash[:notice] = "Não foi possível apagar o CONTATO cuja descrição '#{@contato.descricao}'!"
+      end
+    rescue StandardError => e
+      flash[:error] = "Contato não encontrado: '#{e.message}'"
+    end
+    redirect_to contatos_path
   end
 
   private

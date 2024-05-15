@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :clientes
 
-  resources :contatos
+  resources :contatos, only: [:new, :create, :show, :index, :edit, :update, :destroy]
   resources :tipo_contatos, only: [:create]
   resources :meio_contatos, only: [:create]
 

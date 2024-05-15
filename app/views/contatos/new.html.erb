@@ -1,33 +1,8 @@
 <div class="container-cadastros">
   <div class="formulario-cadastros">
     <div class='titulo-formulario-cadastros'>Cadastro de contatos</div>
-    <%= form_with(model: @contato, url: contatos_path, method: :post) do |form| %>
-      <div class="textboxes-cadastros">
-
-        <%= form.label :Se_trata_de_um_Contato_de, class:'required' %>
-        <%= form.select :tabela, options_for_select([["fornecedor", FORNECEDOR], ["site", SITE], ["cliente", CLIENTE]]), 
-              { include_blank: '' }, { class: 'custom-select-tag' } %>
-
-        <%= form.label :codigo_tipo_contato, "Tipo de Contato", class:'required' %>
-        <%= form.select :codigo_tipo_contato, options_from_collection_for_select(@tipo_contato, :codigo_tipo_contato, :descricao), 
-              { include_blank: '' }, { class: 'custom-select-tag' } %>        
-        
-        <%= form.label :meio_do_contato, class:'required' %>
-        <%= form.select :codigo_meio_contato, options_from_collection_for_select(@meio_contato, :codigo_meio_contato, :descricao),
-              { include_blank: '' }, { class: 'custom-select-tag' } %>
-
-        <%= form.label :Nome_da_pessoa, class:'required' %>
-        <%= form.text_field :nome_pessoa, placeholder: "Nome", required: true %>
-
-        <%= form.label :Descricao_do_contato, class:'required' %>
-        <%= form.text_field :descricao, placeholder: "Descrição", required: true %>
-
-        <%= form.label :Observacao %>
-        <%= form.text_field :observacao, placeholder: "Observação" %>
-        
-        <%= form.submit "Cadastrar", id: "form-submit-button" %>
-      </div>
-    <% end %>
+    
+    <%= render "form", contato: @contato %>
 
     <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
       <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>

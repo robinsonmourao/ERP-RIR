@@ -12,7 +12,9 @@
 ![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-usuário.png)
 
 
-# Estrutura de arquivos
+# Estruturas
+
+## Arquivos
 
 - **.vscode** -> Contém arquivos de configurações da IDE Visual Studio Code
   - `settings.json` -> Configuração da IDE Visual Studio Code
@@ -38,6 +40,12 @@
     - `<000000000000XX_create_<nome-tabela>>` -> Scripts SQL
     - `...`
   - `schema.rb` -> Esquema completo de migração <br>
+
+## Árvore de dependência
+
+- └── contatos
+  - ├── tipo_contatos
+  - └── meio_contatos
 
 # Status de desenvolvimento
 

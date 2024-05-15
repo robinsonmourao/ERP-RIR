@@ -1,12 +1,8 @@
 <div class='container-list-show'>
-  <% if @contatos.present? %>
-    <% @count = 0 %>
-    <% @contatos.each do |contato| %>
-      <div class='container-splitter-grid-links'> 
-        <%= render contato %>
-      </div>
-    <% end %>
-  <% else %>
-    <p>Nenhum contato encontrado.</p>
+  <% @count = 0 %>
+  <% @contatos.each do |contato| %>
+    <div class='container-splitter-grid-links'> 
+      <%= render contato %>
+    </div>
   <% end %>
 </div>
