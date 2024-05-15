@@ -1,12 +1,20 @@
-<div class='container-show'>
-  <h1>Nome da pessoa: <strong><%= @contato.nome_pessoa %></strong></h1>
-  <p>Descrição do contato: <%= @contato.descricao %></p>
+<div class='items-list-show-grid'>
 
-<div>
-  <%= link_to "Edit this contato", edit_contato_path(@contato) %> |
-  <%= link_to "Back to contatos", contatos_path %>
-
-  <%= button_to "Destroy this contato", @contato, method: :delete %>
+  <% if @count == 0 %>
+    <div id='texto-nome-pessoa'>Nome da pessoa
+      <div id='coluna-nome-pessoa'><%= contato.nome_pessoa %></div>
+    </div>
+    <div id='texto-descricao'>Descrição do contato
+      <div id='coluna-descricao'><%= contato.descricao %></div>
+    </div>
+    <% @count += 1 %>
+  <% else %>
+    <div id='coluna-nome-pessoa'><%= contato.nome_pessoa %></div>
+    <div id='coluna-descricao'><%= contato.descricao %></div>
+  <% end %>
 </div>
 
+<div class='detalhes-apagar-links'>
+  <%= link_to "Detalhes", contato %> |
+  <%= link_to "Apagar", contato, method: :delete %>
 </div>

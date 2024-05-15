@@ -1,6 +1,6 @@
 class ClientesController < ApplicationController
   def index
-    @cliente = Cliente.all
+    @clientes = Cliente.all
   end
 
   def show

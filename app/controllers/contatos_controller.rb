@@ -1,6 +1,6 @@
 class ContatosController < ApplicationController
   def index
-    @contato = Contato.all
+    @contatos = Contato.all
   end
 
   def show

@@ -1,16 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Contatos</h1>
-<% if @contatos.present? %>
-  <div id="contatos">
+<div class='container-list-show'>
+  <% if @contatos.present? %>
+    <% @count = 0 %>
     <% @contatos.each do |contato| %>
-      <%= render contato %>
-      <p>
-        <%= link_to "Show this contato", contato %>
-      </p>
+      <div class='container-splitter-grid-links'> 
+        <%= render contato %>
+      </div>
     <% end %>
-  </div>
-<% else %>
-  <p>Nenhum contato encontrado.</p>
-<% end %>
-<%= link_to "New contato", new_contato_path %>
+  <% else %>
+    <p>Nenhum contato encontrado.</p>
+  <% end %>
+</div>

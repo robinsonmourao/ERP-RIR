@@ -225,39 +225,68 @@ body {
           background-color: #ff9c9c;
         }
 
-.container-cadastros {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-  .formulario-cadastros {
-    margin-bottom: 20px;
+  .container-cadastros {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+    .formulario-cadastros {
+      margin-bottom: 20px;
+    }
+      .textboxes-cadastros {
+        display: grid;
+        grid-gap: 0px;
+      }
+      .custom-select-tag {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .text_field {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      } 
 
-    .textboxes-cadastros {
-      display: grid;
-      grid-gap: 0px;
+    .formulario-cadastrar-colecao{
+      display: flex;
+      justify-content: end;
     }
 
-    .custom-select-tag {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .text_field {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    } 
-
-  .formulario-cadastrar-colecao{
+  .container-list-show{
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #ccc;
+    width: 100%;
   }
+    .container-splitter-grid-links{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: end;
+      width: 100%;
+    }
+      .items-list-show-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        text-align: center;
+        width: 85%;
+        background-color: azure;
+      }
+      #texto-nome-pessoa, #texto-descricao{
+        font-weight: bolder;
+      }
+      #coluna-nome-pessoa, #coluna-descricao{
+        border: 1px solid #0000005d;
+        font-weight: normal;
+      }
+      .detalhes-apagar-links{
+        width: auto;
+      }
