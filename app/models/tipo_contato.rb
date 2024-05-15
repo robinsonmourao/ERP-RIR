@@ -6,5 +6,5 @@ class TipoContato < ApplicationRecord
 
   has_many :contato
 
-  validates :descricao, presence: true
+  validates :descricao, presence: true, uniqueness: true
 end

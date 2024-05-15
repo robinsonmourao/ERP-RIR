@@ -5,7 +5,8 @@ class TipoContatosController < ApplicationController
     if @tipo_contato.save
       flash[:success] = "O TipoContato, '#{@tipo_contato.descricao}' foi criado com sucesso"
     else
-      flash[:error] = "Tente criar um TIPO DE CONTATO com uma descrição diferente de: '#{@tipo_contato.descricao}'."
+      flash[:error] = "1. Tente criar um TIPO DE CONTATO com uma descrição diferente de: '#{@tipo_contato.descricao}'
+        OU 2. Nenhum TIPO DE CONTATO foi informado."
     end
     redirect_to new_contato_path
   end

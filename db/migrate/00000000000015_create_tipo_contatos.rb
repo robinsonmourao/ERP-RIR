@@ -3,7 +3,7 @@ class CreateTipoContatos < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE tipo_contatos(
         codigo_tipo_contato INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao TEXT NOT NULL
+        descricao TEXT UNIQUE NOT NULL
       );
     SQL
   end
