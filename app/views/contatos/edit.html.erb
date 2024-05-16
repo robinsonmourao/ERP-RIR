@@ -1,10 +1,49 @@
-<h1>Editing contato</h1>
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Edição de contatos</div>
 
-<%= render "form", contato: @contato %>
+    <%= form_with(model: @contato, url: contatos_path, method: :post) do |form| %>
+      <div class="textboxes-grid">
 
-<br>
+      <div class='caixa-de-texto'>
+        <%= form.label :"", class:'required' %>
+        <%= form.select :tabela, options_for_select([["fornecedor", FORNECEDOR], ["site", SITE], ["cliente", CLIENTE]], @contato.tabela), 
+              {}, { class: 'custom-select-tag' } %>
+      </div>
 
-<div>
-  <%= link_to "Show this contato", @contato %> |
-  <%= link_to "Back to contatos", contatos_path %>
+      <div class='caixa-de-texto'>
+        <%= form.label :"", class:'required' %>
+        <%= form.select :codigo_tipo_contato, options_from_collection_for_select(@tipo_contato, :codigo_tipo_contato, :descricao, @contato.codigo_tipo_contato), 
+              {}, { class: 'custom-select-tag' } %> 
+      </div>
+
+      <div class='caixa-de-texto'>
+        <%= form.label :"", class:'required' %>
+        <%= form.select :codigo_meio_contato, options_from_collection_for_select(@meio_contato, :codigo_meio_contato, :descricao, @contato.codigo_meio_contato),
+              {}, { class: 'custom-select-tag' } %>
+      </div>
+
+      <div class='caixa-de-texto'>
+        <%= form.label :"", class:'required' %>
+        <%= form.text_field :nome_pessoa, placeholder: "Nome", required: true %>
+      </div>
+
+      <div class='caixa-de-texto'>
+        <%= form.label :"", class:'required' %>
+        <%= form.text_field :descricao, placeholder: "Descrição", required: true %>
+      </div>
+
+      <div class='caixa-de-texto'>
+        <%= form.label :"" %>
+        <%= form.text_field :observacao, placeholder: "Observação" %>
+      </div>
+      <%= form.submit "Atualizar", id: "form-submit-button" %>
+    </div>
+    <% end %>
+
+    <div>
+      <%= link_to "Voltar para contatos", contatos_path %>
+    </div>
+  </div>
 </div>
+

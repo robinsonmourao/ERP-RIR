@@ -1,4 +1,6 @@
 class UsuariosController < ApplicationController
+  before_action :check_active_session, only: [:show]
+
   def new
     @usuario = Usuario.new
   end

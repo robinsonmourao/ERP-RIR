@@ -127,11 +127,16 @@ body {
     margin: 5px;
   }
 
-
   .required::after {
     color: red;
     content: "*";
+    font-size: 40px;
   }
+  .caixa-de-texto{
+    display: flex;
+    align-items: center;
+  }
+
   .container-cadastrar-usuarios, .container-entrar-usuarios {
     margin: 10px;
     display: flex;
@@ -228,15 +233,15 @@ body {
   .container-cadastros {
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
     .formulario-cadastros {
-      margin-bottom: 20px;
+      width: auto;
     }
-      .textboxes-cadastros {
+      .textboxes-grid {
         display: grid;
         grid-gap: 0px;
       }

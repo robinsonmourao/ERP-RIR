@@ -3,13 +3,16 @@
     <div class='titulo-formulario-login'>Entrada de usuário</div>
     <%= form_with(model: @usuario, url: login_path) do |form| %>
       <div class="login-form-textboxes">
-
-        <%= form.label :nome, class:'required'  %>
-        <%= form.text_field :nome, placeholder: "Nome" %>
-
-        <%= form.label :senha, class:'required'  %>
-        <%= form.password_field :password, placeholder: "Senha" %>
-
+        
+        <div class="caixa-de-texto">
+          <%= form.label :"", class:'required' %>
+          <%= form.text_field :nome, placeholder: "Nome" %>
+        </div>
+        <div class="caixa-de-texto">
+          <%= form.label :"", class:'required' %>
+          <%= form.password_field :password, placeholder: "Senha" %>
+        </div>
+        
         <%= form.submit "Entrar", id: "form-submit-button" %>
       </div>
     <% end %>
