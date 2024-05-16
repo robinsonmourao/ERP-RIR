@@ -4,16 +4,18 @@
     <%= form_with(model: @usuario, url: usuarios_path, method: :post) do |form| %>
       <div class="signup-form-textboxes">
 
-        <%= form.label :nome, class:'required'  %>
-        <%= form.text_field :nome, placeholder: "Nome" %>
+        <div class="caixa-de-texto">
+          <%= form.label :"", class:'required' %>
+          <%= form.text_field :nome, placeholder: "Nome" %>
+        </div>
+        <div class="caixa-de-texto">
+          <%= form.label :"", class:'required' %>
+          <%= form.password_field :password, placeholder: "Senha" %>
+        </div>
 
-        <%= form.label :senha, class:'required'  %>
-        <%= form.password_field :password, placeholder: "Senha" %>
-
-        <%= form.label :permissao_desejada %>
         <%= form.select :permissao, 
         options_for_select([['Super', SUPER], ['Administrativo', ADMINISTRATIVO], ['Técnico', TECNICO], ['Consulta', CONSULTA]]),
-             {}, { class: 'custom-select-tag' } %>
+             { include_blank: 'Permissão desejada' }, { class: 'custom-select-tag' } %>
 
         <%= form.submit "Cadastrar", id: "form-submit-button" %>
       </div>

@@ -8,8 +8,17 @@
 ### Entrar
 ![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-entrar.png)
 
+### Visão inicial
+![Dashboard](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-dashboard.png)
+
+### Criação de contatos
+![CadastroContatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-cadastro-contatos.png)
+
+### Lista de contatos
+![Contatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-lista-contatos.png)
+
 ### Visão geral da conta
-![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-usuário.png)
+![Usuarios](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-visão-geral-da-conta.png)
 
 
 # Estruturas
