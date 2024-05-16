@@ -285,13 +285,13 @@ body {
         width: 85%;
         background-color: azure;
       }
-      #texto-nome-pessoa, #texto-descricao{
+      #planilha-header{
         font-weight: bolder;
       }
-      #coluna-nome-pessoa, #coluna-descricao{
+      #planilha-celula{
         border: 1px solid #0000005d;
         font-weight: normal;
       }
-      .detalhes-apagar-links{
+      .detalhes-editar-apagar-links{
         width: auto;
       }

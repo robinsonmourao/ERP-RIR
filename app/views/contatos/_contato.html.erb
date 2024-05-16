@@ -1,20 +1,20 @@
 <div class='items-list-show-grid'>
 
   <% if @count == 0 %>
-    <div id='texto-nome-pessoa'>Nome da pessoa
-      <div id='coluna-nome-pessoa'><%= contato.nome_pessoa %></div>
+    <div id='planilha-header'>Nome da pessoa
+      <div id='planilha-celula'><%= contato.nome_pessoa %></div>
     </div>
-    <div id='texto-descricao'>Descrição do contato
-      <div id='coluna-descricao'><%= contato.descricao %></div>
+    <div id='planilha-header'>Descrição do contato
+      <div id='planilha-celula'><%= contato.descricao %></div>
     </div>
     <% @count += 1 %>
   <% else %>
-    <div id='coluna-nome-pessoa'><%= contato.nome_pessoa %></div>
-    <div id='coluna-descricao'><%= contato.descricao %></div>
+    <div id='planilha-celula'><%= contato.nome_pessoa %></div>
+    <div id='planilha-celula'><%= contato.descricao %></div>
   <% end %>
 </div>
 
-<div class='detalhes-apagar-links'>
+<div class='detalhes-editar-apagar-links'>
   <%= link_to "Detalhes", contato %> |
   <%= link_to "Editar", edit_contato_path(contato) %> |
   <%= link_to "Apagar", contato, method: :delete %>

@@ -4,7 +4,7 @@ class ContatosController < ApplicationController
   def index
     @contatos = Contato.all
     unless @contatos.any?
-      render 'not_found'
+      render 'layouts/not_found'
     end
   end
 
@@ -13,13 +13,14 @@ class ContatosController < ApplicationController
       @contato = Contato.find(params[:id])
     rescue StandardError => e
       flash[:error] = "Contato não encontrado: '#{e.message}'"
-      render 'not_found'
+      render 'layouts/not_found'
     end
   end
 
   def new
     @tipo_contato = TipoContato.all
     @meio_contato = MeioContato.all
+
     @contato = Contato.new
   end
 
