@@ -1,18 +1,10 @@
 class ContatosController < ApplicationController
   before_action :check_active_session
+  before_action :buscar_contato, only: [:show, :edit, :update, :destroy]
 
   def index
     @contatos = Contato.all
     unless @contatos.any?
-      render 'layouts/not_found'
-    end
-  end
-
-  def show
-    begin
-      @contato = Contato.find(params[:id])
-    rescue StandardError => e
-      flash[:error] = "Contato não encontrado: '#{e.message}'"
       render 'layouts/not_found'
     end
   end
@@ -36,38 +28,32 @@ class ContatosController < ApplicationController
   end
 
   def edit
-    begin
-      @contato = Contato.find(params[:id])
-      @tipo_contato = TipoContato.all
-      @meio_contato = MeioContato.all
-    rescue StandardError => e
-      flash[:error] = "Contato não encontrado: '#{e.message}'"
-      render 'not_found'
-    end
+    @tipo_contato = TipoContato.all
+    @meio_contato = MeioContato.all
+  rescue StandardError => e
+    flash[:error] = "Contato não encontrado: '#{e.message}'"
+    render 'not_found'
   end
 
   def update
-    @contato = Contato.find(params[:id])
-    if @contato.update_attributes(params[:contato])
-      flash[:success] = "Contato was successfully updated"
+    if @contato.update(contato_params)
+      flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi ATUALIZADO com sucesso."
       redirect_to @contato
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Não foi possível ATUALIZAR o CONTATO cuja descrição '#{@contato.descricao}'!"
       render 'edit'
     end
   end
 
   def destroy
-    begin
-      @contato = Contato.find(params[:id])
-      if @contato.destroy
-        flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi apagado com sucesso."
-      else
-        flash[:notice] = "Não foi possível apagar o CONTATO cuja descrição '#{@contato.descricao}'!"
-      end
-    rescue StandardError => e
-      flash[:error] = "Contato não encontrado: '#{e.message}'"
+    if @contato.destroy
+      flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi apagado com sucesso."
+      redirect_to contatos_path
+    else
+      flash[:notice] = "Não foi possível apagar o CONTATO cuja descrição '#{@contato.descricao}'!"
     end
+  rescue StandardError => e
+    flash[:error] = "Contato não encontrado: '#{e.message}'"  
     redirect_to contatos_path
   end
 
@@ -75,5 +61,12 @@ class ContatosController < ApplicationController
 
   def contato_params
     params.require(:contato).permit(:tabela, :codigo_tipo_contato, :codigo_meio_contato, :nome_pessoa, :descricao, :observacao)
+  end
+
+  def buscar_contato
+    @contato = Contato.find(params[:id])
+  rescue StandardError => e
+    flash[:error] = "Contato não foi encontrado '#{e.message}'"
+    render 'layouts/not_found'
   end
 end

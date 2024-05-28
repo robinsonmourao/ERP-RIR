@@ -1,4 +1,6 @@
 class SitesController < ApplicationController
+  before_action :buscar_contato, only: [:show]
+
   def index
     @sites = Site.all
     unless @sites.any?
@@ -26,12 +28,10 @@ class SitesController < ApplicationController
   end
 
   def show
-    begin
-      @sites = Site.find(params[:id])
-    rescue StandardError => e
-      flash[:error] = "Site não encontrado: '#{e.message}'"
-      render 'layouts/not_found'
-    end
+    @sites = Site.find(params[:id])
+  rescue StandardError => e
+    flash[:error] = "Site não encontrado: '#{e.message}'"
+    render 'layouts/not_found'
   end
 
   private
@@ -40,5 +40,12 @@ class SitesController < ApplicationController
     params.require(:site).permit(:designacao, :codigo_cliente, :nome_site, :endereco, :bairro, :codigo_municipio,
                                  :cep, :coordenadalt, :coordenadalg, :velocidade_contratada,
                                  :codigo_tipo_link, :sla, :valor_mensal, :valor_instalacao)
+  end
+
+  def buscar_site
+    @site = Site.find(params[:id])
+  rescue StandardError => e
+    flash[:error] = "Site não foi encontrado '#{e.message}'"
+    render 'layouts/not_found'
   end
 end

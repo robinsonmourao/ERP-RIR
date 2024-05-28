@@ -1,8 +1,8 @@
 <div class="container-cadastros">
   <div class="formulario-cadastros">
     <div class='titulo-formulario-cadastros'>Cadastrar novo contato</div>
-    
-    <%= render "form", contato: @contato %>
+        
+    <%= render 'form', verbo: 'post' %> 
 
     <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
       <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>

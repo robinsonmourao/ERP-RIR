@@ -1,10 +1,12 @@
-<h1>Editing cliente</h1>
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Editar cliente</div>
 
-<%= render "form", cliente: @cliente %>
-
-<br>
-
-<div>
-  <%= link_to "Show this cliente", @cliente %> |
-  <%= link_to "Back to clientes", clientes_path %>
+      <%= render 'form', verbo: 'put' %> 
+      
+    </div>
+    <div>
+      <%= link_to "Voltar para clientes", clientes_path %>
+    </div>
+  </div>
 </div>

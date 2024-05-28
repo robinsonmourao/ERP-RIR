@@ -1,5 +1,11 @@
-<%= form_with(model: @cliente, local: true) do |form| %>
+<%= form_with(model: @cliente, method: verbo) do |form| %>
   <div class="textboxes-grid">
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"" %>
+      <%= form.collection_select :codigo_municipio, Municipio.all, :id, :nome, 
+                                 { prompt: "SELECIONA um MUNICÍPIO" }, { class: 'custom-select-tag' } %>
+    </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
@@ -7,19 +13,13 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"", class:'required' %>
-      <%= form.text_field :endereco %>
-    </div>
-
-    <div class='caixa-de-texto'>
-      <%= form.label :"", class:'required' %>
-      <%= form.text_field :bairro %>      
+      <%= form.label :"" %>
+      <%= form.text_field :endereco, placeholder: "Endereço" %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"" %>
-      <%= form.collection_select :codigo_municipio, Municipio.all, :id, :nome, 
-                                 { prompt: "Selecione a cidade" }, { class: 'custom-select-tag' } %>
+      <%= form.text_field :bairro, placeholder: "Bairro" %>      
     </div>
 
     <div class='caixa-de-texto'>
@@ -38,10 +38,10 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :""%>
+      <%= form.label :"" %>
       <%= form.text_field :inscricao_municipal, placeholder: "Inscrição municipal" %>
     </div>
-    
-    <%= form.submit "Cadastrar", id: "form-submit-button" %>
+
+    <%= form.submit "Enviar", id: "form-submit-button" %>
   </div>
 <% end %>  

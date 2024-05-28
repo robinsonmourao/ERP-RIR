@@ -2,12 +2,13 @@
   <div class="formulario-cadastros">
     <div class='titulo-formulario-cadastros'>Cadastrar novo cliente</div>
 
-      <%= render 'form' %>
+      <%= render 'form', verbo: 'post' %>
 
+    </div>
+    <div>
+      <%= link_to "Voltar para clientes", clientes_path %>
     </div>
   </div>
 </div>
 
-<div>
-  <%= link_to "Back to clientes", clientes_path %>
-</div>
+
