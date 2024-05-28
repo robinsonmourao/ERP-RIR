@@ -15,7 +15,7 @@
 </div>
 
 <div class='detalhes-editar-apagar-links'>
-  <%= link_to "Detalhes", contato %> |
-  <%= link_to "Editar", edit_contato_path(contato) %> |
-  <%= link_to "Apagar", contato, method: :delete %>
+  <%= link_to "Detalhes", contato, class: 'detalhes-link' %> |
+  <%= link_to "Editar", edit_contato_path(contato), class: 'editar-link' %> |
+  <%= link_to "Apagar", contato, method: :delete, class: 'apagar-link' %>
 </div>

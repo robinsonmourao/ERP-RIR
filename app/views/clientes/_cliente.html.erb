@@ -4,18 +4,18 @@
     <div id='planilha-header'>Nome do cliente
       <div id='planilha-celula'><%= cliente.nome_cliente %></div>
     </div>
-    <div id='planilha-header'>Endereço do cliente
-      <div id='planilha-celula'><%= cliente.endereco %></div>
+    <div id='planilha-header'>CNPJ do cliente
+      <div id='planilha-celula'><%= cliente.cnpj %></div>
     </div>
     <% @count += 1 %>
   <% else %>
     <div id='planilha-celula'><%= cliente.nome_cliente %></div>
-    <div id='planilha-celula'><%= cliente.endereco %></div>
+    <div id='planilha-celula'><%= cliente.cnpj%></div>
   <% end %>
 </div>
 
 <div class='detalhes-editar-apagar-links'>
-  <%= link_to "Detalhes", cliente %> |
-  <%= link_to "Editar", edit_cliente_path(cliente) %> |
-  <%= link_to "Apagar", cliente, method: :delete %>
+  <%= link_to "Detalhes", cliente, class: 'detalhes-link' %> |
+  <%= link_to "Editar", edit_cliente_path(cliente), class: 'editar-link' %> |
+  <%= link_to "Apagar", cliente, method: :delete, class: 'apagar-link' %>
 </div>

@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "nome_cliente", null: false
     t.text "endereco"
     t.text "bairro"
-    t.integer "cidade"
+    t.integer "codigo_municipio"
     t.string "cep", limit: 8
     t.string "cnpj", limit: 14, null: false
     t.text "inscricao_estadual"
@@ -202,6 +202,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "boletos", "faturas", column: "vencimento", primary_key: "vencimento"
   add_foreign_key "boletos", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
   add_foreign_key "boletos", "local_pagamentos", column: "codigo_local_pagamento", primary_key: "codigo_local_pagamento"
+  add_foreign_key "clientes", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "contatos", "meio_contatos", column: "codigo_meio_contato", primary_key: "codigo_meio_contato"
   add_foreign_key "contatos", "tipo_contatos", column: "codigo_tipo_contato", primary_key: "codigo_tipo_contato"
   add_foreign_key "faturas", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
@@ -217,10 +218,10 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
   add_foreign_key "sites", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "sites", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
-  add_foreign_key "status", "atendimentos", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "clientes", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "fornecedores", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "sites", column: "codigo_sfca", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "status", "atendimentos", column: "codigo_sfca", primary_key: "codigo_atendimento", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "status", "clientes", column: "codigo_sfca", primary_key: "codigo_cliente", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "status", "fornecedores", column: "codigo_sfca", primary_key: "codigo_fornecedor", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "status", "sites", column: "codigo_sfca", primary_key: "codigo_site", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "status_codigo", column: "situacao", primary_key: "codigo_status_codigo"
   add_foreign_key "status_codigo", "status", column: "codigo_status", primary_key: "codigo_status"
 end

@@ -8,6 +8,23 @@ body {
   padding: 0;
 }
 
+.cadastrar-entrar-link,
+.header-settings-button, .header-logout-button,
+.usuario-edit-button, .default-delete-button,
+.detalhes-link, .editar-link, .apagar-link {
+  text-decoration: none;
+  font-weight: bolder;
+}
+.cadastrar-entrar-link,
+.header-settings-button, .header-logout-button,
+.usuario-edit-button,
+.detalhes-link, .editar-link {
+  color: #0908E7;
+}
+.apagar-link, .default-delete-button {
+  color: crimson;
+}
+
 .header-container{
   display: flex;
   flex-flow: column-reverse;

@@ -1,14 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Clientes</h1>
-
-<div id="clientes">
+<div class='container-list-show'>  
+  <% @count = 0 %>
   <% @clientes.each do |cliente| %>
-    <%= render cliente %>
-    <p>
-      <%= link_to "Show this cliente", cliente %>
-    </p>
+    <div class='container-splitter-grid-links'> 
+      <%= render cliente %>
+  </div>
   <% end %>
 </div>
-
-<%= link_to "New cliente", new_cliente_path %>

@@ -1,32 +1,12 @@
-<h1>New cliente</h1>
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Cadastrar novo cliente</div>
 
-<%= form_with(model: @cliente, local: true) do |form| %>
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
+      <%= render 'form' %>
 
-    <%= form.label :endereco %>
-    <%= form.text_area :endereco %>
-
-    <%= form.label :bairro %>
-    <%= form.text_field :bairro %>
-
-    <%= form.label :cidade_id, "Cidade" %>
-    <%= form.collection_select :cidade_id, Cidade.all, :id, :nome, prompt: "Selecione a cidade" %>
-
-    <%= form.label :cep %>
-    <%= form.text_field :cep %>
-
-    <%= form.label :cnpj %>
-    <%= form.text_field :cnpj %>
-
-    <%= form.label :inscricao_estadual %>
-    <%= form.text_field :inscricao_estadual %>
-
-    <%= form.label :inscricao_municipal %>
-    <%= form.text_field :inscricao_municipal %>
-
-    <%= form.submit "Salvar" %>
-<% end %>
+    </div>
+  </div>
+</div>
 
 <div>
   <%= link_to "Back to clientes", clientes_path %>

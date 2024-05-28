@@ -1,0 +1,47 @@
+<%= form_with(model: @cliente, local: true) do |form| %>
+  <div class="textboxes-grid">
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :nome_cliente, placeholder: "Nome do cliente" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :endereco %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :bairro %>      
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"" %>
+      <%= form.collection_select :codigo_municipio, Municipio.all, :id, :nome, 
+                                 { prompt: "Selecione a cidade" }, { class: 'custom-select-tag' } %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"" %>
+      <%= form.text_field :cep, placeholder: "CEP" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :cnpj, placeholder: "CNPJ" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"" %>
+      <%= form.text_field :inscricao_estadual, placeholder: "Inscrição estadual" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :""%>
+      <%= form.text_field :inscricao_municipal, placeholder: "Inscrição municipal" %>
+    </div>
+    
+    <%= form.submit "Cadastrar", id: "form-submit-button" %>
+  </div>
+<% end %>  

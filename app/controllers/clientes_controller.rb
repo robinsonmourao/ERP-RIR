@@ -1,23 +1,40 @@
 class ClientesController < ApplicationController
   def index
     @clientes = Cliente.all
+    unless @clientes.any?
+      render 'layouts/not_found'
+    end
   end
 
   def show
-    @cliente = Cliente.find(params[:codigo_cliente])
+    begin
+      @cliente = Cliente.find(params[:id])
+    rescue StandardError => e
+      flash[:error] = "cliente não encontrado: '#{e.message}'"
+      render 'layouts/not_found'
+    end
   end
 
   def new
+    @cidades = Municipio.all
+    @contatos = Contato.all
+    @sites = Site.all
+
     @cliente = Cliente.new
   end
 
   def create
-    @cliente = Cliente.new(cliente_params)
-    if @cliente.save
-      flash[:success] = 'Cliente foi criado com sucesso'
-      redirect_to @cliente
-    else
-      flash[:error] = 'Não foi possível criar um cliente'
+    begin
+      @cliente = Cliente.new(cliente_params)
+      if @cliente.save
+        flash[:success] = 'Cliente foi criado com sucesso'
+        redirect_to @cliente
+      else
+        flash.now[:notice] = 'Não foi possível criar o cliente. Verifique os erros e tente novamente.'
+        render 'new'
+      end
+    rescue StandardError => e
+      flash[:error] = "Ocorreu um erro inesperado: '#{e.message}'"
       render 'new'
     end
   end
@@ -44,6 +61,6 @@ class ClientesController < ApplicationController
   end
 
   def cliente_params
-    params.require(:cliente).permit(:nome, :endereco, :bairro, :cidade, :cep, :inscricao_estadual, :inscricao_municipal, :cnpj)
+    params.require(:cliente).permit(:nome_cliente, :endereco, :bairro, :codigo_municipio, :cep, :cnpj, :inscricao_estadual, :inscricao_municipal)
   end
 end
