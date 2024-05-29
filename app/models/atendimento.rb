@@ -1,6 +1,7 @@
 class Atendimento < ApplicationRecord
   self.table_name = 'atendimentos'
 
+  attribute :codigo_atendimento, :integer
   attribute :designacao, :integer
   attribute :codigo_fornecedor, :integer
   attribute :codigo_tecnologia_link, :integer

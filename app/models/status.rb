@@ -2,9 +2,9 @@ class Status < ApplicationRecord
   self.table_name = 'status'
 
   attribute :codigo_status, :integer
-  attribute :codigo_sfca, :string
+  attribute :codigo_sfca, :integer
   attribute :tabela, :string
-  attribute :situacao, :integer
+  attribute :codigo_situacao, :integer
   attribute :data, :date
 
   has_many :site, foreign_key: 'codigo_sfca'
@@ -14,6 +14,6 @@ class Status < ApplicationRecord
 
   validates :codigo_sfca, presence: true
   validates :tabela, inclusion: { in: ['s', 'f', 'c', 'a'] }
-  validates :situacao, presence: true
+  validates :codigo_situacao, presence: true
   validates :data, presence: true
 end

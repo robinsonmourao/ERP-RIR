@@ -3,17 +3,17 @@ class CreateStatus < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE status(
         codigo_status INTEGER PRIMARY KEY AUTOINCREMENT,
-        codigo_sfca TEXT NOT NULL,
+        codigo_sfca INTEGER NOT NULL,
         tabela VARCHAR(1) NOT NULL,
-        situacao INTEGER NOT NULL,
+        codigo_situacao INTEGER NOT NULL,
         data DATE NOT NULL DEFAULT CURRENT_DATE,
 
         FOREIGN KEY (codigo_sfca) REFERENCES sites(codigo_site) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED,
         FOREIGN KEY (codigo_sfca) REFERENCES fornecedores(codigo_fornecedor) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED,
         FOREIGN KEY (codigo_sfca) REFERENCES clientes(codigo_cliente) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED,
-        FOREIGN KEY (codigo_sfca) REFERENCES atendimentos(codigo_atendimento) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED,
+        FOREIGN KEY (codigo_sfca) REFERENCES atendimentos(codigo_atendimento) ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE INITIALLY DEFERRED
 
-        FOREIGN KEY (situacao) REFERENCES status_codigo(codigo_status_codigo)
+        FOREIGN KEY (codigo_situacao) REFERENCES situacao(codigo_situacao)
 
         CHECK (tabela IN('s', 'f', 'c', 'a'))
       );

@@ -11,8 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 23) do
-  create_table "atendimentos", primary_key: ["designacao", "codigo_fornecedor"], force: :cascade do |t|
-    t.integer "designacao", null: false
+  create_table "atendimentos", primary_key: "codigo_atendimento", force: :cascade do |t|
+    t.text "designacao", null: false
     t.integer "codigo_fornecedor", null: false
     t.integer "codigo_tecnologia_link", null: false
     t.integer "codigo_tipo_link", null: false
@@ -151,10 +151,14 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.decimal "valor_instalacao"
   end
 
+  create_table "situacao", primary_key: "codigo_situacao", force: :cascade do |t|
+    t.text "descricao", default: "pendente", null: false
+  end
+
   create_table "status", primary_key: "codigo_status", force: :cascade do |t|
-    t.text "codigo_sfca", null: false
+    t.integer "codigo_sfca", null: false
     t.string "tabela", limit: 1, null: false
-    t.integer "situacao", null: false
+    t.integer "codigo_situacao", null: false
     t.date "data", default: -> { "CURRENT_DATE" }, null: false
   end
 
@@ -222,6 +226,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "status", "clientes", column: "codigo_sfca", primary_key: "codigo_cliente", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "fornecedores", column: "codigo_sfca", primary_key: "codigo_fornecedor", on_update: :cascade, on_delete: :cascade
   add_foreign_key "status", "sites", column: "codigo_sfca", primary_key: "codigo_site", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "status_codigo", column: "situacao", primary_key: "codigo_status_codigo"
-  add_foreign_key "status_codigo", "status", column: "codigo_status", primary_key: "codigo_status"
+  add_foreign_key "status", "situacao", column: "codigo_situacao", primary_key: "codigo_situacao"
+  add_foreign_key "status_codigo", "status_table", column: "codigo_status", primary_key: "codigo_status"
 end

@@ -2,7 +2,9 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE atendimentos(
-        designacao INTEGER NOT NULL,
+        codigo_atendimento INTEGER PRIMARY KEY AUTOINCREMENT,
+        codigo_atendimento_composto TEXT GENERATED ALWAYS AS (designacao || '-' || codigo_fornecedor) STORED,
+        designacao TEXT NOT NULL,
         codigo_fornecedor INTEGER NOT NULL,
         codigo_tecnologia_link INTEGER NOT NULL,
         codigo_tipo_link INTEGER NOT NULL,
@@ -20,8 +22,6 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         chave_pix TEXT,
         nota_fiscal INTEGER DEFAULT 0,
         codigo_equipamento INTEGER NOT NULL,
-
-        PRIMARY KEY (designacao, codigo_fornecedor),
 
         FOREIGN KEY (designacao) REFERENCES sites(designacao),
         FOREIGN KEY (codigo_fornecedor) REFERENCES fornecedores(codigo_fornecedor)

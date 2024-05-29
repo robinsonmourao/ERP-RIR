@@ -1,11 +1,11 @@
-class StatusCodigo < ApplicationRecord
-  self.table_name = 'status_codigo'
+class Situacao < ApplicationRecord
+  self.table_name = 'situacao'
 
-  attribute :codigo_status, :integer
+  attribute :codigo_situacao, :integer
   attribute :descricao, :text, default: 'pendente'
 
-  has_one :status
+  has_many :status
 
-  validates :codigo_status, presence: true
+  validates :codigo_situacao, presence: true
   validates :descricao, presence: true, inclusion: { in: ['ativo', 'cancelado', 'suspenso', 'bloqueado', 'pendente'] }
 end
