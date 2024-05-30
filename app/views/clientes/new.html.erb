@@ -4,6 +4,11 @@
 
       <%= render 'form', verbo: 'post' %>
 
+      <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
+        <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>
+        <%= render "/municipios/new" %>
+      <% end %>
+
     </div>
     <div>
       <%= link_to "Voltar para clientes", clientes_path %>

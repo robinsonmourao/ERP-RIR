@@ -1,0 +1,23 @@
+<%= render '/ufs/new' %>
+  
+<div class="formulario-cadastrar-colecao">
+
+  <%= form_with(model: @municipio, url: municipios_path, method: :post) do |form| %>
+  <div class="textboxes-cadastros">
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.collection_select :codigo_uf, Uf.all, :codigo_uf, :sigla, 
+                                 { prompt: "SELECIONE um UF" }, { class: 'custom-select-tag' } %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :nome_municipio, placeholder: "Nome do município"%>
+    </div>
+
+    <%= form.submit "Cadastrar novo municipio", id: "high-privileges-form-submit-button" %>
+
+  </div>
+  <% end %>
+</div>

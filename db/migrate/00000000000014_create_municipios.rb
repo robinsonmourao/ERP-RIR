@@ -4,7 +4,7 @@ class CreateMunicipios < ActiveRecord::Migration[7.1]
       CREATE TABLE municipios(
         codigo_municipio INTEGER PRIMARY KEY AUTOINCREMENT,
         codigo_uf INTEGER NOT NULL,
-        nome_municipio TEXT NOT NULL,
+        nome_municipio TEXT UNIQUE NOT NULL,
 
         FOREIGN KEY (codigo_uf) REFERENCES ufs(codigo_uf)
       );

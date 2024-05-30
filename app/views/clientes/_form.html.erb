@@ -3,7 +3,7 @@
 
     <div class='caixa-de-texto'>
       <%= form.label :"" %>
-      <%= form.collection_select :codigo_municipio, Municipio.all, :id, :nome, 
+      <%= form.collection_select :codigo_municipio, Municipio.all, :codigo_municipio, :nome_municipio, 
                                  { prompt: "SELECIONA um MUNICÍPIO" }, { class: 'custom-select-tag' } %>
     </div>
 

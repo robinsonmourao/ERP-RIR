@@ -13,9 +13,9 @@
           <%= form.password_field :password, placeholder: "Senha" %>
         </div>
 
-        <%= form.select :permissao, 
-        options_for_select([['Super', SUPER], ['Administrativo', ADMINISTRATIVO], ['Técnico', TECNICO], ['Consulta', CONSULTA]]),
-                           { include_blank: 'Permissão desejada' }, { class: 'custom-select-tag' } %>
+        <%= form.select :permissao, options_for_select([['Super', SUPER], ['Administrativo', ADMINISTRATIVO], 
+                                                        ['Técnico', TECNICO], ['Consulta', CONSULTA]]),
+                                    { include_blank: 'Permissão desejada' }, { class: 'custom-select-tag' } %>
 
         <%= form.submit "Cadastrar", id: "form-submit-button" %>
       </div>

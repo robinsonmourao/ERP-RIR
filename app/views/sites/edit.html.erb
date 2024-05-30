@@ -1,10 +1,6 @@
-<h1>Editing site</h1>
-
-<%= render "form", site: @site %>
-
-<br>
-
-<div>
-  <%= link_to "Show this site", @site %> |
-  <%= link_to "Back to sites", sites_path %>
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Editar site</div>
+    <%= render "form", verbo: 'put' %>
+  </div>
 </div>

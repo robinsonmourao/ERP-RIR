@@ -9,11 +9,14 @@ Rails.application.routes.draw do
 
   resources :clientes
 
-  resources :contatos, only: [:new, :create, :show, :index, :edit, :update, :destroy]
+  resources :contatos
   resources :tipo_contatos, only: [:create]
   resources :meio_contatos, only: [:create]
 
   resources :sites
+  resources :tipo_links, only: [:create]
+  resources :municipios, only: [:create]
+  resources :ufs, only: [:create]
 
   root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'

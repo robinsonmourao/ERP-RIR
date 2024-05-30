@@ -1,14 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Sites</h1>
-
-<div id="sites">
+<div class='container-list-show'>
+  <% @count = 0 %>
   <% @sites.each do |site| %>
-    <%= render site %>
-    <p>
-      <%= link_to "Show this site", site %>
-    </p>
+    <div class='container-splitter-grid-links'>
+      <%= render site %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New site", new_site_path %>

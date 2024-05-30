@@ -52,9 +52,19 @@
 
 ## Árvore de dependência
 
-- └── contatos
-  - ├── tipo_contatos
-  - └── meio_contatos
+- └── contato
+  - ├── tipo_contato
+  - └── meio_contato
+
+- └── atendimento | cliente | fornecedor | site
+  - └── status
+    - └── situacao
+
+- └── site
+  - └── cliente
+  - └── municipio
+    - └── uf
+  - └── tipo_link
 
 # Status de desenvolvimento
 

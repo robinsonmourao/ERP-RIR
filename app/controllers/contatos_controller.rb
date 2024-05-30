@@ -10,8 +10,8 @@ class ContatosController < ApplicationController
   end
 
   def new
-    @tipo_contato = TipoContato.all
-    @meio_contato = MeioContato.all
+    @tipo_contatos = TipoContato.all
+    @meio_contatos = MeioContato.all
 
     @contato = Contato.new
   end
@@ -22,14 +22,17 @@ class ContatosController < ApplicationController
       flash[:success] = "Um contato com '#{@contato.nome_pessoa}' foi criado com sucesso."
       redirect_to @contato
     else
-      flash[:error] = 'Não foi possível salvar o contato.'
+      flash[:notice] = 'Não foi possível salvar o contato.'
       render 'new'
     end
+  rescue StandardError => e
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'new'
   end
 
   def edit
-    @tipo_contato = TipoContato.all
-    @meio_contato = MeioContato.all
+    @tipo_contatos = TipoContato.all
+    @meio_contatos = MeioContato.all
   rescue StandardError => e
     flash[:error] = "Contato não encontrado: '#{e.message}'"
     render 'not_found'
@@ -40,9 +43,12 @@ class ContatosController < ApplicationController
       flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi ATUALIZADO com sucesso."
       redirect_to @contato
     else
-      flash[:error] = "Não foi possível ATUALIZAR o CONTATO cuja descrição '#{@contato.descricao}'!"
+      flash[:notice] = "Não foi possível ATUALIZAR o CONTATO cuja descrição '#{@contato.descricao}'!"
       render 'edit'
     end
+  rescue StandardError => e
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'new'
   end
 
   def destroy

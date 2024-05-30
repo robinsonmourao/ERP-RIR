@@ -145,14 +145,14 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.decimal "coordenadalt"
     t.decimal "coordenadalg"
     t.integer "velocidade_contratada", null: false
-    t.integer "codigo_tipo_link", null: false
+    t.integer "codigo_tipo_link"
     t.decimal "sla"
     t.decimal "valor_mensal"
     t.decimal "valor_instalacao"
   end
 
   create_table "situacao", primary_key: "codigo_situacao", force: :cascade do |t|
-    t.text "descricao", default: "pendente", null: false
+    t.integer "descricao", default: 5, null: false
   end
 
   create_table "status", primary_key: "codigo_status", force: :cascade do |t|
@@ -185,7 +185,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "ufs", primary_key: "codigo_uf", force: :cascade do |t|
-    t.string "sigla", limit: 2
+    t.string "sigla", limit: 2, null: false
     t.text "nome_estado", null: false
   end
 

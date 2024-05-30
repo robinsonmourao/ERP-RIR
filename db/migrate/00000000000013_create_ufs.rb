@@ -3,7 +3,7 @@ class CreateUfs < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE ufs(
         codigo_uf INTEGER PRIMARY KEY AUTOINCREMENT,
-        sigla VARCHAR(2),
+        sigla VARCHAR(2) UNIQUE NOT NULL,
         nome_estado TEXT NOT NULL
       );
     SQL

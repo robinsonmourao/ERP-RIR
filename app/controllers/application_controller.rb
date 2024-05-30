@@ -1,4 +1,4 @@
-include Permissao, Categoria, ModuloMeioContato
+include Permissao, Categoria, ModuloMeioContato, ModuloTipoLink
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, only: [:login, :logout]

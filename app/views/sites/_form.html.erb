@@ -1,39 +1,72 @@
-<%= form_with(model: @contato, url: contatos_path, method: :post) do |form| %>
+<%= form_with(model: @site, url: sites_path, method: verbo) do |form| %>
   <div class="textboxes-grid">
 
     <div class='caixa-de-texto'>
-      <%= form.label :"", class:'required' %>
-      <%= form.select :tabela, options_for_select([["fornecedor", FORNECEDOR], ["site", SITE], ["cliente", CLIENTE]]), 
-            { include_blank: 'Tabela' }, { class: 'custom-select-tag' } %>
+      <%= form.label :"", class:'required'  %>
+      <%= form.collection_select :codigo_cliente, Cliente.all, :codigo_cliente, :nome_cliente, 
+                                 { prompt: "SELECIONE um CLIENTE" }, { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-      <%= form.select :codigo_tipo_contato, options_from_collection_for_select(@tipo_contato, :codigo_tipo_contato, :descricao), 
-            { include_blank: 'Tipo de contato' }, { class: 'custom-select-tag' } %> 
+      <%= form.collection_select :codigo_municipio, Municipio.all, :codigo_municipio, :nome_municipio, 
+                                 { prompt: "SELECIONE um MUNICÍPIO" }, { class: 'custom-select-tag' } %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.select :codigo_tipo_link, options_for_select([['Ip dedicado', IP_DEDICADO], 
+                                                             ['Banda larga', BANDA_LARGA], 
+                                                             ['VPN', VPN]]),
+                                         { include_blank: 'SELECIONE um TIPO DO LINK' }, { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-      <%= form.select :codigo_meio_contato, options_from_collection_for_select(@meio_contato, :codigo_meio_contato, :descricao),
-            { include_blank: 'Meio de contato' }, { class: 'custom-select-tag' } %>
+      <%= form.text_field :designacao, placeholder: "Informe a designação", required: true %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-      <%= form.text_field :nome_pessoa, placeholder: "Nome", required: true %>
+      <%= form.text_field :nome_site, placeholder: "Informe o nome do site", required: true %>
     </div>
 
     <div class='caixa-de-texto'>
+      <%= form.text_field :endereco, placeholder: "Informe o endereço do site" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :bairro, placeholder: "Informe o bairro do site" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :cep, placeholder: "Informe o CEP" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :coordenadalt, placeholder: "Informe o coordenada Latitudenal" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :coordenadalg, placeholder: "Informe o coordenada Longitudenal" %>
+    </div>
+
+    <div class='caixa-de-texto'>      
       <%= form.label :"", class:'required' %>
-      <%= form.text_field :descricao, placeholder: "Descrição", required: true %>
+      <%= form.text_field :velocidade_contratada, placeholder: "Informe o velocidade contratada", required: true %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
-      <%= form.text_field :observacao, placeholder: "Observação" %>
+      <%= form.text_field :sla, placeholder: "Informe o SLA" %>
     </div>
 
-    <%= form.submit "Cadastrar", id: "form-submit-button" %>
+    <div class='caixa-de-texto'>
+      <%= form.text_field :valor_mensal, placeholder: "Informe o valor mensal" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :valor_instalacao, placeholder: "Informe o valor da instalação" %>
+    </div>
+
+    <%= form.submit "Enviar", id: "form-submit-button" %>
   </div>
 <% end %>

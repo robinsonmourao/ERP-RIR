@@ -26,7 +26,7 @@ class ClientesController < ApplicationController
       render 'new'
     end
   rescue StandardError => e
-    flash[:error] = "Ocorreu um erro inesperado: '#{e.message}'"
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
     render 'new'
   end
 
@@ -42,17 +42,23 @@ class ClientesController < ApplicationController
       flash[:success] = 'Cliente foi atualizado com sucesso!'
       redirect_to @cliente
     else
-      flash[:error] = "Não foi possível ATUALIZAR o CLIENTE pois o CNPJ '#{@cliente.cnpj}' já está em uso!"
+      flash[:notice] = "Não foi possível ATUALIZAR o CLIENTE pois o CNPJ '#{@cliente.cnpj}' já está em uso!"
       render 'edit'
     end
+  rescue StandardError => e
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'new'
   end
 
   def destroy
     if @cliente.destroy
       flash[:success] = 'Cliente foi deletado com sucesso.'
     else
-      flash[:error] = 'Não foi possível deletar cliente!'
+      flash[:notice] = 'Não foi possível deletar cliente!'
     end
+    redirect_to clientes_path
+  rescue StandardError => e
+    flash[:error] = "Cliente não encontrado: '#{e.message}'"
     redirect_to clientes_path
   end
 

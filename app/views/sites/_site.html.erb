@@ -4,18 +4,22 @@
     <div id='planilha-header'>Nome do site
       <div id='planilha-celula'><%= site.nome_site %></div>
     </div>
-    <div id='planilha-header'>Descrição do site
-      <div id='planilha-celula'><%= site.endereco %></div>
+    <div id='planilha-header'>Designação do site
+      <div id='planilha-celula'><%= site.designacao %></div>
     </div>
-    <% @count += 1 %>
+    <div id='planilha-header'>velocidade contratada
+      <div id='planilha-celula'><%= site.velocidade_contratada %></div>
+    </div>
+    <% @count = 1 %>
   <% else %>
     <div id='planilha-celula'><%= site.nome_site %></div>
-    <div id='planilha-celula'><%= site.endereco %></div>
+    <div id='planilha-celula'><%= site.designacao %></div>
+    <div id='planilha-celula'><%= site.velocidade_contratada %></div>
   <% end %>
 </div>
 
 <div class='detalhes-apagar-links'>
-  <%= link_to "Detalhes", site %> |
-  <%= link_to "Editar", edit_site_path(site) %> |
-  <%= link_to "Apagar", site, method: :delete %>
+  <%= link_to "Detalhes", site , class: 'detalhes-link' %> |
+  <%= link_to "Editar", edit_site_path(site) , class: 'editar-link' %> |
+  <%= link_to "Apagar", site, method: :delete , class: 'apagar-link' %>
 </div>
