@@ -1,21 +1,10 @@
-<div class='items-list-show-grid'>
-
-  <% if @count == 0 %>
-    <div id='planilha-header'>Nome da pessoa
-      <div id='planilha-celula'><%= contato.nome_pessoa %></div>
-    </div>
-    <div id='planilha-header'>Descrição do contato
-      <div id='planilha-celula'><%= contato.descricao %></div>
-    </div>
-    <% @count = 1 %>
-  <% else %>
-    <div id='planilha-celula'><%= contato.nome_pessoa %></div>
-    <div id='planilha-celula'><%= contato.descricao %></div>
-  <% end %>
-</div>
+<%= render 'layouts/montadores/sheet', header_titles: ['Nome da pessoa', 'Descrição do contato'],
+                            cells: [contato.nome_pessoa, contato.descricao]  %>
 
 <div class='detalhes-editar-apagar-links'>
   <%= link_to "Detalhes", contato, class: 'detalhes-link' %> |
   <%= link_to "Editar", edit_contato_path(contato), class: 'editar-link' %> |
-  <%= link_to "Apagar", contato, method: :delete, class: 'apagar-link' %>
+  <%= link_to "Apagar", contato, method: :delete, 
+                              data: { confirm: "Quer apagar o #{contato.class}: '#{contato.nome_pessoa}'" },
+                              class: 'apagar-link' %>
 </div>

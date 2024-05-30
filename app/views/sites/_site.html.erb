@@ -1,25 +1,10 @@
-<div class='items-list-show-grid'>
-
-  <% if @count == 0 %>
-    <div id='planilha-header'>Nome do site
-      <div id='planilha-celula'><%= site.nome_site %></div>
-    </div>
-    <div id='planilha-header'>Designação do site
-      <div id='planilha-celula'><%= site.designacao %></div>
-    </div>
-    <div id='planilha-header'>velocidade contratada
-      <div id='planilha-celula'><%= site.velocidade_contratada %></div>
-    </div>
-    <% @count = 1 %>
-  <% else %>
-    <div id='planilha-celula'><%= site.nome_site %></div>
-    <div id='planilha-celula'><%= site.designacao %></div>
-    <div id='planilha-celula'><%= site.velocidade_contratada %></div>
-  <% end %>
-</div>
+<%= render 'layouts/montadores/sheet', header_titles: ['Nome do site', 'Designação do site', 'velocidade contratada'],
+                            cells: [site.nome_site, site.designacao, site.velocidade_contratada]  %>
 
 <div class='detalhes-apagar-links'>
-  <%= link_to "Detalhes", site , class: 'detalhes-link' %> |
-  <%= link_to "Editar", edit_site_path(site) , class: 'editar-link' %> |
-  <%= link_to "Apagar", site, method: :delete , class: 'apagar-link' %>
+  <%= link_to "Detalhes", site, class: 'detalhes-link' %> |
+  <%= link_to "Editar", edit_site_path(site), class: 'editar-link' %> |
+  <%= link_to "Apagar", site, method: :delete, 
+                              data: { confirm: "Quer apagar o #{site.class}: '#{site.nome_site}'" },
+                              class: 'apagar-link' %>
 </div>

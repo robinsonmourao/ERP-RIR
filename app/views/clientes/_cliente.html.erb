@@ -1,21 +1,10 @@
-<div class='items-list-show-grid'>
-
-  <% if @count == 0 %>
-    <div id='planilha-header'>Nome do cliente
-      <div id='planilha-celula'><%= cliente.nome_cliente %></div>
-    </div>
-    <div id='planilha-header'>CNPJ do cliente
-      <div id='planilha-celula'><%= cliente.cnpj %></div>
-    </div>
-    <% @count = 1 %>
-  <% else %>
-    <div id='planilha-celula'><%= cliente.nome_cliente %></div>
-    <div id='planilha-celula'><%= cliente.cnpj%></div>
-  <% end %>
-</div>
+<%= render 'layouts/montadores/sheet', header_titles: ['Nome do cliente', 'CNPJ'],
+                            cells: [cliente.nome_cliente, cliente.cnpj]  %>
 
 <div class='detalhes-editar-apagar-links'>
   <%= link_to "Detalhes", cliente, class: 'detalhes-link' %> |
   <%= link_to "Editar", edit_cliente_path(cliente), class: 'editar-link' %> |
-  <%= link_to "Apagar", cliente, method: :delete, class: 'apagar-link' %>
+  <%= link_to "Apagar", cliente, method: :delete, 
+                                 data: { confirm: "Quer apagar o #{cliente.class}: '#{cliente.nome_cliente}'" },
+                                 class: 'apagar-link' %>
 </div>
