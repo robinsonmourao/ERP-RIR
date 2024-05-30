@@ -2,7 +2,6 @@
   <div class="textboxes-grid">
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.collection_select :codigo_municipio, Municipio.all, :codigo_municipio, :nome_municipio, 
                                  { prompt: "SELECIONA um MUNICÍPIO" }, { class: 'custom-select-tag' } %>
     </div>
@@ -13,17 +12,14 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.text_field :endereco, placeholder: "Endereço" %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.text_field :bairro, placeholder: "Bairro" %>      
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.text_field :cep, placeholder: "CEP" %>
     </div>
 
@@ -33,12 +29,10 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.text_field :inscricao_estadual, placeholder: "Inscrição estadual" %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.text_field :inscricao_municipal, placeholder: "Inscrição municipal" %>
     </div>
 

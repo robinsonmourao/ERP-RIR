@@ -30,14 +30,6 @@ class ContatosController < ApplicationController
     render 'new'
   end
 
-  def edit
-    @tipo_contatos = TipoContato.all
-    @meio_contatos = MeioContato.all
-  rescue StandardError => e
-    flash[:error] = "Contato não encontrado: '#{e.message}'"
-    render 'not_found'
-  end
-
   def update
     if @contato.update(contato_params)
       flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi ATUALIZADO com sucesso."

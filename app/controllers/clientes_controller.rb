@@ -10,8 +10,6 @@ class ClientesController < ApplicationController
 
   def new
     @cidades = Municipio.all
-    # @contatos = Contato.all
-    # @sites = Site.all
 
     @cliente = Cliente.new
   end
@@ -28,13 +26,6 @@ class ClientesController < ApplicationController
   rescue StandardError => e
     flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
     render 'new'
-  end
-
-  def edit
-    @municipios = Municipio.all
-  rescue StandardError => e
-    flash[:error] = "Cliente não encontrado: '#{e.message}'"
-    render 'not_found'
   end
 
   def update

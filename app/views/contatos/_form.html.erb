@@ -12,7 +12,7 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.select :codigo_tipo_contato, 
-                      options_from_collection_for_select(@tipo_contatos, :codigo_tipo_contato, :descricao, 
+                      options_from_collection_for_select(TipoContato.all, :codigo_tipo_contato, :descricao, 
                                                          @contato.codigo_tipo_contato), 
                                                          { prompt: "SELECIONE o TIPO do contato" }, { class: 'custom-select-tag' } %> 
     </div>
@@ -20,7 +20,7 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.select :codigo_meio_contato, 
-                      options_from_collection_for_select(@meio_contatos, :codigo_meio_contato, :descricao, 
+                      options_from_collection_for_select(MeioContato.all, :codigo_meio_contato, :descricao, 
                                                          @contato.codigo_meio_contato),
                                                          { prompt: "SELECIONE o MEIO do contato" }, { class: 'custom-select-tag' } %>
     </div>
@@ -36,7 +36,6 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"" %>
       <%= form.text_field :observacao, placeholder: "Observação" %>
     </div>
 
