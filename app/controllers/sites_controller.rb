@@ -16,12 +16,6 @@ class SitesController < ApplicationController
     @site = Site.new
   end
 
-  def show
-  rescue StandardError => e
-    flash[:error] = "Site não encontrado: '#{e.message}'"
-    render 'layouts/not_found'
-  end
-
   def create
     @site = Site.new(site_params)
     if @site.save

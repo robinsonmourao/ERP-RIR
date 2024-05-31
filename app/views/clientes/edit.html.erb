@@ -2,11 +2,13 @@
   <div class="formulario-cadastros">
     <div class='titulo-formulario-cadastros'>Editar cliente</div>
 
-      <%= render 'form', verbo: 'put' %> 
-      
-    </div>
-    <div>
-      <%= link_to "Voltar para clientes", clientes_path %>
+      <%= render 'form', verbo: 'put' %>
+
+      <br>
+
+      <div>
+        <%= link_to "Voltar para clientes", clientes_path, class: 'voltar-link' %>
+      </div>        
     </div>
   </div>
 </div>
