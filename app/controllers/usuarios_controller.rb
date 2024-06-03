@@ -1,9 +1,9 @@
-class UsuariosController < ApplicationController
+class UsuariosController < CrudTemplateController
   before_action :check_active_session, only: [:show]
-  before_action :buscar_usuario, only: [:show]
+  before_action :find_usuario, only: [:show]
 
   def new
-    @usuario = Usuario.new
+    new_template(Usuario)
   end
 
   def show
@@ -12,32 +12,17 @@ class UsuariosController < ApplicationController
 
   def create
     @usuario = Usuario.new(usuario_params)
-    if @usuario.save
 
-      @usuario.authenticate(params[:password])
-      session[:codigo_usuario] = @usuario.codigo_usuario
-
-      flash[:success] = "Bem-vindo, #{@usuario.nome}!"
-      redirect_to dashboard_path
-    else
-      flash[:notice] = 'Nome de usuário já está em uso ou com campos vazios'
-      redirect_to new_usuario_path
-    end
-  rescue StandardError => e
-    flash[:error] = "Erro ao armazenar usuário: #{e.message}"
-    redirect_to new_usuario_path
+    create_template(@usuario, 'nome', usuario_params)
   end
 
   private
 
   def usuario_params
-    params.require(:usuario).permit(:password, :nome, :permissao)
+    params.permit(:password, :nome, :permissao)
   end
 
-  def buscar_usuario
-    @usuario = Usuario.find(params[:id])
-  rescue StandardError => e
-    flash[:error] = "Usuario não foi encontrado '#{e.message}'"
-    render 'layouts/not_found'
+  def find_usuario
+    find_object(Usuario, params)
   end
 end

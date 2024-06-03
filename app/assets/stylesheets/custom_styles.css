@@ -199,7 +199,7 @@ body {
             color: red;
             content: "*";
             font-size: 30px;
-            transform: translate(-100%, 35%);
+            transform: translate(-110%, 37%);
           }
           .signup-form-textboxes, input[type="text"], input[type="password"],
           .login-form-textboxes, input[type="text"], input[type="password"], 

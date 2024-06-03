@@ -18,15 +18,19 @@ class ApplicationController < ActionController::Base
   def login
     @usuario = Usuario.find_by(nome: params[:nome])
     if @usuario
-      if @usuario.authenticate(params[:password])
-        session[:codigo_usuario] = @usuario.codigo_usuario
-
-        flash[:success] = "Bem-vindo, #{@usuario.nome}!"
-        redirect_to dashboard_path
-      end
+      autenticar(@usuario)
     else
-      flash[:error] = 'Usuário não encontrado!'
+      flash[:notice] = "Usuário '#{params[:nome]}' não encontrado!"
       redirect_to entrar_path
+    end
+  end
+
+  def autenticar(usuario)
+    if usuario.authenticate(params[:password])
+      session[:codigo_usuario] = usuario.codigo_usuario
+
+      flash[:success] = "Bem-vindo, #{usuario.nome}!"
+      redirect_to dashboard_path
     end
   end
 
@@ -39,15 +43,5 @@ class ApplicationController < ActionController::Base
       flash[:error] = 'A sessão que você quis fechar já não existia previamente!'
     end
     redirect_to root_path
-  end
-
-  def listar_opcoes_modulo(modulo)
-    return [] unless modulo.is_a?(Module)
-
-    lista = []
-    modulo.constants.each do |nome_constante|
-      lista << "\"#{nome_constante.to_s.downcase}\""
-    end
-    lista.join(', ')
   end
 end

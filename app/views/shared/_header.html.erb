@@ -64,9 +64,12 @@
   </div>
   <% end %>
   <div class="container-header-buttons">
-    <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
-      <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>
-      <%= link_to "Sair", sair_path, class: "header-logout-button"%>
+
+    <% if current_usuario.present? %>
+      <% unless [new_usuario_path, entrar_path].include?(request.path) %>
+        <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>
+        <%= link_to "Sair", sair_path, class: "header-logout-button"%>
+      <% end %>  
     <% end %>  
   </div>
 </div>
