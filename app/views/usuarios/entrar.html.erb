@@ -6,11 +6,11 @@
         
         <div class="caixa-de-texto">
           <%= form.label :"", class:'required' %>
-          <%= form.text_field :nome, placeholder: "Nome" %>
+          <%= form.text_field :nome, placeholder: "Nome", required: true %>
         </div>
         <div class="caixa-de-texto">
           <%= form.label :"", class:'required' %>
-          <%= form.password_field :password, placeholder: "Senha" %>
+          <%= form.password_field :password, placeholder: "Senha", required: true %>
         </div>
         
         <%= form.submit "Entrar", id: "form-submit-button" %>

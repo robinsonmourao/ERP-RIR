@@ -6,16 +6,16 @@
 
         <div class="caixa-de-texto">
           <%= form.label :"", class:'required' %>
-          <%= form.text_field :nome, placeholder: "Nome" %>
+          <%= form.text_field :nome, placeholder: "Nome", required: true %>
         </div>
         <div class="caixa-de-texto">
           <%= form.label :"", class:'required' %>
-          <%= form.password_field :password, placeholder: "Senha" %>
+          <%= form.password_field :password, placeholder: "Senha", required: true %>
         </div>
 
         <%= form.select :permissao, options_for_select([['Super', SUPER], ['Administrativo', ADMINISTRATIVO], 
                                                         ['Técnico', TECNICO], ['Consulta', CONSULTA]]),
-                                    { include_blank: 'Permissão desejada' }, { class: 'custom-select-tag' } %>
+                                    { include_blank: 'Permissão desejada' }, { class: 'custom-select-tag', required: true } %>
 
         <%= form.submit "Cadastrar", id: "form-submit-button" %>
       </div>
