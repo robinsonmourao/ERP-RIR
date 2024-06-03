@@ -8,7 +8,7 @@ class UfsController < ApplicationController
       flash[:notice] = "1. Tente criar um UF com a sigla diferente de: '#{@uf.sigla}'
         OU 2. Nenhum UF foi informado."
     end
-    redirect_to new_site_path
+    redirect_back fallback_location: ''
   end
 
   private

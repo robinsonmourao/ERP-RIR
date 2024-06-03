@@ -8,7 +8,7 @@ class MunicipiosController < ApplicationController
       flash[:notice] = "1. Tente criar um MUNICIPIO com uma nome diferente de: '#{@municipio.nome_municipio}'
         OU 2. Nenhum MUNICIPIO foi informado."
     end
-    redirect_to new_site_path
+    redirect_back fallback_location: ''
   end
 
   private

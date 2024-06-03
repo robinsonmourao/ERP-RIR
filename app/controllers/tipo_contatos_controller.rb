@@ -14,6 +14,6 @@ class TipoContatosController < ApplicationController
   private
 
   def tipo_contato_params
-    params.require(:tipo_contato).permit(:descricao)
+    params.permit(:descricao)
   end
 end

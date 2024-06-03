@@ -17,6 +17,6 @@ class MeioContatosController < ApplicationController
   private
 
   def meio_contato_params
-    params.require(:meio_contato).permit(:descricao)
+    params.permit(:descricao)
   end
 end
