@@ -1,12 +1,9 @@
-class ContatosController < ApplicationController
-  before_action :check_active_session
+class ContatosController < CrudTemplateController
   before_action :buscar_contato, only: [:show, :edit, :update, :destroy]
+  before_action :new, only: [:create]
 
   def index
-    @contatos = Contato.all
-    unless @contatos.any?
-      render 'layouts/not_found'
-    end
+    index_template(Contato)
   end
 
   def new
@@ -17,42 +14,15 @@ class ContatosController < ApplicationController
   end
 
   def create
-    @contato = Contato.new(contato_params)
-    if @contato.save
-      flash[:success] = "Um contato com '#{@contato.nome_pessoa}' foi criado com sucesso."
-      redirect_to @contato
-    else
-      flash[:notice] = 'Não foi possível salvar o contato.'
-      render 'new'
-    end
-  rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    create_template(@contato, "nome_pessoa", contato_params)
   end
 
   def update
-    if @contato.update(contato_params)
-      flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi ATUALIZADO com sucesso."
-      redirect_to @contato
-    else
-      flash[:notice] = "Não foi possível ATUALIZAR o CONTATO cuja descrição '#{@contato.descricao}'!"
-      render 'edit'
-    end
-  rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    update_template(@contato, "nome_pessoa", contato_params)
   end
 
   def destroy
-    if @contato.destroy
-      flash[:success] = "O CONTATO de descrição '#{@contato.descricao}', foi apagado com sucesso."
-      redirect_to contatos_path
-    else
-      flash[:notice] = "Não foi possível apagar o CONTATO cuja descrição '#{@contato.descricao}'!"
-    end
-  rescue StandardError => e
-    flash[:error] = "Contato não encontrado: '#{e.message}'"  
-    redirect_to contatos_path
+    destroy_template(@contato, "nome_pessoa")
   end
 
   private

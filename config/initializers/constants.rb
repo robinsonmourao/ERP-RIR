@@ -9,7 +9,3 @@ end
 module ModuloMeioContato
   EMAIL = 'email'; TELEFONE = 'telefone'; WHATSAPP = 'whatsapp'
 end
-
-module ModuloTipoLink
-  IP_DEDICADO = 1; BANDA_LARGA = 2; VPN = 3
-end

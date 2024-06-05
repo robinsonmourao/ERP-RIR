@@ -1,58 +1,25 @@
-class SitesController < ApplicationController
+class SitesController < CrudTemplateController
   before_action :buscar_site, only: [:show, :edit, :update, :destroy]
+  before_action :new, only: [:create]
 
   def index
-    @sites = Site.all
-    unless @sites.any?
-      render 'layouts/not_found'
-    end
+    index_template(Site)
   end
 
   def new
-    @clientes = Cliente.all
-    @municipios = Municipio.all
-    @tipo_links = TipoLink.all
-
     @site = Site.new
   end
 
   def create
-    @site = Site.new(site_params)
-    if @site.save
-      flash[:success] = "O site '#{@site.nome_site}' foi criado com sucesso."
-      redirect_to @site
-    else
-      flash[:notice] = "Informe um SITE com uma DESIGNAÇÃO diferente de: '#{@site.designacao}'"
-      render 'new'
-    end
-  rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    create_template(@site, 'designacao', site_params)
   end
 
   def update
-    if @site.update(site_params)
-      flash[:success] = "O site '#{@site.nome_site}' foi atualizado com sucesso!"
-      redirect_to @site
-    else
-      flash[:error] = "Não foi possível ATUALIZAR o SITE pois a DESIGNAÇÃO '#{@site.designacao}' já está em uso!"
-      render 'edit'
-    end
-  rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    update_template(@site, 'designacao', site_params)
   end
 
   def destroy
-    if @site.destroy
-      flash[:success] = "o SITE #{@site.nome_site} foi deletado com sucesso."
-    else
-      flash[:notice] = 'Não foi possível deletar site!'
-    end
-    redirect_to sites_path
-  rescue StandardError => e
-    flash[:error] = "Site não encontrado: '#{e.message}'"
-    redirect_to sites_path
+    destroy_template(@site, 'designacao')
   end
 
   private

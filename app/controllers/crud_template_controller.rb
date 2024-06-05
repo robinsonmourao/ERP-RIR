@@ -2,9 +2,9 @@ class CrudTemplateController < ApplicationController
   before_action :check_active_session
   # before_action :find_object, only: [:show, :edit, :update, :destroy]
 
-  def index_template(object)
-    object = (object.class).all
-    unless object.any?
+  def index_template(object_class)
+    @objects = object_class.all
+    unless @objects.any?
       render 'layouts/not_found'
     end
   end
@@ -20,57 +20,72 @@ class CrudTemplateController < ApplicationController
     @object = (object.class).find(params[:id])
   end
 
-  def create_template(object, unique_param_type, object_params)
+  def create_template(object, nome_parametro_unico, object_params)
     classe = object.class
-    unique_param_type_downcased = unique_param_type.downcase
+    valor_parametro_unico = object.send(nome_parametro_unico.downcase)
     new_object = classe.new(object_params)
+
     if new_object.save
 
-      flash[:success] = "Um '#{new_object.class}' com #{unique_param_type} '#{object.send(unique_param_type_downcased)}'
+      flash[:success] = "#{classe} com #{nome_parametro_unico} '#{valor_parametro_unico}' 
                         foi criado com sucesso."
-
       if classe == Usuario
         autenticar(new_object)
       else
         redirect_to new_object
       end
     else
-      flash[:notice] = "Não foi possível salvar o #{new_object.class}. 
-                       O #{unique_param_type} informado '#{object.send(unique_param_type_downcased)}' já está em uso!"
+      flash.now[:notice] = "Não foi possível salvar #{classe}. 
+                           O #{nome_parametro_unico}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
       if classe == Usuario
         redirect_to "/#{classe.to_s.downcase.pluralize}/new"
       else
         render 'new'
       end
     end
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'new'
   rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
     render 'new'
   end
 
-  def update_template(object)
+  def update_template(object, nome_parametro_unico, object_params)
+    classe = object.class
+    valor_parametro_unico = object.send(nome_parametro_unico.downcase)
+
     if object.update(object_params)
-      flash[:success] = "O '#{object.class}' de descrição '#{object.descricao}', foi ATUALIZADO com sucesso."
+      flash[:success] = "#{classe} de #{nome_parametro_unico} '#{valor_parametro_unico}' foi ATUALIZADO com sucesso."
       redirect_to object
     else
-      flash[:notice] = "Não foi possível ATUALIZAR o '#{object.class}' cuja descrição '#{object.descricao}'!"
+      flash[:notice] = "Não foi possível ATUALIZAR '#{classe}' de #{nome_parametro_unico} '#{valor_parametro_unico}'
+                       já está em uso OU é inválido!"
       render 'edit'
     end
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'edit'
   rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'edit'
   end
 
-  def destroy_template(object)
+  def destroy_template(object, nome_parametro_unico)
+    classe = object.class
+    valor_parametro_unico = object.send(nome_parametro_unico.downcase)
+
     if object.destroy
-      flash[:success] = "O #{object.class} de descrição '#{object.descricao}', foi apagado com sucesso."
-      redirect_to 'index'
+      flash[:success] = "#{classe} de #{nome_parametro_unico} '#{valor_parametro_unico}' foi apagado com sucesso."
     else
-      flash[:notice] = "Não foi possível apagar o #{object.class} cuja descrição '#{object.descricao}'!"
+      flash[:notice] = "Não foi possível apagar #{classe}. De #{nome_parametro_unico} '#{valor_parametro_unico}'!"
     end
+  rescue ActiveRecord::RecordInvalid => e
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
   rescue StandardError => e
-    flash[:error] = "Object não encontrado: '#{e.message}'"
-    render 'index'
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+  ensure
+    redirect_to "/#{classe.to_s.downcase.pluralize}/"
   end
 
   private

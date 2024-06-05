@@ -1,11 +1,9 @@
-class ClientesController < ApplicationController
+class ClientesController < CrudTemplateController
   before_action :buscar_cliente, only: [:show, :edit, :update, :destroy]
+  before_action :new, only: [:create]
 
   def index
-    @clientes = Cliente.all
-    unless @clientes.any?
-      render 'layouts/not_found'
-    end
+    index_template(Cliente)
   end
 
   def new
@@ -15,42 +13,15 @@ class ClientesController < ApplicationController
   end
 
   def create
-    @cliente = Cliente.new(cliente_params)
-    if @cliente.save
-      flash[:success] = 'Cliente foi criado com sucesso'
-      redirect_to @cliente
-    else
-      flash.now[:notice] = "Já existe um CLIENTE com CNPJ: '#{@cliente.cnpj}' cadastrado no sistema."
-      render 'new'
-    end
-  rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    create_template(@cliente, 'CNPJ', cliente_params)
   end
 
   def update
-    if @cliente.update(cliente_params)
-      flash[:success] = 'Cliente foi atualizado com sucesso!'
-      redirect_to @cliente
-    else
-      flash[:notice] = "Não foi possível ATUALIZAR o CLIENTE pois o CNPJ '#{@cliente.cnpj}' já está em uso!"
-      render 'edit'
-    end
-  rescue StandardError => e
-    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    update_template(@cliente, 'CNPJ', cliente_params)
   end
 
   def destroy
-    if @cliente.destroy
-      flash[:success] = 'Cliente foi deletado com sucesso.'
-    else
-      flash[:notice] = 'Não foi possível deletar cliente!'
-    end
-    redirect_to clientes_path
-  rescue StandardError => e
-    flash[:error] = "Cliente não encontrado: '#{e.message}'"
-    redirect_to clientes_path
+    destroy_template(@cliente, 'CNPJ')
   end
 
   private

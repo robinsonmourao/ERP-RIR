@@ -176,7 +176,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "tipo_links", primary_key: "codigo_tipo_link", force: :cascade do |t|
-    t.integer "descricao", null: false
+    t.text "descricao", null: false
   end
 
   create_table "tipo_midias_sociais", id: false, force: :cascade do |t|

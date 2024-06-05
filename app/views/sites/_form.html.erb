@@ -4,20 +4,18 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required'  %>
       <%= form.collection_select :codigo_cliente, Cliente.all, :codigo_cliente, :nome_cliente, 
-                                 { prompt: "SELECIONE um CLIENTE" }, { class: 'custom-select-tag' } %>
+                                 { prompt: "SELECIONE um CLIENTE" }, 
+                                 { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_municipio, Municipio.all, :codigo_municipio, :nome_municipio, 
-                                 { prompt: "SELECIONE um MUNICÍPIO" }, { class: 'custom-select-tag' } %>
+                                 { include_blank: "SELECIONE um MUNICÍPIO" }, { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.select :codigo_tipo_link, options_for_select([['Ip dedicado', IP_DEDICADO], 
-                                                             ['Banda larga', BANDA_LARGA], 
-                                                             ['VPN', VPN]]),
-                                         { include_blank: 'SELECIONE um TIPO DO LINK' }, { class: 'custom-select-tag' } %>
+      <%= form.collection_select :codigo_tipo_link, TipoLink.all, :codigo_tipo_link, :descricao, 
+                                 { include_blank: "SELECIONE um TIPO DE LINK" }, { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>

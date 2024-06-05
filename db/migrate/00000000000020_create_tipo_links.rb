@@ -3,10 +3,14 @@ class CreateTipoLinks < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE tipo_links(
         codigo_tipo_link INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao INTEGER NOT NULL,
+        descricao TEXT UNIQUE NOT NULL,
 
-        CHECK (descricao IN(1,2,3))
+        CHECK (descricao IN('IP dedicado','Banda Larga','VPN'))
       );
+    SQL
+
+    execute <<-SQL
+      INSERT INTO tipo_links (descricao) VALUES ('IP dedicado'), ('Banda Larga'), ('VPN');
     SQL
   end
 
