@@ -1,0 +1,11 @@
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Editar fornecedor</div>
+
+    <%= render 'form', endpoint: fornecedor_path, verbo: 'put' %>     
+
+    <div>
+      <%= link_to "Voltar para fornecedor", fornecedores_path, class: 'voltar-link' %>
+    </div>
+  </div>
+</div>

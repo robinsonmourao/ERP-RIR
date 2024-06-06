@@ -9,3 +9,15 @@ end
 module ModuloMeioContato
   EMAIL = 'email'; TELEFONE = 'telefone'; WHATSAPP = 'whatsapp'
 end
+
+module ModuloExistenciaNotaFiscal
+  NOTA_FISCAL_INEXISTENTE = 0; NOTA_FISCAL_EXISTENTE = 1
+end
+
+module ModuleIP
+  IP_FIXO = 1; IP_DINAMICO = 2
+end
+
+module ModuleLink
+  LINK_PRINCIPAL = 1; LINK_BACKUP = 2
+end

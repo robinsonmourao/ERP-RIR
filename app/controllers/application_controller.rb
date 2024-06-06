@@ -1,9 +1,9 @@
-include Permissao, Categoria, ModuloMeioContato
+include Permissao, Categoria, ModuloMeioContato, ModuloExistenciaNotaFiscal, ModuleIP, ModuleLink
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, only: [:login, :logout]
   helper_method :current_usuario
-  # before_action :check_active_session
+  # before_action :check_active_session, except: [:login, :autenticar, :cadastrar]
 
   def current_usuario
     @current_usuario ||= Usuario.find_by(codigo_usuario: session[:codigo_usuario]) if session[:codigo_usuario]

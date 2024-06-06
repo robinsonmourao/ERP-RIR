@@ -6,22 +6,22 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         codigo_atendimento_composto TEXT GENERATED ALWAYS AS (designacao || '-' || codigo_fornecedor) STORED,
         designacao TEXT NOT NULL,
         codigo_fornecedor INTEGER NOT NULL,
-        codigo_tecnologia_link INTEGER NOT NULL,
-        codigo_tipo_link INTEGER NOT NULL,
+        codigo_tecnologia_link INTEGER,
+        codigo_tipo_link INTEGER,
         velocidade_down INTEGER NOT NULL,
         velocidade_up INTEGER,
-        ip TEXT NOT NULL,
+        ip INTEGER NOT NULL,
         ip_fixo TEXT,
         pppoe_login TEXT,
         pppoe_senha TEXT,
-        link TEXT,
+        link INTEGER,
         dia_vencimento INTEGER DEFAULT 25,
-        valor_Mensal NUMERIC(11,2),
+        valor_mensal NUMERIC(11,2),
         valor_instalacao NUMERIC(11,2),
-        codigo_meio_pagamento INTEGER NOT NULL,
+        codigo_meio_pagamento INTEGER,
         chave_pix TEXT,
         nota_fiscal INTEGER DEFAULT 0,
-        codigo_equipamento INTEGER NOT NULL,
+        codigo_equipamento INTEGER,
 
         FOREIGN KEY (designacao) REFERENCES sites(designacao),
         FOREIGN KEY (codigo_fornecedor) REFERENCES fornecedores(codigo_fornecedor)
@@ -32,8 +32,8 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
 
         CHECK (velocidade_down > 0),
         CHECK (velocidade_up > 0),
-        CHECK (ip IN('Fixo', 'Dinamico')),
-        CHECK (link IN('principal', 'backup')),
+        CHECK (ip IN(1, 2)),
+        CHECK (link IN(1, 2)),
         CHECK (nota_fiscal IN(0, 1))
       );
     SQL

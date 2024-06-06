@@ -1,0 +1,22 @@
+<div class="container-cadastros">
+  <div class="formulario-cadastros">
+    <div class='titulo-formulario-cadastros'>Cadastrar novo <%= object.class.to_s %> </div>
+
+    <%= render form, verbo: 'post' %>
+
+    <% if tabelas_secundarias.any? %>
+      <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
+        <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>
+
+        <% tabelas_secundarias.each do |caminho| %>
+          <%= render '/' + caminho + '/new' %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <br>
+    <div>
+      <%= link_to "Voltar para #{object.class.to_s.pluralize}", send("#{object.class.to_s.pluralize.downcase}_path"),
+                  class: 'voltar-link' %>
+    </div>
+  </div>
+</div>

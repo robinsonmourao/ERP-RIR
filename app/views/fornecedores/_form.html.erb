@@ -1,0 +1,39 @@
+<%= form_with(model: @fornecedor, url: endpoint, method: verbo) do |form| %>
+  <div class="textboxes-grid">
+
+    <div class='caixa-de-texto'>
+      <%= form.collection_select :codigo_site, Site.all, :codigo_site, :nome_site, 
+                                 { prompt: "SELECIONE um SITE" }, 
+                                 { class: 'custom-select-tag' } %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.collection_select :codigo_municipio, Municipio.all, :codigo_municipio, :nome_municipio, 
+                                 { prompt: "SELECIONE um MUNICIPIO" }, 
+                                 { class: 'custom-select-tag' } %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :nome_fornecedor, placeholder: "Nome do fornecedor", required: true %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :endereco, placeholder: "Endereço" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :bairro, placeholder: "Bairro" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :cnpj, placeholder: "CNPJ" %>
+    </div>
+
+    <div class='caixa-de-texto'>
+      <%= form.text_field :asn, placeholder: "ASN" %>
+    </div>
+
+    <%= form.submit "Enviar", id: "form-submit-button" %>
+  </div>
+<% end %>  

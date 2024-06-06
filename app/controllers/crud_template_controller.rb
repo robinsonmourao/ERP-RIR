@@ -10,9 +10,6 @@ class CrudTemplateController < ApplicationController
   end
 
   def new_template(object_class)
-    # @tipo_contatos = TipoContato.all
-    # @meio_contatos = MeioContato.all
-
     @object = object_class.new
   end
 
@@ -38,7 +35,7 @@ class CrudTemplateController < ApplicationController
       flash.now[:notice] = "Não foi possível salvar #{classe}. 
                            O #{nome_parametro_unico}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
       if classe == Usuario
-        redirect_to "/#{classe.to_s.downcase.pluralize}/new"
+        redirect_to dashboard_path
       else
         render 'new'
       end
@@ -85,7 +82,7 @@ class CrudTemplateController < ApplicationController
   rescue StandardError => e
     flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
   ensure
-    redirect_to "/#{classe.to_s.downcase.pluralize}/"
+    object_index_redirection(classe)
   end
 
   private
@@ -95,5 +92,19 @@ class CrudTemplateController < ApplicationController
   rescue StandardError => e
     flash[:error] = "#{@object.class} não foi encontrado '#{e.message}'"
     render 'layouts/not_found'
+  end
+
+  def object_index_redirection(classe)
+    if is_r_letter_ending(classe.to_s)
+      redirect_to "/#{classe.to_s.downcase}es/"
+    else
+      redirect_to "/#{classe.to_s.downcase.pluralize}/"
+    end
+  end
+
+  def is_r_letter_ending(classe)
+    letters = ['r']
+    last_letter = classe.downcase[-1]
+    letters.include?(last_letter)
   end
 end

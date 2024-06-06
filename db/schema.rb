@@ -14,22 +14,22 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   create_table "atendimentos", primary_key: "codigo_atendimento", force: :cascade do |t|
     t.text "designacao", null: false
     t.integer "codigo_fornecedor", null: false
-    t.integer "codigo_tecnologia_link", null: false
-    t.integer "codigo_tipo_link", null: false
+    t.integer "codigo_tecnologia_link"
+    t.integer "codigo_tipo_link"
     t.integer "velocidade_down", null: false
     t.integer "velocidade_up"
-    t.text "ip", null: false
+    t.integer "ip", null: false
     t.text "ip_fixo"
     t.text "pppoe_login"
     t.text "pppoe_senha"
-    t.text "link"
+    t.integer "link"
     t.integer "dia_vencimento", default: 25
-    t.decimal "valor_Mensal", precision: 11, scale: 2
+    t.decimal "valor_mensal", precision: 11, scale: 2
     t.decimal "valor_instalacao", precision: 11, scale: 2
-    t.integer "codigo_meio_pagamento", null: false
+    t.integer "codigo_meio_pagamento"
     t.text "chave_pix"
     t.integer "nota_fiscal", default: 0
-    t.integer "codigo_equipamento", null: false
+    t.integer "codigo_equipamento"
   end
 
   create_table "boletos", primary_key: ["codigo_atendimento", "vencimento", "codigo_grupo"], force: :cascade do |t|
@@ -91,14 +91,14 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "fornecedores", primary_key: "codigo_fornecedor", force: :cascade do |t|
-    t.text "nome", null: false
+    t.text "nome_fornecedor", null: false
     t.text "endereco"
     t.text "bairro"
-    t.integer "codigo_fornecedor_cidade"
+    t.integer "codigo_municipio"
     t.string "cep", limit: 8
     t.string "cnpj", limit: 14
     t.text "asn"
-    t.text "site_fornecedor"
+    t.integer "codigo_site"
   end
 
   create_table "grupos", primary_key: "codigo_grupo", force: :cascade do |t|
@@ -215,7 +215,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "faturas", "status", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "fornecedor_cidades", "fornecedores", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
   add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
-  add_foreign_key "fornecedores", "fornecedor_cidades", column: "codigo_fornecedor_cidade", primary_key: "codigo_fornecedor_cidade"
+  add_foreign_key "fornecedores", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
+  add_foreign_key "fornecedores", "sites", column: "codigo_site", primary_key: "codigo_site"
   add_foreign_key "logs", "usuarios", column: "codigo_usuario", primary_key: "codigo_usuario"
   add_foreign_key "midias_sociais", "tipo_midias_sociais", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
   add_foreign_key "municipios", "ufs", column: "codigo_uf", primary_key: "codigo_uf"

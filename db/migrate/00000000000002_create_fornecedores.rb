@@ -3,18 +3,19 @@ class CreateFornecedores < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE fornecedores(
         codigo_fornecedor INTEGER PRIMARY KEY AUTOINCREMENT,
-        nome TEXT NOT NULL,
+        nome_fornecedor TEXT UNIQUE NOT NULL,
         endereco TEXT,
 
         bairro TEXT,
-        codigo_fornecedor_cidade INTEGER,
+        codigo_municipio INTEGER,
         cep VARCHAR(8),
 
         cnpj VARCHAR(14),
         asn TEXT,
-        site_fornecedor TEXT,
+        codigo_site INTEGER,
 
-        FOREIGN KEY (codigo_fornecedor_cidade) REFERENCES fornecedor_cidades(codigo_fornecedor_cidade)
+        FOREIGN KEY (codigo_municipio) REFERENCES municipios(codigo_municipio)
+        FOREIGN KEY (codigo_site) REFERENCES sites(codigo_site)
       );
     SQL
   end
