@@ -184,6 +184,7 @@ body {
       .formulario-cadastrar-colecao {
         background-color: rgb(192, 143, 255);
         padding: 20px;
+        margin: 5px;
         border-radius: 5px;
       }
         .caixa-de-texto {
@@ -191,9 +192,6 @@ body {
           justify-content: center;
           width: 100%;
         }
-          .custom-select-tag {
-            /* width: 100%; */
-          }
           .required::after {
             position: absolute;
             color: red;
@@ -249,8 +247,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: 10px;
-    padding: 35px;
+    padding: 20px;
     background-color: bisque;
+    width: auto;
   }
     .container-edit-account-option, .container-close-account-option{
       display: none;
