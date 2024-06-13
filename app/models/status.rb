@@ -1,19 +1,15 @@
 class Status < ApplicationRecord
-  self.table_name = 'status'
+  self.table_name = 'statuses'
 
   attribute :codigo_status, :integer
-  attribute :codigo_sfca, :integer
+  attribute :codigo_acfs, :integer
   attribute :tabela, :string
   attribute :codigo_situacao, :integer
   attribute :data, :date
 
-  has_many :site, foreign_key: 'codigo_sfca'
-  has_many :fornecedor, foreign_key: 'codigo_sfca'
-  has_many :cliente, foreign_key: 'codigo_sfca'
-  has_many :atendimento, foreign_key: 'codigo_sfca'
+  has_one :situacao
 
-  validates :codigo_sfca, presence: true
-  validates :tabela, inclusion: { in: ['s', 'f', 'c', 'a'] }
+  validates :codigo_acfs, presence: true
+  validates :tabela, presence: true, inclusion: { in: ['a', 'c', 'f', 's'] }
   validates :codigo_situacao, presence: true
-  validates :data, presence: true
 end

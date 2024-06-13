@@ -1,9 +1,9 @@
-<%= render 'layouts/montadores/sheet', header_titles: header_titles, cells: cells %>
+<%= render partial: 'layouts/montadores/sheet', locals: { header_titles: header_titles, cells: cells } %>
 
 <div class='detalhes-apagar-links'>
   <%= link_to "Detalhes", object, class: 'detalhes-link' %> |
   <%= link_to "Editar", send("edit_#{object.class.to_s.downcase}_path", object), class: 'editar-link' %> |
   <%= link_to "Apagar", object, method: :delete, 
-                                data: { confirm: "Quer apagar o #{object.class}: '#{object.designacao}'" },
+                                data: { confirm: "Quer apagar o #{object.class}: '#{object[@nome_parametro_unico]}'?" },
                                 class: 'apagar-link' %>
 </div>

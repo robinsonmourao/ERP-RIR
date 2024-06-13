@@ -4,7 +4,7 @@
 
     <%= render form, verbo: 'post' %>
 
-    <% if tabelas_secundarias.any? %>
+    <% if defined?(tabelas_secundarias) && tabelas_secundarias.present? && tabelas_secundarias.any? %>
       <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
         <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>
 
@@ -15,7 +15,7 @@
     <% end %>
     <br>
     <div>
-      <%= link_to "Voltar para #{object.class.to_s.pluralize}", send("#{object.class.to_s.pluralize.downcase}_path"),
+      <%= link_to "Voltar para #{object.class.to_s.pluralize}", send("#{pluralizeAndDowncase(object.class.to_s)}_path"),
                   class: 'voltar-link' %>
     </div>
   </div>

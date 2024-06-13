@@ -21,3 +21,10 @@ end
 module ModuleLink
   LINK_PRINCIPAL = 1; LINK_BACKUP = 2
 end
+
+module ModuleSituacao
+  ATIVO = 1; CANCELADO = 2; SUSPENSO = 3; BLOQUEADO = 4; PENDENTE = 5
+  SITUACAO_DESCRICOES = { ATIVO => 'Ativo', CANCELADO => 'Cancelado', SUSPENSO => 'Suspenso',
+                          BLOQUEADO => 'Bloqueado', PENDENTE => 'Pendente'
+  }
+end

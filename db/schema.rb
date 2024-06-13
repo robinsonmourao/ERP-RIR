@@ -151,20 +151,20 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.decimal "valor_instalacao"
   end
 
-  create_table "situacao", primary_key: "codigo_situacao", force: :cascade do |t|
+  create_table "situacoes", primary_key: "codigo_situacao", force: :cascade do |t|
     t.integer "descricao", default: 5, null: false
-  end
-
-  create_table "status", primary_key: "codigo_status", force: :cascade do |t|
-    t.integer "codigo_sfca", null: false
-    t.string "tabela", limit: 1, null: false
-    t.integer "codigo_situacao", null: false
-    t.date "data", default: -> { "CURRENT_DATE" }, null: false
   end
 
   create_table "status_codigo", id: false, force: :cascade do |t|
     t.integer "codigo_status", null: false
     t.text "descricao", default: "pendente", null: false
+  end
+
+  create_table "statuses", primary_key: "codigo_status", force: :cascade do |t|
+    t.integer "codigo_acfs", null: false
+    t.string "tabela", limit: 1, null: false
+    t.integer "codigo_situacao", null: false
+    t.date "data", default: -> { "CURRENT_DATE" }
   end
 
   create_table "tecnologia_links", primary_key: "codigo_tecnologia_link", force: :cascade do |t|
@@ -223,10 +223,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
   add_foreign_key "sites", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "sites", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
-  add_foreign_key "status", "atendimentos", column: "codigo_sfca", primary_key: "codigo_atendimento", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "clientes", column: "codigo_sfca", primary_key: "codigo_cliente", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "fornecedores", column: "codigo_sfca", primary_key: "codigo_fornecedor", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "sites", column: "codigo_sfca", primary_key: "codigo_site", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "status", "situacao", column: "codigo_situacao", primary_key: "codigo_situacao"
   add_foreign_key "status_codigo", "status_table", column: "codigo_status", primary_key: "codigo_status"
+  add_foreign_key "statuses", "situacoes", column: "codigo_situacao", primary_key: "codigo_situacao"
 end

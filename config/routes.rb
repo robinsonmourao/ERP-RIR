@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   resources :municipios, only: [:create]
   resources :ufs, only: [:create]
 
+  resources :statuses
+  resources :situacao, only: [:create]
+
   root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'
 
