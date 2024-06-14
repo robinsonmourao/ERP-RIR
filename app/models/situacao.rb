@@ -4,8 +4,6 @@ class Situacao < ApplicationRecord
   attribute :codigo_situacao, :integer
   attribute :descricao, :integer, default: 5
 
-  # has_many :status
-
   validates :codigo_situacao, presence: true
   validates :descricao, presence: true, inclusion: { in: [1, 2, 3, 4, 5] }
 end

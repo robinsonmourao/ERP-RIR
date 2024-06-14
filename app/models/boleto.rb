@@ -1,7 +1,7 @@
 class Boleto < ApplicationRecord
   self.table_name = 'boletos'
 
-  attribute :codigo_fatura, :integer
+  # attribute :codigo_fatura, :integer
   attribute :codigo_atendimento, :integer
   attribute :vencimento, :integer
   attribute :codigo_grupo, :integer
@@ -13,12 +13,12 @@ class Boleto < ApplicationRecord
   attribute :observacao, :text
   attribute :status, :integer
 
-  has_many :fatura, foreign_key: 'codigo_fatura'
+  # has_many :fatura, foreign_key: 'codigo_fatura'
   has_many :atendimento, foreign_key: 'codigo_atendimento'
   has_one :grupo, foreign_key: 'codigo_grupo'
   has_one :local_pagamento, foreign_key: 'codigo_local_pagamento'
 
-  validates :codigo_fatura, presence: true
+  # validates :codigo_fatura, presence: true
   validates :codigo_atendimento, presence: true
   validates :vencimento, presence: true
   validates :codigo_grupo, presence: true

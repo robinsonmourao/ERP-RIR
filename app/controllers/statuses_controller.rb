@@ -18,15 +18,15 @@ class StatusesController < CrudTemplateController
   end
 
   def create
-    create_template(@status, "codigo_acfs", status_params)
+    create_template(@status, "codigo_acfs_composto", status_params)
   end
 
   def update
-    update_template(@status, "codigo_acfs", status_params)
+    update_template(@status, "codigo_acfs_composto", status_params)
   end
 
   def destroy
-    destroy_template(@status, "codigo_acfs")
+    destroy_template(@status, "codigo_acfs_composto")
   end
 
   private
@@ -36,11 +36,6 @@ class StatusesController < CrudTemplateController
   end
 
   def find_status
-    @status = Status.find(params[:id])
-  rescue StandardError => e
-    flash[:error] = "Status não foi encontrado '#{e.message}'"
-    render 'layouts/not_found'
-
-    # @status = find_object(Status, status_params)
+    @status = find_object(Status, params)
   end
 end

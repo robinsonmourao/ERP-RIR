@@ -41,3 +41,7 @@ Criar um modulo com a sigla dos 27 estados brasileiros para tabela 'ufs'
 'Mais detalhes' mostrar todos os atributos do objeto
 
 fazer um timer no header
+
+Ao criar um objeto, na mensagem notice, o valor unico não aparece para 'status'
+
+[Editar/apagar] alguns 'sites' [Ocorreu um erro interno: 'SQLite3::ConstraintException: FOREIGN KEY constraint failed']

@@ -28,3 +28,7 @@ module ModuleSituacao
                           BLOQUEADO => 'Bloqueado', PENDENTE => 'Pendente'
   }
 end
+
+module ModuleInstalacao
+  NAO = 0; SIM = 1
+end

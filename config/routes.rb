@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   resources :ufs, only: [:create]
 
   resources :statuses
-  resources :situacao, only: [:create]
+
+  resources :faturas
 
   root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'

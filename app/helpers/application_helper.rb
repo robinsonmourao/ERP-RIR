@@ -10,12 +10,17 @@ module ApplicationHelper
   end
 
   def pluralizeAndDowncase(classe)
-    letters = ['r', 's']
-    last_letter = classe.downcase[-1]
-    if letters.include?(last_letter)
-      pluralized_classe = "#{classe.to_s.downcase}es".downcase
-    else
-      pluralized_classe = "#{classe.to_s.downcase.pluralize}".downcase
+    if classe
+      letters = ['r', 's']
+      last_letter = classe.downcase[-1]
+      if letters.include?(last_letter)
+        "#{classe.to_s.downcase}es"
+      else
+        "#{classe.to_s.downcase.pluralize}"
+      end
     end
+  rescue StandardError => e
+    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render 'new'
   end
 end

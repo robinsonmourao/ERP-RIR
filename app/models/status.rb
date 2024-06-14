@@ -3,6 +3,7 @@ class Status < ApplicationRecord
 
   attribute :codigo_status, :integer
   attribute :codigo_acfs, :integer
+  attribute :codigo_acfs_composto, :string
   attribute :tabela, :string
   attribute :codigo_situacao, :integer
   attribute :data, :date
@@ -10,6 +11,7 @@ class Status < ApplicationRecord
   has_one :situacao
 
   validates :codigo_acfs, presence: true
+  validates :codigo_acfs_composto, uniqueness: true
   validates :tabela, presence: true, inclusion: { in: ['a', 'c', 'f', 's'] }
   validates :codigo_situacao, presence: true
 end
