@@ -13,10 +13,13 @@
           <%= form.password_field :password, placeholder: "Senha", required: true %>
         </div>
 
-        <%= form.select :permissao, options_for_select([['Super', SUPER], ['Administrativo', ADMINISTRATIVO], 
+        <div class="caixa-de-texto">
+          <%= form.label :"", class:'required' %>
+          <%= form.select :permissao, options_for_select([['Super', SUPER], ['Administrativo', ADMINISTRATIVO], 
                                                         ['Técnico', TECNICO], ['Consulta', CONSULTA]]),
                                     { include_blank: 'Permissão desejada' }, { class: 'custom-select-tag', required: true } %>
-
+        </div>
+        
         <%= form.submit "Cadastrar", id: "form-submit-button" %>
       </div>
       <div class='container-cadastrar-entrar-link'>

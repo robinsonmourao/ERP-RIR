@@ -7,7 +7,7 @@ class Fatura < ApplicationRecord
   attribute :codigo_status, :integer
   attribute :chave, :text
   attribute :valor, :decimal, precision: 11, scale: 2
-  attribute :vencimento, :date, default: 25
+  attribute :vencimento, :date, default: -> { Date.current.change(day: 25) }
   attribute :codigo_grupo, :integer
   attribute :instalacao, :integer, default: 0
 

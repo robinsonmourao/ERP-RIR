@@ -19,7 +19,7 @@ class CrudTemplateController < ApplicationController
 
   def create_template(object, nome_parametro_unico, object_params)
     classe = object.class
-    valor_parametro_unico = object.send(nome_parametro_unico.downcase)
+    valor_parametro_unico = object[nome_parametro_unico]
     new_object = classe.new(object_params)
 
     if new_object.save

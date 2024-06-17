@@ -4,7 +4,8 @@ class CreateStatuses < ActiveRecord::Migration[7.1]
       CREATE TABLE statuses(
         codigo_status INTEGER PRIMARY KEY AUTOINCREMENT,
         codigo_acfs INTEGER NOT NULL,
-        codigo_acfs_composto TEXT UNIQUE GENERATED ALWAYS AS (tabela || '-' || codigo_acfs) STORED,
+        codigo_acfs_composto TEXT UNIQUE GENERATED ALWAYS AS ( '001' || tabela || ' ' ||
+                                                               '002' || codigo_acfs) STORED,
         tabela VARCHAR(1) NOT NULL,
         codigo_situacao INTEGER NOT NULL,
         data DATE DEFAULT CURRENT_DATE,

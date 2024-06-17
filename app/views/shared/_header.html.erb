@@ -1,5 +1,5 @@
 <div class="header-container" >
-  <% unless [new_usuario_path, entrar_path, root_path].include?(request.path) %>
+  <% unless [new_usuario_path, entrar_path, root_path, usuarios_path].include?(request.path) %>
   <div class="menu-container">
     <ul class="menu-bar-tabelas-principais">
       <li class="menu-item">Clientes
@@ -46,8 +46,8 @@
       </li>
       <li class="menu-item">Boletos
         <ul class="submenu">
-          <li><a href="#">Listar todos</a></li>
-          <li><a href="#">Novo</a></li>
+          <li><a href="/boletos">Listar todos</a></li>
+          <li><a href="/boletos/new">Novo</a></li>
         </ul>
       </li>
       <li class="menu-item">Logs

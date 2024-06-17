@@ -2,7 +2,8 @@ class CreateContatos < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE contatos(
-        codigo_contato_composto AS (codigo_contato || '-' || codigo_tipo_contato),
+        codigo_contato_composto AS ('001' || codigo_contato || ' ' ||
+                                    '002' || codigo_tipo_contato),
         codigo_contato INTEGER PRIMARY KEY AUTOINCREMENT,
         tabela VARCHAR(1) NOT NULL,
         codigo_tipo_contato INTEGER NOT NULL,

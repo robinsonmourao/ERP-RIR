@@ -187,10 +187,17 @@ body {
         margin: 5px;
         border-radius: 5px;
       }
-        .caixa-de-texto {
+        .caixa-de-texto, .selecao-datas-horizontal {
           display: flex;
           justify-content: center;
           width: 100%;
+        }
+        .caixa-de-texto-vertical {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
         }
           .required::after {
             position: absolute;

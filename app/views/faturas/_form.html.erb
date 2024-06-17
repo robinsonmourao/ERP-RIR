@@ -34,11 +34,16 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.text_field :valor, placeholder: "INFORME o valor da fatura" %>
+      <%= form.text_field :valor, placeholder: "INFORME o valor da FATURA" %>
     </div>
 
-    <div class='caixa-de-texto'>
-      <%= form.text_field :vencimento, placeholder: "INFORME o dia de vencimento" %>
+    <div class='caixa-de-texto-vertical'>
+      <%= form.label :vencimento, "Vencimento da FATURA" %>
+      <div class='selecao-datas-horizontal'>
+        <%= form.date_select :vencimento, { order: [:day, :month, :year], 
+                                          prompt: { day: 'Dia', month: 'Mês', year: 'Ano' } }, 
+                                          { class: 'custom-select-tag' } %>
+      </div>
     </div>
 
     <div class='botao-quadrado'>
