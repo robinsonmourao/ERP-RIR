@@ -47,3 +47,5 @@ Ao criar um objeto, na mensagem notice, o valor unico não aparece para 'status'
 [Editar/apagar] alguns 'sites' [Ocorreu um erro interno: 'SQLite3::ConstraintException: FOREIGN KEY constraint failed']
 
 Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para path 'usuarios' e nao permite mais criar usuarios mesmo que esteja com nome ainda nao utiliado
+
+Passar a view MeioContato para opções fixas

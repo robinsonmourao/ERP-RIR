@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :faturas
   resources :boletos
 
+  resources :grupos
+
   root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'
 

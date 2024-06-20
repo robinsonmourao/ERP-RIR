@@ -13,7 +13,7 @@ class Fatura < ApplicationRecord
 
   has_one :atendimento, foreign_key: 'codigo_atendimento'
   # has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
-  # has_one :grupo, foreign_key: 'codigo_grupo'
+  has_one :grupo, foreign_key: 'codigo_grupo'
   has_one :status, foreign_key: 'codigo_status'
 
   validates :codigo_atendimento, presence: true

@@ -16,15 +16,15 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= #form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :codigo_grupo, 
-                                 #{ prompt: "SELECIONE um AGRUPAMENTO" }, 
-                                 #{ class: 'custom-select-tag', required: true }
-                                 %>
+      <%= form.label :"", class:'required' %>
+      <%= form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :descricao, 
+                                 { prompt: "SELECIONE um AGRUPAMENTO" }, 
+                                 { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= #form.collection_select :codigo_local_pagamento, LocalPagamento.all, :codigo_local_pagamento, :descricao, 
-                                #{ prompt: "SELECIONE um MEIO de PAGAMENTO" }, 
+                                #{ prompt: "SELECIONE um LOCAL de PAGAMENTO" }, 
                                 #{ class: 'custom-select-tag', required: true } 
                                 %>
     </div>

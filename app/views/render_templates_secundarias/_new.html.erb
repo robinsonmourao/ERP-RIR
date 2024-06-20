@@ -1,0 +1,10 @@
+<div class="formulario-cadastrar-colecao">
+  <%= form_with(model: modelo, url: path, method: verbo) do |form| %>
+  <div class="textboxes-cadastros">
+
+    <%= form.text_field :descricao, placeholder: "Novo #{modelo.class}", class:'required' %>
+    <%= form.submit "Cadastrar novo #{modelo.class}", id: "high-privileges-form-submit-button" %>
+
+  </div>
+  <% end %>
+</div>

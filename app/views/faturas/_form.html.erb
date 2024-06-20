@@ -23,10 +23,10 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= #form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :codigo_grupo, 
-                                 #{ prompt: "SELECIONE um AGRUPAMENTO" }, 
-                                 #{ class: 'custom-select-tag', required: true }
-                                 %>
+      <%= form.label :"", class:'required' %>
+      <%= form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :descricao, 
+                                 { prompt: "SELECIONE um AGRUPAMENTO" }, 
+                                 { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
