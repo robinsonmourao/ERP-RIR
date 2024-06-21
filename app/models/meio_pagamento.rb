@@ -2,9 +2,9 @@ class MeioPagamento < ApplicationRecord
   self.table_name = 'meio_pagamentos'
 
   attribute :codigo_meio_pagamento, :integer
-  attribute :descricao, :integer, default: 1
+  attribute :descricao, :string
 
-  has_many :fatura, foreign_key: 'codigo_meio_pagamento'
+  has_many :fatura
 
-  validates :descricao, inclusion: { in: [1, 2] }
+  validates :descricao, presence: true, uniqueness: true
 end

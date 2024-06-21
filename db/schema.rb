@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
 
   create_table "faturas", primary_key: "codigo_fatura", force: :cascade do |t|
     t.integer "codigo_atendimento", null: false
+    t.integer "codigo_meio_pagamento", null: false
     t.text "chave"
     t.decimal "valor", precision: 11, scale: 2
     t.date "vencimento", default: -> { "strftime('%Y-%m-25', 'now')" }
@@ -117,7 +118,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "meio_pagamentos", primary_key: "codigo_meio_pagamento", force: :cascade do |t|
-    t.integer "descricao", default: 1
+    t.integer "descricao", null: false
   end
 
   create_table "midias_sociais", id: false, force: :cascade do |t|
@@ -207,6 +208,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "contatos", "tipo_contatos", column: "codigo_tipo_contato", primary_key: "codigo_tipo_contato"
   add_foreign_key "faturas", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
   add_foreign_key "faturas", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
+  add_foreign_key "faturas", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "faturas", "statuses", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "fornecedor_cidades", "fornecedores", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
   add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"

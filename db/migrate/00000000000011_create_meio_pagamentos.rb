@@ -3,10 +3,12 @@ class CreateMeioPagamentos < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE meio_pagamentos(
         codigo_meio_pagamento INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao INTEGER DEFAULT 1,
+        descricao INTEGER UNIQUE NOT NULL
+      );
+    SQL
 
-        CHECK (descricao IN(1, 2))
-      )
+    execute <<-SQL
+      INSERT INTO meio_pagamentos (descricao) VALUES ('Boleto'), ('Pix');
     SQL
   end
 

@@ -16,10 +16,10 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= #form.collection_select :codigo_meio_pagamento, MeioPagamento.all, :codigo_meio_pagamento, :descricao, 
-                                #{ prompt: "SELECIONE um MEIO de PAGAMENTO" }, 
-                                #{ class: 'custom-select-tag', required: true } 
-                                %>
+      <%= form.label :"", class:'required' %>
+      <%= form.collection_select :codigo_meio_pagamento, MeioPagamento.all, :codigo_meio_pagamento, :descricao, 
+                                { prompt: "SELECIONE um MEIO de PAGAMENTO" }, 
+                                { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>

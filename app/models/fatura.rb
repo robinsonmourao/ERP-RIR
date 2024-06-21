@@ -12,13 +12,13 @@ class Fatura < ApplicationRecord
   attribute :instalacao, :integer, default: 0
 
   has_one :atendimento, foreign_key: 'codigo_atendimento'
-  # has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
+  has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
   has_one :grupo, foreign_key: 'codigo_grupo'
   has_one :status, foreign_key: 'codigo_status'
 
   validates :codigo_atendimento, presence: true
-  # validates :codigo_meio_pagamento, presence: true
-  # validates :codigo_grupo, presence: true
+  validates :codigo_meio_pagamento, presence: true
+  validates :codigo_grupo, presence: true
   validates :codigo_status, presence: true
 
   validates :instalacao, inclusion: { in: [0, 1] }
