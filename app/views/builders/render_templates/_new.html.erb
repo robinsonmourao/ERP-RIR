@@ -4,11 +4,11 @@
 
     <%= render form, verbo: 'post' %>
 
-    <% if defined?(tabelas_secundarias) && tabelas_secundarias.present? && tabelas_secundarias.any? %>
+    <% if defined?(@tabelas_secundarias) && @tabelas_secundarias.present? && @tabelas_secundarias.any? %>
       <% if [SUPER, ADMINISTRATIVO].include?(current_usuario.permissao) %>
         <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>
 
-        <% tabelas_secundarias.each do |caminho| %>
+        <% @tabelas_secundarias.each do |caminho| %>
           <%= render '/' + caminho + '/new' %>
         <% end %>
       <% end %>
