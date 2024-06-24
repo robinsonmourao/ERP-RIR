@@ -1,6 +1,6 @@
 <%= render 'builders/render_templates/edit', verbo: 'put', form: 'atendimentos/form', object: @atendimento,
-           tabelas_secundarias: [#'tecnologia_links'
-                                #, 'tipo_links', 
+           tabelas_secundarias: ['tecnologia_links',
+                                #, 'tipo_links' 
                                 'meio_pagamentos'
                                 #, 'equipamentos'
                                  ] %>

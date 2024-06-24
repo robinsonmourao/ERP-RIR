@@ -6,7 +6,7 @@ class MeioPagamentosController < CrudTemplateSecundariasController
   end
 
   def create
-    template_secundarias_create(@meio_pagamento, 'descricao', meio_pagamento_params)
+    create_template_secundarias(@meio_pagamento, 'descricao', meio_pagamento_params)
   end
 
   private

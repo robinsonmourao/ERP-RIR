@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :atendimentos
   resources :meio_pagamentos
+  resources :tecnologia_links
 
   resources :fornecedores, except: [:new, :edit, :show, :update, :destroy]
 

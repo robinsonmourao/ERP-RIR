@@ -6,7 +6,7 @@ class GruposController < CrudTemplateSecundariasController
   end
 
   def create
-    template_secundarias_create(@grupo, 'descricao', grupo_params)
+    create_template_secundarias(@grupo, 'descricao', grupo_params)
   end
 
   private

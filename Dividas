@@ -52,3 +52,6 @@ Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para 
 Passar a view MeioContato para opções fixas
 
 [Editar][status]não mostra o destinatário
+
+[banco de dados]Criar um helper 'start values' e criar os objetos iniciais lá
+ao invés de criar direto nos scripts de SQL

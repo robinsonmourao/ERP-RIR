@@ -1,5 +1,5 @@
 class CrudTemplateSecundariasController < ApplicationController
-  def template_secundarias_create(object, nome_parametro_unico, object_params)
+  def create_template_secundarias(object, nome_parametro_unico, object_params)
     classe = object.class
     valor_parametro_unico = object[nome_parametro_unico]
     new_object = classe.new(object_params)

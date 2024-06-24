@@ -16,16 +16,15 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.collection_select :codigo_tipo_link, TipoLink.all, :codigo_tipo_link, :descricao, 
-                                 { prompt: "SELECIONE um TIPO do LINK" }, 
+      <%= form.collection_select :codigo_tecnologia_link, TecnologiaLink.all, :codigo_tecnologia_link, :descricao, 
+                                 { prompt: "SELECIONE um TIPO de TECNOLOGIA do LINK" }, 
                                  { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= #form.collection_select :codigo_tipo_tecnologia, TipoTecnologia.all, :codigo_tipo_tecnologia, :descricao, 
-                                 #{ prompt: "SELECIONE um TIPO de TECNOLOGIA" }, 
-                                 #{ class: 'custom-select-tag' } 
-                                 %>
+      <%= form.collection_select :codigo_tipo_link, TipoLink.all, :codigo_tipo_link, :descricao, 
+                                 { prompt: "SELECIONE um TIPO do LINK" }, 
+                                 { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
