@@ -5,6 +5,7 @@ class MeioPagamento < ApplicationRecord
   attribute :descricao, :string
 
   has_many :fatura
+  has_many :atendimento
 
   validates :descricao, presence: true, uniqueness: true
 end

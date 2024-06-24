@@ -1,5 +1,6 @@
 class CrudTemplateController < ApplicationController
   before_action :check_active_session
+  before_action :store_previous_path, only: [:new, :edit]
   # before_action :find_object, only: [:show, :edit, :update, :destroy]
 
   def index_template(object_class)

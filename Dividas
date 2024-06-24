@@ -42,11 +42,12 @@ Criar um modulo com a sigla dos 27 estados brasileiros para tabela 'ufs'
 
 fazer um timer no header
 
-Ao criar um objeto, na mensagem notice, o valor unico não aparece para 'status'
+[template_primarias]Ao criar um objeto, na mensagem notice, o valor unico não aparece
 
 [Editar/apagar] alguns 'sites' [Ocorreu um erro interno: 'SQLite3::ConstraintException: FOREIGN KEY constraint failed']
 
-Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para path 'usuarios' e nao permite mais criar usuarios mesmo que esteja com nome ainda nao utiliado
+Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para path 'usuarios' 
+  e nao permite mais criar usuarios mesmo que esteja com nome ainda nao utiliado
 
 Passar a view MeioContato para opções fixas
 

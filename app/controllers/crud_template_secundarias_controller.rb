@@ -8,9 +8,15 @@ class CrudTemplateSecundariasController < ApplicationController
       flash[:success] = "#{classe} com #{nome_parametro_unico} '#{valor_parametro_unico}' 
                         foi criado com sucesso."
     else
-      flash.now[:notice] = "Não foi possível salvar #{classe}. 
+      flash[:notice] = "Não foi possível salvar #{classe}. 
                            O #{nome_parametro_unico}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
     end
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+  rescue StandardError => e
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+  ensure
+    redirect_to previous_path
   end
 
   private

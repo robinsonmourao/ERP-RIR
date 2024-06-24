@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :meio_contatos, only: [:create]
 
   resources :atendimentos
+  resources :meio_pagamentos
+
   resources :fornecedores, except: [:new, :edit, :show, :update, :destroy]
 
   get '/fornecedores/new', to: 'fornecedores#new', as: 'new_fornecedor'

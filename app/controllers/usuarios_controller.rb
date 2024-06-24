@@ -3,7 +3,9 @@ class UsuariosController < CrudTemplateController
   before_action :find_usuario, only: [:show]
 
   def new
-    new_template(Usuario)
+  end
+
+  def edit
   end
 
   def show

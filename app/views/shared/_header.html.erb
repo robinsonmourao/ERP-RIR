@@ -1,75 +1,69 @@
-<div class="header-container" >
-  <% unless [new_usuario_path, entrar_path, root_path, usuarios_path].include?(request.path) %>
-  <div class="menu-container">
-    <ul class="menu-bar-tabelas-principais">
-      <li class="menu-item">Clientes
-        <ul class="submenu">
-          <li><a href='/clientes'>Listar todos</a></li>
-          <li><a href='/clientes/new'>Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Sites
-        <ul class="submenu">
-          <li><a href='/sites'>Listar todos</a></li>
-          <li><a href="/sites/new">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Fornecedores
-        <ul class="submenu">
-          <li><a href="/fornecedores/">Listar todos</a></li>
-          <li><a href="/fornecedores/new">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Atendimentos
-        <ul class="submenu">
-          <li><a href="/atendimentos/">Listar todos</a></li>
-          <li><a href="/atendimentos/new">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Status
-        <ul class="submenu">
-          <li><a href="/statuses/">Listar todos</a></li>
-          <li><a href="/statuses/new">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Contatos
-        <ul class="submenu">
-          <li><a href='/contatos'>Listar todos</a></li>
-          <li><a href='/contatos/new'>Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Faturas
-        <ul class="submenu">
-          <li><a href="/faturas">Listar todos</a></li>
-          <li><a href="/faturas/new">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Boletos
-        <ul class="submenu">
-          <li><a href="/boletos">Listar todos</a></li>
-          <li><a href="/boletos/new">Novo</a></li>
-        </ul>
-      </li>
-      <li class="menu-item">Logs
-        <ul class="submenu">
-          <li><a href="#">Listar todos</a></li>
-          <li><a href="#">Novo</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <ul class="menu-bar-tabelas-auxiliares">
-    </ul>
-    
-  </div>
-  <% end %>
-  <div class="container-header-buttons">
-
-    <% if current_usuario.present? %>
-      <% unless [new_usuario_path, entrar_path].include?(request.path) %>
-        <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>
-        <%= link_to "Sair", sair_path, class: "header-logout-button"%>
+<% unless [new_usuario_path, entrar_path, root_path, usuarios_path].include?(request.path) %>
+  <div class="header-container" >
+    <div class="menu-container">
+      <ul class="menu-bar-tabelas-principais">
+        <li class="menu-item">Clientes
+          <ul class="submenu">
+            <li><a href='/clientes'>Listar todos</a></li>
+            <li><a href='/clientes/new'>Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Sites
+          <ul class="submenu">
+            <li><a href='/sites'>Listar todos</a></li>
+            <li><a href="/sites/new">Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Fornecedores
+          <ul class="submenu">
+            <li><a href="/fornecedores/">Listar todos</a></li>
+            <li><a href="/fornecedores/new">Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Atendimentos
+          <ul class="submenu">
+            <li><a href="/atendimentos/">Listar todos</a></li>
+            <li><a href="/atendimentos/new">Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Status
+          <ul class="submenu">
+            <li><a href="/statuses/">Listar todos</a></li>
+            <li><a href="/statuses/new">Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Contatos
+          <ul class="submenu">
+            <li><a href='/contatos'>Listar todos</a></li>
+            <li><a href='/contatos/new'>Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Faturas
+          <ul class="submenu">
+            <li><a href="/faturas">Listar todos</a></li>
+            <li><a href="/faturas/new">Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Boletos
+          <ul class="submenu">
+            <li><a href="/boletos">Listar todos</a></li>
+            <li><a href="/boletos/new">Novo</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">Logs
+          <ul class="submenu">
+            <li><a href="#">Listar todos</a></li>
+            <li><a href="#">Novo</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+    </div>
+    <div class="container-header-buttons">
+      <% if current_usuario.present? %>
+          <%= link_to "Visão geral da conta", usuario_path(current_usuario), class: "header-settings-button" %>
+          <%= link_to "Sair", sair_path, class: "header-logout-button"%>
       <% end %>  
-    <% end %>  
+    </div>
   </div>
-</div>
+<% end %>
