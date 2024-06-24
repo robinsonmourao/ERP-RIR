@@ -112,7 +112,7 @@ class CrudTemplateController < ApplicationController
   def load_tabelas_secundarias_template(classe)
     templates = {
       Atendimento => ['tecnologia_links', 'meio_pagamentos'], #, 'tipo_links', 'equipamentos'
-      Boleto => ['grupos'], #, 'local_pagamentos'
+      Boleto => ['grupos', 'local_pagamentos'],
       Fatura => ['grupos', 'meio_pagamentos']
     }
 

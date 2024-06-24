@@ -3,10 +3,13 @@ class CreateLocalPagamentos < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE local_pagamentos(
         codigo_local_pagamento INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao INTEGER NOT NULL,
-
-        CHECK (descricao IN(1,2,3,4,5))
+        descricao TEXT UNIQUE NOT NULL
       );
+    SQL
+
+    execute <<-SQL
+      INSERT INTO local_pagamentos (descricao)
+        VALUES ('Sicoob'), ('Banco do Brasil'), ('Bradesco'), ('CEF'), ('Pessoalmente');
     SQL
   end
 

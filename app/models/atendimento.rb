@@ -16,16 +16,16 @@ class Atendimento < ApplicationRecord
   attribute :dia_vencimento, :integer, default: 25
   attribute :valor_mensal, :decimal, precision: 11, scale: 2
   attribute :valor_instalacao, :decimal, precision: 11, scale: 2
-  # attribute :codigo_meio_pagamento, :integer
+  attribute :codigo_meio_pagamento, :integer
   attribute :chave_pix, :text
   attribute :nota_fiscal, :integer, default: 0
   attribute :codigo_equipamento, :integer
 
   has_one :fornecedor, foreign_key: 'codigo_fornecedor'
   has_one :tipo_link, foreign_key: 'codigo_tipo_link'
-  # has_one :tipo_tecnologia, foreign_key: 'codigo_tipo_tecnologia'
-  # has_many :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
-  # has_many :equipamento, foreign_key: 'codigo_equipamento'
+  has_one :tipo_tecnologia, foreign_key: 'codigo_tipo_tecnologia'
+  has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
+  has_many :equipamento, foreign_key: 'codigo_equipamento'
 
   validates :designacao, presence: true
   validates :codigo_fornecedor, presence: true

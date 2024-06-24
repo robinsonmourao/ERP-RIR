@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :faturas
   resources :boletos
+  resources :local_pagamentos
 
   resources :grupos
 

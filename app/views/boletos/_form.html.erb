@@ -23,10 +23,9 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= #form.collection_select :codigo_local_pagamento, LocalPagamento.all, :codigo_local_pagamento, :descricao, 
-                                #{ prompt: "SELECIONE um LOCAL de PAGAMENTO" }, 
-                                #{ class: 'custom-select-tag', required: true } 
-                                %>
+      <%= form.collection_select :codigo_local_pagamento, LocalPagamento.all, :codigo_local_pagamento, :descricao, 
+                                { prompt: "SELECIONE um LOCAL de PAGAMENTO" }, 
+                                { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
