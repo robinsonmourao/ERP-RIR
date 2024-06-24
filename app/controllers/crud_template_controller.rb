@@ -108,4 +108,14 @@ class CrudTemplateController < ApplicationController
     last_letter = classe.downcase[-1]
     letters.include?(last_letter)
   end
+
+  def load_tabelas_secundarias_template(classe)
+    templates = {
+      Atendimento => ['tecnologia_links', 'meio_pagamentos'], #, 'tipo_links', 'equipamentos'
+      Boleto => ['grupos'], #, 'local_pagamentos'
+      Fatura => ['grupos', 'meio_pagamentos']
+    }
+
+    templates[classe] || []
+  end
 end

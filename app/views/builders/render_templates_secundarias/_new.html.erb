@@ -1,5 +1,5 @@
 <div class="formulario-cadastrar-colecao">
-  <%= form_with(model: modelo, url: path, method: verbo, remote: true) do |form| %>
+  <%= form_with(model: modelo, url: path, method: verbo) do |form| %>
   <div class="textboxes-cadastros">
 
     <%= form.text_field :descricao, placeholder: "Novo #{modelo.class}", class:'required' %>

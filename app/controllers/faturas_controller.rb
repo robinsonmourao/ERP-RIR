@@ -1,6 +1,7 @@
 class FaturasController < CrudTemplateController
   before_action :find_fatura, only: [:show, :edit, :update, :destroy]
   before_action :new, only: [:create]
+  before_action :load_tabelas_secundarias, only: [:new, :edit]
 
   def index
     index_template(Fatura)
@@ -32,5 +33,9 @@ class FaturasController < CrudTemplateController
 
   def find_fatura
     @fatura = find_object(Fatura, params)
+  end
+
+  def load_tabelas_secundarias
+    @tabelas_secundarias = load_tabelas_secundarias_template(Fatura)
   end
 end

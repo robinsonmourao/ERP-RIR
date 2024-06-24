@@ -14,8 +14,4 @@ class MeioPagamentosController < CrudTemplateSecundariasController
   def meio_pagamento_params
     params.permit(:descricao)
   end
-
-  def find_grupo
-    @meio_pagamento = find_object(MeioPagamento, params)
-  end
 end

@@ -1,6 +1,7 @@
 class AtendimentosController < CrudTemplateController
   before_action :find_atendimento, only: [:show, :edit, :update, :destroy]
   before_action :new, only: [:create]
+  before_action :load_tabelas_secundarias, only: [:new, :edit, :create]
 
   def index
     index_template(Atendimento)
@@ -36,5 +37,9 @@ class AtendimentosController < CrudTemplateController
   rescue StandardError => e
     flash[:error] = "Atendimento não foi encontrado '#{e.message}'"
     render 'layouts/not_found'
+  end
+
+  def load_tabelas_secundarias
+    @tabelas_secundarias = load_tabelas_secundarias_template(Atendimento)
   end
 end
