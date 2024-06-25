@@ -3,12 +3,14 @@ class CreateEquipamentos < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE equipamentos(
         codigo_equipamento INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao INTEGER NOT NULL,
+        descricao TEXT UNIQUE NOT NULL,
         mac_equipamento TEXT,
-        serial_equipamento TEXT,
-
-        CHECK (descricao IN(1,2,3,4,5))
+        serial_equipamento TEXT
       );
+    SQL
+
+    execute <<-SQL
+      INSERT INTO equipamentos (descricao) VALUES ('RB750R2'), ('RB750GR3'), ('RB750'), ('RB750G'), ('RB750GL');
     SQL
   end
 

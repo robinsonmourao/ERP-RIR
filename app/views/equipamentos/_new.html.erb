@@ -1,0 +1,6 @@
+<% @additional_attributes = ['mac_equipamento', 'serial_equipamento']
+   @classe = Equipamento
+   @unique_param = 'descricao' %>
+
+<%= render 'builders/render_templates_secundarias/new', 
+           modelo: @equipamento, path: equipamentos_path, verbo: 'post' %>

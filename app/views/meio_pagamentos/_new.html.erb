@@ -1,2 +1,5 @@
+<% @classe = MeioPagamento
+   @unique_param = 'descricao' %>
+
 <%= render 'builders/render_templates_secundarias/new', 
            modelo: @meio_pagamento, path: meio_pagamentos_path, verbo: 'post' %>

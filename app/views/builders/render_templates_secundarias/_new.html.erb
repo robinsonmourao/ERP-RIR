@@ -1,10 +1,23 @@
 <div class="formulario-cadastrar-colecao">
   <%= form_with(model: modelo, url: path, method: verbo) do |form| %>
+
   <div class="textboxes-cadastros">
+  
+    <div class="caixa-de-texto">
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :"#{@unique_param}", placeholder: "Digite #{@unique_param.to_s.humanize} #{@classe.to_s.humanize.downcase}", class:'required' %>
+    </div>
 
-    <%= form.text_field :descricao, placeholder: "Novo #{modelo.class}", class:'required' %>
-    <%= form.submit "Cadastrar novo #{modelo.class}", id: "high-privileges-form-submit-button" %>
+    <% if @additional_attributes.present? && @additional_attributes.any? %>
 
+      <% @additional_attributes.each do |additional_attribute| %>
+        <div class="caixa-de-texto">
+          <%= form.text_field additional_attribute, placeholder: "Digite #{additional_attribute.to_s.humanize}", class: 'required' %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= form.submit "Cadastrar novo #{@classe}", id: "high-privileges-form-submit-button" %>
   </div>
   <% end %>
 </div>

@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "equipamentos", primary_key: "codigo_equipamento", force: :cascade do |t|
-    t.integer "descricao", null: false
+    t.text "descricao", null: false
     t.text "mac_equipamento"
     t.text "serial_equipamento"
   end

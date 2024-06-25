@@ -30,15 +30,13 @@
     <div class='caixa-de-texto'>
       <%= form.collection_select :codigo_meio_pagamento, MeioPagamento.all, :codigo_meio_pagamento, :descricao, 
                                 { prompt: "SELECIONE um MEIO de PAGAMENTO" }, 
-                                { class: 'custom-select-tag' } 
-                                %>
+                                { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= #form.collection_select :codigo_equipamento, CodigoEquipamento.all, :codigo_equipamento, :descricao, 
-                                 #{ prompt: "SELECIONE um EQUIPAMENTO" }, 
-                                 #{ class: 'custom-select-tag' }
-                                 %>
+      <%= form.collection_select :codigo_equipamento, Equipamento.all, :codigo_equipamento, :descricao, 
+                                 { prompt: "SELECIONE um EQUIPAMENTO" }, 
+                                 { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>

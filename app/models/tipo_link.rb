@@ -5,7 +5,7 @@ class TipoLink < ApplicationRecord
   attribute :descricao, :string
 
   has_many :site
-  # has_many :atendimento
+  has_many :atendimento
 
-  validates :descricao, presence: true, uniqueness: true, inclusion: { in: ['IP dedicado', 'Banda Larga', 'VPN'] }
+  validates :descricao, presence: true, uniqueness: true
 end
