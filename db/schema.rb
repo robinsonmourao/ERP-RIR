@@ -108,12 +108,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "descricao", null: false
   end
 
-  create_table "logs", id: false, force: :cascade do |t|
-    t.datetime "data", precision: nil, null: false
-    t.integer "codigo_usuario", null: false
-    t.text "comando", null: false
-  end
-
   create_table "meio_contatos", primary_key: "codigo_meio_contato", force: :cascade do |t|
     t.text "descricao", null: false
   end
@@ -216,7 +210,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "fornecedores", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "fornecedores", "sites", column: "codigo_site", primary_key: "codigo_site"
-  add_foreign_key "logs", "usuarios", column: "codigo_usuario", primary_key: "codigo_usuario"
   add_foreign_key "midias_sociais", "tipo_midias_sociais", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
   add_foreign_key "municipios", "ufs", column: "codigo_uf", primary_key: "codigo_uf"
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
