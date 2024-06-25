@@ -1,4 +1,5 @@
 <% @classe = Grupo
-   @unique_param = 'descricao' %>
+   @main_param = 'descricao' %>
 
-<%= render 'builders/render_templates_secundarias/new', modelo: @grupo, path: grupos_path, verbo: 'post' %>
+<%= render 'builders/render_templates_secundarias/new', 
+           modelo: @grupo, path: grupos_path, verbo: 'post' %>

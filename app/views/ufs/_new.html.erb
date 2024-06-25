@@ -1,19 +1,8 @@
-<div class="formulario-cadastrar-colecao">
-  <%= form_with(model: @uf, url: ufs_path, method: :post) do |form| %>
-    <div class="textboxes-cadastros">
+<% @classe = Uf
+   @main_param = 'sigla'
+   
+   @additional_attributes = ['nome_estado']
+   @uniqueness_map = ['required'] %>
 
-      <div class='caixa-de-texto'>
-        <%= form.label :"", class:'required' %>
-        <%= form.text_field :sigla, placeholder: "Sigla da nova UF" %>
-      </div>
-
-      <div class='caixa-de-texto'>
-        <%= form.label :"", class:'required' %>
-        <%= form.text_field :nome_estado, placeholder: "Estado da nova UF"%> 
-      </div>
-
-      <%= form.submit "Cadastrar nova UF", id: "high-privileges-form-submit-button" %>
-
-    </div>
-  <% end %>
-</div>
+<%= render 'builders/render_templates_secundarias/new', 
+           modelo: @uf, path: ufs_path, verbo: 'post' %>

@@ -1,10 +1,5 @@
-<div class="formulario-cadastrar-colecao">
-  <%= form_with(model: @meio_contato, url: meio_contatos_path, method: :post) do |form| %>
-  <div class="textboxes-cadastros">
+<% @classe = MeioContato
+   @main_param = 'descricao' %>
 
-    <%= form.text_field :descricao, placeholder: "Novo meio de contato", class:'required' %>
-    <%= form.submit "Cadastrar novo meio de contato", id: "high-privileges-form-submit-button" %>
-
-  </div>
-  <% end %>
-</div>
+<%= render 'builders/render_templates_secundarias/new', 
+           modelo: @meio_contato, path: meio_contatos_path, verbo: 'post' %>
