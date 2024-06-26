@@ -1,11 +1,1 @@
-<div class="container-cadastros">
-  <div class="formulario-cadastros">
-    <div class='titulo-formulario-cadastros'>Editar contato</div>
-
-    <%= render 'form', verbo: 'put' %>      
-
-    <div>
-      <%= link_to "Voltar para contatos", contatos_path, class: 'voltar-link' %>
-    </div>
-  </div>
-</div>
+<%= render "builders/render_templates/edit", verbo: 'put', form: 'contatos/form', object: @contato %>

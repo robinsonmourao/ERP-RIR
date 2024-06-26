@@ -1,6 +1,7 @@
 class ContatosController < CrudTemplateController
   before_action :buscar_contato, only: [:show, :edit, :update, :destroy]
   before_action :new, only: [:create]
+  before_action :load_tabelas_secundarias, only: [:new, :edit, :create]
 
   def index
     index_template(Contato)
@@ -36,5 +37,9 @@ class ContatosController < CrudTemplateController
   rescue StandardError => e
     flash[:error] = "Contato não foi encontrado '#{e.message}'"
     render 'layouts/not_found'
+  end
+
+  def load_tabelas_secundarias
+    @tabelas_secundarias = load_tabelas_secundarias_template(Cliente)
   end
 end

@@ -38,33 +38,75 @@
 
 - **controllers** -> Contém controladores do modelo MV[C]
   - `application_controller.rb` -> Controlador principal da aplicação
+  - `<...>_controller.rb` -> Controladores
 
 - **models** -> Contém modelos do modelo [M]VC
   - `application_record.rb` -> modelo principal do Rails
+  - `<...>.rb` -> Controladores
 
 - **views** -> Contém visões do modelo M[V]C
+  - `builders` -> Builders da aplicação
+    - `render_sheets` -> Pasta com o arquivo de renderização unificado para planilhamento de TODOS os objetos
+      - `_sheet.html.erb` -> Arquivo de renderização unificado para planilhamento de TODOS os objetos
+    - `render_templates` -> Renderização unificada para TODAS as tabelas principais
+    - `render_templates_secundarias` -> Renderização unificada para TODAS as tabelas secundárias
+  - `layouts` -> Pasta com o modelo principal
+    - `_header.html.erb` -> Visão header(bar e botões)
+    - `application.html.erb` -> Visão principal da aplicação
+    - `not_found.html.erb` -> Visão unificada para tela de objeto não encontrado
+  - `tabelas_secundarias` -> Pasta com as visões de tabelas secundárias
+    - `<...>.html.erb` -> Visões secundárias da aplicação
+  - `<...>.html.erb` -> Visões das tabelas principais
 
 - **db**
-  - `migrate`
-    - `<000000000000XX_create_<nome-tabela>>` -> Scripts SQL
-    - `...`
+  - `migrate` -> Pasta com Scripts SQL
+    - `<000000000000XX_create_<nome-tabela>.rb>` -> Scripts SQL
   - `schema.rb` -> Esquema completo de migração <br>
 
 ## Árvore de dependência
-
-- └── contato
-  - ├── tipo_contato
-  - └── meio_contato
+### Tabelas primárias
 
 - └── atendimento | cliente | fornecedor | site
   - └── status
     - └── situacao
+
+- └── atendimento
+  - └── equipamentos
+  - └── meio_pagamentos
+  - └── status
+    - └── situacao
+  - └── tipo_links
+  - └── tecnologia_links
+
+- └── cliente
+  - └── municipio
+    - └── uf
+
+- └── fornecedor
+  - └── municipio
+    - └── uf
 
 - └── site
   - └── cliente
   - └── municipio
     - └── uf
   - └── tipo_link
+
+- └── contato
+  - └── meio_contato
+  - ├── tipo_contato
+  
+- └── fatura
+  - └── atendimento
+  - └── boleto
+    - └── grupos
+  - └── grupos
+  - └── local_pagamentos
+  - └── meio_pagamentos
+
+- └── boleto
+  - └── grupos
+  - └── local_pagamentos
 
 # Status de desenvolvimento
 

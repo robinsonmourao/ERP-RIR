@@ -1,10 +1,4 @@
-<%= render 'layouts/montadores/sheet', header_titles: ['Nome da pessoa', '001[Código do contato-002[Código do tipo do contato]]'],
-                                       cells: [contato.nome_pessoa, contato.codigo_contato_composto] %>
-
-<div class='detalhes-editar-apagar-links'>
-  <%= link_to "Detalhes", contato, class: 'detalhes-link' %> |
-  <%= link_to "Editar", edit_contato_path(contato), class: 'editar-link' %> |
-  <%= link_to "Apagar", contato, method: :delete,
-                              data: { confirm: "Quer apagar o #{contato.class}: '#{contato.nome_pessoa}'" },
-                              class: 'apagar-link' %>
-</div>
+<%= render 'builders/render_templates/object', object: contato, 
+                                               header_titles: ['Nome da pessoa', 
+                                                               '001[Código do contato]-002[Código do tipo do contato]'],
+                                               cells: [contato.nome_pessoa, contato.codigo_contato_composto] %>

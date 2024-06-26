@@ -9,7 +9,7 @@
         <h2>Adicionais de SUPER e ADMINISTRATIVO</h2>
 
         <% @tabelas_secundarias.each do |caminho| %>
-          <%= render '/' + caminho + '/new' %>
+          <%= render '/tabelas_secundarias/' + caminho + '/new' %>
         <% end %>
       <% end %>
     <% end %>
