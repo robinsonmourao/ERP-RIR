@@ -40,6 +40,6 @@ class ContatosController < CrudTemplateController
   end
 
   def load_tabelas_secundarias
-    @tabelas_secundarias = load_tabelas_secundarias_template(Cliente)
+    @tabelas_secundarias = load_tabelas_secundarias_template(Contato)
   end
 end

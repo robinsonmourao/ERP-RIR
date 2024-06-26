@@ -7,20 +7,7 @@ Tabela atendimentos
 PRIMARY KEY (designacao, codigo_fornecedor),
 
 Tabela contatos
-PRIMARY KEY(tabela, codigo_contato_tipo),
-
-OBS: FOI POSSÍVEL POREM ID NAO ESTA COM NOME PERSONALIZAVEL, ENTAO VERIFICAR COMO FICOU NAS CONSULTAS CASO PRECISA CHAMAR A VARIAVEL ID
-
-# Relações
-
-Status com Sites (Site), Fornecedores(Fornecedor), Atendimento(A) ou Clientes (Cliente)
-Contato F(Fornecedor), S(Site) ou C(Cliente)
-Atendimentos has_many :codigo_fatura, foreign_key: 'codigo_fatura'
-Fatura has_many :codigo_boleto, foreign_key: 'codigo_boleto'
-
-# Feature
-"Geração mensal das faturas"
-"Manutenção das tabelas auxiliares"
+PRIMARY KEY(tabela, codigo_contato_tipo)
 
 # OBS
 
@@ -35,9 +22,6 @@ Tabela owned
 
 # ToDo's
 
-Criar uma regra IN para todas as siglas
-Criar um modulo com a sigla dos 27 estados brasileiros para tabela 'ufs'
-
 'Mais detalhes' mostrar todos os atributos do objeto
 
 fazer um timer no header
@@ -48,8 +32,6 @@ fazer um timer no header
 
 Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para path 'usuarios' 
   e nao permite mais criar usuarios mesmo que esteja com nome ainda nao utiliado
-
-Passar a view MeioContato para opções fixas
 
 [Editar][status]não mostra o destinatário
 [New][Editar][status]ao criar um status com dados ja existentes aplicação quebra
@@ -62,3 +44,5 @@ Alterar dados cadastrar e apagar usuarios
 
 [apagar]algumas entidades, é lançado rollback no console e operação não é efetuada, 
   talvez por relações com outras tabelas quebradas por dropamento ;)
+
+[javascript]exibir adicionais de admin somente ao clicar num '+' ou algo semelhante e mais discreto

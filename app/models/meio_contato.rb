@@ -6,5 +6,5 @@ class MeioContato < ApplicationRecord
 
   has_many :contato
 
-  validates :descricao, presence: true, uniqueness: true, inclusion: { in: ['email', 'telefone', 'whatsapp'] }
+  validates :descricao, presence: true, uniqueness: true
 end

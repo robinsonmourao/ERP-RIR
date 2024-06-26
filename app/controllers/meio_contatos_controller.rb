@@ -1,17 +1,12 @@
-class MeioContatosController < ApplicationController
-  def create
-    @meio_contato = MeioContato.new(meio_contato_params)
+class MeioContatosController < CrudTemplateSecundariasController
+  before_action :new, only: [:create]
 
-    if @meio_contato.save
-      flash[:success] = "O MeioContato, '#{@meio_contato.descricao}' foi criado com sucesso"
-    else
-      flash[:notice] =
-        "1. O MEIO DE CONTATO '#{@meio_contato.descricao}',
-        não está entre as opções permitidas #{listar_opcoes_modulo(ModuloMeioContato)}
-        OU 2. O MEIO DE CONTATO já existe
-        OU 3. Nenhum MEIO DE CONTATO foi informado"
-    end
-    redirect_to new_contato_path
+  def new
+    @meio_contato = new_template_secundarias(MeioContato)
+  end
+
+  def create
+    create_template_secundarias(@meio_contato, 'descricao', meio_contato_params)
   end
 
   private

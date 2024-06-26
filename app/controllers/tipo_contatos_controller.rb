@@ -1,14 +1,12 @@
-class TipoContatosController < ApplicationController
-  def create
-    @tipo_contato = TipoContato.new(tipo_contato_params)
+class TipoContatosController < CrudTemplateSecundariasController
+  before_action :new, only: [:create]
 
-    if @tipo_contato.save
-      flash[:success] = "O TipoContato, '#{@tipo_contato.descricao}' foi criado com sucesso"
-    else
-      flash[:notice] = "1. Tente criar um TIPO DE CONTATO com uma descrição diferente de: '#{@tipo_contato.descricao}'
-        OU 2. Nenhum TIPO DE CONTATO foi informado."
-    end
-    redirect_to new_contato_path
+  def new
+    @tipo_contato = new_template_secundarias(TipoContato)
+  end
+
+  def create
+    create_template_secundarias(@tipo_contato, 'descricao', tipo_contato_params)
   end
 
   private

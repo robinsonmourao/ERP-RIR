@@ -40,6 +40,9 @@
   - `application_controller.rb` -> Controlador principal da aplicação
   - `<...>_controller.rb` -> Controladores
 
+- **helpers** -> Contém os métodos auxiliares para utilização da aplicação
+  - `application_helper.rb` -> Métodos auxiliares para utilização da aplicação
+
 - **models** -> Contém modelos do modelo [M]VC
   - `application_record.rb` -> modelo principal do Rails
   - `<...>.rb` -> Controladores
@@ -58,6 +61,12 @@
     - `<...>.html.erb` -> Visões secundárias da aplicação
   - `<...>.html.erb` -> Visões das tabelas principais
 
+- **config**
+ - `initializers` -> Pasta com configurações de inicialização da aplicação
+    - `constants.rb` -> Constantes essenciais para o funcionamento da aplicação
+    - `session_store.rb` -> Configuração do tempo de sessão
+  - `routes.rb` -> Configuração das rotas da aplicação <br>
+
 - **db**
   - `migrate` -> Pasta com Scripts SQL
     - `<000000000000XX_create_<nome-tabela>.rb>` -> Scripts SQL
@@ -71,11 +80,11 @@
     - └── situacao
 
 - └── atendimento
-  - └── equipamentos
-  - └── meio_pagamentos
+  - ├── equipamentos
+  - ├── meio_pagamentos
   - └── status
     - └── situacao
-  - └── tipo_links
+  - ├── tipo_links
   - └── tecnologia_links
 
 - └── cliente
@@ -87,25 +96,25 @@
     - └── uf
 
 - └── site
-  - └── cliente
+  - ├── cliente
   - └── municipio
     - └── uf
   - └── tipo_link
 
 - └── contato
-  - └── meio_contato
-  - ├── tipo_contato
+  - ├── meio_contato
+  - └── tipo_contato
   
 - └── fatura
-  - └── atendimento
+  - ├── atendimento
   - └── boleto
     - └── grupos
-  - └── grupos
-  - └── local_pagamentos
+  - ├── grupos
+  - ├── local_pagamentos
   - └── meio_pagamentos
 
 - └── boleto
-  - └── grupos
+  - ├── grupos
   - └── local_pagamentos
 
 # Status de desenvolvimento

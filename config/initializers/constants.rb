@@ -9,10 +9,6 @@ module Categoria
   ATENDIMENTO = 'a'; CLIENTE = 'c'; FORNECEDOR = 'f'; SITE = 's'
 end
 
-module ModuloMeioContato
-  EMAIL = 'email'; TELEFONE = 'telefone'; WHATSAPP = 'whatsapp'
-end
-
 module ModuloExistenciaNotaFiscal
   NOTA_FISCAL_INEXISTENTE = 0; NOTA_FISCAL_EXISTENTE = 1
 end
