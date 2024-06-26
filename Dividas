@@ -52,6 +52,13 @@ Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para 
 Passar a view MeioContato para opções fixas
 
 [Editar][status]não mostra o destinatário
+[New][Editar][status]ao criar um status com dados ja existentes aplicação quebra
 
 [banco de dados]Criar um helper 'start values' e criar os objetos iniciais lá
 ao invés de criar direto nos scripts de SQL
+
+Se a tabela municipios for renderizada antes de qualquer outra tabela secundaria, o additional_collection é replicado na segunda tabela
+Alterar dados cadastrar e apagar usuarios
+
+[apagar]algumas entidades, é lançado rollback no console e operação não é efetuada, 
+  talvez por relações com outras tabelas quebradas por dropamento ;)

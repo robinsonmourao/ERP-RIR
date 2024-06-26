@@ -1,12 +1,1 @@
-<div class="container-cadastros">
-  <div class="formulario-cadastros">
-    <div class='titulo-formulario-cadastros'>Editar site</div>
-    <%= render "form", verbo: 'put' %>
-
-    <br>
-
-    <div>
-      <%= link_to "Voltar para sites", sites_path, class: 'voltar-link' %>
-    </div>   
-  </div>
-</div>
+<%= render 'builders/render_templates/edit', verbo: 'put', form: 'sites/form', object: @site %>

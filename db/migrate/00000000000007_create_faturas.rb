@@ -7,7 +7,7 @@ class CreateFaturas < ActiveRecord::Migration[7.1]
         codigo_meio_pagamento INTEGER NOT NULL,
         chave TEXT,
         valor NUMERIC(11,2),
-        vencimento DATE DEFAULT (strftime('%Y-%m-25', 'now')),
+        vencimento DATE NOT NULL DEFAULT (strftime('%Y-%m-25', 'now')),
         codigo_grupo INTEGER NOT NULL,
         instalacao INTEGER NOT NULL DEFAULT 0,
         codigo_status INTEGER NOT NULL,

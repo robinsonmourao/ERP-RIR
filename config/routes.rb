@@ -12,15 +12,7 @@ Rails.application.routes.draw do
   resources :tecnologia_links, only: [:create]
   resources :equipamentos, only: [:create]
 
-  resources :fornecedores, except: [:new, :edit, :show, :update, :destroy]
-
-  get '/fornecedores/new', to: 'fornecedores#new', as: 'new_fornecedor'
-  get '/fornecedores/:id/edit', to: 'fornecedores#edit', as: 'edit_fornecedor'
-  get '/fornecedores/:id', to: 'fornecedores#show', as: 'fornecedor'
-
-  patch '/fornecedores/:id', to: 'fornecedores#update'
-  put '/fornecedores/:id', to: 'fornecedores#update'
-  delete '/fornecedores/:id', to: 'fornecedores#destroy'
+  resources :fornecedors
 
   resources :sites
   resources :tipo_links, only: [:create]

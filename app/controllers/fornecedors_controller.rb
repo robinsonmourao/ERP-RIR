@@ -1,6 +1,7 @@
-class FornecedoresController < CrudTemplateController
+class FornecedorsController < CrudTemplateController
   before_action :find_fornecedor, only: [:show, :edit, :update, :destroy]
   before_action :new, only: [:create]
+  before_action :load_tabelas_secundarias, only: [:new, :edit, :create]
 
   def index
     index_template(Fornecedor)
@@ -37,5 +38,9 @@ class FornecedoresController < CrudTemplateController
   rescue StandardError => e
     flash[:error] = "Fornecedor não foi encontrado '#{e.message}'"
     render 'layouts/not_found'
+  end
+
+  def load_tabelas_secundarias
+    @tabelas_secundarias = load_tabelas_secundarias_template(Fornecedor)
   end
 end

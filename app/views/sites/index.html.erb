@@ -1,7 +1,2 @@
-<div class='container-list-show'>
-  <% @objects.each do |site| %>
-    <div class='container-splitter-grid-links'>
-      <%= render site %>      
-    </div>
-  <% end %>
-</div>
+<% instance_variable_set(:@nome_parametro_unico, 'nome_site') %>
+<%= render 'builders/render_templates/index' %>

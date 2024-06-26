@@ -20,21 +20,6 @@ module ApplicationHelper
     lista.join(', ')
   end
 
-  def pluralizeAndDowncase(classe)
-    if classe
-      letters = ['r', 's']
-      last_letter = classe.downcase[-1]
-      if letters.include?(last_letter)
-        "#{classe.to_s.downcase}es"
-      else
-        "#{classe.to_s.downcase.pluralize}"
-      end
-    end
-  rescue StandardError => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
-  end
-
   def store_previous_path
     session[:previous_path] = request.fullpath
   end

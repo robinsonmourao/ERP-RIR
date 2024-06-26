@@ -1,7 +1,6 @@
 class CrudTemplateController < ApplicationController
   before_action :check_active_session
   before_action :store_previous_path, only: [:new, :edit]
-  # before_action :find_object, only: [:show, :edit, :update, :destroy]
 
   def index_template(object_class)
     @objects = object_class.all
@@ -83,7 +82,7 @@ class CrudTemplateController < ApplicationController
   rescue StandardError => e
     flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
   ensure
-    object_index_redirection(classe)
+    redirect_to "/#{classe.to_s.downcase.pluralize}/"
   end
 
   private
@@ -95,27 +94,15 @@ class CrudTemplateController < ApplicationController
     render 'layouts/not_found'
   end
 
-  def object_index_redirection(classe)
-    if is_r_letter_ending(classe.to_s)
-      redirect_to "/#{classe.to_s.downcase}es/"
-    else
-      redirect_to "/#{classe.to_s.downcase.pluralize}/"
-    end
-  end
-
-  def is_r_letter_ending(classe)
-    letters = ['r']
-    last_letter = classe.downcase[-1]
-    letters.include?(last_letter)
-  end
-
   def load_tabelas_secundarias_template(classe)
     templates = {
       Atendimento => ['tipo_links', 'tecnologia_links', 'meio_pagamentos', 'equipamentos'],
+      Cliente => ['ufs', 'municipios'],
       Boleto => ['grupos', 'local_pagamentos'],
-      Fatura => ['grupos', 'meio_pagamentos']
+      Fatura => ['grupos', 'meio_pagamentos'],
+      Fornecedor => ['ufs', 'municipios'],
+      Site => ['tipo_links', 'municipios']
     }
-
     templates[classe] || []
   end
 end

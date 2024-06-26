@@ -1,5 +1,8 @@
 module Permissao
   SUPER = 1; ADMINISTRATIVO = 2; TECNICO = 3; CONSULTA = 4
+  PERMISSOES = {
+    SUPER => 'Super', ADMINISTRATIVO => 'Administrativo', TECNICO => 'Tecnico', CONSULTA => 'Consulta'
+  }
 end
 
 module Categoria

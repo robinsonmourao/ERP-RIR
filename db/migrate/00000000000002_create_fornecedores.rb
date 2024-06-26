@@ -1,7 +1,7 @@
 class CreateFornecedores < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
-      CREATE TABLE fornecedores(
+      CREATE TABLE fornecedors(
         codigo_fornecedor INTEGER PRIMARY KEY AUTOINCREMENT,
         nome_fornecedor TEXT UNIQUE NOT NULL,
         endereco TEXT,
@@ -22,7 +22,7 @@ class CreateFornecedores < ActiveRecord::Migration[7.1]
 
   def down
     execute <<-SQL
-      DROP TABLE IF EXISTS fornecedores;
+      DROP TABLE IF EXISTS fornecedors;
     SQL
   end
 end

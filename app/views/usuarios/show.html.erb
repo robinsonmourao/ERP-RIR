@@ -1,14 +1,7 @@
 <div class='container-show'>
   <div>
     <p>Usuário: <strong><%= current_usuario.nome %></strong></p>
-
-    <% permissoes = { 
-      SUPER => 'Super', 
-      ADMINISTRATIVO => 'Administrativo', 
-      TECNICO => 'Tecnico', 
-      CONSULTA => 'Consulta' }
-    %>
-    <p>Nível de permissão: <strong><%= permissoes[current_usuario.permissao] %></strong></p>
+    <p>Nível de permissão: <strong><%= Permissao::PERMISSOES[current_usuario.permissao] %></strong></p>
 
     <%= link_to 'Alterar dados cadastrais', '#', class: 'usuario-edit-button' %>
     <%= link_to 'Fechar minha conta', usuario_path(current_usuario), class: 'default-delete-button close-account-link-autohide' %>
@@ -27,7 +20,6 @@
       </div>
     <% end %>
   </div>
-
 
   <div class="container-edit-account-option">
     <%= form_with(model: @usuario, url: usuario_path(current_usuario), method: :patch) do |form| %>

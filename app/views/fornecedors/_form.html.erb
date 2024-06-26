@@ -1,3 +1,5 @@
+<% endpoint = verbo == 'post' ? fornecedors_path : fornecedor_path %>
+
 <%= form_with(model: @fornecedor, url: endpoint, method: verbo) do |form| %>
   <div class="textboxes-grid">
 

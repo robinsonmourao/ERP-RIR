@@ -1,5 +1,5 @@
 class Fornecedor < ApplicationRecord
-  self.table_name = 'fornecedores'
+  self.table_name = 'fornecedors'
 
   attribute :codigo_fornecedor, :integer
   attribute :nome_fornecedor, :string

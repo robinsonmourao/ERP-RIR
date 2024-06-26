@@ -1,6 +1,7 @@
 class ClientesController < CrudTemplateController
   before_action :buscar_cliente, only: [:show, :edit, :update, :destroy]
   before_action :new, only: [:create]
+  before_action :load_tabelas_secundarias, only: [:new, :edit, :create]
 
   def index
     index_template(Cliente)
@@ -35,5 +36,9 @@ class ClientesController < CrudTemplateController
   rescue StandardError => e
     flash[:error] = "Cliente não foi encontrado '#{e.message}'"
     render 'layouts/not_found'
+  end
+
+  def load_tabelas_secundarias
+    @tabelas_secundarias = load_tabelas_secundarias_template(Cliente)
   end
 end
