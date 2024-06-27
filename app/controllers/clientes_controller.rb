@@ -8,27 +8,30 @@ class ClientesController < CrudTemplateController
   end
 
   def new
-    @cidades = Municipio.all
+    @cliente = new_template(Cliente)
+  end
 
-    @cliente = Cliente.new
+  def show
+    show_template(@cliente)
   end
 
   def create
-    create_template(@cliente, 'CNPJ', cliente_params)
+    create_template(@cliente, cliente_params)
   end
 
   def update
-    update_template(@cliente, 'CNPJ', cliente_params)
+    update_template(@cliente, cliente_params)
   end
 
   def destroy
-    destroy_template(@cliente, 'CNPJ')
+    destroy_template(@cliente)
   end
 
   private
 
   def cliente_params
-    params.require(:cliente).permit(:nome_cliente, :endereco, :bairro, :codigo_municipio, :cep, :cnpj, :inscricao_estadual, :inscricao_municipal)
+    params.require(:cliente).permit(:nome_cliente, :endereco, :bairro, :codigo_municipio, :cep, :cnpj,
+                                    :inscricao_estadual, :inscricao_municipal)
   end
 
   def buscar_cliente

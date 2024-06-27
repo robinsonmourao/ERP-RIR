@@ -8,6 +8,7 @@ class FornecedorsController < CrudTemplateController
   end
 
   def show
+    show_template(@fornecedor)
   end
 
   def new
@@ -15,15 +16,15 @@ class FornecedorsController < CrudTemplateController
   end
 
   def create
-    create_template(@fornecedor, 'nome_fornecedor', fornecedor_params)
+    create_template(@fornecedor, fornecedor_params)
   end
 
   def update
-    update_template(@fornecedor, 'nome_fornecedor', fornecedor_params)
+    update_template(@fornecedor, fornecedor_params)
   end
 
   def destroy
-    destroy_template(@fornecedor, 'nome_fornecedor')
+    destroy_template(@fornecedor)
   end
 
   private

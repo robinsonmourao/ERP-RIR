@@ -11,16 +11,20 @@ class FaturasController < CrudTemplateController
     @fatura = new_template(Fatura)
   end
 
+  def show
+    show_template(@fatura)
+  end
+
   def create
-    create_template(@fatura, 'codigo_fatura', fatura_params)
+    create_template(@fatura, fatura_params)
   end
 
   def update
-    update_template(@fatura, 'codigo_fatura', fatura_params)
+    update_template(@fatura, fatura_params)
   end
 
   def destroy
-    destroy_template(@fatura, 'codigo_fatura')
+    destroy_template(@fatura)
   end
 
   private

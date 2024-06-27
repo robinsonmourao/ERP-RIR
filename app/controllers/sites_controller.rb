@@ -11,16 +11,20 @@ class SitesController < CrudTemplateController
     @site = Site.new
   end
 
+  def show
+    show_template(@site)
+  end
+
   def create
-    create_template(@site, 'designacao', site_params)
+    create_template(@site, site_params)
   end
 
   def update
-    update_template(@site, 'designacao', site_params)
+    update_template(@site, site_params)
   end
 
   def destroy
-    destroy_template(@site, 'designacao')
+    destroy_template(@site)
   end
 
   private

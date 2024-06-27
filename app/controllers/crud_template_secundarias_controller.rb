@@ -5,15 +5,15 @@ class CrudTemplateSecundariasController < ApplicationController
 
   def create_template_secundarias(object, nome_parametro_unico, object_params)
     classe = object.class
-    valor_parametro_unico = object[nome_parametro_unico]
     new_object = classe.new(object_params)
+    valor_parametro_unico = new_object[nome_parametro_unico]
 
     if new_object.save
-      flash[:success] = "#{classe} com #{nome_parametro_unico} '#{valor_parametro_unico}' 
+      flash[:success] = "#{classe} com #{nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
                         foi criado com sucesso."
     else
       flash[:notice] = "Não foi possível salvar #{classe}. 
-                           O #{nome_parametro_unico}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
+                       O #{nome_parametro_unico.humanize.downcase}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
     end
   rescue ActiveRecord::RecordInvalid => e
     flash[:error] = "Ocorreu um erro interno: '#{e.message}'"

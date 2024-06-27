@@ -15,7 +15,7 @@ class UsuariosController < CrudTemplateController
   def create
     @usuario = Usuario.new(usuario_params)
 
-    create_template(@usuario, 'nome', usuario_params)
+    create_template(@usuario, usuario_params)
   end
 
   private

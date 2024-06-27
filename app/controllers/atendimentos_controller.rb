@@ -11,16 +11,20 @@ class AtendimentosController < CrudTemplateController
     @atendimento = Atendimento.new
   end
 
+  def show
+    show_template(@atendimento)
+  end
+
   def create
-    create_template(@atendimento, 'designacao', atendimento_params)
+    create_template(@atendimento, atendimento_params)
   end
 
   def update
-    update_template(@atendimento, 'designacao', atendimento_params)
+    update_template(@atendimento, atendimento_params)
   end
 
   def destroy
-    destroy_template(@atendimento, 'designacao')
+    destroy_template(@atendimento)
   end
 
   private

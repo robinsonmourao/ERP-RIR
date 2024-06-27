@@ -3,6 +3,7 @@ class CrudTemplateController < ApplicationController
   before_action :store_previous_path, only: [:new, :edit]
 
   def index_template(object_class)
+    load_nome_parametro_unico(object_class)
     @objects = object_class.all
     unless @objects.any?
       render 'layouts/not_found'
@@ -13,18 +14,20 @@ class CrudTemplateController < ApplicationController
     @object = object_class.new
   end
 
-  def show_template(object, params)
+  def show_template(object)
+    load_nome_parametro_unico(object.class)
     @object = (object.class).find(params[:id])
   end
 
-  def create_template(object, nome_parametro_unico, object_params)
+  def create_template(object, object_params)
     classe = object.class
-    valor_parametro_unico = object[nome_parametro_unico]
+    load_nome_parametro_unico(classe)
     new_object = classe.new(object_params)
+    valor_parametro_unico = object_params[@nome_parametro_unico]
 
     if new_object.save
 
-      flash[:success] = "#{classe} com #{nome_parametro_unico} '#{valor_parametro_unico}' 
+      flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
                         foi criado com sucesso."
       if classe == Usuario
         autenticar(new_object)
@@ -33,7 +36,7 @@ class CrudTemplateController < ApplicationController
       end
     else
       flash.now[:notice] = "Não foi possível salvar #{classe}. 
-                           O #{nome_parametro_unico}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
+                           O #{@nome_parametro_unico.humanize.downcase}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
       if classe == Usuario
         redirect_to dashboard_path
       else
@@ -48,16 +51,19 @@ class CrudTemplateController < ApplicationController
     render 'new'
   end
 
-  def update_template(object, nome_parametro_unico, object_params)
+  def update_template(object, object_params)
     classe = object.class
-    valor_parametro_unico = object.send(nome_parametro_unico.downcase)
+    load_nome_parametro_unico(classe)
+    valor_parametro_unico = object_params[@nome_parametro_unico]
 
     if object.update(object_params)
-      flash[:success] = "#{classe} de #{nome_parametro_unico} '#{valor_parametro_unico}' foi ATUALIZADO com sucesso."
+      flash[:success] = "#{classe} de #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
+                        foi ATUALIZADO com sucesso."
       redirect_to object
     else
-      flash[:notice] = "Não foi possível ATUALIZAR '#{classe}' de #{nome_parametro_unico} '#{valor_parametro_unico}'
-                       já está em uso OU é inválido!"
+      flash[:notice] = "Não foi possível ATUALIZAR '#{classe}' de 
+                        #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
+                        já está em uso OU é inválido!"
       render 'edit'
     end
   rescue ActiveRecord::RecordInvalid => e
@@ -68,14 +74,17 @@ class CrudTemplateController < ApplicationController
     render 'edit'
   end
 
-  def destroy_template(object, nome_parametro_unico)
+  def destroy_template(object)
     classe = object.class
-    valor_parametro_unico = object.send(nome_parametro_unico.downcase)
+    load_nome_parametro_unico(classe)
+    valor_parametro_unico = object.send(@nome_parametro_unico.downcase)
 
     if object.destroy
-      flash[:success] = "#{classe} de #{nome_parametro_unico} '#{valor_parametro_unico}' foi apagado com sucesso."
+      flash[:success] = "#{classe} de #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
+                        foi apagado com sucesso."
     else
-      flash[:notice] = "Não foi possível apagar #{classe}. De #{nome_parametro_unico} '#{valor_parametro_unico}'!"
+      flash[:notice] = "Não foi possível apagar #{classe}. De 
+                       #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}'!"
     end
   rescue ActiveRecord::RecordInvalid => e
     flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
@@ -105,5 +114,20 @@ class CrudTemplateController < ApplicationController
       Site => ['tipo_links', 'municipios']
     }
     templates[classe] || []
+  end
+
+  def load_nome_parametro_unico(classe)
+    templates = {
+      Atendimento => 'designacao',
+      Boleto => 'codigo_boleto_composto',
+      Cliente => 'cnpj',
+      Contato => 'descricao',
+      Fatura => 'codigo_fatura',
+      Fornecedor => 'nome_fornecedor',
+      Site => 'nome_site',
+      Status => 'codigo_acfs_composto',
+      Usuario => 'nome'
+    }
+    @nome_parametro_unico = templates[classe] || []
   end
 end

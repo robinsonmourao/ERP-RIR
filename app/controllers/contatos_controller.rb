@@ -14,16 +14,20 @@ class ContatosController < CrudTemplateController
     @contato = Contato.new
   end
 
+  def show
+    show_template(@contato)
+  end
+
   def create
-    create_template(@contato, "nome_pessoa", contato_params)
+    create_template(@contato, contato_params)
   end
 
   def update
-    update_template(@contato, "nome_pessoa", contato_params)
+    update_template(@contato, contato_params)
   end
 
   def destroy
-    destroy_template(@contato, "nome_pessoa")
+    destroy_template(@contato)
   end
 
   private

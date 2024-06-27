@@ -11,19 +11,23 @@ class StatusesController < CrudTemplateController
     @status = Status.new
   end
 
+  def show
+    show_template(@status)
+  end
+
   def edit
   end
 
   def create
-    create_template(@status, "codigo_acfs_composto", status_params)
+    create_template(@status, status_params)
   end
 
   def update
-    update_template(@status, "codigo_acfs_composto", status_params)
+    update_template(@status, status_params)
   end
 
   def destroy
-    destroy_template(@status, "codigo_acfs_composto")
+    destroy_template(@status)
   end
 
   private

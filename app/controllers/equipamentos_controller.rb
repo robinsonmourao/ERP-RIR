@@ -2,7 +2,7 @@ class EquipamentosController < CrudTemplateSecundariasController
   before_action :new, only: [:create]
 
   def new
-    @equipamento = new_template_secundarias(Equipamento)
+    @equipamento = Equipamento.new(equipamento_params)
   end
 
   def create

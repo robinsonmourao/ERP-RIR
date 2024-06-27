@@ -5,7 +5,7 @@ class CreateSites < ActiveRecord::Migration[7.1]
         codigo_site INTEGER PRIMARY KEY AUTOINCREMENT,
         designacao TEXT UNIQUE NOT NULL,
         codigo_cliente INTEGER NOT NULL,
-        nome_site TEXT NOT NULL,
+        nome_site TEXT UNIQUE NOT NULL,
         endereco TEXT,
 
         bairro TEXT,

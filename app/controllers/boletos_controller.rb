@@ -11,16 +11,20 @@ class BoletosController < CrudTemplateController
     @boleto = new_template(Boleto)
   end
 
+  def show
+    show_template(@boleto)
+  end
+
   def create
-    create_template(@boleto, 'codigo_boleto_composto', boleto_params)
+    create_template(@boleto, boleto_params)
   end
 
   def update
-    update_template(@boleto, 'codigo_boleto_composto', boleto_params)
+    update_template(@boleto, boleto_params)
   end
 
   def destroy
-    destroy_template(@boleto, 'codigo_boleto_composto')
+    destroy_template(@boleto)
   end
 
   private
