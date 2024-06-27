@@ -1,14 +1,12 @@
-class UfsController < ApplicationController
-  def create
-    @uf = Uf.new(uf_params)
+class UfsController < CrudTemplateSecundariasController
+  before_action :new, only: [:create]
 
-    if @uf.save
-      flash[:success] = "A UF, '#{@uf.sigla}' foi criado com sucesso"
-    else
-      flash[:notice] = "1. Tente criar um UF com a sigla diferente de: '#{@uf.sigla}'
-        OU 2. Nenhum UF foi informado."
-    end
-    redirect_back fallback_location: ''
+  def new
+    @uf = Uf.new(uf_params)
+  end
+
+  def create
+    create_template_secundarias(@uf, 'nome_uf', uf_params)
   end
 
   private

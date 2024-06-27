@@ -1,14 +1,12 @@
-class MunicipiosController < ApplicationController
-  def create
-    @municipio = Municipio.new(municipio_params)
+class MunicipiosController < CrudTemplateSecundariasController
+  before_action :new, only: [:create]
 
-    if @municipio.save
-      flash[:success] = "O MUNICIPIO, '#{@municipio.nome_municipio}' foi criado com sucesso"
-    else
-      flash[:notice] = "1. Tente criar um MUNICIPIO com uma nome diferente de: '#{@municipio.nome_municipio}'
-        OU 2. Nenhum MUNICIPIO foi informado."
-    end
-    redirect_back fallback_location: ''
+  def new
+    @municipio = Municipio.new(municipio_params)
+  end
+
+  def create
+    create_template_secundarias(@municipio, 'nome_municipio', municipio_params)
   end
 
   private
