@@ -8,9 +8,6 @@ class ContatosController < CrudTemplateController
   end
 
   def new
-    @tipo_contatos = TipoContato.all
-    @meio_contatos = MeioContato.all
-
     @contato = Contato.new
   end
 

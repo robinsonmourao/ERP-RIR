@@ -4,8 +4,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
       CREATE TABLE boletos(
         codigo_boleto_composto TEXT UNIQUE GENERATED ALWAYS AS ('001' || codigo_atendimento || ' ' ||
                                                                 '002' || vencimento || ' ' ||
-                                                                '003' || codigo_grupo
-                                                                ) STORED,
+                                                                '003' || codigo_grupo) STORED,
         codigo_boleto INTEGER PRIMARY KEY AUTOINCREMENT,
         codigo_atendimento INTEGER NOT NULL,
         codigo_fatura INTEGER NOT NULL,

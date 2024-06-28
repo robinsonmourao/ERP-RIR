@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :usuarios
+  resources :usuarios, except: [:new]
 
   resources :clientes
 
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   resources :local_pagamentos, only: [:create]
 
   resources :grupos
+
+  get '/cadastrar', to: 'usuarios#new', as: 'new_usuario'
 
   root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'

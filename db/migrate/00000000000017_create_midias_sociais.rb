@@ -2,8 +2,8 @@ class CreateMidiasSociais < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE midias_sociais(
-        tabela VARCHAR(1) NOT NULL,
         codigo_tipo_midia_social INTEGER,
+        tabela VARCHAR(1) NOT NULL,
         descricao TEXT NOT NULL,
 
         CHECK (tabela IN('f', 'c')),

@@ -3,7 +3,6 @@
     <p>Usuário: <strong><%= current_usuario.nome %></strong></p>
     <p>Nível de permissão: <strong><%= Permissao::PERMISSOES[current_usuario.permissao] %></strong></p>
 
-    <%= link_to 'Alterar dados cadastrais', '#', class: 'usuario-edit-button' %>
     <%= link_to 'Fechar minha conta', usuario_path(current_usuario), class: 'default-delete-button close-account-link-autohide' %>
   </div>
 
@@ -17,24 +16,6 @@
         </div>
 
         <%= form.submit "Fechar conta", id: "close-account-form-submit-button" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="container-edit-account-option">
-    <%= form_with(model: @usuario, url: usuario_path(current_usuario), method: :patch) do |form| %>
-      <div class="edit-usuario-form-textboxes">
-        <%= form.label :nome %>
-        <%= form.text_field :nome, placeholder: "Nome" %>
-
-        <%= form.label :senha %>
-        <%= form.password_field :password, placeholder: "Nova senha" %>
-
-        <div class="current-password-field">
-          <strong><%= form.label :senha_atual %>:</strong>
-          <%= form.password_field :senha_atual, placeholder: "Senha atual", autocomplete: "off" %>
-        </div>
-        <%= form.submit "Atualizar", id: "edit-usuario-form-submit-button" %>
       </div>
     <% end %>
   </div>

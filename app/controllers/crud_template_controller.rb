@@ -21,34 +21,25 @@ class CrudTemplateController < ApplicationController
 
   def create_template(object, object_params)
     classe = object.class
-    load_nome_parametro_unico(classe)
     new_object = classe.new(object_params)
+    load_nome_parametro_unico(classe)
     valor_parametro_unico = object_params[@nome_parametro_unico]
 
     if new_object.save
-
       flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
                         foi criado com sucesso."
-      if classe == Usuario
-        autenticar(new_object)
-      else
-        redirect_to new_object
-      end
+      classe == Usuario ? autenticar(new_object) : redirect_to(new_object)
     else
-      flash.now[:notice] = "Não foi possível salvar #{classe}. 
+      flash[:notice] = "Não foi possível salvar #{classe}. 
                            O #{@nome_parametro_unico.humanize.downcase}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
-      if classe == Usuario
-        redirect_to dashboard_path
-      else
-        render 'new'
-      end
+      classe == Usuario ? redirect_to(new_usuario_path) : render('new')
     end
   rescue ActiveRecord::RecordInvalid => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render('new')
   rescue StandardError => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
-    render 'new'
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    render('new')
   end
 
   def update_template(object, object_params)
@@ -67,10 +58,10 @@ class CrudTemplateController < ApplicationController
       render 'edit'
     end
   rescue ActiveRecord::RecordInvalid => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
     render 'edit'
   rescue StandardError => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
     render 'edit'
   end
 
@@ -82,15 +73,16 @@ class CrudTemplateController < ApplicationController
     if object.destroy
       flash[:success] = "#{classe} de #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
                         foi apagado com sucesso."
+      classe == Usuario ? logout : redirect_to("/#{classe.to_s.downcase.pluralize}/")
     else
       flash[:notice] = "Não foi possível apagar #{classe}. De 
                        #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}'!"
     end
   rescue ActiveRecord::RecordInvalid => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
+    redirect_to "/#{classe.to_s.downcase.pluralize}/"
   rescue StandardError => e
-    flash.now[:error] = "Ocorreu um erro interno: '#{e.message}'"
-  ensure
+    flash[:error] = "Ocorreu um erro interno: '#{e.message}'"
     redirect_to "/#{classe.to_s.downcase.pluralize}/"
   end
 

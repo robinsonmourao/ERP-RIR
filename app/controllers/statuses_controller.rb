@@ -1,7 +1,7 @@
 class StatusesController < CrudTemplateController
   before_action :find_status, only: [:show, :edit, :update, :destroy]
   before_action :new, only: [:create]
-  before_action :build_acfs_list, only: [:new, :edit]
+  before_action :build_acfs_list, only: [:new, :edit, :create, :update]
 
   def index
     index_template(Status)

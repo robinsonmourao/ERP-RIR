@@ -11,8 +11,6 @@ class Cliente < ApplicationRecord
   attribute :inscricao_estadual, :string
   attribute :inscricao_municipal, :string
 
-  # has_many :contato
-  # has_many :site
   has_one :municipio, foreign_key: 'codigo_municipio'
 
   validates :nome_cliente, presence: true

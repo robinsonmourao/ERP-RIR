@@ -1,6 +1,6 @@
 class UsuariosController < CrudTemplateController
   before_action :check_active_session, only: [:show]
-  before_action :find_usuario, only: [:show]
+  before_action :find_usuario, only: [:show, :destroy]
 
   def new
   end
@@ -18,6 +18,15 @@ class UsuariosController < CrudTemplateController
     create_template(@usuario, usuario_params)
   end
 
+  def destroy
+    if current_usuario && current_usuario.authenticate(params[:usuario][:senha_atual])
+      destroy_template(current_usuario)
+    else
+      flash[:notice] = 'Senha incorreta!'
+      redirect_back fallback_location: ''
+    end
+  end
+
   private
 
   def usuario_params
@@ -25,6 +34,6 @@ class UsuariosController < CrudTemplateController
   end
 
   def find_usuario
-    find_object(Usuario, params)
+    @usuario = find_object(Usuario, params)
   end
 end

@@ -22,25 +22,18 @@ Tabela owned
 
 # ToDo's
 
-'Mais detalhes' mostrar todos os atributos do objeto
+[SUGESTÃO]'Mais detalhes' mostrar todos os atributos do objeto
+[BANCO_DE_DADOS]Criar um helper 'start values' e criar os objetos iniciais lá
+                ao invés de criar direto nos scripts de SQL
 
 [javascript]fazer um timer no header
 [javascript]exibir adicionais de admin somente ao clicar num '+' ou algo semelhante e mais discreto
 
-[Editar/apagar] alguns 'sites' [Ocorreu um erro interno: 'SQLite3::ConstraintException: FOREIGN KEY constraint failed']
-[apagar]algumas entidades, é lançado rollback no console e operação não é efetuada, 
-  talvez por relações com outras tabelas quebradas por dropamento ;)
+[APAGAR][BANCO DE DADOS]algumas entidades quando possuem relações, são lançadas rollback no console
 
-Tentar criar um usuario com nome já utilizado mais e uma vez, redireciona para path 'usuarios' 
-  e nao permite mais criar usuarios mesmo que esteja com nome ainda nao utiliado
-
+[ATUALIZAR]Usuários
 [Editar][status]não mostra o destinatário
-[New][Editar][status]ao criar um status com dados ja existentes aplicação quebra
 
-[banco de dados]Criar um helper 'start values' e criar os objetos iniciais lá
-ao invés de criar direto nos scripts de SQL
+[NOTICE][SUCCESS]sobrepostos ao fechar contas
 
 Se a tabela municipios for renderizada antes de qualquer outra tabela secundaria, o additional_collection é replicado na segunda tabela
-Alterar dados cadastrar e apagar usuarios
-
-[BAIXA][ALTERADO PARA CODIGOS] [put] [atendimento][status][boleto]codigos compostos não mostram valores notice
