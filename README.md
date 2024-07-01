@@ -1,24 +1,24 @@
+# Planejamento
+## Roteiro de testes
+https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/RoteiroDeTestes.md
+
 # Demonstrações
 
 ## Telas
-
 ### Cadastrar
-![Cadastrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-cadastrar.png)
+![Cadastrar](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-cadastrar.png)
 
 ### Entrar
-![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-entrar.png)
-
-### Visão inicial
-![Dashboard](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-dashboard.png)
+![Entrar](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-entrar.png)
 
 ### Criação de contatos
-![CadastroContatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-cadastro-contatos.png)
+![CadastroContatos](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-cadastro-contatos.png)
 
 ### Lista de contatos
 ![Contatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-lista-contatos.png)
 
 ### Visão geral da conta
-![Usuarios](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-visão-geral-da-conta.png)
+![Usuarios](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-vis%C3%A3o-geral-da-conta.png)
 
 
 # Estruturas
@@ -119,15 +119,16 @@
 
 # Status de desenvolvimento
 
-| Tarefa             | Status        | Progresso                         |
-|--------------------|--------------|---------------------------------------|
-| `Desenvolvimento da API`    | PROGRESSO     | -              |
-| `Testes unitários`          | PENDENTE      | -              |
-| `Testes E2E(Ponta a ponta)` | PENDENTE      | -              |
-| `Documentação readme.md`    | PENDENTE      | -              |
-| `Casos de uso`              | PENDENTE      | -              |
-| `Fluxo de eventos`          | PENDENTE      | -              |
-| `Fluxos alternativos`       | PENDENTE      | -              |
-| `Fluxos de exceção`         | PENDENTE      | -              |
-| `Containerização  `         | PENDENTE      | -              |
-| `Hospedagem`                | PENDENTE      | -              |
+| Tarefa             | Status        |
+|--------------------|---------------|
+| Desenvolvimento da API    | CONCLUÍDO    |
+| Roteirização de testes    | PROGRESSO    |
+| Testes E2E(Ponta a ponta) | PROGRESSO    |
+| Documentação readme.md    | PROGRESSO    |
+| Casos de uso              | PENDENTE     |
+| Fluxo de eventos          | PENDENTE     |
+| Fluxos alternativos       | PENDENTE     |
+| Fluxos de exceção         | PENDENTE     |
+| Containerização           | PENDENTE     |
+| ~~Testes unitários~~      |FORA DE ESCOPO|
+| ~~Hospedagem~~            |FORA DE ESCOPO|
