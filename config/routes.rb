@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   root 'usuarios#entrar'
   get '/dashboard', to: 'dashboard#show'
 
+  # get '/visao_geral_conta', to: 'usuarios#show', as: 'visao_geral_conta'
+  # delete '/usuarios', to: 'usuarios#destroy', as: 'fechar_conta'
+
   get '/entrar', to: 'usuarios#entrar'
   post '/login', to: 'usuarios#login'
   get '/sair', to: 'usuarios#logout'

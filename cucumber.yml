@@ -1,0 +1,8 @@
+default:  -p ci  
+          -p test
+          --publish-quiet
+
+pretty: --format pretty
+ci: --format progress
+test: ENVIRONMENT_TYPE=test
+headless: HEADLESS=headless
