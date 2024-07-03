@@ -18,7 +18,7 @@ class VisaoGeralContaPage < SitePrism::Page
     password_text_box.set password
   end
 
-  def clicar_fechar_conta
+  def clicar_fechar_conta_button
     fechar_conta_button.click
   end
 end

@@ -16,7 +16,7 @@ When("eu clicar em Fechar minha conta") do
 end
 And("eu preencher o campo com minha atual password {string}.") do |password|
   @visao_geral_conta_page.preencher_dados(password)
-  @visao_geral_conta_page.clicar_fechar_conta
+  @visao_geral_conta_page.clicar_fechar_conta_button
 end
 
 Then('eu sou redirecionado para tela entrar.') do
