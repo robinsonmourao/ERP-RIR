@@ -3,7 +3,7 @@
 Funcionalidade: Cadastrar no sistema
 
 -Eu como usuário.
--Quero me cadastrar no sistema sem informar nenhum nome.
+-Quero me cadastrar no sistema informando uma senha menor que 8
 -Para verificar que o sistema não permite o cadastro com senhas menor que 8
 
 Cenário: Validar se é permitido cadastro informando uma senha menor que 8
