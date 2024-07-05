@@ -1,26 +1,11 @@
----
-name: Bug report
-about: reporting
-title: ''
-labels: ''
-assignees: ''
+| **Categoria**   | **Prioridade**  | **Frequência** |
+|-----------------|-----------------|----------------|
+| [ ] Sugestão    | [ ] IMEDIATA    | [ ] Sempre     |
+| [ ] Bug         | [ ] ALTA        | [ ] Às vezes   |
+|                 | [ ] MÉDIA       | [ ] Raramente  |
+|                 | [ ] BAIXA       | [ ] Uma vez    |
+|                 |                 | [ ] Em situações específicas |
 
----
-
-**Prioridade:**
-- [ ] IMEDIATA
-- [ ] ALTA
-- [ ] MÉDIA
-- [ ] BAIXA<br><br>
-**Categoria:**
-- [ ] Sugestão
-- [ ] Bug<br><br>
-**Frequência:**
-- [ ] Sempre
-- [ ] Às vezes
-- [ ] Raramente
-- [ ] Uma vez
-- [ ] Em situações específicas<br><br><br>
 
 **Descrição:**
 
