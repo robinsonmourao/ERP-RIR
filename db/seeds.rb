@@ -1,9 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+Equipamento.create(['RB750R2', 'RB750GR3', 'RB750', 'RB750G', 'RB750GL'].map { |d| { descricao: d } })
+Grupo.create([{ descricao: 'Fatura não agrupada' }])
+LocalPagamento.create(['Sicoob', 'Banco do Brasil', 'Bradesco', 'CEF', 'Pessoalmente'].map { |d| { descricao: d } })
+MeioContato.create(['email', 'telefone', 'whatsapp'].map { |d| { descricao: d } })
+MeioPagamento.create(['Boleto', 'Pix'].map { |d| { descricao: d } })
+Situacao.create(['Ativo', 'Cancelado', 'Suspenso', 'Bloqueado', 'Pendente'].map { |d| { descricao: d } })
+TecnologiaLink.create(['Fibra', 'Rádio', 'Cabo'].map { |d| { descricao: d } })
+TipoLink.create(['IP dedicado', 'Banda Larga', 'VPN'].map { |d| { descricao: d } })
+Uf.create([['AC', 'Acre'], ['AL', 'Alagoas'], ['AM', 'Amazonas'], ['AP', 'Amapá'],
+           ['BA', 'Bahia'],
+           ['CE', 'Ceará'],
+           ['DF', 'Distrito Federal'],
+           ['ES', 'Espírito Santo'],
+           ['GO', 'Goiás'],
+           ['MA', 'Maranhão'], ['MG', 'Minas Gerais'], ['MS', 'Mato Grosso do Sul'], ['MT', 'Mato Grosso'],
+           ['PA', 'Pará'], ['PB', 'Paraíba'], ['PE', 'Pernambuco'], ['PI', 'Piauí'], ['PR', 'Paraná'],
+           ['RJ', 'Rio de Janeiro'], ['RN', 'Rio Grande do Norte'], ['RO', 'Rondônia'], ['RR', 'Roraima'], ['RS', 'Rio Grande do Sul'],
+           ['SC', 'Santa Catarina'], ['SE', 'Sergipe'], ['SP', 'São Paulo'],
+           ['TO', 'Tocantins']].map { |s, n_e| { sigla: s, nome_estado: n_e } })

@@ -3,12 +3,8 @@ class CreateSituacoes < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE situacoes(
         codigo_situacao INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao INTEGER NOT NULL DEFAULT 5
+        descricao TEXT UNIQUE NOT NULL
       )
-    SQL
-
-    execute <<-SQL
-      INSERT INTO situacoes (descricao) VALUES (1), (2), (3), (4), (5);
     SQL
   end
 

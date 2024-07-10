@@ -6,10 +6,6 @@ class CreateTipoLinks < ActiveRecord::Migration[7.1]
         descricao TEXT UNIQUE NOT NULL
       );
     SQL
-
-    execute <<-SQL
-      INSERT INTO tipo_links (descricao) VALUES ('IP dedicado'), ('Banda Larga'), ('VPN');
-    SQL
   end
 
   def down

@@ -1,5 +1,5 @@
 include ApplicationHelper, Permissao, Categoria, 
-        ModuloExistenciaNotaFiscal, ModuleIP, ModuleLink, ModuleSituacao, ModuleInstalacao
+        ModuloExistenciaNotaFiscal, ModuleIP, ModuleLink, ModuleInstalacao
 
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, only: [:login, :logout]

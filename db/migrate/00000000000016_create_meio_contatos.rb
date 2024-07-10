@@ -6,10 +6,6 @@ class CreateMeioContatos < ActiveRecord::Migration[7.1]
         descricao TEXT UNIQUE NOT NULL
       );
     SQL
-
-    execute <<-SQL
-      INSERT INTO meio_contatos (descricao) VALUES ('email'), ('telefone'), ('whatsapp');
-    SQL
   end
 
   def down

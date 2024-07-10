@@ -6,11 +6,6 @@ class CreateLocalPagamentos < ActiveRecord::Migration[7.1]
         descricao TEXT UNIQUE NOT NULL
       );
     SQL
-
-    execute <<-SQL
-      INSERT INTO local_pagamentos (descricao)
-        VALUES ('Sicoob'), ('Banco do Brasil'), ('Bradesco'), ('CEF'), ('Pessoalmente');
-    SQL
   end
 
   def down

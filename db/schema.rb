@@ -82,13 +82,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "codigo_status", null: false
   end
 
-  create_table "fornecedor_cidades", primary_key: "codigo_fornecedor_cidade", force: :cascade do |t|
-    t.integer "codigo_fornecedor", null: false
-    t.integer "codigo_municipio", null: false
-    t.integer "area"
-    t.text "observacao"
-  end
-
   create_table "fornecedors", primary_key: "codigo_fornecedor", force: :cascade do |t|
     t.text "nome_fornecedor", null: false
     t.text "endereco"
@@ -117,8 +110,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "midias_sociais", id: false, force: :cascade do |t|
-    t.string "tabela", limit: 1, null: false
     t.integer "codigo_tipo_midia_social"
+    t.string "tabela", limit: 1, null: false
     t.text "descricao", null: false
   end
 
@@ -145,18 +138,13 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "situacoes", primary_key: "codigo_situacao", force: :cascade do |t|
-    t.integer "descricao", default: 5, null: false
-  end
-
-  create_table "status_codigo", id: false, force: :cascade do |t|
-    t.integer "codigo_status", null: false
-    t.text "descricao", default: "pendente", null: false
+    t.text "descricao", null: false
   end
 
   create_table "statuses", primary_key: "codigo_status", force: :cascade do |t|
     t.integer "codigo_acfs", null: false
     t.string "tabela", limit: 1, null: false
-    t.integer "codigo_situacao", null: false
+    t.integer "codigo_situacao", default: 5
     t.date "data", default: -> { "CURRENT_DATE" }
   end
 
@@ -206,8 +194,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "faturas", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
   add_foreign_key "faturas", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "faturas", "statuses", column: "codigo_status", primary_key: "codigo_status"
-  add_foreign_key "fornecedor_cidades", "fornecedores", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
-  add_foreign_key "fornecedor_cidades", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "fornecedors", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "fornecedors", "sites", column: "codigo_site", primary_key: "codigo_site"
   add_foreign_key "midias_sociais", "tipo_midias_sociais", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
@@ -215,6 +201,5 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
   add_foreign_key "sites", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "sites", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
-  add_foreign_key "status_codigo", "status_table", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "statuses", "situacoes", column: "codigo_situacao", primary_key: "codigo_situacao"
 end

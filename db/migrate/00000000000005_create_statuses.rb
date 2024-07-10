@@ -7,7 +7,7 @@ class CreateStatuses < ActiveRecord::Migration[7.1]
         codigo_acfs_composto TEXT UNIQUE GENERATED ALWAYS AS ( '001' || tabela || ' ' ||
                                                                '002' || codigo_acfs) STORED,
         tabela VARCHAR(1) NOT NULL,
-        codigo_situacao INTEGER NOT NULL,
+        codigo_situacao INTEGER DEFAULT 5,
         data DATE DEFAULT CURRENT_DATE,
 
         FOREIGN KEY (codigo_situacao) REFERENCES situacoes(codigo_situacao)

@@ -6,10 +6,6 @@ class CreateTecnologiaLinks < ActiveRecord::Migration[7.1]
         descricao TEXT UNIQUE NOT NULL
       );
     SQL
-
-    execute <<-SQL
-      INSERT INTO tecnologia_links (descricao) VALUES ('Fibra'), ('Rádio'), ('Cabo');
-    SQL
   end
 
   def down

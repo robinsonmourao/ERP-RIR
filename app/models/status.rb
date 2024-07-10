@@ -13,5 +13,12 @@ class Status < ApplicationRecord
   validates :codigo_acfs, presence: true
   validates :codigo_acfs_composto, uniqueness: true
   validates :tabela, presence: true, inclusion: { in: ['a', 'c', 'f', 's'] }
-  validates :codigo_situacao, presence: true
+
+  before_validation :set_default_codigo_situacao, on: [:create, :update]
+
+  private
+
+  def set_default_codigo_situacao
+    self.codigo_situacao ||= 5
+  end
 end

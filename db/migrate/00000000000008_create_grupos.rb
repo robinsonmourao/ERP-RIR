@@ -6,10 +6,6 @@ class CreateGrupos < ActiveRecord::Migration[7.1]
         descricao TEXT UNIQUE NOT NULL
       );
     SQL
-
-    execute <<-SQL
-      INSERT INTO grupos (descricao) VALUES ('Fatura não agrupada');
-    SQL
   end
 
   def down

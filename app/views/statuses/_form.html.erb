@@ -4,7 +4,7 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class: 'required' %>
       <%= form.collection_select :codigo_acfs, @acfs, :last, :first, 
-                                 { prompt: "SELECIONE o DESTINATÁRIO" }, 
+                                 { prompt: "SELECIONE o ORIGINÁRIO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
     
@@ -12,18 +12,16 @@
       <%= form.label :"", class:'required' %>
       <%= form.select :tabela, options_for_select([['Atendimento', ATENDIMENTO], ['Cliente', CLIENTE], 
                                                   ['Fornecedor', FORNECEDOR], ['Site', SITE]]),
-                               { include_blank: 'SELECIONE o TIPO do DESTINATÁRIO' }, 
+                               { include_blank: 'SELECIONE o TIPO do ORIGINÁRIO' }, 
                                { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"", class: 'required' %>
-      <%= form.collection_select :codigo_situacao, Situacao.all.map { |s| [SITUACAO_DESCRICOES[s.codigo_situacao], 
-                                                                                               s.codigo_situacao] },
-                                 :last, :first,
-                                 { prompt: "SELECIONE uma SITUACAO para o DESTINATÁRIO" },
-                                 { class: 'custom-select-tag', required: true } %>
-    </div>
+  <%= form.collection_select :codigo_situacao, Situacao.all, :codigo_situacao, :descricao,
+                             { include_blank: "SELECIONE uma SITUAÇÃO" },
+                             { class: 'custom-select-tag' } %>
+</div>
+
 
     <%= form.submit "Enviar", id: "form-submit-button" %>
   </div>
