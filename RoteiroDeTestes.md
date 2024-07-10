@@ -244,24 +244,33 @@
 ### Cenário 034 - Criar
 |ID   |Objetivo do teste|Pré-condições|Passos|Resultado esperado|Resultado obtido|Automatizado|Informações adicionais|Issue ID
 |-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
+|`001`|Validar se é permitido cadastrar um novo Site com campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>3.Acessar o endpoint `/sites/new`|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.designacao`<br>`c.nome`<br>`d.velocidade contratada`<br>2.Clicar no botão **Enviar**|1.Redicionamento para o _endpoint_ `/sites`<br>2.Mensagem¹ **<span style="color: #60FF38;">VERDE</span>** contendo o valor de 'nome' e a informação de que o Site foi criado com sucesso|-|-|-|-|
+|`002`|Validar obrigatoriedade para valor 'Cliente', demais campos válidos|1.Ter a API levantada<br>2.Acessar o endpoint `/sites/new`|1.Preencher APENAS os campos obrigatórios:<br>`a.designacao`<br>`b.nome`<br>`c.velocidade contratada`<br>2.Clicar no botão **Enviar**|Balão² informando que é obrigatório selecionar um item para 'Cliente'|-|-|-|-|
+|`003`|Validar obrigatoriedade para valor 'designacao', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>3.Acessar o endpoint `/sites/new`|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.nome`<br>`c.velocidade contratada`<br>2.Clicar no botão **Enviar**|Balão² informando que é necessário preencher o campo 'designacao'|-|-|-|-|
+|`004`|Validar obrigatoriedade para valor 'nome', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>3.Acessar o endpoint `/sites/new`|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.designacao`<br>`c.velocidade contratada`<br>2.Clicar no botão **Enviar**|Balão² informando que é necessário preencher o campo 'nome'|-|-|-|-|
+|`005`|Validar obrigatoriedade para valor 'velocidade contratada', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>3.Acessar o endpoint `/sites/new`|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.designacao`<br>`c.nome`<br>2.Clicar no botão **Enviar**|Balão² informando que é necessário preencher o campo 'velocidade contratada'|-|-|-|-|
 
 ### Cenário 035 - Visualizar
 |ID   |Objetivo do teste|Pré-condições|Passos|Resultado esperado|Resultado obtido|Automatizado|Informações adicionais|Issue ID
 |-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
+|`001`|Validar se é permitido visualizar detalhes de Site|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>`a.Site`<br>3.Acessar o endpoint `/sites`|Clicar no link azul **<span style="color: #0908E7;">Detalhes</span>** de Site desejado|Exibição de todas as colunas de Site|-|-|-|-|
 
 ### Cenário 036 - Atualizar
 |ID   |Objetivo do teste|Pré-condições|Passos|Resultado esperado|Resultado obtido|Automatizado|Informações adicionais|Issue ID
 |-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
+|`001`|Validar se é permitido atualizar um Site com campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>`a.Site`<br>3.Acessar o endpoint `/sites`<br>4.Ter clicado no _link_ **<span style="color: #0908E7;">Editar</span>** de Site criado|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.designacao`<br>`c.nome`<br>`d.velocidade contratada`<br>2.Clicar no botão **Enviar**|1.Redicionamento para o Site atualizado em formato de planilha<br>2.Mensagem¹ **<span style="color: #60FF38;">VERDE</span>** contendo o valor de 'nome' e a informação de que o Site foi atualizado com sucesso|-|-|-|-|
+|`002`|Validar obrigatoriedade do campo 'Cliente', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:**2.1.Tabelas principais**<br>`a.Site`<br<br>3.Acessar o endpoint `/sites`<br>4.Ter clicado no _link_ **<span style="color: #0908E7;">Editar</span>** de Site criado|1.Preencher APENAS os campos obrigatórios:<br>`a.designacao`<br>`b.nome`<br>`c.velocidade contratada`<br>2.Clicar no botão **Enviar**|Balão² informando que é obrigatório selecionar um item para 'Cliente'|-|-|-|-|
+|`003`|Validar obrigatoriedade do campo 'designacao', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>`b.Site`<br>3.Acessar o endpoint `/sites`<br>4.Ter clicado no _link_ **<span style="color: #0908E7;">Editar</span>** de Site criado|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.nome`<br>`c.velocidade contratada`<br>2.Clicar no botão **Enviar**|Balão² informando que é necessário preencher o campo 'designacao'|-|-|-|-|
+|`004`|Validar obrigatoriedade do campo 'nome', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>`b.Site`<br>3.Acessar o endpoint `/sites`<br>4.Ter clicado no _link_ **<span style="color: #0908E7;">Editar</span>** de Site criado|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.designacao`<br>`c.velocidade contratada`<br>2.Clicar no botão **Enviar**|Balão² informando que é necessário preencher o campo 'nome'|-|-|-|-|
+|`005`|Validar obrigatoriedade do campo 'velocidade contratada', demais campos válidos|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>`b.Site`<br>3.Acessar o endpoint `/sites`<br>4.Ter clicado no _link_ **<span style="color: #0908E7;">Editar</span>** de Site criado|1.Preencher APENAS os campos obrigatórios:<br>`a.Cliente`<br>`b.designacao`<br>`c.nome`<br>2.Clicar no botão **Enviar**|Balão² informando que é necessário preencher o campo 'velocidade contratada'|-|-|-|-|
 
 ### Cenário 037 - Deletar
 |ID   |Objetivo do teste|Pré-condições|Passos|Resultado esperado|Resultado obtido|Automatizado|Informações adicionais|Issue ID
 |-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
+|`001`|Validar se é permitido deletar um Site|1.Ter a API levantada<br>2.Ter criado previamente AO MENOS um de cada:<br>**2.1.Tabelas principais**<br>`a.Cliente`<br>`b.Site`<br>3.Acessar o endpoint `/sites`|1.Clicar no link vermelho **<span style="color: crimson;">Apagar</span>** de Site desejada<br>2. Clicar em OK para confirmar a remoção do Status|Mensagem¹ com o valor de 'nome' informando que a Site foi apagado com sucesso|-|-|-|-|
 
 # Tabelas auxiliares
-## Funcionalidades para Grupos
-### Cenário 0XX - Criar
-|ID   |Objetivo do teste|Pré-condições|Passos|Resultado esperado|Resultado obtido|Automatizado|Informações adicionais|Issue ID
-|-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
+...
 
 <br><br><br><br><br><br><br><br>
 
@@ -271,7 +280,9 @@
 |-|-|-|-|-|-|-|-|-|
 
 # Legendas
+
 `Mensagem¹`  
 ![mensagem#a1](https://raw.githubusercontent.com/robinsonmourao/ERP-RIR/end-to-end-tests/app/assets/images/end-to-end-tests/Mensagem.png)
+
 `Balão²`  
 ![balao#a2](https://raw.githubusercontent.com/robinsonmourao/ERP-RIR/end-to-end-tests/app/assets/images/end-to-end-tests/Balão.png)
