@@ -43,9 +43,9 @@ class StatusesController < CrudTemplateController
   def build_acfs_list
     @acfs = []
 
-    @acfs += Site.all.map { |site| [site.nome_site, "#{site.id}"] }
-    @acfs += Fornecedor.all.map { |fornecedor| [fornecedor.nome_fornecedor, "#{fornecedor.id}"] }
-    @acfs += Cliente.all.map { |cliente| [cliente.nome_cliente, "#{cliente.id}"] }
     @acfs += Atendimento.all.map { |atendimento| [atendimento.codigo_atendimento_composto, "#{atendimento.id}"] }
+    @acfs += Cliente.all.map { |cliente| [cliente.nome_cliente, "#{cliente.id}"] }
+    @acfs += Fornecedor.all.map { |fornecedor| [fornecedor.nome_fornecedor, "#{fornecedor.id}"] }
+    @acfs += Site.all.map { |site| [site.nome_site, "#{site.id}"] }
   end
 end

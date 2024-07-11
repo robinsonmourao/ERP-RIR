@@ -99,10 +99,10 @@ class CrudTemplateController < ApplicationController
     templates = {
       Atendimento => ['tipo_links', 'tecnologia_links', 'meio_pagamentos', 'equipamentos'],
       Contato => ['meio_contatos', 'tipo_contatos'],
-      Cliente => ['ufs', 'municipios'],
+      Cliente => ['municipios'],
       Boleto => ['grupos', 'local_pagamentos'],
       Fatura => ['grupos', 'meio_pagamentos'],
-      Fornecedor => ['ufs', 'municipios'],
+      Fornecedor => ['municipios'],
       Site => ['tipo_links', 'municipios']
     }
     templates[classe] || []
