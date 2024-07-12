@@ -32,7 +32,6 @@ Tabela owned
 [APAGAR][BANCO DE DADOS]algumas entidades quando possuem relações, são lançadas rollback no console
 
 [ATUALIZAR]Usuários
-[Editar][status]não mostra o destinatário
 
 [NOTICE][SUCCESS]sobrepostos ao fechar contas
 

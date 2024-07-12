@@ -1,10 +1,11 @@
 Equipamento.create(['RB750R2', 'RB750GR3', 'RB750', 'RB750G', 'RB750GL'].map { |d| { descricao: d } })
 Grupo.create([{ descricao: 'Fatura não agrupada' }])
 LocalPagamento.create(['Sicoob', 'Banco do Brasil', 'Bradesco', 'CEF', 'Pessoalmente'].map { |d| { descricao: d } })
-MeioContato.create(['email', 'telefone', 'whatsapp'].map { |d| { descricao: d } })
+MeioContato.create(['Email', 'Telefone', 'Whatsapp'].map { |d| { descricao: d } })
 MeioPagamento.create(['Boleto', 'Pix'].map { |d| { descricao: d } })
 Situacao.create(['Ativo', 'Cancelado', 'Suspenso', 'Bloqueado', 'Pendente'].map { |d| { descricao: d } })
 TecnologiaLink.create(['Fibra', 'Rádio', 'Cabo'].map { |d| { descricao: d } })
+TipoContato.create(['Administrativo', 'Comercial', 'Dono', 'Financeiro', 'Suporte', 'Técnico'].map { |d| { descricao: d } })
 TipoLink.create(['IP dedicado', 'Banda Larga', 'VPN'].map { |d| { descricao: d } })
 Uf.create([['AC', 'Acre'], ['AL', 'Alagoas'], ['AM', 'Amazonas'], ['AP', 'Amapá'],
            ['BA', 'Bahia'],
