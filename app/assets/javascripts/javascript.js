@@ -33,6 +33,9 @@ onclick = (event) => {
     }
   }
 };
+function presenteNaTela(elemento){
+  return elemento.innerHTML.trim() !== '';
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   const closeAccountLink = document.querySelector('.close-account-link-autohide');
@@ -52,6 +55,25 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-function presenteNaTela(elemento){
-  return elemento.innerHTML.trim() !== '';
-}
+document.addEventListener('DOMContentLoaded', function() {
+  const defaultOptionRadioButton = document.getElementById('default-option-radio-button');
+  const secondOptionRadioButton = document.getElementById('second-option-radio-button');
+
+  const caixaDeTextoExpandable = document.querySelector('.caixa-de-texto-expandable');
+  const ExpandableTextField = document.getElementById('expandable_text');
+
+  function getExpandableOption() {
+    if (defaultOptionRadioButton.checked) {
+      caixaDeTextoExpandable.style.display = 'none';
+      ExpandableTextField.required = false;
+      ExpandableTextField.value = '';
+    } else if (secondOptionRadioButton.checked) {
+      caixaDeTextoExpandable.style.display = 'block';
+      ExpandableTextField.required = true;
+    }
+  }
+  getExpandableOption();
+
+  defaultOptionRadioButton.addEventListener('change', getExpandableOption);
+  secondOptionRadioButton.addEventListener('change', getExpandableOption);
+});

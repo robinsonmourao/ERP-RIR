@@ -58,14 +58,15 @@
 
     <div class='botao-radial'>
       <%= form.label :"Categoria do IP", required: true %>
-      <%= form.radio_button :ip, IP_FIXO %>
-      <%= form.label "IP fixo" %>
-      <%= form.radio_button :ip, IP_DINAMICO %>
+      <%= form.radio_button :ip, IP_DINAMICO, id: 'default-option-radio-button' %>
       <%= form.label "IP dinâmico" %>
+      <%= form.radio_button :ip, IP_FIXO, id: 'second-option-radio-button' %>
+      <%= form.label "IP fixo" %>
     </div>
 
-    <div class='caixa-de-texto'>
-      <%= form.text_field :ip_fixo, placeholder: "IP fixo" %>
+    <div class='caixa-de-texto-expandable'>
+      <%= form.label :"", class:'required' %>
+      <%= form.text_field :ip_fixo, placeholder: "IP fixo", required: true, id: 'expandable_text' %>
     </div>
 
     <div class='caixa-de-texto'>

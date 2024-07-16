@@ -187,10 +187,13 @@ body {
         margin: 5px;
         border-radius: 5px;
       }
-        .caixa-de-texto, .selecao-datas-horizontal {
+        .caixa-de-texto, .caixa-de-texto-expandable, .selecao-datas-horizontal {
           display: flex;
           justify-content: center;
           width: 100%;
+        }
+        .caixa-de-texto-expandable{
+          border-style: dashed;
         }
         .caixa-de-texto-vertical {
           display: flex;
