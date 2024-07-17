@@ -122,9 +122,9 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/RoteiroDeTestes.
 | Tarefa             | Status        |
 |--------------------|---------------|
 | Desenvolvimento da API    | CONCLUÍDO    |
-| Roteirização de testes    | PROGRESSO    |
+| Roteirização de testes    | CONCLUÍDO    |
+| Documentação readme.md    | CONCLUÍDO    |
 | Testes E2E(Ponta a ponta) | PROGRESSO    |
-| Documentação readme.md    | PROGRESSO    |
 | Casos de uso              | PENDENTE     |
 | Fluxo de eventos          | PENDENTE     |
 | Fluxos alternativos       | PENDENTE     |

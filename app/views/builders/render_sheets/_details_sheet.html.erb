@@ -1,0 +1,33 @@
+<% header_keys = @object.attributes.keys
+   cells_values = @object.attributes.values %>
+
+<div class='detalhes-planilha-container'>
+  <div class='detalhes-items-header-show'>
+    <% if @disabled_header.nil? %>
+      <% header_keys.each do |title| %>
+        <% if cells_values[header_keys.index(title)].present? %>
+          <% unless @except_columns.present? && @except_columns.include?(title) %>
+            <div class='detalhes-planilha-header'><%= title.humanize %></div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% @disabled_header = true %>
+    <% end %>
+  </div>
+
+  <div class='detalhes-items-cells_values-show'>
+    <% header_keys.each_with_index do |title, index| %>
+      <% next if @except_columns&.include?(title) %>
+      <% cell_value = cells_values[index] %>
+
+      <% if @custom_show_values.present? %>
+        <% custom_value = @custom_show_values.find { |cv| cv[0] == title } %>
+      <% end %>
+
+      <% final_value = custom_value ? custom_value[1] : cell_value %>
+      <% if final_value.present? %>
+        <div class='detalhes-planilha-celula'><%= final_value %></div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

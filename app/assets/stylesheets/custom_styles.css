@@ -158,7 +158,7 @@ body {
     max-width: 600px;
     min-width: 300px;
   }
-    .formulario-cadastrar-usuarios, .formulario-entrar-usuarios, .container-show, 
+    .formulario-cadastrar-usuarios, .formulario-entrar-usuarios, .container-usuario-show, 
     .formulario-cadastros {
       display: flex;
       justify-content: center;
@@ -217,7 +217,7 @@ body {
             font-size: 20px;
             box-sizing: border-box;
           }
-          
+
         #form-submit-button, #high-privileges-form-submit-button {
           padding: 10px 20px;
           margin: 5px;
@@ -230,7 +230,7 @@ body {
           text-wrap: wrap;
           justify-content: center;
           width: 100%;
-        }          
+        }
         #form-submit-button:hover {
           background-color: #0056b3;
         }
@@ -250,8 +250,41 @@ body {
           margin-left: 20px;
           font-weight: bold;
         }
-      
-  .container-show{
+
+    .detalhes-planilha-container {
+      display: flex;
+      flex-direction: row;
+    }
+      .detalhes-items-header-show, .detalhes-items-cells-show {
+        display: block;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        text-align: center;
+        background-color: azure;
+        width: auto;
+        overflow-x: auto;
+      }
+        .detalhes-planilha-header, .detalhes-planilha-celula {
+          padding: 0px 5px 0px 5px;
+          margin: 0px;
+          height: 30px;
+          min-width: 140px;
+          max-width: 300px;
+          border: 4px solid black;
+          border-style: groove;
+          overflow: auto;
+        }
+        .detalhes-planilha-header {
+          background-color: #ccc;
+          font-weight: bolder;
+          text-align: end;
+        }
+        .detalhes-planilha-celula {
+          background-color: azure;
+          text-align: start;
+        }
+
+  .container-usuario-show{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -278,7 +311,7 @@ body {
           border-radius: 5px;
           background-color: #ff9c9c;
         }
-                  
+
       .text_field {
         width: 100%;
         padding: 10px;

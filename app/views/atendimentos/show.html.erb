@@ -1,1 +1,5 @@
+<% @except_columns = ['codigo_atendimento', 'codigo_atendimento_composto', 'codigo_fornecedor']
+   @custom_show_values = [['ip',  ModuleIP::IP[@atendimento.ip]], 
+                          ['link',  ModuleLink::MODALIDADE[@atendimento.link]], 
+                          ['nota_fiscal', ModuloExistenciaNotaFiscal::NOTA_FISCAL[@atendimento.nota_fiscal]]] %>
 <%= render 'builders/render_templates/show', object: @atendimento %>
