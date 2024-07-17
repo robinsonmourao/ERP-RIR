@@ -4,7 +4,7 @@ Given('que eu esteja na tela de cadastro') do
   @cadastrar_page = CadastrarPage.new
   @cadastrar_page.load
 end
-And('#001002: '\
+And('#0102: '\
     'eu já tenha realizado meu cadastro previamente com '\
     'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
   RunStep.cadastrar(nome, password, permissao)

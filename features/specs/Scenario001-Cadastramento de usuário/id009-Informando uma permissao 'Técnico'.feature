@@ -8,7 +8,7 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido cadastro solicitando permissão 'Tecnico'
 
-    Dado #001009: que eu esteja na tela de cadastro.
-    Quando #001009: eu preencher os campos pertinentes com nome "UsuarioTecnico", password "12345678" e permissao "Técnico"
-        E #001009: eu clicar no botão cadastrar.
-    Então #001009: eu vejo uma mensagem de boas vindas com nome "UsuarioTecnico"
+    Dado #0109: que eu esteja na tela de cadastro.
+    Quando #0109: eu preencher os campos pertinentes com nome "UsuarioTecnico", password "12345678" e permissao "Técnico"
+        E #0109: eu clicar no botão cadastrar.
+    Então #0109: eu vejo uma mensagem de boas vindas com nome "UsuarioTecnico"

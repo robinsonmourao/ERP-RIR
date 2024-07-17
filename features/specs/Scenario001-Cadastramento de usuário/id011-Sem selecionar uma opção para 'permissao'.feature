@@ -8,7 +8,7 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido cadastro sem selecionar nenhuma opção para permissao
 
-    Dado #001011: que eu esteja na tela de cadastro.
-    Quando #001011: eu preencher os campos pertinentes com nome "UsuarioSuper", password "12345678" e permissao "Permissão desejada"
-        E #001011: eu clicar no botão cadastrar.
-    Então #001011: eu vejo um alerta informando é necessário selecionar um item da lista
+    Dado #0111: que eu esteja na tela de cadastro.
+    Quando #0111: eu preencher os campos pertinentes com nome "UsuarioSuper", password "12345678" e permissao "Permissão desejada"
+        E #0111: eu clicar no botão cadastrar.
+    Então #0111: eu vejo um alerta informando é necessário selecionar um item da lista

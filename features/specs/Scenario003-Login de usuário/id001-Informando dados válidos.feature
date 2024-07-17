@@ -8,9 +8,9 @@ Funcionalidade: Entrar no sistema
 
 Cenário: Validar se login funciona com dados válidos
 
-    Dado #003001: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
+    Dado #0301: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
         E eu esteja na tela de entrar
     Quando eu preencher os campos pertinentes com MESMO nome "UsuarioSuper" e password "12345678" cadastrados anteriormente
         E eu clicar no botão Entrar    
     Então eu sou redirecionado para dashboard.
-        E #003001: eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"
+        E #0301: eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"

@@ -1,6 +1,6 @@
 include RunStep
 
-Given('#003001: '\
+Given('#0301: '\
       'eu já tenha realizado meu cadastro previamente com '\
       'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
   RunStep.cadastrar(nome, password, permissao)
@@ -21,7 +21,7 @@ end
 Then('eu sou redirecionado para dashboard.') do
   expect(page).to have_current_path('http://127.0.0.1:3000/dashboard', url: true)
 end
-And('#003001: '\
+And('#0301: '\
     'eu vejo uma mensagem de boas vindas com nome {string}') do |nome|
   @message = find('.div-success > div:nth-child(1)')
   expect(@message.text).to eql "Bem-vindo, #{nome}!"

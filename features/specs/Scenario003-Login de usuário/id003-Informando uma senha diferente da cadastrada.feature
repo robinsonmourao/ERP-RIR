@@ -8,8 +8,8 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido entrar informando uma diferente da cadastrada
 
-    Dado #003003: eu já tenha meu usuário cadastrado com nome "UsuarioSuper", password "12345678" e permissao "Super"
-        E #003003: que eu esteja na tela entrar.
-    Quando #003003: eu preencher os campos pertinentes com nome "UsuarioSuper" e errar a password "87654321"
-        E #003003: eu clicar no botão Entrar.
-    Então #003003: eu vejo uma mensagem informando que a senha está incorreta.
+    Dado #0303: eu já tenha meu usuário cadastrado com nome "UsuarioSuper", password "12345678" e permissao "Super"
+        E #0303: que eu esteja na tela entrar.
+    Quando #0303: eu preencher os campos pertinentes com nome "UsuarioSuper" e errar a password "87654321"
+        E #0303: eu clicar no botão Entrar.
+    Então #0303: eu vejo uma mensagem informando que a senha está incorreta.

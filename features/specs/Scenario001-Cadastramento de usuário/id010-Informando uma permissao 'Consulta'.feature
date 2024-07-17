@@ -8,7 +8,7 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido cadastro solicitando permissão 'Consulta'
 
-    Dado #001010: que eu esteja na tela de cadastro.
-    Quando #001010: eu preencher os campos pertinentes com nome "UsuarioConsulta", password "12345678" e permissao "Consulta"
-        E #001010: eu clicar no botão cadastrar.
-    Então #001010: eu vejo uma mensagem de boas vindas com nome "UsuarioConsulta"
+    Dado #0110: que eu esteja na tela de cadastro.
+    Quando #0110: eu preencher os campos pertinentes com nome "UsuarioConsulta", password "12345678" e permissao "Consulta"
+        E #0110: eu clicar no botão cadastrar.
+    Então #0110: eu vejo uma mensagem de boas vindas com nome "UsuarioConsulta"

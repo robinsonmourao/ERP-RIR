@@ -1,6 +1,6 @@
 include RunStep
 
-Given('#005001: '\
+Given('#0501: '\
   'eu já tenha realizado meu cadastro previamente com '\
   'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
   RunStep.cadastrar(nome, password, permissao)
@@ -22,7 +22,7 @@ end
 Then('eu sou redirecionado para tela entrar.') do
   expect(page).to have_current_path('http://127.0.0.1:3000/', url: true)
 end
-And('#005001: eu vejo uma mensagem de confirmação de remoção de conta com nome {string}') do |nome|
+And('#0501: eu vejo uma mensagem de confirmação de remoção de conta com nome {string}') do |nome|
   @message = find('.div-success > div:nth-child(1)')
   expect(@message.text).to eql "Usuario de nome '#{nome}' foi apagado com sucesso."
 end

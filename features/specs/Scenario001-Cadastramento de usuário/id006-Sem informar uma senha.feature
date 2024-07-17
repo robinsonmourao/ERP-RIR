@@ -8,7 +8,7 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido cadastro sem informar nenhuma senha
 
-    Dado #001006: que eu esteja na tela de cadastro.
-    Quando #001006: eu preencher os campos pertinentes com nome "UsuarioSuper", password "" e permissao "Super"
-        E #001006: eu clicar no botão cadastrar.
-    Então #001006: eu vejo um alerta informando que o campo não pode ser vazio
+    Dado #0106: que eu esteja na tela de cadastro.
+    Quando #0106: eu preencher os campos pertinentes com nome "UsuarioSuper", password "" e permissao "Super"
+        E #0106: eu clicar no botão cadastrar.
+    Então #0106: eu vejo um alerta informando que o campo não pode ser vazio

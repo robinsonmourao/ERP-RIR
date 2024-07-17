@@ -12,4 +12,4 @@ Cenário: Validar se é permitido cadastro de usuário com dados válidos
     Quando eu preencher os campos pertinentes com nome "UsuarioSuper", password "12345678" e permissao "Super"
         E eu clicar no botão cadastrar.
     Então eu sou redirecionado para dashboard
-        E #001001: eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"
+        E #0101: eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"

@@ -8,7 +8,7 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido cadastro solicitando permissão 'Super'
 
-    Dado #001007: que eu esteja na tela de cadastro.
-    Quando #001007: eu preencher os campos pertinentes com nome "UsuarioSuper", password "12345678" e permissao "Super"
-        E #001007: eu clicar no botão cadastrar.
-    Então #001007: eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"
+    Dado #0107: que eu esteja na tela de cadastro.
+    Quando #0107: eu preencher os campos pertinentes com nome "UsuarioSuper", password "12345678" e permissao "Super"
+        E #0107: eu clicar no botão cadastrar.
+    Então #0107: eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"

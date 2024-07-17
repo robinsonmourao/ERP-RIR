@@ -8,7 +8,7 @@ Funcionalidade: Cadastrar no sistema
 
 Cenário: Validar se é permitido cadastro sem informar nenhum um nome
 
-    Dado #001003: que eu esteja na tela de cadastro.
-    Quando #001003: eu preencher os campos pertinentes com nome "", password "12345678" e permissao "Super"
-        E #001003: eu clicar no botão cadastrar.
-    Então #001003: eu vejo um alerta informando que o campo não pode ser vazio
+    Dado #0103: que eu esteja na tela de cadastro.
+    Quando #0103: eu preencher os campos pertinentes com nome "", password "12345678" e permissao "Super"
+        E #0103: eu clicar no botão cadastrar.
+    Então #0103: eu vejo um alerta informando que o campo não pode ser vazio
