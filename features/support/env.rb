@@ -4,7 +4,6 @@ require 'capybara/rspec/matchers'
 require 'selenium-webdriver'
 require 'rspec'
 require 'site_prism'
-require 'cucumber/rails'
 require_relative 'page_helper'
 
 World(Capybara::DSL)
