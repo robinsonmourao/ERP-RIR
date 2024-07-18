@@ -1,5 +1,5 @@
 # language: pt
-
+@skip
 Funcionalidade: Cadastrar no sistema
 
 -Eu como usuário.

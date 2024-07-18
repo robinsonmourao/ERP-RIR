@@ -6,4 +6,13 @@ class DashboardPage < SitePrism::Page
   def clicar_sair
     sair_button.click
   end
+
+  def cursor_hover(selector)
+    elemento = find(selector)
+    elemento.hover
+  end
+
+  def clicar_submenu_link(link)
+    find('ul.submenu li a', text: link).click
+  end
 end
