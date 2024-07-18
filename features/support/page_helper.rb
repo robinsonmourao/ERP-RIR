@@ -1,3 +1,7 @@
+require 'capybara'
+require 'capybara/dsl'
+require 'sqlite3'
+
 Dir[File.join(File.dirname(__FILE__), '../pages/*_page.rb')].each { |file| require file }
 
 module Pages
@@ -7,28 +11,31 @@ module Pages
 end
 
 module RunStep
-
-  def pegar_id_atual
-    url_atual = Capybara.current_url
-    id_criado = url_atual.split('/').last
-  
-    # Exibir o ID capturado (opcional)
-    puts "ID do site criado: #{id_criado}"
-  
-    id_criado
-  end
-  
   def cadastrar(nome, password, permissao)
     @cadastrar_page = CadastrarPage.new
     @cadastrar_page.load
 
     @cadastrar_page.preencher_dados(nome, password, permissao)
     @cadastrar_page.clicar_cadastrar
-    sleep(1)
   end
 end
 
 module SetUp
+  def initialize
+    $objeto_map ||= []
+  end
+
+  def pegar_id_atual
+    url_atual = Capybara.current_url
+    partes_url = url_atual.split('/')
+
+    objeto = partes_url[3]
+    id_criado = partes_url.last
+
+    $objeto_map ||= []
+    $objeto_map << [objeto, id_criado]
+  end
+
   def cliente_principal
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -57,6 +64,8 @@ module SetUp
     @site_principal.preencher_campo('#site_nome_site', 'site_principal')
     @site_principal.preencher_campo('#site_velocidade_contratada', '10')
     @site_principal.clicar_enviar
+
+    pegar_id_atual
   end
 
   def fornecedor_principal
@@ -69,17 +78,41 @@ module SetUp
     @cliente_principal = NovoObjectPage.new('fornecedores')
     @cliente_principal.preencher_campo('#fornecedor_nome_fornecedor', 'fornecedor_principal')
     @cliente_principal.clicar_enviar
+
+    pegar_id_atual
   end
 end
 
-def execute_sql(query)
-  ActiveRecord::Base.connection.execute(query)
-end
-
 module SetDown
-  # def limpar_dados_de_teste
-  #   execute_sql("DELETE FROM clientes WHERE nome_cliente = 'cliente_principal';")
-  # end
+  def execute_sql(query)
+    db = SQLite3::Database.new "C:/Users/Ryzen/Desktop/ERP-RIR/storage/development.sqlite3"
+    db.execute(query)
+  ensure
+    db.close if db
+  end
+
+  def reverse_data_base
+    if $objeto_map
+      $objeto_map.reverse_each do |objeto, id|
+        case objeto
+        when 'atendimentos'
+          execute_sql("DELETE FROM atendimentos WHERE codigo_atendimento = #{id};")
+        when 'clientes'
+          execute_sql("DELETE FROM clientes WHERE codigo_cliente = #{id};")
+        when 'fornecedors'
+          execute_sql("DELETE FROM fornecedors WHERE codigo_fornecedor = #{id};")
+        when 'sites'
+          execute_sql("DELETE FROM sites WHERE codigo_site = #{id};")
+        else
+          puts "Tipo de objeto não reconhecido: #{objeto}"
+        end
+        execute_sql("DELETE FROM usuarios WHERE nome = 'UsuarioSuper';")
+        puts "#{objeto} com ID #{id} deletado."
+      end
+    else
+      puts 'objects_map vazio!'
+    end
+  end
 end
 
-World(SetDown)
+include SetUp, SetDown # ver se funciona sem

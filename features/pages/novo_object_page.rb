@@ -7,6 +7,7 @@ class NovoObjectPage < SitePrism::Page
 
   def clicar_enviar
     enviar_button.click
+    pegar_id_atual
   end
 
   def selecionar_item(seletor, valor)
