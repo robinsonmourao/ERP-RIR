@@ -109,12 +109,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "descricao", null: false
   end
 
-  create_table "midias_sociais", id: false, force: :cascade do |t|
-    t.integer "codigo_tipo_midia_social"
-    t.string "tabela", limit: 1, null: false
-    t.text "descricao", null: false
-  end
-
   create_table "municipios", primary_key: "codigo_municipio", force: :cascade do |t|
     t.integer "codigo_uf", null: false
     t.text "nome_municipio", null: false
@@ -160,11 +154,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "descricao", null: false
   end
 
-  create_table "tipo_midias_sociais", id: false, force: :cascade do |t|
-    t.integer "codigo_midia_social"
-    t.text "descricao", null: false
-  end
-
   create_table "ufs", primary_key: "codigo_uf", force: :cascade do |t|
     t.string "sigla", limit: 2, null: false
     t.text "nome_estado", null: false
@@ -196,7 +185,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "faturas", "statuses", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "fornecedors", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "fornecedors", "sites", column: "codigo_site", primary_key: "codigo_site"
-  add_foreign_key "midias_sociais", "tipo_midias_sociais", column: "codigo_tipo_midia_social", primary_key: "codigo_tipo_midia_social"
   add_foreign_key "municipios", "ufs", column: "codigo_uf", primary_key: "codigo_uf"
   add_foreign_key "sites", "clientes", column: "codigo_cliente", primary_key: "codigo_cliente"
   add_foreign_key "sites", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
