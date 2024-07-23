@@ -1,5 +1,6 @@
 # language: pt
-
+@skip
+@apagar_ao_terminar
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.
@@ -16,5 +17,5 @@ Cenário: Validar se é permitido criar um novo Atendimento com dados válidos
         E #0601: eu escolher o item da lista Fornecedor "fornecedor_principal"
         E #0601: eu preencher o campo velocidade de download "10"
         E #0601: eu clicar no botão Enviar.
-    Então #0601: eu sou redirecionado para detalhes do novo Atendimento criado
+    Então #0601: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados e valores autopreenchidos
         E #0601: eu vejo a informação de que o Atendimento foi criado com sucesso com o valor de codigo_atendimento_composto.

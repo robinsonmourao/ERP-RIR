@@ -9,8 +9,6 @@ After('@logout') do
   sleep(1)
 end
 
-After('@apagar_usuario_ao_terminar') do
-  execute <<-SQL
-    DELETE FROM usuarios WHERE nome='UsuarioSuper';
-  SQL
+After('@apagar_ao_terminar') do
+  SetDown.reverse_data_base
 end

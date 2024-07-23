@@ -22,7 +22,7 @@ end
 
 module SetUp
   def initialize
-    $objeto_map ||= []
+    $objetos_map ||= []
   end
 
   def pegar_id_atual
@@ -32,8 +32,8 @@ module SetUp
     objeto = partes_url[3]
     id_criado = partes_url.last
 
-    $objeto_map ||= []
-    $objeto_map << [objeto, id_criado]
+    $objetos_map ||= []
+    $objetos_map << [objeto, id_criado]
   end
 
   def cliente_principal
@@ -43,7 +43,7 @@ module SetUp
     @dashboard_page.cursor_hover('#clientes')
     @dashboard_page.clicar_submenu_link('Novo')
 
-    @cliente_principal = NovoObjectPage.new('clientes')
+    @cliente_principal = ObjectPage.new('clientes')
     @cliente_principal.preencher_campo('#cliente_nome_cliente', 'cliente_principal')
     @cliente_principal.preencher_campo('#cliente_cnpj', 'XXXXXXXXXXXX01')
     @cliente_principal.clicar_enviar
@@ -58,7 +58,7 @@ module SetUp
     @dashboard_page.cursor_hover('#sites')
     @dashboard_page.clicar_submenu_link('Novo')
 
-    @site_principal = NovoObjectPage.new('sites')
+    @site_principal = ObjectPage.new('sites')
     @site_principal.selecionar_item('#site_codigo_cliente', 'cliente_principal')
     @site_principal.preencher_campo('#site_designacao', 'RIR')
     @site_principal.preencher_campo('#site_nome_site', 'site_principal')
@@ -75,7 +75,7 @@ module SetUp
     @dashboard_page.cursor_hover('#fornecedores')
     @dashboard_page.clicar_submenu_link('Novo')
 
-    @cliente_principal = NovoObjectPage.new('fornecedores')
+    @cliente_principal = ObjectPage.new('fornecedores')
     @cliente_principal.preencher_campo('#fornecedor_nome_fornecedor', 'fornecedor_principal')
     @cliente_principal.clicar_enviar
 
@@ -84,26 +84,37 @@ module SetUp
 end
 
 module SetDown
+  BASE_PATH = "/home/robinson/Desktop/ERP-RIR/"
+  
   def execute_sql(query)
-    db = SQLite3::Database.new "C:/Users/Ryzen/Desktop/ERP-RIR/storage/development.sqlite3"
+    db = SQLite3::Database.new "#{BASE_PATH}/storage/development.sqlite3"
     db.execute(query)
   ensure
     db.close if db
   end
 
   def reverse_data_base
-    if $objeto_map
-      $objeto_map.reverse_each do |objeto, id|
+    puts $objects_map
+    if $objetos_map.any?
+      $objetos_map.reverse_each do |objeto, id|
         case objeto
         when 'atendimentos'
           execute_sql("DELETE FROM atendimentos WHERE codigo_atendimento = #{id};")
         when 'clientes'
           execute_sql("DELETE FROM clientes WHERE codigo_cliente = #{id};")
-        when 'fornecedors'
-          execute_sql("DELETE FROM fornecedors WHERE codigo_fornecedor = #{id};")
         when 'sites'
           execute_sql("DELETE FROM sites WHERE codigo_site = #{id};")
         else
+          debug = true
+          if debug
+            puts $objects_map
+            execute_sql("DELETE FROM atendimentos;")
+            execute_sql("DELETE FROM fornecedors;")
+            execute_sql("DELETE FROM sites;")
+            execute_sql("DELETE FROM clientes;")
+            execute_sql("DELETE FROM usuarios;")
+            puts $objects_map
+          end
           puts "Tipo de objeto não reconhecido: #{objeto}"
         end
         execute_sql("DELETE FROM usuarios WHERE nome = 'UsuarioSuper';")
@@ -114,5 +125,3 @@ module SetDown
     end
   end
 end
-
-include SetUp, SetDown # ver se funciona sem

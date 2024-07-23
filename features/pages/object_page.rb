@@ -1,4 +1,4 @@
-class NovoObjectPage < SitePrism::Page
+class ObjectPage < SitePrism::Page
   def initialize(entidade)
     self.class.set_url("http://127.0.0.1:3000/#{entidade}/new")
   end
