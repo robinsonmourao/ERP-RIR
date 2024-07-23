@@ -10,7 +10,8 @@ And('#0103: eu clicar no botão cadastrar.') do
   @cadastrar_page.clicar_cadastrar
 end
 
-Then('#0103: eu vejo um alerta informando que o campo não pode ser vazio') do
-  nome_field = find('input#nome')
-  expect(nome_field.value).to eq ''
+Then('#0103: eu vejo um alerta informando que o campo não pode ser vazio') do  
+  field = find('input#nome')
+  validation_message = field.native.attribute('validationMessage')
+  expect(validation_message).to eq('Preencha este campo.')
 end

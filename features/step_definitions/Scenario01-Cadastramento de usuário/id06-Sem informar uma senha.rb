@@ -11,6 +11,7 @@ And('#0106: eu clicar no botão cadastrar.') do
 end
 
 Then('#0106: eu vejo um alerta informando que o campo não pode ser vazio') do
-  password_field = find('input#password')
-  expect(password_field.value).to eq ''
+  field = find('input#password')
+  validation_message = field.native.attribute('validationMessage')
+  expect(validation_message).to eq('Preencha este campo.')
 end

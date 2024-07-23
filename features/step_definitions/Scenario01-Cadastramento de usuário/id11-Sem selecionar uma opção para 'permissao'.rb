@@ -11,6 +11,7 @@ And('#0111: eu clicar no botão cadastrar.') do
 end
 
 Then('#0111: eu vejo um alerta informando é necessário selecionar um item da lista') do
-  permissao_field = find('#permissao')
-  expect(permissao_field.value).to eq ''
+  list = find("#permissao", match: :first)
+  validation_message = list.native.attribute('validationMessage')
+  expect(validation_message).to eq('Selecione um item da lista.')
 end
