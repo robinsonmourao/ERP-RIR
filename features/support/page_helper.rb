@@ -25,15 +25,25 @@ module SetUp
     $objetos_map ||= []
   end
 
+  def id_foi_gerado?(partes_url)
+    begin
+      if Integer(partes_url.last)
+        @objeto = partes_url[3]
+        @id_criado = partes_url.last
+        true
+      else
+        false
+      end
+    rescue ArgumentError
+      false
+    end
+  end
+
   def pegar_id_atual
     url_atual = Capybara.current_url
     partes_url = url_atual.split('/')
-
-    objeto = partes_url[3]
-    id_criado = partes_url.last
-
-    $objetos_map ||= []
-    $objetos_map << [objeto, id_criado]
+    
+    $objetos_map << [@objeto, @id_criado] if id_foi_gerado?(partes_url)
   end
 
   def cliente_principal
@@ -94,7 +104,6 @@ module SetDown
   end
 
   def reverse_data_base
-    puts $objects_map
     if $objetos_map.any?
       $objetos_map.reverse_each do |objeto, id|
         case objeto
@@ -104,17 +113,9 @@ module SetDown
           execute_sql("DELETE FROM clientes WHERE codigo_cliente = #{id};")
         when 'sites'
           execute_sql("DELETE FROM sites WHERE codigo_site = #{id};")
+        when 'fornecedors'
+          execute_sql("DELETE FROM fornecedors WHERE codigo_fornecedor = #{id};")
         else
-          debug = true
-          if debug
-            puts $objects_map
-            execute_sql("DELETE FROM atendimentos;")
-            execute_sql("DELETE FROM fornecedors;")
-            execute_sql("DELETE FROM sites;")
-            execute_sql("DELETE FROM clientes;")
-            execute_sql("DELETE FROM usuarios;")
-            puts $objects_map
-          end
           puts "Tipo de objeto não reconhecido: #{objeto}"
         end
         execute_sql("DELETE FROM usuarios WHERE nome = 'UsuarioSuper';")
