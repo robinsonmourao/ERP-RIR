@@ -36,6 +36,5 @@ Então('#0603: eu vejo um balão informando que é obrigatório selecionar um it
   item = find("#atendimento_codigo_fornecedor", match: :first)
   validation_message = item.native.attribute('validationMessage')
   expect(validation_message).to eq('Selecione um item da lista.')
-  # SetDown.reverse_data_base
 end
 

@@ -5,8 +5,7 @@ Dado('#0602: eu já tenha realizado meu cadastro previamente com '\
   RunStep.cadastrar(nome, password, permissao)
 end
 
-E('#0602: eu já tenha criado um Cliente e Fornecedor previamente') do
-  SetUp.cliente_principal
+E('#0602: eu já tenha criado um Fornecedor previamente') do
   SetUp.fornecedor_principal
 end
 
@@ -36,6 +35,5 @@ Então('#0602: eu vejo um balão informando que é obrigatório selecionar um it
   item = find("#atendimento_designacao", match: :first)
   validation_message = item.native.attribute('validationMessage')
   expect(validation_message).to eq('Selecione um item da lista.')
-  # SetDown.reverse_data_base
 end
 

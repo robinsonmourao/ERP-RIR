@@ -1,11 +1,11 @@
 # language: pt
-
-
+@skip
+@apagar_ao_terminar
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.
 -Quero tentar criar um novo Atendimento no sistema sem informar um valor para Site.
--Para verificar a obrigatoriedade para Site.
+-Para verificar a obrigatoriedade da lista de Site.
 
 Cenário: Validar obrigatoriedade para valor 'Site'
 
