@@ -121,8 +121,6 @@ module SetDown
         execute_sql("DELETE FROM usuarios WHERE nome = 'UsuarioSuper';")
         puts "#{objeto} com ID #{id} deletado."
       end
-    else
-      puts 'objects_map vazio!'
     end
   end
 end

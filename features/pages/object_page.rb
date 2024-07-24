@@ -17,4 +17,13 @@ class ObjectPage < SitePrism::Page
   def preencher_campo(seletor, valor)
     find(seletor).set valor
   end
+
+  def selecionar_checkbox(seletor, marcado = false)
+    checkbox = find(seletor)
+    checkbox.set(marcado) unless checkbox.checked? == marcado
+  end
+  
+  def selecionar_radiobutton(selector)
+    find(selector).choose
+  end
 end
