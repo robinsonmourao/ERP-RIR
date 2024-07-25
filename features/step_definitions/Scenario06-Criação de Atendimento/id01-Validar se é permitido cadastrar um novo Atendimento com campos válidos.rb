@@ -38,7 +38,8 @@ E('#0601: eu clicar no botão Enviar.') do
 end
 
 Então('#0601: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados e valores autopreenchidos') do
-  expected_values = { '#designacao-value' => 'RIR', 
+  expected_values = { '#codigo_fornecedor-value' => 'fornecedor_principal', 
+                      '#designacao-value' => 'RIR', 
                       '#velocidade_down-value' => '10',
                       '#ip-value' => 'IP Dinâmico', 
                       '#link-value' => 'Principal',
@@ -48,6 +49,7 @@ Então('#0601: eu sou redirecionado para detalhes do novo Atendimento criado con
   expected_values.each do |id, value|
     expect(page.find("#{id}").text).to eq(value)
   end
+  sleep(5)
 end
 
 E('#0601: eu vejo a informação de que o Atendimento foi criado com sucesso com o valor de codigo_atendimento_composto.') do

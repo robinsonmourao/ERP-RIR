@@ -46,7 +46,8 @@ E('#0621: eu clicar no botão Enviar.') do
 end
 
 Então('#0621: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados') do
-  expected_values = { '#designacao-value' => 'RIR', 
+  expected_values = { '#codigo_fornecedor-value' => 'fornecedor_principal', 
+                      '#designacao-value' => 'RIR', 
                       '#velocidade_down-value' => '10',
                       '#link-value' => 'Principal',
                       '#dia_vencimento-value' => '25', 
