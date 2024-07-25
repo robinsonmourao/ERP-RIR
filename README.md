@@ -50,6 +50,7 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/RoteiroDeTestes.
 - **views** -> Contém visões do modelo M[V]C
   - `builders` -> Builders da aplicação
     - `render_sheets` -> Pasta com o arquivo de renderização unificado para planilhamento de TODOS os objetos
+      - `_details_sheet.html.erb` -> Arquivo de renderização unificado para planilhamento de TODAS as colunas e TODOS os objetos
       - `_sheet.html.erb` -> Arquivo de renderização unificado para planilhamento de TODOS os objetos
     - `render_templates` -> Renderização unificada para TODAS as tabelas principais
     - `render_templates_secundarias` -> Renderização unificada para TODAS as tabelas secundárias

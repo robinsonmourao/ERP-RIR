@@ -1,5 +1,18 @@
-<% @except_columns = ['codigo_atendimento', 'codigo_atendimento_composto', 'codigo_fornecedor']
-   @custom_show_values = [['ip',  ModuleIP::IP[@atendimento.ip]], 
+<% @except_columns = ['codigo_atendimento', 'codigo_atendimento_composto']
+   @custom_show_values = [['ip', ModuleIP::IP[@atendimento.ip]], 
+                          ['nota_fiscal', ModuloExistenciaNotaFiscal::NOTA_FISCAL[@atendimento.nota_fiscal]],
                           ['link',  ModuleLink::MODALIDADE[@atendimento.link]], 
-                          ['nota_fiscal', ModuloExistenciaNotaFiscal::NOTA_FISCAL[@atendimento.nota_fiscal]]] %>
+
+                          Equipamento.exists?(@atendimento.codigo_equipamento) ?
+                            ['codigo_equipamento', Equipamento.find(@atendimento.codigo_equipamento).descricao] : [], 
+                          Fornecedor.exists?(@atendimento.codigo_fornecedor) ?
+                            ['codigo_fornecedor', Fornecedor.find(@atendimento.codigo_fornecedor).nome_fornecedor] : [], 
+                          MeioPagamento.exists?(@atendimento.codigo_meio_pagamento) ?
+                            ['codigo_meio_pagamento', MeioPagamento.find(@atendimento.codigo_meio_pagamento).descricao] : [],
+                          TecnologiaLink.exists?(@atendimento.codigo_tecnologia_link) ?
+                            ['codigo_tecnologia_link', TecnologiaLink.find(@atendimento.codigo_tecnologia_link).descricao] : [],
+                          TipoLink.exists?(@atendimento.codigo_tipo_link) ?
+                            ['codigo_tipo_link', TipoLink.find(@atendimento.codigo_tipo_link).descricao] : []
+                         ] %>
+
 <%= render 'builders/render_templates/show', object: @atendimento %>
