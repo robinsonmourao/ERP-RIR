@@ -20,7 +20,7 @@ end
 
 Quando('#0602: eu escolher o item da lista Fornecedor {string}') do |fornecedor|
   @novo_atendimento_page = ObjectPage.new('atendimentos')
-  @novo_atendimento_page.selecionar_item('#atendimento_codigo_fornecedor', fornecedor)
+  @novo_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
 end
 
 E('#0602: eu preencher o campo velocidade de download {string}') do |velocidade_de_download|

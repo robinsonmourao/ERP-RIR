@@ -119,7 +119,6 @@ module SetDown
           puts "Tipo de objeto não reconhecido: #{objeto}"
         end
         execute_sql("DELETE FROM usuarios WHERE nome = 'UsuarioSuper';")
-        puts "#{objeto} com ID #{id} deletado."
       end
     end
   end

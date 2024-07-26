@@ -26,7 +26,7 @@ Quando('#0605: eu escolher o item da lista Designação {string}') do |site|
 end
 
 E('#0605: eu escolher o item da lista Fornecedor {string}') do |fornecedor|
-  @novo_atendimento_page.selecionar_item('#atendimento_codigo_fornecedor', fornecedor)
+  @novo_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
 end
 
 E('#0605: eu preencher o campo velocidade de download {string}') do |velocidade_de_download|

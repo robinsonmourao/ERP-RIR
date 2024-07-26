@@ -26,7 +26,7 @@ Quando('#0618: eu escolher o item da lista Designação {string}') do |site|
 end
 
 E('#0618: eu escolher o item da lista Fornecedor {string}') do |fornecedor|
-  @novo_atendimento_page.selecionar_item('#atendimento_codigo_fornecedor', fornecedor)
+  @novo_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
 end
 
 E('#0618: eu preencher o campo velocidade de download {string}') do |velocidade_de_download|
@@ -42,7 +42,7 @@ E('#0618: eu clicar no botão Enviar.') do
 end
 
 Então('#0618: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados') do
-  expected_values = { '#codigo_fornecedor-value' => 'fornecedor_principal', 
+  expected_values = { '#nome_fornecedor-value' => 'fornecedor_principal', 
                       '#designacao-value' => 'RIR', 
                       '#velocidade_down-value' => '10',
                       '#ip-value' => 'IP Dinâmico', 
@@ -58,6 +58,6 @@ end
 
 E('#0618: eu vejo a informação de que o Atendimento foi criado com sucesso com o valor de codigo_atendimento_composto em formato <001designação 002nome_do_fornecedor>.') do
   @message = find('.div-success > div:nth-child(1)')
-  expect(@message.text).to eql "Atendimento com codigo_atendimento_composto '001RIR 002fornecedor_principal' foi criado com sucesso."
+  expect(@message.text).to eql "Atendimento com codigo atendimento composto '001RIR 002fornecedor_principal' foi criado com sucesso."
 end
 
