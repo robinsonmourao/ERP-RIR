@@ -2,15 +2,13 @@
     "editor.tabSize": "2",
     "editor.renderWhitespace": "trailing",
 
-    //{LINUX}
-	//"ruby.rubocop.executePath": "/usr/local/bin/",
-	//"ruby.rubocop.configFilePath": "/.config/rubocop.yml",
-	//"ruby.rubocop.onSave": true
-	//...
+    // {LINUX}
+		"ruby.rubocop.executePath": "/usr/local/bin/",
+		"ruby.rubocop.configFilePath": "/.config/rubocop.yml",
 
-	//...
-	//{WINDOWS}
-    "ruby.rubocop.executePath": "C:\\Ruby33-x64\\bin\\",
-	//"ruby.rubocop.configFilePath": "/.config/rubocop.yml",
-	"ruby.rubocop.onSave": true
+		// {WINDOWS}
+		// "ruby.rubocop.executePath": "C:\\Ruby33-x64\\bin\\",
+		// "ruby.rubocop.configFilePath": "/.config/rubocop.yml",
+
+		"ruby.rubocop.onSave": true
 }

@@ -55,4 +55,3 @@ E('#0601: eu vejo a informação de que o Atendimento foi criado com sucesso com
   @message = find('.div-success > div:nth-child(1)')
   expect(@message.text).to eql "Atendimento com codigo atendimento composto '001RIR 002fornecedor_principal' foi criado com sucesso."
 end
-

@@ -50,7 +50,7 @@ Então('#0614: eu sou redirecionado para detalhes do novo Atendimento criado con
                       '#dia_vencimento-value' => '25', 
                       '#nota_fiscal-value' => 'Inexistente',
 
-                      '#valor_instalacao-value' => '150.00' }
+                      '#valor_instalacao-value' => '150,00' }
   expected_values.each do |id, value|
     expect(page.find("#{id}").text).to eq(value)
   end

@@ -22,7 +22,7 @@ class ObjectPage < SitePrism::Page
     checkbox = find(seletor)
     checkbox.set(marcado) unless checkbox.checked? == marcado
   end
-  
+
   def selecionar_radiobutton(selector)
     find(selector).choose
   end
