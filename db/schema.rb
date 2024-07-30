@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.1].define(version: 23) do
   create_table "atendimentos", primary_key: "codigo_atendimento", force: :cascade do |t|
     t.text "designacao", null: false
-    t.integer "codigo_fornecedor", null: false
+    t.integer "nome_fornecedor", null: false
     t.integer "codigo_tecnologia_link"
     t.integer "codigo_tipo_link"
     t.integer "velocidade_down", null: false
@@ -166,7 +166,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   add_foreign_key "atendimentos", "equipamentos", column: "codigo_equipamento", primary_key: "codigo_equipamento"
-  add_foreign_key "atendimentos", "fornecedors", column: "codigo_fornecedor", primary_key: "codigo_fornecedor"
+  add_foreign_key "atendimentos", "fornecedors", column: "nome_fornecedor", primary_key: "nome_fornecedor"
   add_foreign_key "atendimentos", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "atendimentos", "sites", column: "designacao", primary_key: "designacao"
   add_foreign_key "atendimentos", "tecnologia_links", column: "codigo_tecnologia_link", primary_key: "codigo_tecnologia_link"

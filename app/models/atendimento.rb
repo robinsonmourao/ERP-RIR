@@ -3,7 +3,7 @@ class Atendimento < ApplicationRecord
 
   attribute :codigo_atendimento, :integer
   attribute :designacao, :text
-  attribute :codigo_fornecedor, :integer
+  attribute :nome_fornecedor, :text
   attribute :codigo_tecnologia_link, :integer
   attribute :codigo_tipo_link, :integer
   attribute :velocidade_down, :integer
@@ -21,14 +21,13 @@ class Atendimento < ApplicationRecord
   attribute :nota_fiscal, :integer, default: 0
   attribute :codigo_equipamento, :integer
 
-  has_one :fornecedor, foreign_key: 'codigo_fornecedor'
   has_one :tipo_link, foreign_key: 'codigo_tipo_link'
   has_one :tipo_tecnologia, foreign_key: 'codigo_tipo_tecnologia'
   has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
   has_many :equipamento, foreign_key: 'codigo_equipamento'
 
   validates :designacao, presence: true
-  validates :codigo_fornecedor, presence: true
+  validates :nome_fornecedor, presence: true
   validates :velocidade_down, presence: true, numericality: { greater_than: 0 }
   validates :velocidade_up, numericality: { greater_than: 0 }, allow_nil: true
   validates :ip, presence: true, inclusion: { in: [1, 2] }

@@ -7,7 +7,7 @@
       <% header_keys.each do |title| %>
         <% if cells_values[header_keys.index(title)].present? %>
           <% unless @except_columns.present? && @except_columns.include?(title) %>
-            <div id="<%= title.parameterize %>-key"  class='detalhes-planilha-header'><%= title.humanize %></div>
+            <div id="<%= title.parameterize %>-key"  class='detalhes-planilha-header'><%= title.gsub('codigo_', '').humanize %></div>
           <% end %>
         <% end %>
       <% end %>

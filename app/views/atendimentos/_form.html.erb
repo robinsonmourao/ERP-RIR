@@ -10,7 +10,7 @@
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-       <%= form.collection_select :codigo_fornecedor, Fornecedor.all, :codigo_fornecedor, :nome_fornecedor,  
+       <%= form.collection_select :nome_fornecedor, Fornecedor.all, :nome_fornecedor, :nome_fornecedor,  
                                  { prompt: "SELECIONE um FORNECEDOR" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>

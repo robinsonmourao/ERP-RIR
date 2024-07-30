@@ -23,15 +23,15 @@ class CrudTemplateController < ApplicationController
     classe = object.class
     new_object = classe.new(object_params)
     load_nome_parametro_unico(classe)
-    valor_parametro_unico = object_params[@nome_parametro_unico]
-
+    load_valor_parametro_unico(classe, new_object, object_params)
+    
     if new_object.save
-      flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
+      flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{@valor_parametro_unico}' 
                         foi criado com sucesso."
       classe == Usuario ? autenticar(new_object) : redirect_to(new_object)
     else
       flash[:notice] = "Não foi possível salvar #{classe}. 
-                           O #{@nome_parametro_unico.humanize.downcase}: '#{valor_parametro_unico}' já está em uso OU é inválido!"
+                           O #{@nome_parametro_unico.humanize.downcase}: '#{@valor_parametro_unico}' já está em uso OU é inválido!"
       classe == Usuario ? redirect_to(new_usuario_path) : render('new')
     end
   rescue ActiveRecord::RecordInvalid => e
@@ -45,7 +45,7 @@ class CrudTemplateController < ApplicationController
   def update_template(object, object_params)
     classe = object.class
     load_nome_parametro_unico(classe)
-    valor_parametro_unico = object_params[@nome_parametro_unico]
+    valor_parametro_unico = object[@nome_parametro_unico]
 
     if object.update(object_params)
       flash[:success] = "#{classe} de #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
@@ -110,7 +110,7 @@ class CrudTemplateController < ApplicationController
 
   def load_nome_parametro_unico(classe)
     templates = {
-      Atendimento => 'designacao',
+      Atendimento => 'codigo_atendimento_composto',
       Boleto => 'codigo_boleto_composto',
       Cliente => 'cnpj',
       Contato => 'descricao',
@@ -121,5 +121,31 @@ class CrudTemplateController < ApplicationController
       Usuario => 'nome'
     }
     @nome_parametro_unico = templates[classe] || []
+  end
+
+  def load_valor_parametro_unico(classe, object, object_params)    
+    templates = {
+      Atendimento => montar_campo_composto(object),
+      Boleto => montar_campo_composto(object),
+      Status => montar_campo_composto(object),
+      Cliente => object_params[@nome_parametro_unico],
+      Contato => object_params[@nome_parametro_unico],
+      Fatura => object_params[@nome_parametro_unico],
+      Fornecedor => object_params[@nome_parametro_unico],
+      Site => object_params[@nome_parametro_unico],
+      Usuario => object_params[@nome_parametro_unico]
+    }
+    @valor_parametro_unico = templates[classe] || nil
+  end
+
+  def montar_campo_composto(object)
+    case object
+    when Atendimento
+      "001#{object&.designacao} 002#{object&.nome_fornecedor}"
+    when Boleto
+      "001#{object&.codigo_atendimento} 002#{object&.vencimento} 003#{object.codigo_grupo}"
+    when Status
+      "001#{object&.tabela} 002#{object&.codigo_acfs}"
+    end
   end
 end

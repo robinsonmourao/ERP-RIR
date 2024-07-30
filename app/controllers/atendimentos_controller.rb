@@ -31,7 +31,7 @@ class AtendimentosController < CrudTemplateController
 
   def atendimento_params
     params.require(:atendimento)
-          .permit(:designacao, :codigo_fornecedor, :codigo_tecnologia_link, :codigo_tipo_link, :velocidade_down,
+          .permit(:designacao, :nome_fornecedor, :codigo_tecnologia_link, :codigo_tipo_link, :velocidade_down,
                   :velocidade_up, :ip, :ip_fixo, :pppoe_login, :pppoe_senha, :link, :dia_vencimento, :valor_mensal,
                   :valor_instalacao, :codigo_meio_pagamento, :chave_pix, :nota_fiscal, :codigo_equipamento)
   end

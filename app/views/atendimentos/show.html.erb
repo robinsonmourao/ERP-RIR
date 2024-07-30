@@ -5,8 +5,6 @@
 
                           Equipamento.exists?(@atendimento.codigo_equipamento) ?
                             ['codigo_equipamento', Equipamento.find(@atendimento.codigo_equipamento).descricao] : [], 
-                          Fornecedor.exists?(@atendimento.codigo_fornecedor) ?
-                            ['codigo_fornecedor', Fornecedor.find(@atendimento.codigo_fornecedor).nome_fornecedor] : [], 
                           MeioPagamento.exists?(@atendimento.codigo_meio_pagamento) ?
                             ['codigo_meio_pagamento', MeioPagamento.find(@atendimento.codigo_meio_pagamento).descricao] : [],
                           TecnologiaLink.exists?(@atendimento.codigo_tecnologia_link) ?

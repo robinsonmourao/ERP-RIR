@@ -4,9 +4,9 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
       CREATE TABLE atendimentos(
         codigo_atendimento INTEGER PRIMARY KEY AUTOINCREMENT,
         codigo_atendimento_composto TEXT GENERATED ALWAYS AS ( '001' || designacao || ' ' ||
-                                                               '002' || codigo_fornecedor) STORED,
+                                                               '002' || nome_fornecedor) STORED,
         designacao TEXT NOT NULL,
-        codigo_fornecedor INTEGER NOT NULL,
+        nome_fornecedor INTEGER NOT NULL,
         codigo_tecnologia_link INTEGER,
         codigo_tipo_link INTEGER,
         velocidade_down INTEGER NOT NULL,
@@ -25,7 +25,7 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         codigo_equipamento INTEGER,
 
         FOREIGN KEY (designacao) REFERENCES sites(designacao),
-        FOREIGN KEY (codigo_fornecedor) REFERENCES fornecedors(codigo_fornecedor)
+        FOREIGN KEY (nome_fornecedor) REFERENCES fornecedors(nome_fornecedor)
         FOREIGN KEY (codigo_tecnologia_link) REFERENCES tecnologia_links(codigo_tecnologia_link),
         FOREIGN KEY (codigo_tipo_link) REFERENCES tipo_links(codigo_tipo_link),
         FOREIGN KEY (codigo_meio_pagamento) REFERENCES meio_pagamentos(codigo_meio_pagamento),
