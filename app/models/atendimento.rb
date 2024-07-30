@@ -14,8 +14,8 @@ class Atendimento < ApplicationRecord
   attribute :pppoe_senha, :text
   attribute :link, :integer, default: 1
   attribute :dia_vencimento, :integer, default: 25
-  attribute :valor_mensal, :decimal, precision: 11, scale: 2
-  attribute :valor_instalacao, :decimal, precision: 11, scale: 2
+  attribute :valor_mensal, :text
+  attribute :valor_instalacao, :text
   attribute :codigo_meio_pagamento, :integer
   attribute :chave_pix, :text
   attribute :nota_fiscal, :integer, default: 0
@@ -35,6 +35,12 @@ class Atendimento < ApplicationRecord
   validates :nota_fiscal, inclusion: { in: [0, 1] }
 
   before_validation :set_default_dia_vencimento, on: [:create, :update]
+  before_save :format_values
+
+  def format_values
+    self.valor_mensal = format_value_to_currency_real(valor_mensal)
+    self.valor_instalacao = format_value_to_currency_real(valor_instalacao)
+  end
 
   private
 

@@ -24,14 +24,14 @@ class CrudTemplateController < ApplicationController
     new_object = classe.new(object_params)
     load_nome_parametro_unico(classe)
     load_valor_parametro_unico(classe, new_object, object_params)
-    
+
     if new_object.save
       flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{@valor_parametro_unico}' 
                         foi criado com sucesso."
       classe == Usuario ? autenticar(new_object) : redirect_to(new_object)
     else
-      flash[:notice] = "Não foi possível salvar #{classe}. 
-                           O #{@nome_parametro_unico.humanize.downcase}: '#{@valor_parametro_unico}' já está em uso OU é inválido!"
+      flash[:notice] = "Não foi possível salvar #{classe}.
+                        O #{@nome_parametro_unico.humanize.downcase}: '#{@valor_parametro_unico}' já está em uso OU é inválido!"
       classe == Usuario ? redirect_to(new_usuario_path) : render('new')
     end
   rescue ActiveRecord::RecordInvalid => e

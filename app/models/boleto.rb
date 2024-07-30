@@ -9,7 +9,7 @@ class Boleto < ApplicationRecord
   attribute :vencimento, :date
   attribute :chave, :text
   attribute :data_pagamento, :date
-  attribute :valor_pagamento, :decimal, precision: 11, scale: 2
+  attribute :valor_pagamento, :text
   attribute :observacao, :text
 
   has_many :atendimento, foreign_key: 'codigo_atendimento'
@@ -21,4 +21,10 @@ class Boleto < ApplicationRecord
   validates :codigo_atendimento, presence: true
   validates :codigo_fatura, presence: true
   validates :codigo_grupo, presence: true
+
+  before_save :format_values
+
+  def format_values
+    self.valor_pagamento = format_value_to_currency_real(valor_pagamento)
+  end
 end

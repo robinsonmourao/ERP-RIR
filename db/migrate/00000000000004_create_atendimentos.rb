@@ -17,8 +17,8 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         pppoe_senha TEXT,
         link INTEGER,
         dia_vencimento INTEGER DEFAULT 25,
-        valor_mensal NUMERIC(11,2),
-        valor_instalacao NUMERIC(11,2),
+        valor_mensal VARCHAR(14),
+        valor_instalacao VARCHAR(14),
         codigo_meio_pagamento INTEGER,
         chave_pix TEXT,
         nota_fiscal INTEGER DEFAULT 0,
@@ -36,6 +36,8 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         CHECK (ip IN(1, 2)),
         CHECK (link IN(1, 2)),
         CHECK (nota_fiscal IN(0, 1))
+        CHECK (LENGTH(valor_mensal) <= 14)
+        CHECK (LENGTH(valor_instalacao) <= 14)
       );
     SQL
   end

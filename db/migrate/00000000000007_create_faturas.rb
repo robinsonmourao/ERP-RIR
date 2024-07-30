@@ -6,7 +6,7 @@ class CreateFaturas < ActiveRecord::Migration[7.1]
         codigo_atendimento INTEGER NOT NULL,
         codigo_meio_pagamento INTEGER NOT NULL,
         chave TEXT,
-        valor NUMERIC(11,2),
+        valor VARCHAR(14),
         vencimento DATE NOT NULL DEFAULT (strftime('%Y-%m-25', 'now')),
         codigo_grupo INTEGER NOT NULL,
         instalacao INTEGER NOT NULL DEFAULT 0,
@@ -18,6 +18,7 @@ class CreateFaturas < ActiveRecord::Migration[7.1]
         FOREIGN KEY (codigo_status) REFERENCES statuses(codigo_status)
 
         CHECK (instalacao IN(0,1))
+        CHECK (LENGTH(valor) <= 14)
       );
     SQL
   end

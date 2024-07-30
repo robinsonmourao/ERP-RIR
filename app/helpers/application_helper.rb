@@ -28,4 +28,21 @@ module ApplicationHelper
     default = "/"
     session[:previous_path] ||= default
   end
+
+  def format_value_to_currency_real(value)
+    return unless value.present?
+
+    cleaned_value = value.to_s.gsub("R$", "").gsub(".", "").gsub(",", ".").strip
+    valid_number = Float(cleaned_value)
+
+    return unless valid_number
+
+    formatted_value = format('%.2f', cleaned_value.to_f).tr('.', ',')
+    parts = formatted_value.split(',')
+    integer_part = parts[0]
+    decimal_part = parts[1]
+
+    integer_part_with_commas = integer_part.reverse.scan(/\d{1,3}/).join('.').reverse
+    "R$ #{integer_part_with_commas},#{decimal_part}"
+  end
 end

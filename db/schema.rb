@@ -24,8 +24,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "pppoe_senha"
     t.integer "link"
     t.integer "dia_vencimento", default: 25
-    t.decimal "valor_mensal", precision: 11, scale: 2
-    t.decimal "valor_instalacao", precision: 11, scale: 2
+    t.string "valor_mensal", limit: 14
+    t.string "valor_instalacao", limit: 14
     t.integer "codigo_meio_pagamento"
     t.text "chave_pix"
     t.integer "nota_fiscal", default: 0
@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.date "vencimento", null: false
     t.text "chave"
     t.date "data_pagamento"
-    t.decimal "valor_pagamento", precision: 11, scale: 2
+    t.string "valor_pagamento", limit: 14
     t.text "observacao"
   end
 
@@ -75,7 +75,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "codigo_atendimento", null: false
     t.integer "codigo_meio_pagamento", null: false
     t.text "chave"
-    t.decimal "valor", precision: 11, scale: 2
+    t.string "valor", limit: 14
     t.date "vencimento", default: -> { "strftime('%Y-%m-25', 'now')" }, null: false
     t.integer "codigo_grupo", null: false
     t.integer "instalacao", default: 0, null: false
@@ -127,8 +127,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "velocidade_contratada", null: false
     t.integer "codigo_tipo_link"
     t.decimal "sla"
-    t.decimal "valor_mensal"
-    t.decimal "valor_instalacao"
+    t.string "valor_mensal", limit: 14
+    t.string "valor_instalacao", limit: 14
   end
 
   create_table "situacoes", primary_key: "codigo_situacao", force: :cascade do |t|

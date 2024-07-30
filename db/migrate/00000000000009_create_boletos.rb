@@ -15,7 +15,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         vencimento DATE NOT NULL,
         chave TEXT,
         data_pagamento DATE,
-        valor_pagamento NUMERIC(11,2),
+        valor_pagamento VARCHAR(14),
         observacao TEXT,
 
         FOREIGN KEY (codigo_atendimento) REFERENCES atendimentos(codigo_atendimento),
@@ -23,6 +23,8 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo),
         FOREIGN KEY (codigo_local_pagamento) REFERENCES local_pagamentos(codigo_local_pagamento)
         FOREIGN KEY (codigo_status) REFERENCES statuses(codigo_status)
+
+        CHECK (LENGTH(valor_pagamento) <= 14)
       );
     SQL
   end

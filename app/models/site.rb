@@ -14,8 +14,8 @@ class Site < ApplicationRecord
   attribute :velocidade_contratada, :integer
   attribute :codigo_tipo_link, :integer
   attribute :sla, :decimal, precision: 3, scale: 1
-  attribute :valor_mensal, :decimal, precision: 11, scale: 2
-  attribute :valor_instalacao, :decimal, precision: 11, scale: 2
+  attribute :valor_mensal, :text
+  attribute :valor_instalacao, :text
 
   has_one :cliente, foreign_key: 'codigo_cliente'
   has_many :municipio, foreign_key: 'codigo_municipio'
@@ -25,4 +25,11 @@ class Site < ApplicationRecord
   validates :codigo_cliente, presence: true
   validates :nome_site, presence: true
   validates :velocidade_contratada, presence: true, numericality: { greater_than: 0 }
+
+  before_save :format_values
+
+  def format_values
+    self.valor_mensal = format_value_to_currency_real(valor_mensal)
+    self.valor_instalacao = format_value_to_currency_real(valor_instalacao)
+  end
 end
