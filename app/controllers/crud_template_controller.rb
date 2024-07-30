@@ -48,7 +48,7 @@ class CrudTemplateController < ApplicationController
     valor_parametro_unico = object[@nome_parametro_unico]
 
     if object.update(object_params)
-      flash[:success] = "#{classe} de #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
+      flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
                         foi ATUALIZADO com sucesso."
       redirect_to object
     else
