@@ -33,4 +33,12 @@ class Atendimento < ApplicationRecord
   validates :ip, presence: true, inclusion: { in: [1, 2] }
   validates :link, inclusion: { in: [1, 2] }
   validates :nota_fiscal, inclusion: { in: [0, 1] }
+
+  before_validation :set_default_dia_vencimento, on: [:create, :update]
+
+  private
+
+  def set_default_dia_vencimento
+    self.dia_vencimento ||= 25
+  end
 end
