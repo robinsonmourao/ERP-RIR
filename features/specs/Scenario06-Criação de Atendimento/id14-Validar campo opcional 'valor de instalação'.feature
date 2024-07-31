@@ -17,7 +17,7 @@ Cenário: Validar campo opcional 'valor de instalação'
     Quando #0614: eu escolher o item da lista Designação "RIR"
         E #0614: eu escolher o item da lista Fornecedor "fornecedor_principal"
         E #0614: eu preencher o campo velocidade de download "10"
-        E #0614: eu preencher o campo valor de instalação "150.00"
+        E #0614: eu preencher o campo valor de instalação "150,00"
         E #0614: eu clicar no botão Enviar.
     Então #0614: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados
         E #0614: eu vejo a informação de que o Atendimento foi criado com sucesso com o valor de codigo_atendimento_composto em formato <001designação 002nome_do_fornecedor>.

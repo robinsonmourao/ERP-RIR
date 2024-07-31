@@ -38,7 +38,7 @@ E('#0605: eu clicar no botão Enviar.') do
 end
 
 Então('#0605: eu vejo uma mensagem informando que a velocidade de download deve ser maior que "0"') do
-  @message = find('.div-notice > div:nth-child(1)')
-  expect(@message.text).to eql "O valor do campo 'velocidade de download deve ser maior que 0."
+  list = find('#atendimento_velocidade_down', match: :first)
+  validation_message = list.native.attribute('validationMessage')
+  expect(validation_message).to eq('Este valor deve ser maior que 0.')
 end
-
