@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
 
       flash[:success] = "Bem-vindo, #{usuario.nome}!"
       redirect_to dashboard_path
+    else
+      flash[:notice] = "Senha incorreta!"
+      redirect_to entrar_path
     end
   end
 
