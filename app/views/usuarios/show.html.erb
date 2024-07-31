@@ -12,7 +12,7 @@
 
         <div class="current-password-field">
           <strong><%= form.label :senha_atual %>:</strong>
-          <%= form.password_field :senha_atual, placeholder: "Senha atual", autocomplete: "off" %>
+          <%= form.password_field :senha_atual, placeholder: "Senha atual", autocomplete: "off", required: true %>
         </div>
 
         <%= form.submit "Fechar conta", id: "close-account-form-submit-button" %>
