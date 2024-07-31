@@ -6,8 +6,8 @@ class Atendimento < ApplicationRecord
   attribute :nome_fornecedor, :text
   attribute :codigo_tecnologia_link, :integer
   attribute :codigo_tipo_link, :integer
-  attribute :velocidade_down, :integer
-  attribute :velocidade_up, :integer
+  attribute :velocidade_down, :decimal
+  attribute :velocidade_up, :decimal
   attribute :ip, :integer, default: 2
   attribute :ip_fixo, :text
   attribute :pppoe_login, :text
@@ -28,8 +28,7 @@ class Atendimento < ApplicationRecord
 
   validates :designacao, presence: true
   validates :nome_fornecedor, presence: true
-  validates :velocidade_down, presence: true, numericality: { greater_than: 0 }
-  validates :velocidade_up, numericality: { greater_than: 0 }, allow_nil: true
+  validates :velocidade_down, presence: true
   validates :ip, presence: true, inclusion: { in: [1, 2] }
   validates :link, inclusion: { in: [1, 2] }
   validates :nota_fiscal, inclusion: { in: [0, 1] }

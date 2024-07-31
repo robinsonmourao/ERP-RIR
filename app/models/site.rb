@@ -11,7 +11,7 @@ class Site < ApplicationRecord
   attribute :cep, :string
   attribute :coordenadalt, :decimal, precision: 10, scale: 8
   attribute :coordenadalg, :decimal, precision: 10, scale: 8
-  attribute :velocidade_contratada, :integer
+  attribute :velocidade_contratada, :decimal
   attribute :codigo_tipo_link, :integer
   attribute :sla, :decimal, precision: 3, scale: 1
   attribute :valor_mensal, :text
@@ -24,7 +24,7 @@ class Site < ApplicationRecord
   validates :designacao, presence: true, uniqueness: true
   validates :codigo_cliente, presence: true
   validates :nome_site, presence: true
-  validates :velocidade_contratada, presence: true, numericality: { greater_than: 0 }
+  validates :velocidade_contratada, presence: true
 
   before_save :format_values
 

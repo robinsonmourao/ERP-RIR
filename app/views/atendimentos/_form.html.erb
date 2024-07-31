@@ -40,12 +40,12 @@
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.label :"", class:'required' %>
-      <%= form.text_field :velocidade_down, placeholder: "Velocidade de download", required: true %>
+      <%= form.label :"", class: 'required' %>
+      <%= form.text_field :velocidade_down, placeholder: "Velocidade de download (000.00)", required: true %>
     </div>
 
     <div class='caixa-de-texto'>
-      <%= form.text_field :velocidade_up, placeholder: "Velocidade de upload" %>
+      <%= form.text_field :velocidade_up, placeholder: "Velocidade de upload (000.00)" %>
     </div>
 
     <div class='botao-radial'>
@@ -100,4 +100,4 @@
 
     <%= form.submit "Enviar", id: "form-submit-button" %>
   </div>
-<% end %>  
+<% end %>

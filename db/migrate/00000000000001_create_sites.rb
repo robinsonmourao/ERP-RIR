@@ -14,7 +14,7 @@ class CreateSites < ActiveRecord::Migration[7.1]
         coordenadalt NUMERIC(10, 8),
         coordenadalg NUMERIC(10, 8),
 
-        velocidade_contratada INTEGER NOT NULL,
+        velocidade_contratada NUMERIC NOT NULL,
         codigo_tipo_link INTEGER,
         sla NUMERIC(3, 1),
         valor_mensal VARCHAR(14),

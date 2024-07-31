@@ -16,8 +16,8 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "nome_fornecedor", null: false
     t.integer "codigo_tecnologia_link"
     t.integer "codigo_tipo_link"
-    t.integer "velocidade_down", null: false
-    t.integer "velocidade_up"
+    t.decimal "velocidade_down", null: false
+    t.decimal "velocidade_up"
     t.integer "ip", null: false
     t.text "ip_fixo"
     t.text "pppoe_login"
@@ -124,7 +124,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.string "cep", limit: 8
     t.decimal "coordenadalt"
     t.decimal "coordenadalg"
-    t.integer "velocidade_contratada", null: false
+    t.decimal "velocidade_contratada", null: false
     t.integer "codigo_tipo_link"
     t.decimal "sla"
     t.string "valor_mensal", limit: 14
