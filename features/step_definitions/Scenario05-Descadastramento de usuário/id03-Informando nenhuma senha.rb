@@ -20,6 +20,7 @@ And("#0503 eu preencha o campo com uma senha incorreta password {string}.") do |
 end
 
 Then('#0503 eu vejo um alerta dizendo que é necessário preencher o campo senha.') do
-  password_confirmation_field = find('#usuario_senha_atual')
-  expect(password_confirmation_field.text).to eql ''
+  field = find("#usuario_senha_atual")
+  validation_message = field.native.attribute('validationMessage')
+  expect(validation_message).to eq('Preencha este campo.')
 end

@@ -6,7 +6,6 @@ end
 
 After('@logout') do
   click_button "Logout"
-  sleep(1)
 end
 
 After('@apagar_ao_terminar') do

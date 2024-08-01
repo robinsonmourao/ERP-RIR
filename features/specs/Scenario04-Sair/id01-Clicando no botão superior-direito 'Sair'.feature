@@ -1,5 +1,7 @@
 # language: pt
+
 @skip
+@apagar_ao_terminar
 Funcionalidade: Sair no sistema
 
 -Eu como usuário.

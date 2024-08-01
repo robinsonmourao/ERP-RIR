@@ -42,7 +42,7 @@ module SetUp
   def pegar_id_atual
     url_atual = Capybara.current_url
     partes_url = url_atual.split('/')
-    
+
     $objetos_map << [@objeto, @id_criado] if id_foi_gerado?(partes_url)
   end
 
@@ -94,8 +94,10 @@ module SetUp
 end
 
 module SetDown
+  $nome_usuario_atual ||= nil
+
   BASE_PATH = "/home/robinson/Desktop/ERP-RIR/"
-  
+
   def execute_sql(query)
     db = SQLite3::Database.new "#{BASE_PATH}/storage/development.sqlite3"
     db.execute(query)
@@ -120,6 +122,6 @@ module SetDown
         end
       end
     end
-    execute_sql("DELETE FROM usuarios WHERE nome = 'UsuarioSuper';")
+    execute_sql("DELETE FROM usuarios WHERE nome = '#{$nome_usuario_atual}';")
   end
 end

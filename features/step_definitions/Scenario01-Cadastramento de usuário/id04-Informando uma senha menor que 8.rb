@@ -10,7 +10,8 @@ And('#0104: eu clicar no botão cadastrar.') do
   @cadastrar_page.clicar_cadastrar
 end
 
-Then('#0104: eu vejo um alerta informando que a senha é muito curta') do
-  @message = find('.div-notice > div:nth-child(1)')
-  expect(@message.text).to eql 'Senha muito curta! Informe uma senha maior que 8 caracteres.'
+Then('#0104: eu vejo um alerta informando que a senha informada possui o tamanho inadequado.') do
+  list = find('#usuario_password', match: :first)
+  validation_message = list.native.attribute('validationMessage')
+  expect(validation_message).to eq('O tamanho da senha deve estar entre 8 e 12 caracteres.')
 end

@@ -5,8 +5,7 @@ And('#0302 eu esteja na tela entrar.') do
   @entrar_page.load
 end
 
-When('#0302 eu preencher os campos pertinentes com nome {string} e '\
-     'password {string} cadastrados anteriormente') do |nome, password|
+When('#0302 eu preencher os campos pertinentes com nome {string} e password {string}') do |nome, password|
   @entrar_page.preencher_dados(nome, password)
 end
 And('#0302 eu clicar no botão Entrar.') do
