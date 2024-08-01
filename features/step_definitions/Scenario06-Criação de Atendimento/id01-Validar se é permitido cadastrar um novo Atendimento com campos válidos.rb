@@ -40,7 +40,7 @@ end
 Então('#0601: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados e valores autopreenchidos') do
   expected_values = { '#nome_fornecedor-value' => 'fornecedor_principal', 
                       '#designacao-value' => 'RIR', 
-                      '#velocidade_down-value' => '10',
+                      '#velocidade_down-value' => '10.0',
                       '#ip-value' => 'IP Dinâmico', 
                       '#link-value' => 'Principal',
                       '#dia_vencimento-value' => '25', 

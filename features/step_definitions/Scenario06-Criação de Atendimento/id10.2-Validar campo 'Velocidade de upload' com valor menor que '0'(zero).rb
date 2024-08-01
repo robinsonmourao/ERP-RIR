@@ -35,7 +35,6 @@ end
 
 E('#0610.2: eu preencher o campo velocidade de upload {string}') do |velocidade_de_upload|
   @novo_atendimento_page.preencher_campo('#atendimento_velocidade_up', velocidade_de_upload)
-  sleep(4)
 end
 
 E('#0610.2: eu clicar no botão Enviar.') do
