@@ -1,7 +1,11 @@
 {
     "editor.tabSize": "2",
     "editor.renderWhitespace": "trailing",
-
+		"editor.wordWrap": "on", // Word wrap ativado por padrão para todos os arquivos
+		"[markdown]": {
+			"editor.wordWrap": "off" // Desativar word wrap para arquivos Markdown
+		},
+		
     // {LINUX}
 		"ruby.rubocop.executePath": "/usr/local/bin/",
 		"ruby.rubocop.configFilePath": "/.config/rubocop.yml",
