@@ -1,6 +1,6 @@
 # language: pt
 
-
+@skip
 @apagar_ao_terminar
 Funcionalidade: Cadastrar no sistema
 

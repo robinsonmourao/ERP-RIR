@@ -1,8 +1,4 @@
-Given('#0304: eu já tenha meu usuário cadastrado '\
-      'com nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
-  RunStep.cadastrar(nome, password, permissao)
-end
-E('#0304: que eu esteja na tela entrar.') do
+Given('#0304: que eu esteja na tela entrar.') do
   @entrar_page = EntrarPage.new
   @entrar_page.load
 end
