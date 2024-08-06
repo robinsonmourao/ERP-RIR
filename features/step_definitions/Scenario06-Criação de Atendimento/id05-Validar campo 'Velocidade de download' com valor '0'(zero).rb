@@ -6,9 +6,9 @@ Dado('#0605: eu já tenha realizado meu cadastro previamente com '\
 end
 
 E('#0605: eu já tenha criado um Cliente, Site e Fornecedor previamente') do
-  SetUp.cliente_principal
-  SetUp.site_principal
-  SetUp.fornecedor_principal
+  SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
+  SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
+  SetUp.fornecedor('fornecedor_principal')
 end
 
 E('#0605: eu tiver passado o mouse sobre a aba Atendimentos') do

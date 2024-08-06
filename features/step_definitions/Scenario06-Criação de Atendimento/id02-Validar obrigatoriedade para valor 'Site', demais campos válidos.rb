@@ -6,7 +6,7 @@ Dado('#0602: eu já tenha realizado meu cadastro previamente com '\
 end
 
 E('#0602: eu já tenha criado um Fornecedor previamente') do
-  SetUp.fornecedor_principal
+  SetUp.fornecedor('fornecedor_principal')
 end
 
 E('#0602: eu tiver passado o mouse sobre a aba Atendimentos') do

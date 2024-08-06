@@ -46,7 +46,23 @@ module SetUp
     $objetos_map << [@objeto, @id_criado] if id_foi_gerado?(partes_url)
   end
 
-  def cliente_principal
+  def atendimento(designacao, nome_fornecedor, velocidade_down)
+    @dashboard_page = DashboardPage.new
+    @dashboard_page.load
+
+    @dashboard_page.cursor_hover('#atendimentos')
+    @dashboard_page.clicar_submenu_link('Novo')
+
+    @atendimento_principal = ObjectPage.new('atendimentos')
+    @atendimento_principal.selecionar_item('#atendimento_designacao', designacao)
+    @atendimento_principal.selecionar_item('#atendimento_nome_fornecedor', nome_fornecedor)
+    @atendimento_principal.preencher_campo('#atendimento_velocidade_down', velocidade_down)
+    @atendimento_principal.clicar_enviar
+
+    pegar_id_atual
+  end
+
+  def cliente(nome_cliente, cnpj)
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
 
@@ -54,14 +70,14 @@ module SetUp
     @dashboard_page.clicar_submenu_link('Novo')
 
     @cliente_principal = ObjectPage.new('clientes')
-    @cliente_principal.preencher_campo('#cliente_nome_cliente', 'cliente_principal')
-    @cliente_principal.preencher_campo('#cliente_cnpj', 'XXXXXXXXXXXX01')
+    @cliente_principal.preencher_campo('#cliente_nome_cliente', nome_cliente)
+    @cliente_principal.preencher_campo('#cliente_cnpj', cnpj)
     @cliente_principal.clicar_enviar
 
     pegar_id_atual
   end
 
-  def site_principal
+  def site(codigo_cliente, designacao, nome_site, velocidade_contratada)
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
 
@@ -69,16 +85,16 @@ module SetUp
     @dashboard_page.clicar_submenu_link('Novo')
 
     @site_principal = ObjectPage.new('sites')
-    @site_principal.selecionar_item('#site_codigo_cliente', 'cliente_principal')
-    @site_principal.preencher_campo('#site_designacao', 'RIR')
-    @site_principal.preencher_campo('#site_nome_site', 'site_principal')
-    @site_principal.preencher_campo('#site_velocidade_contratada', '10')
+    @site_principal.selecionar_item('#site_codigo_cliente', codigo_cliente)
+    @site_principal.preencher_campo('#site_designacao', designacao)
+    @site_principal.preencher_campo('#site_nome_site', nome_site)
+    @site_principal.preencher_campo('#site_velocidade_contratada', velocidade_contratada)
     @site_principal.clicar_enviar
 
     pegar_id_atual
   end
 
-  def fornecedor_principal
+  def fornecedor(nome_fornecedor)
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
 
@@ -86,7 +102,7 @@ module SetUp
     @dashboard_page.clicar_submenu_link('Novo')
 
     @cliente_principal = ObjectPage.new('fornecedores')
-    @cliente_principal.preencher_campo('#fornecedor_nome_fornecedor', 'fornecedor_principal')
+    @cliente_principal.preencher_campo('#fornecedor_nome_fornecedor', nome_fornecedor)
     @cliente_principal.clicar_enviar
 
     pegar_id_atual
