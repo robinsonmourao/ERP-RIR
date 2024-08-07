@@ -11,7 +11,15 @@ class ObjectPage < SitePrism::Page
   end
 
   def selecionar_item(seletor, valor)
-    find(seletor).select valor
+    if valor.nil? || valor.empty?
+      selecionar_primeira_opcao(seletor)
+    else
+      find(seletor).select(valor)
+    end
+  end
+
+  def selecionar_primeira_opcao(seletor)
+    find(seletor).find('option', match: :first).select_option
   end
 
   def preencher_campo(seletor, valor)

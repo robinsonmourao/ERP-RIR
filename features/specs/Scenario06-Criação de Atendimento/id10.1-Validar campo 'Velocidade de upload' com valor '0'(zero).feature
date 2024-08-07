@@ -6,7 +6,7 @@ Funcionalidade: Criar no sistema
 
 -Eu como usuário.
 -Quero tentar criar um novo Atendimento no sistema informando o valor "0" para 'velocidade de upload'.
--Para verificar a permissibilidade d0 valor "0" no campo 'velocidade de upload'.
+-Para verificar a permissibilidade do valor "0" no campo 'velocidade de upload'.
 
 Cenário: Validar campo 'velocidade de upload' com valor "0"
 

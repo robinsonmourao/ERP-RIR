@@ -21,24 +21,24 @@ E('#0611: eu tiver clicado em {string}.') do |link_text|
 end
 
 Quando('#0611: eu escolher o item da lista Designação {string}') do |site|
-  @novo_atendimento_page = ObjectPage.new('atendimentos')
-  @novo_atendimento_page.selecionar_item('#atendimento_designacao', site)
+  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page.selecionar_item('#atendimento_designacao', site)
 end
 
 E('#0611: eu escolher o item da lista Fornecedor {string}') do |fornecedor|
-  @novo_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
+  @form_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
 end
 
 E('#0611: eu preencher o campo velocidade de download {string}') do |velocidade_de_download|
-  @novo_atendimento_page.preencher_campo('#atendimento_velocidade_down', velocidade_de_download)
+  @form_atendimento_page.preencher_campo('#atendimento_velocidade_down', velocidade_de_download)
 end
 
 E('#0611: eu preencher o campo pppoelogin {string}') do |pppoelogin|
-  @novo_atendimento_page.preencher_campo('#atendimento_pppoe_login', pppoelogin)
+  @form_atendimento_page.preencher_campo('#atendimento_pppoe_login', pppoelogin)
 end
 
 E('#0611: eu clicar no botão Enviar.') do
-  @novo_atendimento_page.clicar_enviar
+  @form_atendimento_page.clicar_enviar
 end
 
 Então('#0611: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados') do
@@ -60,4 +60,3 @@ E('#0611: eu vejo a informação de que o Atendimento foi criado com sucesso com
   @message = find('.div-success > div:nth-child(1)')
   expect(@message.text).to eql "Atendimento com codigo atendimento composto '001RIR 002fornecedor_principal' foi criado com sucesso."
 end
-

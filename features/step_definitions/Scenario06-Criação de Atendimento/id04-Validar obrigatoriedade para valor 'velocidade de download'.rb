@@ -21,16 +21,16 @@ E('#0604: eu tiver clicado em {string}.') do |link_text|
 end
 
 Quando('#0604: eu escolher o item da lista Designação {string}') do |site|
-  @novo_atendimento_page = ObjectPage.new('atendimentos')
-  @novo_atendimento_page.selecionar_item('#atendimento_designacao', site)
+  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page.selecionar_item('#atendimento_designacao', site)
 end
 
 E('#0604: eu escolher o item da lista Fornecedor {string}') do |fornecedor|
-  @novo_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
+  @form_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
 end
 
 E('#0604: eu clicar no botão Enviar.') do
-  @novo_atendimento_page.clicar_enviar
+  @form_atendimento_page.clicar_enviar
 end
 
 Então('#0604: eu vejo um balão informando que é obrigatório selecionar um item para Fornecedor') do
@@ -38,4 +38,3 @@ Então('#0604: eu vejo um balão informando que é obrigatório selecionar um it
   validation_message = field.native.attribute('validationMessage')
   expect(validation_message).to eq('Preencha este campo.')
 end
-

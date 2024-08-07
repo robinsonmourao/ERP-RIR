@@ -20,16 +20,16 @@ E('#0603: eu tiver clicado em {string}.') do |link_text|
 end
 
 Quando('#0603: eu escolher o item da lista Site {string}') do |site|
-  @novo_atendimento_page = ObjectPage.new('atendimentos')
-  @novo_atendimento_page.selecionar_item('#atendimento_designacao', site)
+  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page.selecionar_item('#atendimento_designacao', site)
 end
 
 E('#0603: eu preencher o campo velocidade de download {string}') do |velocidade_de_download|
-  @novo_atendimento_page.preencher_campo('#atendimento_velocidade_down', velocidade_de_download)
+  @form_atendimento_page.preencher_campo('#atendimento_velocidade_down', velocidade_de_download)
 end
 
 E('#0603: eu clicar no botão Enviar.') do
-  @novo_atendimento_page.clicar_enviar
+  @form_atendimento_page.clicar_enviar
 end
 
 Então('#0603: eu vejo um balão informando que é obrigatório selecionar um item para Fornecedor') do
@@ -37,4 +37,3 @@ Então('#0603: eu vejo um balão informando que é obrigatório selecionar um it
   validation_message = item.native.attribute('validationMessage')
   expect(validation_message).to eq('Selecione um item da lista.')
 end
-
