@@ -4,7 +4,7 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required'  %>
       <%= form.collection_select :codigo_cliente, Cliente.all, :codigo_cliente, :nome_cliente, 
-                                 { prompt: "SELECIONE um CLIENTE" }, 
+                                 { include_blank: "SELECIONE um CLIENTE" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 

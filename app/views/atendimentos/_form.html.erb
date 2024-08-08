@@ -4,14 +4,14 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :designacao, Site.all, :designacao, :designacao, 
-                                 { prompt: "SELECIONE uma DESIGNAÇÃO de SITE" }, 
+                                 { include_blank: "SELECIONE uma DESIGNAÇÃO de SITE" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
        <%= form.collection_select :nome_fornecedor, Fornecedor.all, :nome_fornecedor, :nome_fornecedor,  
-                                 { prompt: "SELECIONE um FORNECEDOR" }, 
+                                 { include_blank: "SELECIONE um FORNECEDOR" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 

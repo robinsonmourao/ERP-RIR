@@ -4,28 +4,28 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_atendimento, Atendimento.all, :codigo_atendimento, :codigo_atendimento_composto,  
-                                 { prompt: "SELECIONE um ATENDIMENTO" }, 
+                                 { include_blank: "SELECIONE um ATENDIMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_status, Status.all, :codigo_status, :codigo_acfs_composto, 
-                                 { prompt: "SELECIONE um STATUS da FATURA" }, 
+                                 { include_blank: "SELECIONE um STATUS da FATURA" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_meio_pagamento, MeioPagamento.all, :codigo_meio_pagamento, :descricao, 
-                                { prompt: "SELECIONE um MEIO de PAGAMENTO" }, 
+                                { include_blank: "SELECIONE um MEIO de PAGAMENTO" }, 
                                 { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :descricao, 
-                                 { prompt: "SELECIONE um AGRUPAMENTO" }, 
+                                 { include_blank: "SELECIONE um AGRUPAMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 

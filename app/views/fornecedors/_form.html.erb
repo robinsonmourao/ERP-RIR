@@ -5,13 +5,13 @@
 
     <div class='caixa-de-texto'>
       <%= form.collection_select :codigo_site, Site.all, :codigo_site, :nome_site, 
-                                 { prompt: "SELECIONE um SITE" }, 
+                                 { include_blank: "SELECIONE um SITE" }, 
                                  { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.collection_select :codigo_municipio, Municipio.all, :codigo_municipio, :nome_municipio, 
-                                 { prompt: "SELECIONE um MUNICIPIO" }, 
+                                 { include_blank: "SELECIONE um MUNICIPIO" }, 
                                  { class: 'custom-select-tag' } %>
     </div>
 

@@ -4,34 +4,34 @@
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_atendimento, Atendimento.all, :codigo_atendimento, :codigo_atendimento_composto,  
-                                 { prompt: "SELECIONE um ATENDIMENTO" }, 
+                                 { include_blank: "SELECIONE um ATENDIMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-      <%= form.collection_select :codigo_fatura, Fatura.all, :codigo_fatura, :codigo_fatura,  
-                                 { prompt: "SELECIONE uma FATURA" }, 
+      <%= form.collection_select :codigo_fatura, Fatura.all, :codigo_fatura, :codigo_fatura_composto,  
+                                 { include_blank: "SELECIONE uma FATURA" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :descricao, 
-                                 { prompt: "SELECIONE um AGRUPAMENTO" }, 
+                                 { include_blank: "SELECIONE um AGRUPAMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.collection_select :codigo_local_pagamento, LocalPagamento.all, :codigo_local_pagamento, :descricao, 
-                                { prompt: "SELECIONE um LOCAL de PAGAMENTO" }, 
+                                { include_blank: "SELECIONE um LOCAL de PAGAMENTO" }, 
                                 { class: 'custom-select-tag' } %>
     </div>
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :codigo_status, Status.all, :codigo_status, :codigo_acfs_composto, 
-                                 { prompt: "SELECIONE um STATUS da FATURA" }, 
+                                 { include_blank: "SELECIONE um STATUS da FATURA" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
@@ -39,7 +39,7 @@
       <%= form.label :"", class:'required' %>
       <%= form.collection_select :vencimento, 
                                  Fatura.select(:vencimento).distinct.order(:vencimento), :vencimento, :vencimento,  
-                                 { prompt: "SELECIONE a DATA de VENCIMENTO" }, 
+                                 { include_blank: "SELECIONE a DATA de VENCIMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>
 
