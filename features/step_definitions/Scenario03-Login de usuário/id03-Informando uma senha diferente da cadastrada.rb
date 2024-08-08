@@ -1,7 +1,7 @@
-include RunStep
+include SetUp
 
 Given('#0303: eu já tenha meu usuário cadastrado com nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
-  RunStep.cadastrar(nome, password, permissao)
+  SetUp.cadastrar(nome, password, permissao)
 end
 And('#0303: que eu esteja na tela entrar.') do
   @entrar_page = EntrarPage.new

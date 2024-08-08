@@ -11,7 +11,7 @@ class ListarTodosPage < SitePrism::Page
       href = "a[href='/#{@entidade}/#{entidade_id}/edit']"
       find(href).click
     else
-      puts "ERROR: Entidade '#{entidade}' não encontrada no mapa de objetos."
+      puts "ERROR: Entidade '#{@entidade}' não encontrada no mapa de objetos."
     end
   end
 end

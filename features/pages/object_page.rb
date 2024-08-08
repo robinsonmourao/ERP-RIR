@@ -7,7 +7,7 @@ class ObjectPage < SitePrism::Page
 
   def clicar_enviar
     enviar_button.click
-    pegar_id_atual
+    capture_id_by_link
   end
 
   def selecionar_item(seletor, valor)

@@ -1,8 +1,8 @@
-include RunStep, SetUp, SetDown
+include SetUp, SetDown
 
 Dado('#0611: eu já tenha realizado meu cadastro previamente com '\
     'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
-  RunStep.cadastrar(nome, password, permissao)
+  SetUp.cadastrar(nome, password, permissao)
 end
 
 E('#0611: eu já tenha criado um Cliente, Site e Fornecedor previamente') do

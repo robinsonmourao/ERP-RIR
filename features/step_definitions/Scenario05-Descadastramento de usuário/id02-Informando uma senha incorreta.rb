@@ -1,9 +1,9 @@
-include RunStep
+include SetUp
 
 Given('#0502 '\
   'eu já tenha realizado meu cadastro previamente com '\
   'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
-  RunStep.cadastrar(nome, password, permissao)
+  SetUp.cadastrar(nome, password, permissao)
 end
 And('#0502 eu esteja na tela de visão geral da conta.') do
   @visao_geral_conta_page = VisaoGeralContaPage.new

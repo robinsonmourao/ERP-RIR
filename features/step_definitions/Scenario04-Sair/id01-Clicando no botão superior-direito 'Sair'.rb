@@ -1,7 +1,7 @@
 Given('#0401 '\
       'eu já tenha realizado meu cadastro previamente com '\
       'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
-  RunStep.cadastrar(nome, password, permissao)
+  SetUp.cadastrar(nome, password, permissao)
 end
 And('#0401 eu esteja em qualquer tela dentro do sistema.') do
   @dashboard_page = DashboardPage.new

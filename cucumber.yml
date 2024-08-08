@@ -1,8 +1,10 @@
 default:  -p ci  
           -p test
+          -p fast_mode
           --publish-quiet
 
 pretty: --format pretty
 ci: --format progress
 test: ENVIRONMENT_TYPE=test
 headless: HEADLESS=headless
+fast_mode: FAST_MODE=false
