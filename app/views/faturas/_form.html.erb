@@ -3,7 +3,7 @@
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-      <%= form.collection_select :codigo_atendimento, Atendimento.all, :codigo_atendimento, :codigo_atendimento_composto,  
+      <%= form.collection_select :codigo_atendimento_composto, Atendimento.all, :codigo_atendimento_composto, :codigo_atendimento_composto,  
                                  { include_blank: "SELECIONE um ATENDIMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>

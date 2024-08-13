@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "boletos", primary_key: "codigo_boleto", force: :cascade do |t|
-    t.integer "codigo_atendimento", null: false
+    t.text "codigo_atendimento_composto", null: false
     t.integer "codigo_fatura", null: false
     t.integer "codigo_grupo", null: false
     t.integer "codigo_local_pagamento"
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "faturas", primary_key: "codigo_fatura", force: :cascade do |t|
-    t.integer "codigo_atendimento", null: false
+    t.text "codigo_atendimento_composto", null: false
     t.integer "codigo_meio_pagamento", null: false
     t.text "chave"
     t.string "valor", limit: 14
@@ -171,7 +171,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "atendimentos", "sites", column: "designacao", primary_key: "designacao"
   add_foreign_key "atendimentos", "tecnologia_links", column: "codigo_tecnologia_link", primary_key: "codigo_tecnologia_link"
   add_foreign_key "atendimentos", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
-  add_foreign_key "boletos", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
   add_foreign_key "boletos", "faturas", column: "codigo_fatura", primary_key: "codigo_fatura"
   add_foreign_key "boletos", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
   add_foreign_key "boletos", "local_pagamentos", column: "codigo_local_pagamento", primary_key: "codigo_local_pagamento"
@@ -179,7 +178,6 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "clientes", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "contatos", "meio_contatos", column: "codigo_meio_contato", primary_key: "codigo_meio_contato"
   add_foreign_key "contatos", "tipo_contatos", column: "codigo_tipo_contato", primary_key: "codigo_tipo_contato"
-  add_foreign_key "faturas", "atendimentos", column: "codigo_atendimento", primary_key: "codigo_atendimento"
   add_foreign_key "faturas", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
   add_foreign_key "faturas", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "faturas", "statuses", column: "codigo_status", primary_key: "codigo_status"

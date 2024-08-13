@@ -31,7 +31,7 @@ class FaturasController < CrudTemplateController
 
   def fatura_params
     params.require(:fatura)
-          .permit(:codigo_atendimento, :codigo_meio_pagamento, :codigo_status, :codigo_grupo,
+          .permit(:codigo_atendimento_composto, :codigo_meio_pagamento, :codigo_status, :codigo_grupo,
                   :chave, :valor, :vencimento, :instalacao)
   end
 

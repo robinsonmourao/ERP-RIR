@@ -114,7 +114,7 @@ class CrudTemplateController < ApplicationController
       Boleto => 'codigo_boleto_composto',
       Cliente => 'cnpj',
       Contato => 'descricao',
-      Fatura => 'codigo_fatura',
+      Fatura => 'codigo_fatura_composto',
       Fornecedor => 'nome_fornecedor',
       Site => 'nome_site',
       Status => 'codigo_acfs_composto',
@@ -123,14 +123,14 @@ class CrudTemplateController < ApplicationController
     @nome_parametro_unico = templates[classe] || []
   end
 
-  def load_valor_parametro_unico(classe, object, object_params)    
+  def load_valor_parametro_unico(classe, object, object_params)
     templates = {
       Atendimento => montar_campo_composto(object),
       Boleto => montar_campo_composto(object),
       Status => montar_campo_composto(object),
+      Fatura => montar_campo_composto(object),
       Cliente => object_params[@nome_parametro_unico],
       Contato => object_params[@nome_parametro_unico],
-      Fatura => object_params[@nome_parametro_unico],
       Fornecedor => object_params[@nome_parametro_unico],
       Site => object_params[@nome_parametro_unico],
       Usuario => object_params[@nome_parametro_unico]
@@ -142,8 +142,8 @@ class CrudTemplateController < ApplicationController
     case object
     when Atendimento
       "001#{object&.designacao} 002#{object&.nome_fornecedor}"
-    when Boleto
-      "001#{object&.codigo_atendimento} 002#{object&.vencimento} 003#{object.codigo_grupo}"
+    when Boleto, Fatura
+      "001(#{object&.codigo_atendimento_composto}) 002#{object&.vencimento} 003#{object.codigo_grupo}"
     when Status
       "001#{object&.tabela} 002#{object&.codigo_acfs}"
     end

@@ -32,4 +32,7 @@ end
 
 module ModuleInstalacao
   NAO = 0; SIM = 1
+  INSTALACAO = {
+    NAO => 'Não', SIM => 'Sim'
+  }
 end

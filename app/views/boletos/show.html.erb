@@ -1,1 +1,7 @@
+<% @except_columns = ['codigo_boleto', 'codigo_fatura', 'codigo_atendimento_composto'] 
+   @custom_show_values = [Grupo.exists?(@boleto.codigo_grupo) ?
+                            ['codigo_grupo', Grupo.find(@boleto.codigo_grupo).descricao] : [], 
+                          Status.exists?(@boleto.codigo_status) ?
+                            ['codigo_status', Status.find(@boleto.codigo_status).codigo_acfs_composto] : [], 
+                         ] %>
 <%= render 'builders/render_templates/show', object: @boleto %>

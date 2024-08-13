@@ -1,1 +1,11 @@
+<% @except_columns = ['codigo_fatura', 'codigo_atendimento_composto']
+   @custom_show_values = [['instalacao', ModuleInstalacao::INSTALACAO[@fatura.instalacao]],
+   
+                          Grupo.exists?(@fatura.codigo_grupo) ?
+                            ['codigo_grupo', Grupo.find(@fatura.codigo_grupo).descricao] : [], 
+                          Status.exists?(@fatura.codigo_status) ?
+                            ['codigo_status', Status.find(@fatura.codigo_status).codigo_acfs_composto] : [], 
+                          MeioPagamento.exists?(@fatura.codigo_meio_pagamento) ?
+                            ['codigo_meio_pagamento', MeioPagamento.find(@fatura.codigo_meio_pagamento).descricao] : [],
+                         ] %>
 <%= render 'builders/render_templates/show', object: @fatura %>
