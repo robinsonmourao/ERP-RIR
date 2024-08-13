@@ -6,7 +6,7 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         codigo_atendimento_composto TEXT GENERATED ALWAYS AS ( '001' || designacao || ' ' ||
                                                                '002' || nome_fornecedor) STORED,
         designacao TEXT NOT NULL,
-        nome_fornecedor INTEGER NOT NULL,
+        nome_fornecedor TEXT NOT NULL,
         codigo_tecnologia_link INTEGER,
         codigo_tipo_link INTEGER,
         velocidade_down NUMERIC NOT NULL,
