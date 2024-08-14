@@ -3,7 +3,7 @@
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class: 'required' %>
-      <%= form.collection_select :codigo_acfs, @acfs, :last, :first, 
+      <%= form.collection_select :descricao_acfs, @acfs, :first, :first, 
                                  { include_blank: "SELECIONE o ORIGINÁRIO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>

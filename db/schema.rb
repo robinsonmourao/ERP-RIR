@@ -136,7 +136,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "statuses", primary_key: "codigo_status", force: :cascade do |t|
-    t.integer "codigo_acfs", null: false
+    t.text "descricao_acfs", null: false
     t.string "tabela", limit: 1, null: false
     t.integer "codigo_situacao", default: 5
     t.date "data", default: -> { "CURRENT_DATE" }

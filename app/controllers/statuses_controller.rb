@@ -33,7 +33,7 @@ class StatusesController < CrudTemplateController
   private
 
   def status_params
-    params.require(:status).permit(:codigo_acfs, :tabela, :codigo_situacao)
+    params.require(:status).permit(:descricao_acfs, :tabela, :codigo_situacao)
   end
 
   def find_status

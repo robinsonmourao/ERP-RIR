@@ -145,7 +145,7 @@ class CrudTemplateController < ApplicationController
     when Boleto, Fatura
       "001(#{object&.codigo_atendimento_composto}) 002#{object&.vencimento} 003#{object.codigo_grupo}"
     when Status
-      "001#{object&.tabela} 002#{object&.codigo_acfs}"
+      "001#{object&.tabela} 002(#{object&.descricao_acfs})"
     end
   end
 end

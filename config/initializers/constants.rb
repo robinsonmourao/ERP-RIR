@@ -7,6 +7,9 @@ end
 
 module Categoria
   ATENDIMENTO = 'a'; CLIENTE = 'c'; FORNECEDOR = 'f'; SITE = 's'
+  CATEGORIA = {
+    'a' => 'Atendimento', 'c' => 'Cliente', 'f' => 'Fornecedor', 's' => 'Site'
+  }
 end
 
 module ModuloExistenciaNotaFiscal
