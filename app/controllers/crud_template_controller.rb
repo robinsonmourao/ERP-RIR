@@ -45,13 +45,14 @@ class CrudTemplateController < ApplicationController
   def update_template(object, object_params)
     classe = object.class
     load_nome_parametro_unico(classe)
-    valor_parametro_unico = object[@nome_parametro_unico]
 
     if object.update(object_params)
-      flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
+      load_valor_parametro_unico(classe, object, object_params)
+      flash[:success] = "#{classe} com #{@nome_parametro_unico.humanize.downcase} '#{@valor_parametro_unico}' 
                         foi ATUALIZADO com sucesso."
       redirect_to object
     else
+      valor_parametro_unico = object[@nome_parametro_unico]
       flash[:notice] = "Não foi possível ATUALIZAR '#{classe}' de 
                         #{@nome_parametro_unico.humanize.downcase} '#{valor_parametro_unico}' 
                         já está em uso OU é inválido!"
@@ -143,9 +144,12 @@ class CrudTemplateController < ApplicationController
     when Atendimento
       "001#{object&.designacao} 002#{object&.nome_fornecedor}"
     when Boleto, Fatura
-      "001(#{object&.codigo_atendimento_composto}) 002#{object&.vencimento} 003#{object.codigo_grupo}"
+      "001(#{object&.codigo_atendimento_composto}) 002#{object&.vencimento} 003#{object.descricao_grupo}"
     when Status
-      "001#{object&.tabela} 002(#{object&.descricao_acfs})"
+      "001#{object&.tabela} 002#{object&.tabela == 'a' ? ('(').concat(object&.descricao_acfs).concat(')') : object&.descricao_acfs} 
+       003#{
+        Situacao.exists?(object.codigo_situacao) ? Situacao.find(object.codigo_situacao).descricao : 'Pendente'
+      }"
     end
   end
 end

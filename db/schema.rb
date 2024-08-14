@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   create_table "boletos", primary_key: "codigo_boleto", force: :cascade do |t|
     t.text "codigo_atendimento_composto", null: false
     t.integer "codigo_fatura", null: false
-    t.integer "codigo_grupo", null: false
+    t.text "descricao_grupo", null: false
     t.integer "codigo_local_pagamento"
     t.integer "codigo_status"
     t.date "vencimento", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.text "chave"
     t.string "valor", limit: 14
     t.date "vencimento", default: -> { "strftime('%Y-%m-25', 'now')" }, null: false
-    t.integer "codigo_grupo", null: false
+    t.text "descricao_grupo", null: false
     t.integer "instalacao", default: 0, null: false
     t.integer "codigo_status", null: false
   end
@@ -136,6 +136,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "statuses", primary_key: "codigo_status", force: :cascade do |t|
+    t.text "codigo_acfs_composto"
     t.text "descricao_acfs", null: false
     t.string "tabela", limit: 1, null: false
     t.integer "codigo_situacao", default: 5
@@ -172,13 +173,13 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   add_foreign_key "atendimentos", "tecnologia_links", column: "codigo_tecnologia_link", primary_key: "codigo_tecnologia_link"
   add_foreign_key "atendimentos", "tipo_links", column: "codigo_tipo_link", primary_key: "codigo_tipo_link"
   add_foreign_key "boletos", "faturas", column: "codigo_fatura", primary_key: "codigo_fatura"
-  add_foreign_key "boletos", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
+  add_foreign_key "boletos", "grupos", column: "descricao_grupo", primary_key: "descricao"
   add_foreign_key "boletos", "local_pagamentos", column: "codigo_local_pagamento", primary_key: "codigo_local_pagamento"
   add_foreign_key "boletos", "statuses", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "clientes", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"
   add_foreign_key "contatos", "meio_contatos", column: "codigo_meio_contato", primary_key: "codigo_meio_contato"
   add_foreign_key "contatos", "tipo_contatos", column: "codigo_tipo_contato", primary_key: "codigo_tipo_contato"
-  add_foreign_key "faturas", "grupos", column: "codigo_grupo", primary_key: "codigo_grupo"
+  add_foreign_key "faturas", "grupos", column: "descricao_grupo", primary_key: "descricao"
   add_foreign_key "faturas", "meio_pagamentos", column: "codigo_meio_pagamento", primary_key: "codigo_meio_pagamento"
   add_foreign_key "faturas", "statuses", column: "codigo_status", primary_key: "codigo_status"
   add_foreign_key "fornecedors", "municipios", column: "codigo_municipio", primary_key: "codigo_municipio"

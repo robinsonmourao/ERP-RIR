@@ -24,7 +24,7 @@
 
     <div class='caixa-de-texto'>
       <%= form.label :"", class:'required' %>
-      <%= form.collection_select :codigo_grupo, Grupo.all, :codigo_grupo, :descricao, 
+      <%= form.collection_select :descricao_grupo, Grupo.all, :descricao, :descricao, 
                                  { include_blank: "SELECIONE um AGRUPAMENTO" }, 
                                  { class: 'custom-select-tag', required: true } %>
     </div>

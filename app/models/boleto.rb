@@ -3,7 +3,7 @@ class Boleto < ApplicationRecord
 
   attribute :codigo_fatura, :integer
   attribute :codigo_atendimento_composto, :text
-  attribute :codigo_grupo, :integer
+  attribute :descricao_grupo, :text
   attribute :codigo_local_pagamento, :integer
   attribute :codigo_status, :integer
   attribute :vencimento, :date
@@ -14,13 +14,13 @@ class Boleto < ApplicationRecord
 
   # has_many :atendimento, foreign_key: 'codigo_atendimento'
   has_many :fatura, foreign_key: 'codigo_fatura'
-  has_one :grupo, foreign_key: 'codigo_grupo'
+  # has_one :grupo, foreign_key: 'codigo_grupo'
   has_one :local_pagamento, foreign_key: 'codigo_local_pagamento'
   has_one :status, foreign_key: 'codigo_status'
 
   validates :codigo_atendimento_composto, presence: true
   validates :codigo_fatura, presence: true
-  validates :codigo_grupo, presence: true
+  validates :descricao_grupo, presence: true
 
   before_save :format_values
 

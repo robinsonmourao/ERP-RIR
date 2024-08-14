@@ -4,19 +4,19 @@ class CreateFaturas < ActiveRecord::Migration[7.1]
       CREATE TABLE faturas(
         codigo_fatura_composto TEXT UNIQUE GENERATED ALWAYS AS ('001(' || codigo_atendimento_composto || ') ' ||
                                                          '002' || vencimento || ' ' ||
-                                                         '003' || codigo_grupo) STORED,
+                                                         '003' || descricao_grupo) STORED,
         codigo_fatura INTEGER PRIMARY KEY AUTOINCREMENT,
         codigo_atendimento_composto TEXT NOT NULL,
         codigo_meio_pagamento INTEGER NOT NULL,
         chave TEXT,
         valor VARCHAR(14),
         vencimento DATE NOT NULL DEFAULT (strftime('%Y-%m-25', 'now')),
-        codigo_grupo INTEGER NOT NULL,
+        descricao_grupo TEXT NOT NULL,
         instalacao INTEGER NOT NULL DEFAULT 0,
         codigo_status INTEGER NOT NULL,
 
         FOREIGN KEY (codigo_meio_pagamento) REFERENCES meio_pagamentos(codigo_meio_pagamento),
-        FOREIGN KEY (codigo_grupo) REFERENCES grupos(codigo_grupo),
+        FOREIGN KEY (descricao_grupo) REFERENCES grupos(descricao),
         FOREIGN KEY (codigo_status) REFERENCES statuses(codigo_status)
 
         CHECK (instalacao IN(0,1))

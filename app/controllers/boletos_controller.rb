@@ -31,7 +31,7 @@ class BoletosController < CrudTemplateController
 
   def boleto_params
     params.require(:boleto)
-          .permit(:codigo_atendimento_composto, :codigo_fatura, :codigo_grupo, :codigo_local_pagamento, :codigo_status,
+          .permit(:codigo_atendimento_composto, :codigo_fatura, :codigo_grupo, :codigo_local_pagamento, :descricao_grupo,
                   :vencimento, :chave, :data_pagamento, :valor_pagamento, :observacao)
   end
 
