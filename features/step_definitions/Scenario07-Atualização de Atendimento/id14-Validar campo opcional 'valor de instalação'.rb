@@ -27,13 +27,12 @@ E('#0714: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0714: eu preencher o campo valor de instalação {string}') do |valor_de_instalacao|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.preencher_campo('#atendimento_valor_instalacao', valor_de_instalacao)
 end
 
 E('#0714: eu clicar no botão Enviar.') do
   @form_atendimento_page.clicar_enviar
-  sleep(2)
 end
 
 Então('#0714: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados') do

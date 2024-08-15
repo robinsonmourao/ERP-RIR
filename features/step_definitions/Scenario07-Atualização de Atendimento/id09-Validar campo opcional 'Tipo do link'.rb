@@ -27,7 +27,7 @@ E('#0709: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0709: eu escolher o item da lista Tipo do link {string}') do |tipo_link|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.selecionar_item('#atendimento_codigo_tipo_link', tipo_link)
 end
 

@@ -27,7 +27,7 @@ E('#0702: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0702: eu escolher o item da lista Designação {string}') do |site|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.selecionar_item('#atendimento_designacao', site)
 end
 

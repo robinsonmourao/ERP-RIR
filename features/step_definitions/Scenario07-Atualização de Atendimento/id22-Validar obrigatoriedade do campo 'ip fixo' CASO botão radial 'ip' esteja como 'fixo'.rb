@@ -27,7 +27,7 @@ E('#0722: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0722: eu escolher o botão radial de Categoria do ip fixo') do
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.selecionar_radiobutton('#second-option-radio-button')
 end
 

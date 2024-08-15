@@ -8,7 +8,7 @@ class DashboardPage < SitePrism::Page
   end
 
   def cursor_hover(selector)
-    elemento = find(selector)
+    elemento = find(selector.downcase)
     elemento.hover
   end
 

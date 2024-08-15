@@ -27,7 +27,7 @@ E('#0710.1: eu tenha clicado no link Editar do Atendimento criado previamente.')
 end
 
 Quando('#0710.1: eu preencher o campo velocidade de upload {string}') do |velocidade_de_upload|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.preencher_campo('#atendimento_velocidade_up', velocidade_de_upload)
 end
 

@@ -20,7 +20,7 @@ E('#0603: eu tiver clicado em {string}.') do |link_text|
 end
 
 Quando('#0603: eu escolher o item da lista Site {string}') do |site|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.selecionar_item('#atendimento_designacao', site)
 end
 

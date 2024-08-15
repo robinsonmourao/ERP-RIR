@@ -27,7 +27,7 @@ E('#0703: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0703: eu escolher o item da lista Fornecedor {string}') do |fornecedor|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.selecionar_item('#atendimento_nome_fornecedor', fornecedor)
 end
 

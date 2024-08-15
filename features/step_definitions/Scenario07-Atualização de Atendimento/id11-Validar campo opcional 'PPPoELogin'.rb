@@ -27,7 +27,7 @@ E('#0711: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0711: eu preencher o campo pppoelogin {string}') do |pppoelogin|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.preencher_campo('#atendimento_pppoe_login', pppoelogin)
 end
 

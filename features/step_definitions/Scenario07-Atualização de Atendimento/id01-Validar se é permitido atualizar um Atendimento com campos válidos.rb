@@ -33,7 +33,7 @@ E('#0701: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0701: eu escolher o item da lista Designação {string}') do |site|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.selecionar_item('#atendimento_designacao', site)
 end
 
@@ -65,5 +65,5 @@ end
 
 E('#0701: eu vejo a informação de que o Atendimento foi criado com sucesso com o valor de codigo_atendimento_composto.') do
   @message = find('.div-success > div:nth-child(1)')
-  expect(@message.text).to eql "Atendimento com codigo atendimento composto '001RIR 002fornecedor_principal' foi ATUALIZADO com sucesso."
+  expect(@message.text).to eql "Atendimento com codigo atendimento composto '001RIR2 002fornecedor_alternativo' foi ATUALIZADO com sucesso."
 end

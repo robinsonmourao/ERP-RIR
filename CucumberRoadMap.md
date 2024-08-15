@@ -135,7 +135,6 @@ end
 When('eu faço login.') do
     fill_in 'session_email', with: @email
     fill_in 'session_password', with: @password
-    sleep(5)
 end
 ```
 
@@ -159,7 +158,6 @@ touch ./features/support/hooks.rb
 After '@user_logout' do
 
     click_button "Logout"
-    sleep(2)
 end
 ```
 
@@ -236,7 +234,6 @@ After '@user_logout' do
 
     # click_button "Logout" # old
     tasks_page_helper.logout
-    sleep(2)
 end
 ```
 

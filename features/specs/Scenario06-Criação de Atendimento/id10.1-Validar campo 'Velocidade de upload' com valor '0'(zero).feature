@@ -1,7 +1,7 @@
 # language: pt
 
 @skip
-@apagar_ao_terminar
+@apagar_usuario_ao_terminar
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.

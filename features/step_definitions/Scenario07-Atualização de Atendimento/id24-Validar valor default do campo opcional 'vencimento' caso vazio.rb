@@ -27,13 +27,12 @@ E('#0724: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0724: eu apague o valor padrão de dia de vencimento {string}') do |dia_venciment|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.preencher_campo('#atendimento_dia_vencimento', dia_venciment)
 end
 
 E('#0724: eu clicar no botão Enviar.') do
   @form_atendimento_page.clicar_enviar
-  sleep(2)
 end
 
 Então('#0724: eu sou redirecionado para detalhes do novo Atendimento criado contendo valores informados') do

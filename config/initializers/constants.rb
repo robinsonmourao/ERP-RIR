@@ -7,27 +7,36 @@ end
 
 module Categoria
   ATENDIMENTO = 'a'; CLIENTE = 'c'; FORNECEDOR = 'f'; SITE = 's'
+  CATEGORIA = {
+    'a' => 'Atendimento', 'c' => 'Cliente', 'f' => 'Fornecedor', 's' => 'Site'
+  }
+  CATEGORIA_REVERSE = CATEGORIA.invert
 end
 
 module ModuloExistenciaNotaFiscal
   NOTA_FISCAL_INEXISTENTE = 0; NOTA_FISCAL_EXISTENTE = 1
+  NOTA_FISCAL = {
+    NOTA_FISCAL_INEXISTENTE => 'Inexistente', NOTA_FISCAL_EXISTENTE => 'Existente'
+  }
 end
 
 module ModuleIP
   IP_FIXO = 1; IP_DINAMICO = 2
+  IP = {
+    IP_FIXO => 'IP fixo', IP_DINAMICO => 'IP Dinâmico'
+  }
 end
 
 module ModuleLink
   LINK_PRINCIPAL = 1; LINK_BACKUP = 2
-end
-
-module ModuleSituacao
-  ATIVO = 1; CANCELADO = 2; SUSPENSO = 3; BLOQUEADO = 4; PENDENTE = 5
-  SITUACAO_DESCRICOES = {
-    ATIVO => 'Ativo', CANCELADO => 'Cancelado', SUSPENSO => 'Suspenso', BLOQUEADO => 'Bloqueado', PENDENTE => 'Pendente'
+  MODALIDADE = {
+    LINK_PRINCIPAL => 'Principal', LINK_BACKUP => 'Backup'
   }
 end
 
 module ModuleInstalacao
   NAO = 0; SIM = 1
+  INSTALACAO = {
+    NAO => 'Não', SIM => 'Sim'
+  }
 end

@@ -27,7 +27,7 @@ E('#0716: eu tenha clicado no link Editar do Atendimento criado previamente.') d
 end
 
 Quando('#0716: eu preencher o campo chave pix {string}') do |valor_de_instalacao|
-  @form_atendimento_page = ObjectPage.new('atendimentos')
+  @form_atendimento_page = FormPage.new('atendimentos')
   @form_atendimento_page.preencher_campo('#atendimento_chave_pix', valor_de_instalacao)
 end
 
