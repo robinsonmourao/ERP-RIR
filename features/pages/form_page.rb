@@ -34,4 +34,23 @@ class FormPage < SitePrism::Page
   def selecionar_radiobutton(selector)
     find(selector).choose
   end
+
+  def preencher_data(day_id, month_id, year_id, data_vencimento_value, page)
+    data_formatada = Date.strptime(data_vencimento_value, '%Y-%m-%d')
+    if data_formatada
+      templates = {
+        1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June',
+        7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
+      }
+      month = templates[data_formatada.month] || []
+      year = data_formatada.year
+      day = data_formatada.day
+
+      page.selecionar_item(year_id, year.to_s)
+      page.selecionar_item(month_id, month.to_s)
+      page.selecionar_item(day_id, day.to_s)
+    end
+  rescue
+    puts 'Falha ao fazer parse de data!'
+  end
 end

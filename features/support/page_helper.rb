@@ -137,19 +137,8 @@ module SetUp
     @fatura_page.selecionar_item('#fatura_codigo_status', descricao_status_composto)
     @fatura_page.selecionar_item('#fatura_codigo_meio_pagamento', nome_meio_pagamento)
     @fatura_page.selecionar_item('#fatura_descricao_grupo', nome_grupo)
-
-    date = vencimento.split('-')
-
-    templates = {
-      '01' => 'January', '02' => 'February', '03' => 'March', '04' => 'April', '05' => 'May', '06' => 'June',
-      '07' => 'July', '08' => 'August', '09' => 'September', '10' => 'October', '11' => 'November', '12' => 'December'
-    }
-    month = templates[date[1]] || []
-
-    @fatura_page.selecionar_item('#fatura_vencimento_1i', date[0])
-    @fatura_page.selecionar_item('#fatura_vencimento_2i', month)
-    @fatura_page.selecionar_item('#fatura_vencimento_3i', date[2])
-
+    @fatura_page.preencher_data('#fatura_vencimento_3i', '#fatura_vencimento_2i', '#fatura_vencimento_1i',
+                                vencimento, @fatura_page)
     @fatura_page.clicar_enviar
 
     capture_id_by_link
