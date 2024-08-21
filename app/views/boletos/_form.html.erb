@@ -47,8 +47,12 @@
       <%= form.text_field :chave, placeholder: "INFORME uma chave" %>
     </div>
 
-    <div class='caixa-de-texto'>
-      <%= form.text_field :data_pagamento, placeholder: "INFORME a data de pagamento" %>
+    <div class='caixa-de-texto-vertical'>
+      <%= form.label :data_pagamento, "Informe a Data de Pagamento" %>
+      <div class='selecao-datas-horizontal'>
+        <%= form.date_select :data_pagamento, { order: [:day, :month, :year], }, 
+                                              { class: 'custom-select-tag' } %>
+      </div>
     </div>
 
     <div class='caixa-de-texto'>

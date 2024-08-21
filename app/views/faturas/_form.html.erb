@@ -40,8 +40,7 @@
     <div class='caixa-de-texto-vertical'>
       <%= form.label :vencimento, "Vencimento da FATURA" %>
       <div class='selecao-datas-horizontal'>
-        <%= form.date_select :vencimento, { order: [:day, :month, :year], 
-                                          prompt: { day: 'Dia', month: 'Mês', year: 'Ano' } }, 
+        <%= form.date_select :vencimento, { order: [:day, :month, :year], }, 
                                           { class: 'custom-select-tag' } %>
       </div>
     </div>

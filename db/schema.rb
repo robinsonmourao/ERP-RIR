@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.integer "codigo_fatura", null: false
     t.text "descricao_grupo", null: false
     t.integer "codigo_local_pagamento"
-    t.integer "codigo_status"
+    t.integer "codigo_status", null: false
     t.date "vencimento", null: false
     t.text "chave"
     t.date "data_pagamento"

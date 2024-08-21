@@ -21,6 +21,7 @@ class Boleto < ApplicationRecord
   validates :codigo_atendimento_composto, presence: true
   validates :codigo_fatura, presence: true
   validates :descricao_grupo, presence: true
+  validates :codigo_status, presence: true
 
   before_save :format_values
 

@@ -10,7 +10,7 @@ class CreateBoletos < ActiveRecord::Migration[7.1]
         codigo_fatura INTEGER NOT NULL,
         descricao_grupo TEXT NOT NULL,
         codigo_local_pagamento INTEGER,
-        codigo_status INTEGER,
+        codigo_status INTEGER NOT NULL,
 
         vencimento DATE NOT NULL,
         chave TEXT,
