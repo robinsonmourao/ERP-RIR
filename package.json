@@ -1,0 +1,26 @@
+{
+	"name": "erp-rir_end-to-end-tests_cypress",
+	"version": "1.0.0",
+	"description": "https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/RoteiroDeTestes.md",
+	"main": "index.js",
+	"type": "module",
+	"engines": {
+		"node": "v20.12.1"
+	},
+	"directories": {
+		"lib": "lib",
+		"test": "test"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"scripts:web": "npx cypress open",
+		"cypress:headless": "npx cypress run --browser electron"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"cypress": "^13.7.2",
+		"sqlite3": "^5.1.7"
+	}
+}
