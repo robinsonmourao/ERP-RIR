@@ -1,5 +1,5 @@
-const cadastrarPage = require('../support/pages/cadastrarPage');
-const SetUp = require('../support/SetUp');
+const cadastrarPage = require('../../support/pages/cadastrarPage');
+const SetUp = require('../../support/SetUp');
 
 after(() => { cy.apagarUsuarioAoTerminar(); });
 

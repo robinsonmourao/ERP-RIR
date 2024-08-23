@@ -2,6 +2,27 @@
 ## Roteiro de testes
 https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/RoteiroDeTestes.md
 
+# Estruturas
+## Pastas
+
+- **.config** -> Contém arquivos de configurações da gem Rubocop
+    - `rubocop.yml` -> Configuração da gem Rubocop
+- **.vscode** -> Contém arquivos de configurações da IDE Visual Studio Code
+    - `settings.json` -> Configuração da IDE Visual Studio Code
+- **cypress** -> Pasta principal do Cypress
+  - **e2e** -> Contém constantes necessárias para realização de alguns testes
+    - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários
+      - **idXX-<Descrição-do-case>.cy.js** -> Código JavaScript necessário para realização dos testes
+  - **pages** -> Contém mapeamento de páginas e elementos necessários para realização dos testes
+  - **features** -> Contém constantes necessárias para realização dos testes
+    - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários
+      - **idXX-Descrição-do-case>.feature** -> Sintaxe BDD necessárias para realização dos testes
+  - **support**
+    - **pages** -> Pasta com Módulos necessário para realização dos testes
+      - **cadastrarPage.js** -> Mapeamento dos elementos da pagina de cadastrar Usuario
+    - **commands.js** -> Arquivo de chamada de gatilhos
+    - **e2e.js** -> Arquivo de importações
+    - **SetUp.js** -> Arquivo para configurações de pre-teste
 
 # Preparação do ambiente [Linux]
 ## Instalar curl
