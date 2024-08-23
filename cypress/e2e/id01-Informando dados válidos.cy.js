@@ -25,10 +25,10 @@ describe('Cadastrar Usuário no sistema', () => {
 			cy.url().should('eq', 'http://127.0.0.1:3000/dashboard');
 		})
 
-		it(`And eu vejo uma mensagem de boas vindas com nome "UsuarioSuper"`, () => {
+		it(`And eu vejo uma mensagem de boas vindas com nome "${input.nome}"`, () => {
 			cy.get('.div-success > div:nth-child(1)').then(($div) => {
 				const mensagem = $div.text();
-				expect(mensagem).to.eq('Bem-vindo, UsuarioSuper!');
+				expect(mensagem).to.eq(`Bem-vindo, ${input.nome}!`);
 			});
 		})
 	})
