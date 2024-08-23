@@ -11,18 +11,20 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
     - `settings.json` -> Configuração da IDE Visual Studio Code
 - **cypress** -> Pasta principal do Cypress
   - **e2e** -> Contém constantes necessárias para realização de alguns testes
-    - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários
-      - **idXX-<Descrição-do-case>.cy.js** -> Código JavaScript necessário para realização dos testes
-  - **pages** -> Contém mapeamento de páginas e elementos necessários para realização dos testes
-  - **features** -> Contém constantes necessárias para realização dos testes
-    - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários
-      - **idXX-Descrição-do-case>.feature** -> Sintaxe BDD necessárias para realização dos testes
+    - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários com sintaxe JavaScript
+      - `idXX-<Descrição-do-case>.cy.js` -> Sintaxe JavaScript necessário para realização dos testes
+  - **features** -> Pasta com sintaxe Gherkin (BDD)
+    - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários com sintaxe Gherkin (BDD)
+      - `idXX-Descrição-do-case>.feature` -> Sintaxe Gherkin (BDD) necessárias para realização dos testes
+  - **scripts** -> Pasta com scripts personalizados pré e pós testes
+    - `wipeBP.cjs` -> Arquivo de script para limpar objetos pré e pós testes
   - **support**
-    - **pages** -> Pasta com Módulos necessário para realização dos testes
-      - **cadastrarPage.js** -> Mapeamento dos elementos da pagina de cadastrar Usuario
-    - **commands.js** -> Arquivo de chamada de gatilhos
-    - **e2e.js** -> Arquivo de importações
-    - **SetUp.js** -> Arquivo para configurações de pre-teste
+    - **pages** -> Contém mapeamento de páginas e elementos necessários para realização dos testes
+      - `cadastrarPage.js` -> Mapeamento dos elementos da pagina de cadastrar Usuario
+    - `commands.js` -> Arquivo de chamada de gatilhos
+    - `e2e.js` -> Arquivo de importações
+    - `SetUp.js` -> Arquivo para configurações de pre-teste
+- `cypress.config.js` -> Configuração do Cypress
 
 # Preparação do ambiente [Linux]
 ## Instalar curl

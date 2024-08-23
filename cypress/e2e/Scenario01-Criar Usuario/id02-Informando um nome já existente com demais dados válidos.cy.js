@@ -21,7 +21,7 @@ describe('Cadastrar Usuário no sistema', () => {
 			cy.visit(input.endpoint);
 		})
 
-		it(`And eu preencher os campos pertinentes com MESMO nome {string} cadastrado anteriormente, 'password {string} e permissao {string}`, () => {
+		it(`And eu preencher os campos pertinentes com MESMO nome ${input.nome} cadastrado anteriormente, password ${input.senha} e permissao ${input.permissao}`, () => {
 			cadastrarPage.preencherCampoPorId("#nome", input.nome);
 			cadastrarPage.preencherCampoPorId("#usuario_password", input.senha);
 			cadastrarPage.escolherItemPorSeletor('select[id=permissao]', input.permissao);
