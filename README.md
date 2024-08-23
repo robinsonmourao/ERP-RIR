@@ -1,6 +1,6 @@
 # Planejamento
 ## Roteiro de testes
-https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/RoteiroDeTestes.md
+https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/RoteiroDeTestes.md
 
 
 # Preparação do ambiente [Linux]
