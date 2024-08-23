@@ -1,8 +1,0 @@
-<% instance_variable_set(:@object, object) %>
-
-<%= render partial: 'builders/render_sheets/details_sheet' %>
-
-<div>
-  <%= link_to "Voltar para #{object.class.to_s.pluralize}", send("#{object.class.to_s.pluralize.downcase}_path"),
-              class: 'voltar-link' %>
-</div>

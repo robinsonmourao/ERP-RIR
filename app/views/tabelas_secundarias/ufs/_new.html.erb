@@ -1,8 +1,0 @@
-<% @classe = Uf
-   @main_param = 'sigla'
-   
-   @additional_attributes = ['nome_estado']
-   @uniqueness_map = ['required'] %>
-
-<%= render 'builders/render_templates_secundarias/new', 
-           modelo: @uf, path: ufs_path, verbo: 'post' %>

@@ -5,7 +5,7 @@ class CadastrarPage{
 	escolherItemPorSeletor(seletor, text){
 		cy.get(seletor).select(text); 
 	}
-	clicarBotao(id, text){
+	clicarBotaoPorId(id, text){
 		cy.get(id).contains(text).click();
 	}
 }

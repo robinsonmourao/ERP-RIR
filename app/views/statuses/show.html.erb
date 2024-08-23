@@ -1,7 +1,0 @@
-<% @except_columns = ['codigo_status', 'descricao_acfs']
-   @custom_show_values = [['tabela', Categoria::CATEGORIA[@status.tabela]],
-   
-                          Situacao.exists?(@status.codigo_situacao) ?
-                            ['codigo_situacao', Situacao.find(@status.codigo_situacao).descricao] : []
-                         ] %>
-<%= render 'builders/render_templates/show', object: @status %>
