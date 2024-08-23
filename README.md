@@ -2,134 +2,394 @@
 ## Roteiro de testes
 https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/RoteiroDeTestes.md
 
-# Demonstrações
-
-## Telas
-
-### Cadastrar
-![Cadastrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-cadastrar.png)
-
-### Entrar
-![Entrar](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-entrar.png)
-
-### Criação de contatos
-![CadastroContatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-cadastro-contatos.png)
-
-### Lista de contatos
-![Contatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-lista-contatos.png)
-
-### Visão geral da conta
-![Usuarios](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-visão-geral-da-conta.png)
-
-
 # Estruturas
-
 ## Arquivos
 
+- **.config** -> Contém arquivos de configurações da gem Rubocop
+    - `rubocop.yml` -> Configuração da gem Rubocop
 - **.vscode** -> Contém arquivos de configurações da IDE Visual Studio Code
-  - `settings.json` -> Configuração da IDE Visual Studio Code
-
-- **assets** -> Contém imagens, sintaxe JavaScript e estilos CSS
-  - `images` -> Contém imagens
-    - `demo-cadastrar` -> Imagem de demonstração da tela de cadastro de usuários
-    - `demo-entrar` -> Imagem de demonstração da tela de acesso dos usuários ao sistema RIX
-  - `javascripts` -> Contém sintaxe JavaScript
-  - `stylesheets` -> Contém estilos CSS
-    - `custom_styles.css` -> Arquivo de estilos CSS
-
-- **controllers** -> Contém controladores do modelo MV[C]
-  - `application_controller.rb` -> Controlador principal da aplicação
-  - `<...>_controller.rb` -> Controladores
-
-- **helpers** -> Contém os métodos auxiliares para utilização da aplicação
-  - `application_helper.rb` -> Métodos auxiliares para utilização da aplicação
-
-- **models** -> Contém modelos do modelo [M]VC
-  - `application_record.rb` -> modelo principal do Rails
-  - `<...>.rb` -> Controladores
-
-- **views** -> Contém visões do modelo M[V]C
-  - `builders` -> Builders da aplicação
-    - `render_sheets` -> Pasta com o arquivo de renderização unificado para planilhamento de TODOS os objetos
-      - `_sheet.html.erb` -> Arquivo de renderização unificado para planilhamento de TODOS os objetos
-    - `render_templates` -> Renderização unificada para TODAS as tabelas principais
-    - `render_templates_secundarias` -> Renderização unificada para TODAS as tabelas secundárias
-  - `layouts` -> Pasta com o modelo principal
-    - `_header.html.erb` -> Visão header(bar e botões)
-    - `application.html.erb` -> Visão principal da aplicação
-    - `not_found.html.erb` -> Visão unificada para tela de objeto não encontrado
-  - `tabelas_secundarias` -> Pasta com as visões de tabelas secundárias
-    - `<...>.html.erb` -> Visões secundárias da aplicação
-  - `<...>.html.erb` -> Visões das tabelas principais
-
+    - `settings.json` -> Configuração da IDE Visual Studio Code
 - **config**
- - `initializers` -> Pasta com configurações de inicialização da aplicação
-    - `constants.rb` -> Constantes essenciais para o funcionamento da aplicação
-    - `session_store.rb` -> Configuração do tempo de sessão
-  - `routes.rb` -> Configuração das rotas da aplicação <br>
+  - **initializers**
+    - **constants** -> Contém constantes necessárias para realização dos testes
+- **feature**
+  - **pages** -> Contém mapeamento de páginas e elementos necessários para realização dos testes
+  - **specs** -> Contém constantes necessárias para realização dos testes
+    - **ScenarioXX-<Descrição-do-cenário>.feature** -> Sintaxe BDD necessárias para realização dos testes
+  - **step_definitions** -> Contém constantes necessárias para realização de alguns testes
+    - **ScenarioXX-<Descrição-do-cenário>.rb** -> Código Ruby necessário para realização dos testes
+  - **support**
+    - **data** -> Dados adicionais dos testes
+      - **test.yml** -> Arquivo possuindo a url base para acesso do front-end da api
+    - **env.rb** -> Configurações de ambiente necessárias para realização dos testes
+    - **hooks.rb** -> Gatilhos em formato <@Descrição-gatilho> utilizados na realização dos testes
+    - **page_helper.rb** -> Módulos necessário para realização dos testes
 
-- **db**
-  - `migrate` -> Pasta com Scripts SQL
-    - `<000000000000XX_create_<nome-tabela>.rb>` -> Scripts SQL
-  - `schema.rb` -> Esquema completo de migração <br>
+# Preparar ambiente
+## Install Cucumber
 
-## Árvore de dependência
-### Tabelas primárias
+`After create a testing branch:`
+```
+sudo gem install cucumber
+```
 
-- └── atendimento | cliente | fornecedor | site
-  - └── status
-    - └── situacao
+# Iniciar Cucumber
 
-- └── atendimento
-  - ├── equipamentos
-  - ├── meio_pagamentos
-  - └── status
-    - └── situacao
-  - ├── tipo_links
-  - └── tecnologia_links
+```
+cucumber --init
+```
 
-- └── cliente
-  - └── municipio
-    - └── uf
+# Instalar gems necessárias
 
-- └── fornecedor
-  - └── municipio
-    - └── uf
+```
+touch ./Gemfile
+```
+```
+source 'http://rubygems.org'
 
-- └── site
-  - ├── cliente
-  - └── municipio
-    - └── uf
-  - └── tipo_link
+gem 'cucumber'
+gem 'rspec'
+gem 'site_prism'
+gem 'fastri'
+gem 'rcodetools'
+```
+CASO AINDA NÃO HAJA
+```
+gem 'capybara'
+gem 'selenium-webdriver', '~> 4.0'
+gem 'webdrivers', '~> 5.0'
 
-- └── contato
-  - ├── meio_contato
-  - └── tipo_contato
+```
+```
+bundle install
+```
+
+# Configurando enviroment
+
+```
+touch features/support/env.rb
+```
+```
+cd features/support/env.rb
+```
+```
+require 'capybara'
+require 'capybara/dsl'
+require 'capybara/rspec/matchers'
+require 'selenium-webdriver'
+require 'rspec'
+require 'site_prism'
+require_relative 'page_helper.rb' # Adicionado após criar page_helper.rb
+
+World(Capybara::DSL)
+World(Capybara::RSpecMatchers)
+World(Pages) # Adicionado após criar page_helper.rb
+
+Capybara.register_driver :selenium do |app|
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--disable-infobars')
+    options.add_argument('window-size=1366x768')
+
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+Capybara.configure do |config|
+    config.default_driver = :selenium
+    config.default_max_wait_time = 30
+    config.app_host = 'http://http://127.0.0.1:3000/'
+end
+```
+
+# Verbalização BDD em sintaxe Gherkin
+
+```
+touch ./features/specs/login.feature
+```
+```
+# language: en
+
+Feature: Fazer login
+
+-Eu como usuário.
+-Quero fazer login.
+
+Scenario: Fazer login com sucesso.
+
+    Given que eu tenha cadastrado previamente um usuário.
+        |email|bob.info.guaratiba@gmail.com|
+        |password|12345678|
+    When eu faço login.
+    Then eu verifico se consegui logar.
+```
+
+# Configure o arquivo de mapeamento para etapas BDD de login
+
+```
+cucumber
+```
+`cole o esqueleto gerado, no seguinte arquivo:`
+```
+touch ./features/step_definitions/login.rb
+```
+```
+Given('que eu tenha cadastrado previamente um usuário.') do |table|
   
-- └── fatura
-  - ├── atendimento
-  - └── boleto
-    - └── grupos
-  - ├── grupos
-  - ├── local_pagamentos
-  - └── meio_pagamentos
+end
 
-- └── boleto
-  - ├── grupos
-  - └── local_pagamentos
+When('eu faço login.') do
 
-# Status de desenvolvimento
+end
 
-| Tarefa             | Status        |
-|--------------------|---------------|
-| Desenvolvimento da API    | CONCLUÍDO    |
-| Roteirização de testes    | PROGRESSO    |
-| Testes E2E(Ponta a ponta) | PROGRESSO    |
-| Documentação readme.md    | PROGRESSO    |
-| Casos de uso              | PENDENTE     |
-| Fluxo de eventos          | PENDENTE     |
-| Fluxos alternativos       | PENDENTE     |
-| Fluxos de exceção         | PENDENTE     |
-| Containerização           | PENDENTE     |
-| ~~Testes unitários~~      |FORA DE ESCOPO|
-| ~~Hospedagem~~            |FORA DE ESCOPO|
+Then('eu verifico se consegui logar.') do
+
+end
+```
+
+# Faça a associação com os dados inseridos de login.feature
+## Given
+
+```
+Given('que eu tenha cadastrado previamente um usuário.') do |table|
+    @email = table.rows_hash['email']
+    @password = table.rows_hash['password']
+    visit('http://127.0.0.1:3000/login')
+end
+```
+
+## When
+
+```
+When('eu faço login.') do
+    fill_in 'session_email', with: @email
+    fill_in 'session_password', with: @password
+end
+```
+
+## Then
+
+```
+Then('eu verifico se consegui logar.') do
+
+    expect(page).to have_current_path('http://127.0.0.1:3000/tasks', url: true)
+    @actual_user = find('div[id="notice"]')
+    # expect(@actual_user.text).to eql 'Bem-vindo, '
+end
+```
+
+# Criar gatilhos
+
+```
+touch ./features/support/hooks.rb
+```
+```
+After '@user_logout' do
+
+    click_button "Logout"
+end
+```
+
+# Criar modelos pages objects
+
+```
+torch ./features/pages/login_page.rb
+```
+```
+class LoginPage < SitePrism::Page
+
+    set_url 'http://127.0.0.1:3000/login'
+
+    element :email_text_box, '#session_email'
+    element :password_text_box, '#session_password'
+    element :login_button, '#user-login-button'
+
+    def login (email, password)
+
+        email_text_box.set email
+        password_text_box.set password
+        login_button.click
+    end
+end
+```
+
+## Chamada encapsulada do modelo Page Objects
+
+```
+Given('que eu tenha cadastrado previamente um usuário.') do |table|
+    ...
+    @login_page = LoginPage.new
+    @login_page
+end
+When('eu faço login.') do
+    @login_page.login('bob.info.guaratiba@gmail.com', '12345678')
+end
+```
+
+## Instância com helper para login
+### Criar Helper para pages objects
+
+```
+torch ./features/support/page_helper.rb
+```
+```
+Dir[File.join(File.dirname(__FILE__), '../pages/*_page.rb')].each { |file| require file }
+                    
+module Pages
+    def login_page_helper
+        @login ||= LoginPage.new
+    end
+end
+```
+
+### Instância com helper para login
+
+```
+Given('que eu tenha cadastrado previamente um usuário.') do |table|
+    ...
+    # Remover '@login_page = LoginPage.new' se for utilizar pages_helper.rb
+    login_page_helper.load # Removido '@'
+end
+When('eu faço login.') do
+    login_page_helper.login('bob.info.guaratiba@gmail.com', '12345678') # Removido '@'
+end
+```
+
+### Instância com helper para tasks
+
+`Alterar gatilho de logout em 'After'`
+```
+After '@user_logout' do
+
+    # click_button "Logout" # old
+    tasks_page_helper.logout
+end
+```
+
+# Configuração de environment
+
+## Cucumber.yml
+```
+torch ./cucumber.yml
+```
+```
+## YAML Templates
+---
+
+default:  -p ci  
+          -p test
+          -p headless
+
+          --publish-quiet
+
+pretty: --format pretty
+ci: --format progress
+test: ENVIRONMENT_TYPE=test
+headless: HEADLESS=headless
+```
+
+## Profiles
+
+```
+torch ./features/support/data/test.yml
+```
+```
+url_name: 'http://127.0.0.1:3000/'
+```
+
+## env.rb
+
+```
+cd ./features/support/
+```
+```
+...
+HEADLESS = ENV['HEADLESS']
+ENVIRONMENT_TYPE = ENV['ENVIRONMENT_TYPE']
+CONFIG = YAML.load_file(File.dirname(__FILE__) +"/data/#{ENVIRONMENT_TYPE}.yml")
+
+Capybara.register_driver :selenium do |app|
+    ...
+    if HEADLESS
+      options.add_argument('headless')
+      options.add_argument('disable-gpu')
+    end
+    ...
+end
+```
+
+```
+Capybara.configure do |config|
+    ...
+    config.app_host = CONFIG['url_name']
+end
+```
+
+# Gerar relatório automaticamente
+## Arquivo html
+
+```
+cd ./cucumber.yml
+```
+`Adicione o suport a html`
+```
+...
+html: --format html --out=results/report.html
+```
+`Faça a chamada do html`
+```
+...
+default: -p html
+...
+```
+## Arquivo Helper
+
+```
+torch ./features/support/helper.rb
+```
+```
+require 'fileutils'
+
+# tira screenshot e imbuti no relatorio final
+module Helper
+    def take_screenshot(file_name, result)
+
+        timer_path = Time.now.strftime('%F').to_s
+        file_path = "results/screenshots/test_#{result}/run_#{timer_path}"
+        screenshot = "#{file_path}/#{file_name}.png"
+        page.save_screenshot(screenshot)
+        attach(screenshot, 'image/png', 'Click here')
+    end
+end
+```
+## Adicionar suporte ao arquivo helper via env
+
+```
+...
+require_relative 'helper.rb' # Adicionar após a parte dos screenshots
+...
+```
+
+## Arquivo hooks para engatilhar os screenshots
+
+```
+cd ./features/support/hooks.rb
+```
+```
+World(Helper)
+...
+```
+```
+...
+After do |scenario|
+    scenario_name = scenario.name.gsub(/\s+/, '_').tr('/', '_')
+    scenario_name = scenario.name.delete(',', '')
+    scenario_name = scenario.name.delete('(', '')
+    scenario_name = scenario.name.delete(')', '')
+    scenario_name = scenario.name.delete('#', '')
+
+    if scenario.failed?
+        take_screenshot(scenario_name.downcase, 'failed')
+    else
+        take_screenshot(scenario_name.downcase, 'passed')
+    end
+end
+```

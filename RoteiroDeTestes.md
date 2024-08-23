@@ -344,6 +344,11 @@
 |-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
 |-|-|-|-|-|-|-|-|-|
 
+# Cenário 27 - Avançar formulário teclando 'Enter'
+|ID   |Objetivo do teste|Pré-condições|Passos|Resultado esperado|Resultado obtido|Automatizado|Informações adicionais|Issue ID
+|-----|-----------------|-------------|------|------------------|----------------|------------|----------------------|--------|
+|-|-|-|-|-|-|-|-|-|
+
 <br><br><br>
 
 # Legendas
