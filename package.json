@@ -20,7 +20,7 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"cypress": "^13.7.2",
+		"cypress": "^13.13.3",
 		"esm": "^3.2.25",
 		"sqlite3": "^5.1.7"
 	}
