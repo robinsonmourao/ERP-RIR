@@ -6,19 +6,19 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
 
 ## Telas
 ### Cadastrar
-![Cadastrar](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-cadastrar.png)
+![Cadastrar](https://github.com/robinsonmourao/ERP-RIR/blob/main/app/assets/images/demo-cadastrar.png?raw=true)
 
 ### Entrar
-![Entrar](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-entrar.png)
+![Entrar](https://github.com/robinsonmourao/ERP-RIR/blob/main/app/assets/images/demo-entrar.png)
 
 ### Criação de contatos
-![CadastroContatos](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-cadastro-contatos.png)
+![CadastroContatos](https://github.com/robinsonmourao/ERP-RIR/blob/main/app/assets/images/demo-cadastro-contatos.png)
 
 ### Lista de contatos
-![Contatos](https://raw.githubusercontent.com/robinsonmourao/RIX-system/main/app/assets/images/demo-lista-contatos.png)
+![Contatos](https://github.com/robinsonmourao/ERP-RIR/blob/main/app/assets/images/demo-lista-contatos.png)
 
 ### Visão geral da conta
-![Usuarios](https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests/app/assets/images/demo-vis%C3%A3o-geral-da-conta.png)
+![Usuarios](https://github.com/robinsonmourao/ERP-RIR/blob/main/app/assets/images/demo-vis%C3%A3o-geral-da-conta.png)
 
 
 # Estruturas
