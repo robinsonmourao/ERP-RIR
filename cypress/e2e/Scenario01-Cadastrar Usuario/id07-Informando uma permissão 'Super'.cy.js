@@ -1,7 +1,7 @@
 import Formulario from "../../support/Formulario";
 
 describe(`Cadastrar Usuario`, () => {
-	// after(() => { cy.exec('node cypress/scripts/wipeDB.cjs'); });
+	// after(() => { cy.apagarUsuarioAoTerminar(); });
 
 	describe(`Validar se é permitido cadastro de usuário escolhendo 'Super' da opção de 'permissao'`, () => {
 		const data = { endpoint: '/cadastrar', nome: 'UsuarioSuper', senha: '12345678', permissao: 'Super' };
@@ -12,7 +12,7 @@ describe(`Cadastrar Usuario`, () => {
 		it(`When eu preencher os campos pertinentes com nome ${data.nome}, password ${data.senha} e permissao ${data.permissao}`, () => {
 			Formulario.preencherCampoPorId('#nome', data.nome);
 			Formulario.preencherCampoPorId('#usuario_password', data.senha);
-			Formulario.escolherItemPorSeletor('#permissao', data.permissao);
+			Formulario.selecionarItemPorId('#permissao', data.permissao);
 		})
 
 		it(`And eu clicar no botão cadastrar.`, () => {

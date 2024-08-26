@@ -3,7 +3,7 @@ class Formulario {
 	  	cy.get(id).type(valor);
 	}
   
-	static escolherItemPorSeletor(seletor, valor) {
+	static selecionarItemPorId(seletor, valor) {
 	  	cy.get(seletor).select(valor);
 	}
   

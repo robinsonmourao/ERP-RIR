@@ -11,7 +11,7 @@ describe('Cadastrar Usuario', () => {
 
 		it(`When eu preencher os campos pertinentes com nome ${data.nome} e permissao ${data.permissao}`, () => {
 			Formulario.preencherCampoPorId('#nome', data.nome);
-			Formulario.escolherItemPorSeletor('#permissao', data.permissao);
+			Formulario.selecionarItemPorId('#permissao', data.permissao);
 		})
 
 		it(`And eu clicar no botão cadastrar.`, () => {
