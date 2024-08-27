@@ -10,7 +10,7 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
 - **.vscode** -> Contém arquivos de configurações da IDE Visual Studio Code
     - `settings.json` -> Configuração da IDE Visual Studio Code
 - **cypress** -> Pasta principal do Cypress
-  - **e2e** -> Contém constantes necessárias para realização de alguns testes
+  - **e2e**
     - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários com sintaxe JavaScript
       - `idXX-<Descrição-do-case>.cy.js` -> Sintaxe JavaScript necessário para realização dos testes
   - **features** -> Pasta com sintaxe Gherkin (BDD)
