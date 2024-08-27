@@ -17,10 +17,9 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
     - **ScenarioXX-<Descrição-do-cenário>** -> Pasta divisória dos cenários com sintaxe Gherkin (BDD)
       - `idXX-Descrição-do-case>.feature` -> Sintaxe Gherkin (BDD) necessárias para realização dos testes
   - **scripts** -> Pasta com scripts personalizados pré e pós testes
-    - `wipeBP.cjs` -> Arquivo de script para limpar objetos pré e pós testes
+    - `wipeBP.cjs` -> Arquivo para configuração pós testes (SQL)
   - **support**
-    - **pages** -> Contém mapeamento de páginas e elementos necessários para realização dos testes
-      - `cadastrarPage.js` -> Mapeamento dos elementos da pagina de cadastrar Usuario
+    - `Formulario.js` -> Mapeamento dos elementos de formularios
     - `commands.js` -> Arquivo de chamada de gatilhos
     - `e2e.js` -> Arquivo de importações
     - `SetUp.js` -> Arquivo para configurações de pre-teste
