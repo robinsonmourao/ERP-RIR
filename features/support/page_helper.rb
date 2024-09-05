@@ -67,10 +67,10 @@ module SetUp
     @dashboard_page.clicar_submenu_link('Novo')
 
     @boleto_page = FormPage.new('boletos')
-    @boleto_page.selecionar_item('#boleto_codigo_atendimento', codigo_atendimento_composto)
+    @boleto_page.selecionar_item('#boleto_codigo_atendimento_composto', codigo_atendimento_composto)
     @boleto_page.selecionar_item('#boleto_codigo_fatura', codigo_fatura_composto)
     @boleto_page.selecionar_item('#boleto_descricao_grupo', agrupamento)
-    @boleto_page.selecionar_item('#boleto_descricao_status', codigo_status_composto)
+    @boleto_page.selecionar_item('#boleto_codigo_status', codigo_status_composto)
     @boleto_page.selecionar_item('#boleto_vencimento', data_vencimento)
 
     @boleto_page.clicar_enviar

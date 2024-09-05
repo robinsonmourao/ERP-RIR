@@ -21,8 +21,6 @@ After do |scenario|
 end
 
 Before do |scenario|
-  imprimir_com_quebra_linha = false;
-
   feature_path = scenario.location.file
   @feature_file_name = File.basename(feature_path)
   @feature_folder_name = File.basename(File.dirname(feature_path))
