@@ -17,4 +17,4 @@ Cenário: Validar obrigatoriedade para valor 'velocidade de download'
     Quando #0604: eu escolher o item da lista Designação "RIR"
         E #0604: eu escolher o item da lista Fornecedor "fornecedor_principal"
         E #0604: eu clicar no botão Enviar.
-    Então #0604: eu vejo um balão informando que é obrigatório selecionar um item para Fornecedor
+    Então #0604: eu vejo um alerta informando que o campo não pode ser vazio.

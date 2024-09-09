@@ -4,9 +4,15 @@ class FormPage < SitePrism::Page
   end
 
   element :enviar_button, '#form-submit-button'
+  element :enviar_button_form_auxiliar, '#high-privileges-form-submit-button'
 
   def clicar_enviar
     enviar_button.click
+    capture_id_by_link
+  end
+
+  def clicar_enviar_form_auxiliar
+    enviar_button_form_auxiliar.click
     capture_id_by_link
   end
 

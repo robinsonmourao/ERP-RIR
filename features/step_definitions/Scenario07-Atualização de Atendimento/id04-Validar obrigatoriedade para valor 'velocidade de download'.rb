@@ -35,7 +35,7 @@ E('#0704: eu clicar no botão Enviar.') do
   @form_atendimento_page.clicar_enviar
 end
 
-Então('#0704: eu vejo um balão informando que é obrigatório selecionar um item para Fornecedor') do
+Então('#0704: eu vejo um alerta informando que o campo não pode ser vazio.') do
   field = find("#atendimento_velocidade_down")
   validation_message = field.native.attribute('validationMessage')
   expect(validation_message).to eq('Preencha este campo.')

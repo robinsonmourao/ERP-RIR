@@ -188,6 +188,27 @@ module SetUp
     capture_id_by_link
   end
 
+  def municipio(nome_municipio, uf)
+    return if capture_id_if_exists_by_query("codigo_municipio", "municipios", "nome_municipio", nome_municipio) && 
+                                            ENV['FAST_MODE'] == 'true'
+
+    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+
+    @dashboard_page = DashboardPage.new
+    @dashboard_page.load
+
+    @dashboard_page.cursor_hover('#clientes')
+    @dashboard_page.clicar_submenu_link('Novo')
+
+    @municipio_page = FormPage.new('clientes')
+    @municipio_page.preencher_campo('#nome_municipio', nome_municipio)
+    @municipio_page.selecionar_item('#codigo_uf', uf)
+
+    @municipio_page.clicar_enviar_form_auxiliar
+
+    capture_id_by_link
+  end
+
   def capture_id_if_exists_by_query(id_column_name, table_name, column_name, column_expected_value)
     capture_id_by_query(id_column_name, table_name, column_name, column_expected_value)
   end

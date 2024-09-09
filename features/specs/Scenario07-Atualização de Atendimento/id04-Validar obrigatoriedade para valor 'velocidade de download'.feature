@@ -17,4 +17,4 @@ Cenário: Validar obrigatoriedade para valor 'velocidade de download'
         E #0704: eu tenha clicado no link Editar do Atendimento criado previamente.
     Quando #0704: eu preencher o campo velocidade de download ""
         E #0704: eu clicar no botão Enviar.
-    Então #0704: eu vejo um balão informando que é obrigatório selecionar um item para Fornecedor
+    Então #0704: eu vejo um alerta informando que o campo não pode ser vazio.
