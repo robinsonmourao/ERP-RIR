@@ -79,12 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  var validationMessages = [['O tamanho da senha deve estar entre 8 e 12 caracteres.'], ['Este valor deve ser maior que 0.']]
+  var validationMessages = [['O tamanho da senha deve estar entre 8 e 12 caracteres.'],
+                            ['Este valor deve ser maior que 0.'],
+                            ['O tamanho do cnpj deve ser 14.']]
 
   const passwordDigest = document.getElementById('usuario_password');
   const velocidadeContratada = document.getElementById('site_velocidade_contratada');
   const velocidadeDownField = document.getElementById('atendimento_velocidade_down');
   const velocidadeUpField = document.getElementById('atendimento_velocidade_up');
+  const cnpjField = document.getElementById('cliente_cnpj');
 
   if(passwordDigest){
     validatePasswords(passwordDigest);
@@ -95,6 +98,19 @@ document.addEventListener('DOMContentLoaded', function() {
       validateVelocidades(velocidadeDownField);
       validateVelocidades(velocidadeUpField);
     }
+  }else if(cnpjField){
+		validateCnpj(cnpjField)
+  }
+
+  function validateCnpj(field){
+	field.addEventListener('input', function() {
+		if (isLength14(field)) {
+		  field.setCustomValidity(validationMessages[2]);
+		} else {
+		  field.setCustomValidity('');
+		}
+		field.reportValidity();
+	  });
   }
 
   function validatePasswords(field) {
@@ -117,6 +133,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       field.reportValidity();
     });
+  }
+
+  function isLength14(field){
+    const value = (field.value);
+    return ((value.trim() !== "") && (value.length != 14))
   }
 
   function isLengthBetween8And12(field){
