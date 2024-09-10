@@ -68,7 +68,7 @@ Então('#0907: eu sou redirecionado para detalhes do novo Boleto criado contendo
                       '#codigo_local_pagamento-value' => 'Bradesco'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

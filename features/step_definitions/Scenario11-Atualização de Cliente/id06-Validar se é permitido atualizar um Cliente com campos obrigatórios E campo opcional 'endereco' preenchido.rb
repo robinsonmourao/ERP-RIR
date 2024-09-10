@@ -47,7 +47,7 @@ Então('#1106: eu sou redirecionado para detalhes do Cliente contendo valores at
                       '#endereco-value' => 'Avenida Alameda das Travessas, nº 111'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

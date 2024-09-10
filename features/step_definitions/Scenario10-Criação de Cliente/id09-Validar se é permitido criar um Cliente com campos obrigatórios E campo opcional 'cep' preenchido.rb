@@ -38,7 +38,7 @@ Então('#1009: eu sou redirecionado para detalhes do novo Cliente criado contend
                       '#cep-value' => '40000-000'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

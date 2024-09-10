@@ -61,7 +61,7 @@ Então('#0811: eu sou redirecionado para detalhes do novo Boleto criado contendo
                       '#observacao-value' => 'boleto do dono'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

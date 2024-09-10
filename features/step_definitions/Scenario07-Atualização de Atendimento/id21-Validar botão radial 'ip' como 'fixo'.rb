@@ -51,7 +51,7 @@ Então('#0721: eu sou redirecionado para detalhes do novo Atendimento criado con
                       '#ip_fixo-value' => '192.168.0.0'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

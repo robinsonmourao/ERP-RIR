@@ -47,7 +47,7 @@ Então('#0601: eu sou redirecionado para detalhes do novo Atendimento criado con
                       '#nota_fiscal-value' => 'Inexistente',
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

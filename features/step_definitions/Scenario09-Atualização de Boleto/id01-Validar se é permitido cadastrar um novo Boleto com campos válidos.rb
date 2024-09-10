@@ -72,7 +72,7 @@ Então('#0901: eu sou redirecionado para detalhes do novo Boleto criado contendo
                       '#data_pagamento-value' => '2024-09-05'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

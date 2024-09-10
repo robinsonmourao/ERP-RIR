@@ -46,7 +46,7 @@ Então('#0716: eu sou redirecionado para detalhes do novo Atendimento criado con
 
                       '#chave_pix-value' => 'pix@rir.com.br' }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

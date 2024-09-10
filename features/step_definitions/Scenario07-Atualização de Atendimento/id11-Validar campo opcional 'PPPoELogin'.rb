@@ -46,7 +46,7 @@ Então('#0711: eu sou redirecionado para detalhes do novo Atendimento criado con
 
                       '#pppoe_login-value' => 'admin' }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

@@ -38,7 +38,7 @@ Então('#1010: eu sou redirecionado para detalhes do novo Cliente criado contend
                       '#inscricao_estadual-value' => '388.108.598.269'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

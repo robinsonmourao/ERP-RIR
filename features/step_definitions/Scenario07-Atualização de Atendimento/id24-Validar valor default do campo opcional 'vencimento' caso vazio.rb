@@ -45,7 +45,7 @@ Então('#0724: eu sou redirecionado para detalhes do novo Atendimento criado con
                       '#dia_vencimento-value' => '25'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

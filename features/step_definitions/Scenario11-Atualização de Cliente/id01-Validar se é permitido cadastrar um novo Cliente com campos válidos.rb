@@ -41,7 +41,7 @@ Então('#1101: eu sou redirecionado para detalhes do Cliente contendo valores at
                       '#cnpj-value' => 'XXXXXXXXXXXX02'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

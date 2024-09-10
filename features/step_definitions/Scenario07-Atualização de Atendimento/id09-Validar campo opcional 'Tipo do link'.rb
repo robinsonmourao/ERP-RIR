@@ -47,7 +47,7 @@ Então('#0709: eu sou redirecionado para detalhes do novo Atendimento criado con
                       '#codigo_tipo_link-value' => 'Banda Larga'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 

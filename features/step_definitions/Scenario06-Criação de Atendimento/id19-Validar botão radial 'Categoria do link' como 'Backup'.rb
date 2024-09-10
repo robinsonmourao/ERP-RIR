@@ -52,7 +52,7 @@ Então('#0619: eu sou redirecionado para detalhes do novo Atendimento criado con
                       '#link-value' => 'Backup'
   }
   expected_values.each do |id, value|
-    expect(page.find("#{id}").text).to eq(value)
+    expect(page.find(id).text).to eq(value)
   end
 end
 
