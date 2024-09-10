@@ -98,6 +98,28 @@ module SetUp
     capture_id_by_link
   end
 
+  def contato(originario, tipo_contato, meio_contato, descricao)
+    return if capture_id_if_exists_by_query("codigo_contato", "contatos", "descricao", descricao) && ENV['FAST_MODE'] == 'true'
+
+    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+
+    @dashboard_page = DashboardPage.new
+    @dashboard_page.load
+
+    @dashboard_page.cursor_hover('#contatos')
+    @dashboard_page.clicar_submenu_link('Novo')
+
+    @contato_page = FormPage.new('contatos')
+    @contato_page.selecionar_item('#contato_tabela', originario)
+    @contato_page.selecionar_item('#contato_codigo_tipo_contato', tipo_contato)
+    @contato_page.selecionar_item('#contato_codigo_meio_contato', meio_contato)
+    @contato_page.preencher_campo('#contato_descricao', descricao)
+
+    @contato_page.clicar_enviar
+
+    capture_id_by_link
+  end
+
   def site(codigo_cliente, designacao, nome_site, velocidade_contratada)
     return if capture_id_if_exists_by_query("codigo_site", "sites", "nome_site", nome_site) && ENV['FAST_MODE'] == 'true'
 
@@ -265,6 +287,10 @@ module SetDown
 
   def delete_usuario
     execute_sql("DELETE FROM usuarios WHERE nome = '#{$nome_usuario_atual}';")
+  end
+
+  def remove_by_query(query)
+    execute_sql(query)
   end
 
   def remove_last_table

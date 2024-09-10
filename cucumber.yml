@@ -1,13 +1,14 @@
 default:  -p ci  
           -p test
           -p fast_mode
+          -p case_skipping
           -p terminal_drop_lines_each_case
-          -p headless
           --publish-quiet
 
 pretty: --format pretty
 ci: --format progress
 test: ENVIRONMENT_TYPE=test
 headless: HEADLESS=headless
-fast_mode: FAST_MODE=false
+fast_mode: FAST_MODE=true
+case_skipping: CASE_SKIPPING=true
 terminal_drop_lines_each_case: TERMINAL_DROP_LINES_EACH_CASE=true

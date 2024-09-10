@@ -1,7 +1,13 @@
 require 'sqlite3'
 
 Before('@skip') do
-  pending
+  pending if ENV['CASE_SKIPPING'] == 'true'
+end
+
+After('@apagar_clientes_ao_terminar') do
+  SetDown.remove_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_principal';")
+  SetDown.remove_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_alternativo';")
+  puts 'true'
 end
 
 After('@logout') do

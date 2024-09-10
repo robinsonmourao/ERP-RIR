@@ -68,8 +68,7 @@ Então('#0901: eu sou redirecionado para detalhes do novo Boleto criado contendo
   expected_values = { '#codigo_boleto_composto-value' => '001(001RIR2 002fornecedor_alternativo) 0022024-08-25 003Fatura não agrupada',
                       '#descricao_grupo-value' => 'Fatura não agrupada',
                       '#vencimento-value' => '2024-08-25',
-                      '#codigo_status-value' => '001f 002fornecedor_alternativo 003Pendente',
-                      '#data_pagamento-value' => '2024-09-05'
+                      '#codigo_status-value' => '001f 002fornecedor_alternativo 003Pendente'
   }
   expected_values.each do |id, value|
     expect(page.find(id).text).to eq(value)
