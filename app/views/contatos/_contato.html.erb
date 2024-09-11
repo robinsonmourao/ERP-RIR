@@ -1,4 +1,3 @@
 <%= render 'builders/render_templates/object', object: contato, 
-                                               header_titles: ['Descrição', 
-                                                               '001[Código do contato] 002[Código do tipo do contato]'],
-                                               cells: [contato.descricao, contato.codigo_contato_composto] %>
+                                               header_titles: ['001<Descrição do contato> 002<Descrição do tipo do contato>'],
+                                               cells: [contato.codigo_contato_composto] %>

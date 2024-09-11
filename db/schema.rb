@@ -57,11 +57,13 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   end
 
   create_table "contatos", primary_key: "codigo_contato", force: :cascade do |t|
+    t.text "codigo_contato_composto"
     t.string "tabela", limit: 1, null: false
     t.integer "codigo_tipo_contato", null: false
     t.integer "codigo_meio_contato", null: false
     t.text "nome_pessoa"
     t.text "descricao", null: false
+    t.text "descricao_tipo_contato"
     t.text "observacao"
   end
 

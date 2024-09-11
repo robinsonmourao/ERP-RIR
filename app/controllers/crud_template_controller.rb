@@ -114,7 +114,7 @@ class CrudTemplateController < ApplicationController
       Atendimento => 'codigo_atendimento_composto',
       Boleto => 'codigo_boleto_composto',
       Cliente => 'cnpj',
-      Contato => 'descricao',
+      Contato => 'codigo_contato_composto',
       Fatura => 'codigo_fatura_composto',
       Fornecedor => 'nome_fornecedor',
       Site => 'nome_site',
@@ -126,12 +126,12 @@ class CrudTemplateController < ApplicationController
 
   def load_valor_parametro_unico(classe, object, object_params)
     templates = {
-      Atendimento => montar_campo_composto(object),
-      Boleto => montar_campo_composto(object),
-      Status => montar_campo_composto(object),
-      Fatura => montar_campo_composto(object),
+      Atendimento => montar_campo_composto_para_mensagens(object),
+      Boleto => montar_campo_composto_para_mensagens(object),
+      Status => montar_campo_composto_para_mensagens(object),
+      Fatura => montar_campo_composto_para_mensagens(object),
+      Contato => montar_campo_composto_para_mensagens(object),
       Cliente => object_params[@nome_parametro_unico],
-      Contato => object_params[@nome_parametro_unico],
       Fornecedor => object_params[@nome_parametro_unico],
       Site => object_params[@nome_parametro_unico],
       Usuario => object_params[@nome_parametro_unico]
@@ -139,17 +139,18 @@ class CrudTemplateController < ApplicationController
     @valor_parametro_unico = templates[classe] || nil
   end
 
-  def montar_campo_composto(object)
+  def montar_campo_composto_para_mensagens(object)
     case object
     when Atendimento
       "001#{object&.designacao} 002#{object&.nome_fornecedor}"
+    when Contato
+      "001#{object&.descricao} 
+       002#{TipoContato.exists?(object.codigo_tipo_contato) ? TipoContato.find(object.codigo_tipo_contato).descricao : ''}"
     when Boleto, Fatura
       "001(#{object&.codigo_atendimento_composto}) 002#{object&.vencimento} 003#{object.descricao_grupo}"
     when Status
       "001#{object&.tabela} 002#{object&.tabela == 'a' ? ('(').concat(object&.descricao_acfs).concat(')') : object&.descricao_acfs} 
-       003#{
-        Situacao.exists?(object.codigo_situacao) ? Situacao.find(object.codigo_situacao).descricao : 'Pendente'
-      }"
+       003#{Situacao.exists?(object.codigo_situacao) ? Situacao.find(object.codigo_situacao).descricao : 'Pendente'}"
     end
   end
 end
