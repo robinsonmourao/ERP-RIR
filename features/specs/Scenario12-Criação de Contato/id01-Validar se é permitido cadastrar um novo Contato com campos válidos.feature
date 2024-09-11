@@ -20,4 +20,4 @@ Cenário: Validar se é permitido cadastrar um novo Contato com campos válidos
         E #1201: eu preencher o campo descrição "00 00000-0000"
         E #1201: eu clicar no botão Enviar.
     Então #1201: eu sou redirecionado para detalhes do novo Contato criado contendo valores informados
-        E #1201: eu vejo a informação de que o Contato foi criado com sucesso contendo o valor de contato código composto "00100 00000-0000 002Dono".
+        E #1201: eu vejo a informação de que o Contato foi criado com sucesso contendo o valor de código contato composto "00100 00000-0000 002Dono".

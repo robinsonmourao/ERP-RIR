@@ -21,4 +21,4 @@ Cenário: Validar obrigatoriedade para valor 'Meio de contato', demais campos v�
         E #1206: eu preencher o campo observação "Observação para testes"
         E #1206: eu clicar no botão Enviar.
     Então #1206: eu sou redirecionado para detalhes do novo Contato criado contendo valores informados
-        E #1206: eu vejo a informação de que o Contato foi criado com sucesso contendo o valor de contato código composto "00100 00000-0000 002Dono".
+        E #1206: eu vejo a informação de que o Contato foi criado com sucesso contendo o valor de código contato composto "00100 00000-0000 002Dono".

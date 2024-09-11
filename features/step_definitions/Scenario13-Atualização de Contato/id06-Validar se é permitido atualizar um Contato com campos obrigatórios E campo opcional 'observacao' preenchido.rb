@@ -61,7 +61,7 @@ Então('#1306: eu sou redirecionado para detalhes do novo Contato criado contend
   end
 end
 
-E('#1306: eu vejo a informação de que o Contato foi atualizado com sucesso contendo o valor de contato código composto {string}.') do |valor_unico|
+E('#1306: eu vejo a informação de que o Contato foi atualizado com sucesso contendo o valor de código contato composto {string}.') do |valor_unico|
   @message = find('.div-success > div:nth-child(1)')
   expect(@message.text).to eql "Contato com codigo contato composto '#{valor_unico}' foi ATUALIZADO com sucesso."
 end

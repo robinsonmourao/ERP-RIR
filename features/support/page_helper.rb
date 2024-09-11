@@ -120,28 +120,6 @@ module SetUp
     capture_id_by_link
   end
 
-  def site(codigo_cliente, designacao, nome_site, velocidade_contratada)
-    return if capture_id_if_exists_by_query("codigo_site", "sites", "nome_site", nome_site) && ENV['FAST_MODE'] == 'true'
-
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
-
-    @dashboard_page = DashboardPage.new
-    @dashboard_page.load
-
-    @dashboard_page.cursor_hover('#sites')
-    @dashboard_page.clicar_submenu_link('Novo')
-
-    @site_page = FormPage.new('sites')
-    @site_page.selecionar_item('#site_codigo_cliente', codigo_cliente)
-    @site_page.preencher_campo('#site_designacao', designacao)
-    @site_page.preencher_campo('#site_nome_site', nome_site)
-    @site_page.preencher_campo('#site_velocidade_contratada', velocidade_contratada)
-
-    @site_page.clicar_enviar
-
-    capture_id_by_link
-  end
-
   def fatura(codigo_atendimento_composto, descricao_status_composto, nome_meio_pagamento, nome_grupo, vencimento)
     return if capture_id_if_exists_by_query("codigo_fatura", "faturas", "codigo_fatura_composto",
                                             "001(#{codigo_atendimento_composto}) 002#{vencimento} 003#{nome_grupo}") && ENV['FAST_MODE'] == 'true'
@@ -181,6 +159,28 @@ module SetUp
     @fornecedor_page.preencher_campo('#fornecedor_nome_fornecedor', nome_fornecedor)
 
     @fornecedor_page.clicar_enviar
+
+    capture_id_by_link
+  end
+
+  def site(codigo_cliente, designacao, nome_site, velocidade_contratada)
+    return if capture_id_if_exists_by_query("codigo_site", "sites", "nome_site", nome_site) && ENV['FAST_MODE'] == 'true'
+
+    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+
+    @dashboard_page = DashboardPage.new
+    @dashboard_page.load
+
+    @dashboard_page.cursor_hover('#sites')
+    @dashboard_page.clicar_submenu_link('Novo')
+
+    @site_page = FormPage.new('sites')
+    @site_page.selecionar_item('#site_codigo_cliente', codigo_cliente)
+    @site_page.preencher_campo('#site_designacao', designacao)
+    @site_page.preencher_campo('#site_nome_site', nome_site)
+    @site_page.preencher_campo('#site_velocidade_contratada', velocidade_contratada)
+
+    @site_page.clicar_enviar
 
     capture_id_by_link
   end
@@ -344,5 +344,15 @@ module SetDown
     else
       "Não foi possível converter entidade para tabela: Entidade não encontrada!"
     end
+  end
+end
+
+module Utils
+  def next_25_day_date
+    change_day(Date.today, 25)
+  end
+
+  def change_day(date, expected_day)
+    Date.new(date.year, date.month, expected_day)
   end
 end

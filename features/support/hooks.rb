@@ -7,7 +7,16 @@ end
 After('@apagar_clientes_ao_terminar') do
   SetDown.remove_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_principal';")
   SetDown.remove_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_alternativo';")
-  puts 'true'
+end
+
+After('@apagar_atendimentos_ao_terminar') do
+  SetDown.remove_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR 002fornecedor_principal';")
+  SetDown.remove_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR2 002fornecedor_alternativo';")
+end
+
+After('@apagar_statuses_ao_terminar') do
+  SetDown.remove_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001a 002(001RIR 002fornecedor_principal) 003Pendente';")
+  SetDown.remove_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001a 002(001RIR2 002fornecedor_alternativo) 003Pendente';")
 end
 
 After('@logout') do
