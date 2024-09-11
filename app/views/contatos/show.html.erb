@@ -1,1 +1,10 @@
+<% @except_columns = ['codigo_contato', 'codigo_contato_composto'] 
+   @custom_show_values = [['tabela', Categoria::CATEGORIA[@contato.tabela]],
+    
+                          TipoContato.exists?(@contato.codigo_tipo_contato) ?
+                            ['codigo_tipo_contato', TipoContato.find(@contato.codigo_tipo_contato).descricao] : [],
+                          MeioContato.exists?(@contato.codigo_meio_contato) ?
+                            ['codigo_meio_contato', MeioContato.find(@contato.codigo_meio_contato).descricao] : []
+                         ] %>
+
 <%= render 'builders/render_templates/show', object: @contato%>

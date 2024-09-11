@@ -1,2 +1,5 @@
-<% @except_columns = ['codigo_cliente'] %>
+<% @except_columns = ['codigo_cliente'] 
+   @custom_show_values = [Municipio.exists?(@cliente.codigo_municipio) ?
+                            ['codigo_municipio', Municipio.find(@cliente.codigo_municipio).nome_municipio] : []
+                         ] %>
 <%= render 'builders/render_templates/show', object: @cliente%>
