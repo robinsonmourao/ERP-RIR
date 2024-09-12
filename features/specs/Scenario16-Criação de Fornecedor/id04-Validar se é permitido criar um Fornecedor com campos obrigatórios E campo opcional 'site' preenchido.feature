@@ -12,6 +12,7 @@ Funcionalidade: Criar no sistema
 Cenário: Validar se é permitido criar um Fornecedor com campos obrigatórios E campo opcional 'Site' preenchido
 
     Dado #1604: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
+        E #1604: eu já tenha criado um Site previamente
         E #1604: eu tiver passado o mouse sobre a aba "Fornecedores"
         E #1604: eu tiver clicado em "Novo".
     Quando #1604: eu preencher o campo nome fornecedor "fornecedor_principal"

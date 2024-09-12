@@ -25,7 +25,6 @@ end
 
 E('#1603: eu escolher o item da lista Municipios {string}') do |item|
   @fornecedor_form.selecionar_item('#fornecedor_codigo_municipio', item)
-  sleep(3)
 end
 
 E('#1603: eu clicar no botão Enviar.') do

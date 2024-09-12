@@ -5,6 +5,12 @@ Dado('#1604: eu já tenha realizado meu cadastro previamente com '\
   SetUp.cadastrar(nome, password, permissao)
 end
 
+E('#1604: eu já tenha criado um Site previamente') do
+  SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
+
+  SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
+end
+
 E('#1604: eu tiver passado o mouse sobre a aba {string}') do |aba|
   @dashboard_page = DashboardPage.new
   @dashboard_page.cursor_hover("##{aba}")
