@@ -1,12 +1,11 @@
-include SetUp, SetDown, Utils
+include SetUp, SetDown
 
 Dado('#1402: eu já tenha realizado meu cadastro previamente com '\
     'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
   SetUp.cadastrar(nome, password, permissao)
 end
 
-E('#1402: eu já tenha criado um Atendimento e Status previamente') do
-  SetUp.atendimento('RIR', 'fornecedor_principal', '10')
+E('#1402: eu já tenha criado um Status previamente') do
   SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
 end
 

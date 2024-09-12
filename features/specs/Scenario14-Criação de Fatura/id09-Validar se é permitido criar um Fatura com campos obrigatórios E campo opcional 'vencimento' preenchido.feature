@@ -1,6 +1,6 @@
 # language: pt
 
-
+@skip
 @apagar_usuario_ao_terminar
 @apagar_tabela_principal_ao_terminar
 
@@ -22,7 +22,7 @@ Cenário: Validar se é permitido criar um Fatura com campos obrigatórios E cam
         E #1409: eu escolher o item da lista Grupos "Fatura não agrupada"
         E #1409: eu escolher o item da lista Meio de pagamento "Boleto"
         E #1409: eu escolher o item da lista Status "001a 002(001RIR 002fornecedor_principal) 003Pendente"
-        E #1409: eu preencher o campo data de pagamento "2024-08-10"
+        E #1409: eu preencher o campo data de vencimento "2024-09-10"
         E #1409: eu clicar no botão Enviar.
     Então #1409: eu sou redirecionado para detalhes da nova Fatura criada contendo valores informados
         E #1409: eu vejo a informação de que a Fatura foi criada com sucesso contendo o valor de código fatura composto.

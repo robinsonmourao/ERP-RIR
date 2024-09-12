@@ -11,7 +11,7 @@ Funcionalidade: Criar no sistema
 Cenário: Validar obrigatoriedade para valor 'Status', demais campos válidos
 
     Dado #1405: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
-        E #1405: eu já tenha criado um Atendimento e Status previamente
+        E #1405: eu já tenha criado um Atendimento previamente
         E #1405: eu tiver passado o mouse sobre a aba "Faturas"
         E #1405: eu tiver clicado em "Novo".
     Quando #1405: eu escolher o item da lista Atendimentos "001RIR 002fornecedor_principal"        

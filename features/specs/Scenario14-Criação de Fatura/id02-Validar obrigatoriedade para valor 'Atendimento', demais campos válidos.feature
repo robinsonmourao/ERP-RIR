@@ -11,7 +11,7 @@ Funcionalidade: Criar no sistema
 Cenário: Validar obrigatoriedade para valor 'Atendimento', demais campos válidos
 
     Dado #1402: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
-        E #1402: eu já tenha criado um Atendimento e Status previamente
+        E #1402: eu já tenha criado um Status previamente
         E #1402: eu tiver passado o mouse sobre a aba "Faturas"
         E #1402: eu tiver clicado em "Novo".
     Quando #1402: eu escolher o item da lista Grupos "Fatura não agrupada"

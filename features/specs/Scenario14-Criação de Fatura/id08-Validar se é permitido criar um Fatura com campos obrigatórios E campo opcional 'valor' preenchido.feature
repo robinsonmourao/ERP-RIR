@@ -6,10 +6,10 @@
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.
--Quero criar uma nova Fatura no sistema sem informar um valor para o campo 'chave'.
+-Quero criar uma nova Fatura no sistema sem informar um valor para o campo 'valor'.
 -Para verificar a obrigatoriedade do campo.
 
-Cenário: Validar se é permitido criar um Fatura com campos obrigatórios E campo opcional 'chave' preenchido
+Cenário: Validar se é permitido criar um Fatura com campos obrigatórios E campo opcional 'valor' preenchido
 
     Dado #1408: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
         E #1408: eu já tenha criado um Atendimento e Status previamente

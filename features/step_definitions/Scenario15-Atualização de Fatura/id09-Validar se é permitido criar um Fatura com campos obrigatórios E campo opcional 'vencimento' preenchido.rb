@@ -1,55 +1,61 @@
 include SetUp, SetDown, Utils
 
-Dado('#1409: eu já tenha realizado meu cadastro previamente com '\
+Dado('#1509: eu já tenha realizado meu cadastro previamente com '\
     'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
   SetUp.cadastrar(nome, password, permissao)
 end
 
-E('#1409: eu já tenha criado um Atendimento e Status previamente') do
+E('#1509: eu já tenha criado um Atendimento, Status e Fatura previamente') do
   SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
   SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
+  SetUp.status('fornecedor_principal', 'Fornecedor', 'Pendente')
+  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001RIR 002fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', Utils.next_25_day_date.to_s)
 end
 
-E('#1409: eu tiver passado o mouse sobre a aba {string}') do |aba|
+E('#1509: eu tiver passado o mouse sobre a aba {string}') do |aba|
   @dashboard_page = DashboardPage.new
   @dashboard_page.cursor_hover("##{aba}")
 end
 
-E('#1409: eu tiver clicado em {string}.') do |link_text|
+E('#1509: eu tenha clicado no link {string}') do |link_text|
   @dashboard_page.clicar_submenu_link(link_text)
 end
 
-Quando('#1409: eu escolher o item da lista Atendimentos {string}') do |item|
+E('#1509: eu tenha clicado no link Editar da Fatura criada previamente.') do
+  @listar_todos_page = ListarTodosPage.new('faturas')
+  @listar_todos_page.clicar_link_editar
+end
+
+Quando('#1509: eu escolher o item da lista Atendimentos {string}') do |item|
   @fatura_form = FormPage.new('faturas')
   @fatura_form.selecionar_item('#fatura_codigo_atendimento_composto', item)
 end
 
-E('#1409: eu escolher o item da lista Grupos {string}') do |item|
+E('#1509: eu escolher o item da lista Grupos {string}') do |item|
   @fatura_form.selecionar_item('#fatura_descricao_grupo', item)
 end
 
-E('#1409: eu escolher o item da lista Meio de pagamento {string}') do |item|
+E('#1509: eu escolher o item da lista Meio de pagamento {string}') do |item|
   @fatura_form.selecionar_item('#fatura_codigo_meio_pagamento', item)
 end
 
-E('#1409: eu escolher o item da lista Status {string}') do |item|
+E('#1509: eu escolher o item da lista Status {string}') do |item|
   @fatura_form.selecionar_item('#fatura_codigo_status', item)
 end
 
-E('#1409: eu preencher o campo data de vencimento {string}') do |formated_date|
+E('#1509: eu preencher o campo data de vencimento {string}') do |formated_date|
 @fatura_form.preencher_data('#fatura_vencimento_3i', '#fatura_vencimento_2i', '#fatura_vencimento_1i', 
                             formated_date, @fatura_form)
 end
 
-E('#1409: eu clicar no botão Enviar.') do
+E('#1509: eu clicar no botão Enviar.') do
   @fatura_form.clicar_enviar
 end
 
-Então('#1409: eu sou redirecionado para detalhes da nova Fatura criada contendo valores informados') do
+Então('#1509: eu sou redirecionado para detalhes da Fatura contendo valores atualizados') do
   expected_values = { '#codigo_atendimento_composto-value' => '001RIR 002fornecedor_principal',
                       '#codigo_meio_pagamento-value' => 'Boleto',
                       '#descricao_grupo-value' => 'Fatura não agrupada',
@@ -63,7 +69,7 @@ Então('#1409: eu sou redirecionado para detalhes da nova Fatura criada contendo
   end
 end
 
-E('#1409: eu vejo a informação de que a Fatura foi criada com sucesso contendo o valor de código fatura composto.') do
+E('#1509: eu vejo a informação de que a Fatura foi atualizada com sucesso contendo o valor de código fatura composto.') do
   @message = find('.div-success > div:nth-child(1)')
-  expect(@message.text).to eql "Fatura com codigo fatura composto '001(001RIR 002fornecedor_principal) 0022024-09-10 003Fatura não agrupada' foi criado com sucesso."
+  expect(@message.text).to eql "Fatura com codigo fatura composto '001(001RIR 002fornecedor_principal) 0022024-09-10 003Fatura não agrupada' foi ATUALIZADO com sucesso."
 end

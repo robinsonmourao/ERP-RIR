@@ -6,6 +6,10 @@ Dado('#1401: eu já tenha realizado meu cadastro previamente com '\
 end
 
 E('#1401: eu já tenha criado um Atendimento e Status previamente') do
+  SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
+  SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
+  SetUp.fornecedor('fornecedor_principal')
+
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
   SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
 end
@@ -41,7 +45,7 @@ E('#1401: eu clicar no botão Enviar.') do
 end
 
 Então('#1401: eu sou redirecionado para detalhes da nova Fatura criada contendo valores informados') do
-  expected_values = { '#codigo_fatura_composto-value' => "001(001RIR 002fornecedor_principal) 002#{Utils.next_25_day_date} 003Fatura não agrupada",
+  expected_values = { '#codigo_atendimento_composto-value' => '001RIR 002fornecedor_principal',
                       '#codigo_meio_pagamento-value' => 'Boleto',
                       '#vencimento-value' => Utils.next_25_day_date.to_s,
                       '#descricao_grupo-value' => 'Fatura não agrupada',

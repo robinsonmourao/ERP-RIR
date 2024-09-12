@@ -1,4 +1,4 @@
-include SetUp, SetDown, Utils
+include SetUp, SetDown
 
 Dado('#1403: eu já tenha realizado meu cadastro previamente com '\
     'nome {string}, password {string} e permissao {string}') do |nome, password, permissao|
@@ -6,6 +6,10 @@ Dado('#1403: eu já tenha realizado meu cadastro previamente com '\
 end
 
 E('#1403: eu já tenha criado um Atendimento e Status previamente') do
+  SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
+  SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
+  SetUp.fornecedor('fornecedor_principal')
+
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
   SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
 end
