@@ -50,7 +50,7 @@
     <div class='caixa-de-texto-vertical'>
       <%= form.label :data_pagamento, "Informe a Data de Pagamento" %>
       <div class='selecao-datas-horizontal'>
-        <%= form.date_select :data_pagamento, { order: [:day, :month, :year], }, 
+        <%= form.date_select :data_pagamento, { order: [:day, :month, :year], include_blank: true}, 
                                               { class: 'custom-select-tag' } %>
       </div>
     </div>
