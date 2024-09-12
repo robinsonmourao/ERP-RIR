@@ -12,8 +12,8 @@
 Funcionalidade: Atualizar no sistema
 
 -Eu como usuário.
--Quero atualizar uma Fatura no sistema sem informar um valor para o campo 'vencimento'.
--Para verificar a obrigatoriedade do campo.
+-Quero atualizar uma Fatura no sistema informando um valor para o campo opcional 'vencimento'.
+-Para validar se o valor está sendo salvo corretamente.
 
 Cenário: Validar se é permitido criar um Fatura com campos obrigatórios E campo opcional 'vencimento' preenchido
 

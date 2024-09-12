@@ -6,10 +6,10 @@
 Funcionalidade: Atualização no sistema
 
 -Eu como usuário.
--Quero criar um novo Contato no sistema sem informar um valor para o campo 'Meio de contato'.
--Para verificar a obrigatoriedade do campo.
+-Quero criar um novo Contato no sistema informando um valor para o campo opcional 'observacao'.
+-Para validar se o valor está sendo salvo corretamente.
 
-Cenário: Validar obrigatoriedade para valor 'Meio de contato', demais campos válidos
+Cenário: Validar se é permitido atualizar um Contato com campos obrigatórios E campo opcional 'observacao' preenchido
 
     Dado #1306: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
         E #1306: eu já tenha criado um Contato previamente

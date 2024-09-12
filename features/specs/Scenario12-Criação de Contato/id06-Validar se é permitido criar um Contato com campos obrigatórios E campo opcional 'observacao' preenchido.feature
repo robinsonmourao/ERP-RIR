@@ -6,10 +6,10 @@
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.
--Quero criar um novo Contato no sistema sem informar um valor para o campo 'Meio de contato'.
+-Quero criar um novo Contato no sistema sem informar um valor para o campo 'observacao'.
 -Para verificar a obrigatoriedade do campo.
 
-Cenário: Validar obrigatoriedade para valor 'Meio de contato', demais campos válidos
+Cenário: Validar se é permitido criar um Contato com campos obrigatórios E campo opcional 'observacao' preenchido
 
     Dado #1206: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
         E #1206: eu tiver passado o mouse sobre a aba "Contatos"

@@ -5,10 +5,10 @@
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.
--Quero criar um novo Contato no sistema sem informar um valor para o campo 'Meio de contato'.
+-Quero criar um novo Contato no sistema sem informar um valor para o campo 'descricao'.
 -Para verificar a obrigatoriedade do campo.
 
-Cenário: Validar obrigatoriedade para valor 'Meio de contato', demais campos válidos
+Cenário: Validar obrigatoriedade para valor 'descricao', demais campos válidos
 
     Dado #1205: eu já tenha realizado meu cadastro previamente com nome "UsuarioSuper", password "12345678" e permissao "Super"
         E #1205: eu tiver passado o mouse sobre a aba "Contatos"

@@ -6,7 +6,7 @@
 Funcionalidade: Atualização no sistema
 
 -Eu como usuário.
--Quero atualizar um Contato no sistema sem informar um valor para o campo 'Meio de contato'.
+-Quero atualizar um Contato no sistema sem informar um valor para o campo 'descricao'.
 -Para verificar a obrigatoriedade do campo.
 
 Cenário: Validar obrigatoriedade do campo 'descricao', demais campos válidos
