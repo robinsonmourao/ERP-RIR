@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
     t.string "valor", limit: 14
     t.date "vencimento", default: -> { "strftime('%Y-%m-25', 'now')" }, null: false
     t.text "descricao_grupo", null: false
-    t.integer "instalacao", default: 0, null: false
+    t.integer "instalacao", default: 1, null: false
     t.integer "codigo_status", null: false
   end
 

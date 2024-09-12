@@ -9,7 +9,7 @@ class Fatura < ApplicationRecord
   attribute :valor, :text
   attribute :vencimento, :date, default: -> { Date.current.change(day: 25) }
   attribute :descricao_grupo, :text
-  attribute :instalacao, :integer, default: 0
+  attribute :instalacao, :integer, default: 1
 
   has_one :meio_pagamento, foreign_key: 'codigo_meio_pagamento'
   # has_one :grupo, foreign_key: 'descricao_grupo'
