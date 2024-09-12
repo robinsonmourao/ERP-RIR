@@ -6,7 +6,8 @@
       <%= form.select :tabela, 
                       options_for_select([["fornecedor", FORNECEDOR], ["site", SITE], ["cliente", CLIENTE]], 
                                          @contato.tabela), 
-                                         { include_blank: "SELECIONE o TIPO do ORIGINÁRIO" }, { class: 'custom-select-tag' } %>
+                                         { include_blank: "SELECIONE o TIPO do ORIGINÁRIO" }, 
+                                         { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
@@ -14,7 +15,8 @@
       <%= form.select :codigo_tipo_contato, 
                       options_from_collection_for_select(TipoContato.all, :codigo_tipo_contato, :descricao, 
                                                          @contato.codigo_tipo_contato), 
-                                                         { include_blank: "SELECIONE o TIPO do contato" }, { class: 'custom-select-tag' } %> 
+                                                         { include_blank: "SELECIONE o TIPO do contato" }, 
+                                                         { class: 'custom-select-tag', required: true } %> 
     </div>
 
     <div class='caixa-de-texto'>
@@ -22,7 +24,8 @@
       <%= form.select :codigo_meio_contato, 
                       options_from_collection_for_select(MeioContato.all, :codigo_meio_contato, :descricao, 
                                                          @contato.codigo_meio_contato),
-                                                         { include_blank: "SELECIONE o MEIO do contato" }, { class: 'custom-select-tag' } %>
+                                                         { include_blank: "SELECIONE o MEIO do contato" }, 
+                                                         { class: 'custom-select-tag', required: true } %>
     </div>
 
     <div class='caixa-de-texto'>
