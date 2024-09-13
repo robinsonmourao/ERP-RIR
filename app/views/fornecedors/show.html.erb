@@ -1,2 +1,7 @@
-<% instance_variable_set(:@nome_parametro_unico, 'nome_fornecedor') %>
+<% @except_columns = ['codigo_fornecedor']
+@custom_show_values = [Municipio.exists?(@fornecedor.codigo_municipio) ?
+                        ['codigo_municipio', Municipio.find(@fornecedor.codigo_municipio).nome_municipio] : [], 
+                      Site.exists?(@fornecedor.codigo_site) ?
+                        ['codigo_site', Site.find(@fornecedor.codigo_site).nome_site] : []
+                      ] %>
 <%= render 'builders/render_templates/show', object: @fornecedor %>
