@@ -1,4 +1,4 @@
-<% @except_columns = ['codigo_fatura', 'codigo_atendimento_composto']
+<% @except_columns = ['codigo_fatura', 'codigo_fatura_composto']
    @custom_show_values = [['instalacao', ModuleInstalacao::INSTALACAO[@fatura.instalacao]],
    
                           Status.exists?(@fatura.codigo_status) ?
