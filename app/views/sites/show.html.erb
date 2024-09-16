@@ -1,1 +1,9 @@
+<% @except_columns = ['codigo_site'] 
+   @custom_show_values = [Cliente.exists?(@site.codigo_cliente) ?
+                            ['codigo_cliente', Cliente.find(@site.codigo_cliente).nome_cliente] : [],
+                          Municipio.exists?(@site.codigo_municipio) ?
+                            ['codigo_municipio', Municipio.find(@site.codigo_municipio).nome_municipio] : [],
+                          TipoLink.exists?(@site.codigo_tipo_link) ?
+                            ['codigo_tipo_link', TipoLink.find(@site.codigo_tipo_link).descricao] : []
+                         ] %>
 <%= render 'builders/render_templates/show', object: @site %>
