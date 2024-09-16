@@ -231,6 +231,26 @@ module SetUp
     capture_id_by_link
   end
 
+  def tipo_link(descricao)
+    return if capture_id_if_exists_by_query("codigo_tipo_link", "tipo_links", "descricao", descricao) && 
+                                            ENV['FAST_MODE'] == 'true'
+
+    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+
+    @dashboard_page = DashboardPage.new
+    @dashboard_page.load
+
+    @dashboard_page.cursor_hover('#sites')
+    @dashboard_page.clicar_submenu_link('Novo')
+
+    @tipo_link_page = FormPage.new('sites')
+    @tipo_link_page.preencher_campo('#descricao', descricao)
+
+    @tipo_link_page.clicar_enviar_form_auxiliar
+
+    capture_id_by_link
+  end
+
   def capture_id_if_exists_by_query(id_column_name, table_name, column_name, column_expected_value)
     capture_id_by_query(id_column_name, table_name, column_name, column_expected_value)
   end
@@ -289,7 +309,7 @@ module SetDown
     execute_sql("DELETE FROM usuarios WHERE nome = '#{$nome_usuario_atual}';")
   end
 
-  def remove_by_query(query)
+  def delete_by_query(query)
     execute_sql(query)
   end
 
