@@ -4,21 +4,6 @@ Before('@skip') do
   pending if ENV['CASE_SKIPPING'] == 'true'
 end
 
-After('@apagar_clientes_ao_terminar') do
-  SetDown.remove_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_principal';")
-  SetDown.remove_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_alternativo';")
-end
-
-After('@apagar_atendimentos_ao_terminar') do
-  SetDown.remove_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR 002fornecedor_principal';")
-  SetDown.remove_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR2 002fornecedor_alternativo';")
-end
-
-After('@apagar_statuses_ao_terminar') do
-  SetDown.remove_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001a 002(001RIR 002fornecedor_principal) 003Pendente';")
-  SetDown.remove_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001a 002(001RIR2 002fornecedor_alternativo) 003Pendente';")
-end
-
 After('@logout') do
   click_button "Logout"
 end
@@ -30,6 +15,46 @@ end
 After('@apagar_tabela_principal_ao_terminar') do
   SetDown.remove_last_table
 end
+
+# After('@apagar_atendimentos_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR 002fornecedor_principal';")
+#   SetDown.delete_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR2 002fornecedor_alternativo';")
+# end
+
+# After('@apagar_boletos_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM boletos WHERE codigo_boleto_composto='001(001RIR 002boleto_principal) 0022024-08-25 003Fatura não agrupada';")
+#   SetDown.delete_by_query("DELETE FROM boletos WHERE codigo_boleto_composto='001(001RIR2 002boleto_alternativo) 0022024-08-25 003Fatura não agrupada';")
+# end
+
+# After('@apagar_contatos_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM contatos WHERE codigo_contato_composto='001contato_principal 002Dono';")
+#   SetDown.delete_by_query("DELETE FROM contatos WHERE codigo_contato_composto='001contato_alternativo 002Dono';")
+# end
+
+# After('@apagar_clientes_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_principal';")
+#   SetDown.delete_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_alternativo';")
+# end
+
+# After('@apagar_faturas_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM faturas WHERE codigo_fatura_composto='001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada';")
+#   SetDown.delete_by_query("DELETE FROM faturas WHERE codigo_fatura_composto='001(001RIR2 002fornecedor_alternativo) 0022024-08-25 003Fatura não agrupada';")
+# end
+
+# After('@apagar_fornecedores_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM fornecedors WHERE nome_fornecedor='fornecedor_principal';")
+#   SetDown.delete_by_query("DELETE FROM fornecedors WHERE nome_fornecedor='fornecedor_alternativo';")
+# end
+
+# After('@apagar_sites_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM sites WHERE nome_site='site_principal';")
+#   SetDown.delete_by_query("DELETE FROM sites WHERE nome_site='site_alternativo';")
+# end
+
+# After('@apagar_statuses_ao_terminar') do
+#   SetDown.delete_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001f 002fornecedor_principal 003Ativo';")
+#   SetDown.delete_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001f 002fornecedor_alternativo 003Pendente';")
+# end
 
 After do |scenario|
   print '] '

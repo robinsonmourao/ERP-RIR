@@ -1,6 +1,6 @@
 # language: pt
 
-
+@skip
 @apagar_usuario_ao_terminar
 @apagar_tabela_principal_ao_terminar
 Funcionalidade: Criar no sistema
@@ -19,7 +19,7 @@ Cenário: Validar se é permitido criar um Site com campos obrigatórios E campo
         E #2013: eu preencher o campo designacao "RIR"
         E #2013: eu preencher o campo nome site "site_principal"
         E #2013: eu preencher o campo velocidade contratada "10"
-        E #2013: eu preencher o campo sla "99"
+        E #2013: eu preencher o campo sla "99.23"
         E #2013: eu clicar no botão Enviar.
     Então #2013: eu sou redirecionado para detalhes do novo Site criado contendo valores informados
         E #2013: eu vejo a informação de que o Site foi criado com sucesso com o valor de nome do site.

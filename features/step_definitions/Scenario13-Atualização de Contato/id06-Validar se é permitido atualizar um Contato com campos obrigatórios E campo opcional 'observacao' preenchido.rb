@@ -48,7 +48,7 @@ E('#1306: eu clicar no botão Enviar.') do
   @contato_form.clicar_enviar
 end
 
-Então('#1306: eu sou redirecionado para detalhes do novo Contato criado contendo valores informados') do
+Então('#1306: eu sou redirecionado para detalhes do Cliente contendo valores atualizados') do
   expected_values = { '#tabela-value' => 'Cliente',
                       '#codigo_tipo_contato-value' => 'Dono',
                       '#codigo_meio_contato-value' => 'Whatsapp',
