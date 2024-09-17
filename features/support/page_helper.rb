@@ -226,7 +226,7 @@ module SetUp
     @municipio_page.preencher_campo('#nome_municipio', nome_municipio)
     @municipio_page.selecionar_item('#codigo_uf', uf)
 
-    @municipio_page.clicar_enviar_form_auxiliar
+    @municipio_page.clicar_enviar_form_auxiliar("#municipio-high-privileges-form-submit-button")
 
     capture_id_by_link
   end
@@ -246,7 +246,7 @@ module SetUp
     @tipo_link_page = FormPage.new('sites')
     @tipo_link_page.preencher_campo('#descricao', descricao)
 
-    @tipo_link_page.clicar_enviar_form_auxiliar
+    @tipo_link_page.clicar_enviar_form_auxiliar('#tipolink-high-privileges-form-submit-button')
 
     capture_id_by_link
   end

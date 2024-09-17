@@ -53,7 +53,7 @@ Então('#2007: eu sou redirecionado para detalhes do novo Site criado contendo v
                       '#nome_site-value' => 'site_principal',
                       '#velocidade_contratada-value' => '10.0',
 
-                      '#codigo_municipio-value' => 'Salvador'
+                      '#codigo_tipo_link-value' => 'Rádio'
   }
   expected_values.each do |id, value|
     expect(page.find(id).text).to eq(value)

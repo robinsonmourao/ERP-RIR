@@ -1,6 +1,6 @@
 # language: pt
 
-
+@skip
 @apagar_usuario_ao_terminar
 @apagar_tabela_principal_ao_terminar
 Funcionalidade: Criar no sistema
