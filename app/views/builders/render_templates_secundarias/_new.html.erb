@@ -41,7 +41,7 @@
           </div>
         <% end %>
       <% end %>
-      <%= form.submit "Cadastrar novo #{@classe}", id: "high-privileges-form-submit-button" %>
+      <%= form.submit "Cadastrar novo #{@classe}", id: "#{@classe.to_s.humanize.downcase}-high-privileges-form-submit-button" %>
     </div>
     <% @tabelas_secundarias = [] %>
   <% end %>
