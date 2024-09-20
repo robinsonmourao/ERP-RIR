@@ -76,47 +76,48 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
 ## Árvore de dependência
 ### Tabelas primárias
 
-- └── atendimento | cliente | fornecedor | site
-  - └── status
-    - └── situacao
-
-- └── atendimento
+- └── atendimentos
   - ├── equipamentos
+  - ├── fornecedors (**Obrigatório**)
   - ├── meio_pagamentos
-  - └── status
-    - └── situacao
+  - ├── status
   - ├── tipo_links
   - └── tecnologia_links
 
-- └── cliente
-  - └── municipio
-    - └── uf
-
-- └── fornecedor
-  - └── municipio
-    - └── uf
-
-- └── site
-  - ├── cliente
-  - └── municipio
-    - └── uf
-  - └── tipo_link
-
-- └── contato
-  - ├── meio_contato
-  - └── tipo_contato
-  
-- └── fatura
-  - ├── atendimento
-  - └── boleto
-    - └── grupos
-  - ├── grupos
-  - ├── local_pagamentos
-  - └── meio_pagamentos
-
-- └── boleto
-  - ├── grupos
+- └── boletos
+  - ├── faturas (**Obrigatório**)
+  - ├── grupos (**Obrigatório**)
+  - ├── statuses (**Obrigatório**)
   - └── local_pagamentos
+
+- └── clientes
+  - └── municipios
+
+- └── contatos
+  - ├── meio_contatos (**Obrigatório**)
+  - └── tipo_contatos (**Obrigatório**)
+  
+- └── fornecedors
+  - └── municipios
+
+- └── sites
+  - ├── clientes (**Obrigatório**)
+  - ├── municipios
+  - └── tipo_links
+
+- └── faturas
+  - ├── atendimentos (**Obrigatório**)
+  - ├── grupos (**Obrigatório**)
+  - ├── statuses (**Obrigatório**)
+  - └── meio_pagamentos (**Obrigatório**)
+
+- └── statuses
+  - └── situacoes (**Obrigatório**)
+
+### Tabelas secundárias
+
+- └── municipios
+  - └── ufs (**Obrigatório**)
 
 # Status de desenvolvimento
 
