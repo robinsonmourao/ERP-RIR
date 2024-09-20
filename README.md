@@ -112,6 +112,7 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
   - └── meio_pagamentos (**Obrigatório**)
 
 - └── statuses
+  - ├── atendimentos OU clientes OU fornecedors OU sites (**Obrigatório**)
   - └── situacoes (**Obrigatório**)
 
 ### Tabelas secundárias
