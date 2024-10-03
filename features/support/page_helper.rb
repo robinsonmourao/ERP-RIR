@@ -15,13 +15,13 @@ module SetUp
     $objetos_map ||= []
   end
 
-  BASE_PATH = "/home/robinson/Desktop/ERP-RIR/"
+  BASE_PATH = '/home/robinson/Desktop/ERP-RIR/'
 
   def execute_sql(query)
     db = SQLite3::Database.new "#{BASE_PATH}/storage/development.sqlite3"
     result = db.execute(query)
   ensure
-    db.close if db
+    db&.close
     result
   end
 
@@ -34,9 +34,9 @@ module SetUp
   end
 
   def atendimento(designacao, nome_fornecedor, velocidade_down)
-    return if capture_id_if_exists_by_query("codigo_atendimento", "atendimentos", "codigo_atendimento_composto", "001#{designacao} 002#{nome_fornecedor}") && ENV['FAST_MODE'] == 'true'
+    return if capture_id_if_exists_by_query('codigo_atendimento', 'atendimentos', 'codigo_atendimento_composto', "001#{designacao} 002#{nome_fornecedor}") && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -55,10 +55,10 @@ module SetUp
   end
 
   def boleto(codigo_atendimento_composto, codigo_fatura_composto, agrupamento, codigo_status_composto, data_vencimento)
-    return if capture_id_if_exists_by_query("codigo_boleto", "boletos", "codigo_boleto_composto", 
+    return if capture_id_if_exists_by_query('codigo_boleto', 'boletos', 'codigo_boleto_composto', 
                                             "001#{codigo_atendimento_composto} 002#{data_vencimento} 003#{agrupamento}") && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -79,9 +79,9 @@ module SetUp
   end
 
   def cliente(nome_cliente, cnpj)
-    return if capture_id_if_exists_by_query("codigo_cliente", "clientes", "cnpj", cnpj) && ENV['FAST_MODE'] == 'true'
+    return if capture_id_if_exists_by_query('codigo_cliente', 'clientes', 'cnpj', cnpj) && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -99,9 +99,9 @@ module SetUp
   end
 
   def contato(originario, tipo_contato, meio_contato, descricao)
-    return if capture_id_if_exists_by_query("codigo_contato", "contatos", "descricao", descricao) && ENV['FAST_MODE'] == 'true'
+    return if capture_id_if_exists_by_query('codigo_contato', 'contatos', 'descricao', descricao) && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -121,10 +121,10 @@ module SetUp
   end
 
   def fatura(codigo_atendimento_composto, descricao_status_composto, nome_meio_pagamento, nome_grupo, vencimento)
-    return if capture_id_if_exists_by_query("codigo_fatura", "faturas", "codigo_fatura_composto",
+    return if capture_id_if_exists_by_query('codigo_fatura', 'faturas', 'codigo_fatura_composto',
                                             "001(#{codigo_atendimento_composto}) 002#{vencimento} 003#{nome_grupo}") && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -145,9 +145,9 @@ module SetUp
   end
 
   def fornecedor(nome_fornecedor)
-    return if capture_id_if_exists_by_query("codigo_fornecedor", "fornecedors", "nome_fornecedor", nome_fornecedor) && ENV['FAST_MODE'] == 'true'
+    return if capture_id_if_exists_by_query('codigo_fornecedor', 'fornecedors', 'nome_fornecedor', nome_fornecedor) && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -164,9 +164,9 @@ module SetUp
   end
 
   def site(codigo_cliente, designacao, nome_site, velocidade_contratada)
-    return if capture_id_if_exists_by_query("codigo_site", "sites", "nome_site", nome_site) && ENV['FAST_MODE'] == 'true'
+    return if capture_id_if_exists_by_query('codigo_site', 'sites', 'nome_site', nome_site) && ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -188,11 +188,11 @@ module SetUp
   def status(descricao_acfs, situacao)
     require_relative '../../config/initializers/constants'
 
-    return if capture_id_if_exists_by_query("codigo_status", "statuses", "codigo_acfs_composto", 
+    return if capture_id_if_exists_by_query('codigo_status', 'statuses', 'codigo_acfs_composto', 
                                             "001#{descricao_acfs[3]} 002#{descricao_acfs} 003#{situacao}") && 
                                             ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -210,10 +210,10 @@ module SetUp
   end
 
   def municipio(nome_municipio, uf)
-    return if capture_id_if_exists_by_query("codigo_municipio", "municipios", "nome_municipio", nome_municipio) && 
+    return if capture_id_if_exists_by_query('codigo_municipio', 'municipios', 'nome_municipio', nome_municipio) && 
                                             ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -225,16 +225,16 @@ module SetUp
     @municipio_page.preencher_campo('#nome_municipio', nome_municipio)
     @municipio_page.selecionar_item('#codigo_uf', uf)
 
-    @municipio_page.clicar_enviar_form_auxiliar("#municipio-high-privileges-form-submit-button")
+    @municipio_page.clicar_enviar_form_auxiliar('#municipio-high-privileges-form-submit-button')
 
     capture_id_by_link
   end
 
   def tipo_link(descricao)
-    return if capture_id_if_exists_by_query("codigo_tipo_link", "tipo_links", "descricao", descricao) && 
+    return if capture_id_if_exists_by_query('codigo_tipo_link', 'tipo_links', 'descricao', descricao) &&
                                             ENV['FAST_MODE'] == 'true'
 
-    wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
+    wipe(__method__.to_s) if ENV['FAST_MODE'] == 'false'
 
     @dashboard_page = DashboardPage.new
     @dashboard_page.load
@@ -271,17 +271,15 @@ module SetUp
   end
 
   def id_foi_gerado?(partes_url)
-    begin
-      if Integer(partes_url.last)
-        @objeto = partes_url[3]
-        @id_criado = partes_url.last
-        true
-      else
-        false
-      end
-    rescue ArgumentError
+    if Integer(partes_url.last)
+      @objeto = partes_url[3]
+      @id_criado = partes_url.last
+      true
+    else
       false
     end
+  rescue ArgumentError
+    false
   end
 
   def wipe(entity)
@@ -295,13 +293,13 @@ end
 module SetDown
   $nome_usuario_atual ||= nil
 
-  BASE_PATH = "/home/robinson/Desktop/ERP-RIR/"
+  BASE_PATH = '/home/robinson/Desktop/ERP-RIR/'
 
   def execute_sql(query)
     db = SQLite3::Database.new "#{BASE_PATH}/storage/development.sqlite3"
     db.execute(query)
   ensure
-    db.close if db
+    db&.close
   end
 
   def delete_usuario
@@ -324,21 +322,21 @@ module SetDown
     when 'atendimentos'
       'atendimento'
     when 'boletos'
-      "boleto"
-    when "contatos"
-      "contato"
-    when "clientes"
-      "cliente"
-    when "faturas"
-      "fatura"
-    when "fornecedors"
-      "fornecedor"
-    when "sites"
-      "site"
-    when "statuses"
-      "status"
+      'boleto'
+    when 'contatos'
+      'contato'
+    when 'clientes'
+      'cliente'
+    when 'faturas'
+      'fatura'
+    when 'fornecedors'
+      'fornecedor'
+    when 'sites'
+      'site'
+    when 'statuses'
+      'status'
     else
-      "Não foi possível converter tabela para entidade: Tabela não encontrada!"
+      'Não foi possível converter tabela para entidade: Tabela não encontrada!'
     end
   end
 
@@ -347,21 +345,21 @@ module SetDown
     when 'atendimento'
       'atendimentos'
     when 'boleto'
-      "boletos"
-    when "contato"
-      "contatos"
-    when "cliente"
-      "clientes"
-    when "fatura"
-      "faturas"
-    when "fornecedor"
-      "fornecedors"
-    when "site"
-      "sites"
-    when "status"
-      "statuses"
+      'boletos'
+    when 'contato'
+      'contatos'
+    when 'cliente'
+      'clientes'
+    when 'fatura'
+      'faturas'
+    when 'fornecedor'
+      'fornecedors'
+    when 'site'
+      'sites'
+    when 'status'
+      'statuses'
     else
-      "Não foi possível converter entidade para tabela: Entidade não encontrada!"
+      'Não foi possível converter entidade para tabela: Entidade não encontrada!'
     end
   end
 end

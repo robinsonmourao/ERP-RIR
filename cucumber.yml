@@ -9,6 +9,6 @@ pretty: --format pretty
 ci: --format progress
 test: ENVIRONMENT_TYPE=test
 headless: HEADLESS=headless
-fast_mode: FAST_MODE=true
-case_skipping: CASE_SKIPPING=true
+fast_mode: FAST_MODE=false
+case_skipping: CASE_SKIPPING=false
 terminal_drop_lines_each_case: TERMINAL_DROP_LINES_EACH_CASE=true

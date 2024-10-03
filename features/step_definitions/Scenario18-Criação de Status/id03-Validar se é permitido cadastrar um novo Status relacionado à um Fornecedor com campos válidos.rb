@@ -18,9 +18,9 @@ E('#1803: eu tiver clicado em {string}.') do |link_text|
   @dashboard_page.clicar_submenu_link(link_text)
 end
 
-Quando('#1803: eu escolher o item da Originário {string}') do |site|
+Quando('#1803: eu escolher o item da Originário {string}') do |item|
   @form_status = FormPage.new('status')
-  @form_status.selecionar_item('#select-originario', site)
+  @form_status.selecionar_item('#select-originario', item)
 end
 
 E('#1803: eu clicar no botão Enviar.') do
