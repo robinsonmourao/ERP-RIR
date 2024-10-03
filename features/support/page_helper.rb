@@ -185,11 +185,11 @@ module SetUp
     capture_id_by_link
   end
 
-  def status(descricao_acfs, tipo_acfs, situacao)
+  def status(descricao_acfs, situacao)
     require_relative '../../config/initializers/constants'
 
     return if capture_id_if_exists_by_query("codigo_status", "statuses", "codigo_acfs_composto", 
-                                            "001#{Categoria::CATEGORIA_REVERSE[tipo_acfs]} 002#{descricao_acfs} 003#{situacao}") && 
+                                            "001#{descricao_acfs[3]} 002#{descricao_acfs} 003#{situacao}") && 
                                             ENV['FAST_MODE'] == 'true'
 
     wipe("#{__method__}") if ENV['FAST_MODE'] == 'false'
@@ -201,8 +201,7 @@ module SetUp
     @dashboard_page.clicar_submenu_link('Novo')
 
     @status_page = FormPage.new('statuses')
-    @status_page.selecionar_item('#status_descricao_acfs', descricao_acfs)
-    @status_page.selecionar_item('#status_tabela', tipo_acfs)
+    @status_page.selecionar_item('#select-originario', descricao_acfs)
     @status_page.selecionar_item('#status_codigo_situacao', situacao)
 
     @status_page.clicar_enviar
