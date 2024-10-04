@@ -2,7 +2,8 @@
 
 @skip
 @apagar_usuario_ao_terminar
-@apagar_tabela_principal_ao_terminar
+@apagar_ultima_tabela_criada_ao_terminar
+@apagar_atendimentos_remanscentes_ao_terminar
 Funcionalidade: Atualizar no sistema
 
 -Eu como usuário.
@@ -20,7 +21,7 @@ Cenário: Validar se é permitido atualizar um Boleto com campos válidos
     Quando #0901: eu escolher o item da lista Atendimento "001RIR2 002fornecedor_alternativo"
         E #0901: eu escolher o item da lista Fatura "001(001RIR2 002fornecedor_alternativo) 0022024-08-25 003Fatura não agrupada"
         E #0901: eu escolher o item da lista Agrupamento "Fatura não agrupada"
-        E #0901: eu escolher o item da lista Status "001f 002fornecedor_alternativo 003Pendente"
+        E #0901: eu escolher o item da lista Status "001f 002(001f 002fornecedor_alternativo) 003Pendente"
         E #0901: eu escolher o item da lista data de vencimento "2024-08-25"
         E #0901: eu clicar no botão Enviar.
     Então #0901: eu sou redirecionado para detalhes do novo Boleto criado contendo valores informados e valores autopreenchidos

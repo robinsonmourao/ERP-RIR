@@ -2,6 +2,7 @@
 
 @skip
 @apagar_usuario_ao_terminar
+@apagar_atendimentos_remanscentes_ao_terminar
 Funcionalidade: Atualizar no sistema
 
 -Eu como usuário.
@@ -18,7 +19,7 @@ Cenário: Validar obrigatoriedade para valor 'data de vencimento', demais campos
     Quando #0906: eu escolher o item da lista Atendimento "001RIR 002fornecedor_principal"
         E #0906: eu escolher o item da lista Fatura "001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada"
         E #0906: eu escolher o item da lista Agrupamento "Fatura não agrupada"
-        E #0906: eu escolher o item da lista Status "001f 002fornecedor_principal 003Ativo"
+        E #0906: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Ativo"
         E #0906: eu escolher o item da lista data de vencimento ""
         E #0906: eu clicar no botão Enviar.
     Então #0906: eu vejo um balão informando que é obrigatório selecionar um item para Status.

@@ -2,7 +2,7 @@
 
 @skip
 @apagar_usuario_ao_terminar
-@apagar_tabela_principal_ao_terminar
+@apagar_ultima_tabela_criada_ao_terminar
 Funcionalidade: Atualização no sistema
 
 -Eu como usuário.
@@ -22,5 +22,5 @@ Cenário: Validar se é permitido atualizar um Contato com campos obrigatórios 
         E #1306: eu preencher o campo descrição "00 00000-0000"
         E #1306: eu preencher o campo observação "Observação para testes"
         E #1306: eu clicar no botão Enviar.
-    Então #1306: eu sou redirecionado para detalhes do novo Contato criado contendo valores informados
+    Então #1306: eu sou redirecionado para detalhes do Cliente contendo valores atualizados
         E #1306: eu vejo a informação de que o Contato foi atualizado com sucesso contendo o valor de código contato composto "00100 00000-0000 002Dono".
