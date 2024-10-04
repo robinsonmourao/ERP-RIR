@@ -33,7 +33,7 @@ class StatusesController < CrudTemplateController
   private
 
   def status_params
-    params.require(:status).permit(:descricao_acfs, :tabela, :codigo_situacao)
+    params.require(:status).permit(:descricao_acfs, :codigo_situacao)
   end
 
   def find_status
@@ -43,9 +43,9 @@ class StatusesController < CrudTemplateController
   def build_acfs_list
     @acfs = []
 
-    @acfs += Atendimento.all.map { |atendimento| [atendimento.codigo_atendimento_composto, "#{atendimento.id}"] }
-    @acfs += Cliente.all.map { |cliente| [cliente.nome_cliente, "#{cliente.id}"] }
-    @acfs += Fornecedor.all.map { |fornecedor| [fornecedor.nome_fornecedor, "#{fornecedor.id}"] }
-    @acfs += Site.all.map { |site| [site.nome_site, "#{site.id}"] }
+    @acfs += Atendimento.all.map { |atendimento| [atendimento.tabela_dto, "#{atendimento.id}", 'a'] }
+    @acfs += Cliente.all.map { |cliente| [cliente.tabela_dto, "#{cliente.id}", 'c'] }
+    @acfs += Fornecedor.all.map { |fornecedor| [fornecedor.tabela_dto, "#{fornecedor.id}", 'f'] }
+    @acfs += Site.all.map { |site| [site.tabela_dto, "#{site.id}", 's'] }
   end
 end

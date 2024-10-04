@@ -149,7 +149,7 @@ class CrudTemplateController < ApplicationController
     when Boleto, Fatura
       "001(#{object&.codigo_atendimento_composto}) 002#{object&.vencimento} 003#{object.descricao_grupo}"
     when Status
-      "001#{object&.tabela} 002#{object&.tabela == 'a' ? ('(').concat(object&.descricao_acfs).concat(')') : object&.descricao_acfs} 
+      "001#{object&.descricao_acfs[3]} 002#{('(').concat(object&.descricao_acfs).concat(')')} 
        003#{Situacao.exists?(object.codigo_situacao) ? Situacao.find(object.codigo_situacao).descricao : 'Pendente'}"
     end
   end
