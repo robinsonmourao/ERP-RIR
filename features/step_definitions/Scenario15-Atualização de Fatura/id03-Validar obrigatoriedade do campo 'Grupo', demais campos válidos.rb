@@ -11,8 +11,8 @@ E('#1503: eu já tenha criado um Status e Fatura previamente') do
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('fornecedor_principal', 'Fornecedor', 'Ativo')
-  SetUp.fatura('001RIR 002fornecedor_principal', '001f 002fornecedor_principal 003Ativo', 'Boleto', 'Fatura não agrupada', '2024-08-25')
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Ativo')
+  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', '2024-08-25')
 end
 
 E('#1503: eu tiver passado o mouse sobre a aba {string}') do |aba|
@@ -48,7 +48,6 @@ end
 
 E('#1503: eu clicar no botão Enviar.') do
   @fatura_form.clicar_enviar
-  sleep(2)
 end
 
 Então('#1503: eu vejo um balão informando que é obrigatório selecionar um item para Grupo.') do

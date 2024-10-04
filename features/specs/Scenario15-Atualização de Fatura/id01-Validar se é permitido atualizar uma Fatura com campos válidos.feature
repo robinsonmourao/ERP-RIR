@@ -2,7 +2,8 @@
 
 @skip
 @apagar_usuario_ao_terminar
-@apagar_tabela_principal_ao_terminar
+@apagar_ultima_tabela_criada_ao_terminar
+@apagar_atendimentos_remanscentes_ao_terminar
 Funcionalidade: Atualizar no sistema
 
 -Eu como usuário.
@@ -20,7 +21,7 @@ Cenário: Validar se é permitido atualizar uma Fatura com campos válidos
     Quando #1501: eu escolher o item da lista Atendimentos "001RIR2 002fornecedor_alternativo"
         E #1501: eu escolher o item da lista Grupos "Fatura não agrupada"
         E #1501: eu escolher o item da lista Meio de pagamento "Pix"
-        E #1501: eu escolher o item da lista Status "001f 002fornecedor_alternativo 003Ativo"
+        E #1501: eu escolher o item da lista Status "001a 002(001a 002RIR2 003fornecedor_alternativo) 003Ativo"
         E #1501: eu preencher o campo data de vencimento diferente do padrão, "2024-09-30"
         E #1501: eu clicar no botão Enviar.
     Então #1501: eu sou redirecionado para detalhes da Fatura contendo valores atualizados

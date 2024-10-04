@@ -11,8 +11,8 @@ E('#1509: eu já tenha criado um Atendimento, Status e Fatura previamente') do
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('fornecedor_principal', 'Fornecedor', 'Pendente')
-  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001RIR 002fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', Utils.next_25_day_date.to_s)
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Pendente')
+  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', Utils.next_25_day_date.to_s)
 end
 
 E('#1509: eu tiver passado o mouse sobre a aba {string}') do |aba|
@@ -60,7 +60,7 @@ Então('#1509: eu sou redirecionado para detalhes da Fatura contendo valores atu
                       '#codigo_meio_pagamento-value' => 'Boleto',
                       '#descricao_grupo-value' => 'Fatura não agrupada',
                       '#instalacao-value' => 'Sim',
-                      '#codigo_status-value' => '001a 002(001RIR 002fornecedor_principal) 003Pendente',
+                      '#codigo_status-value' => '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente',
 
                       '#vencimento-value' => '2024-09-10'
   }

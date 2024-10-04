@@ -2,7 +2,7 @@
 
 @skip
 @apagar_usuario_ao_terminar
-@apagar_tabela_principal_ao_terminar
+@apagar_ultima_tabela_criada_ao_terminar
 
 @apagar_clientes_ao_terminar
 @apagar_sites_ao_terminar
@@ -25,7 +25,7 @@ Cenário: Validar se é permitido criar um Fatura com campos obrigatórios E cam
     Quando #1509: eu escolher o item da lista Atendimentos "001RIR 002fornecedor_principal"        
         E #1509: eu escolher o item da lista Grupos "Fatura não agrupada"
         E #1509: eu escolher o item da lista Meio de pagamento "Boleto"
-        E #1509: eu escolher o item da lista Status "001a 002(001RIR 002fornecedor_principal) 003Pendente"
+        E #1509: eu escolher o item da lista Status "001a 002(001a 002RIR 003fornecedor_principal) 003Pendente"
         E #1509: eu preencher o campo data de vencimento "2024-09-10"
         E #1509: eu clicar no botão Enviar.
     Então #1509: eu sou redirecionado para detalhes da Fatura contendo valores atualizados

@@ -5,9 +5,14 @@ Dado('#1502: eu já tenha realizado meu cadastro previamente com '\
   SetUp.cadastrar(nome, password, permissao)
 end
 
-E('#1502: eu já tenha criado um Status e Fatura previamente') do
-  SetUp.status('fornecedor_principal', 'Fornecedor', 'Ativo')
-  SetUp.fatura('001RIR 002fornecedor_principal', '001f 002fornecedor_principal 003Ativo', 'Boleto', 'Fatura não agrupada', '2024-08-25')
+E('#1502: eu já tenha criado um Atendimento e Status e Fatura previamente') do
+  SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
+  SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
+  SetUp.fornecedor('fornecedor_principal')
+
+  SetUp.atendimento('RIR', 'fornecedor_principal', '10')
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Ativo')
+  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', '2024-08-25')
 end
 
 E('#1502: eu tiver passado o mouse sobre a aba {string}') do |aba|

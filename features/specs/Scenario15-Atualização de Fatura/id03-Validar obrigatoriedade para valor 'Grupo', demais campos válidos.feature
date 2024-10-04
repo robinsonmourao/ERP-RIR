@@ -2,6 +2,7 @@
 
 @skip
 @apagar_usuario_ao_terminar
+@apagar_atendimentos_remanscentes_ao_terminar
 Funcionalidade: Atualizar no sistema
 
 -Eu como usuário.
@@ -18,6 +19,6 @@ Cenário: Validar obrigatoriedade para valor 'Atendimento', demais campos válid
     Quando #1503: eu escolher o item da lista Atendimentos "001RIR 002fornecedor_principal"
         E #1503: eu escolher o item da lista Grupos ""
         E #1503: eu escolher o item da lista Meio de pagamento "Boleto"
-        E #1503: eu escolher o item da lista Status "001a 002(001RIR 002fornecedor_principal) 003Pendente"
+        E #1503: eu escolher o item da lista Status "001a 002(001a 002RIR 003fornecedor_principal) 003Pendente"
         E #1503: eu clicar no botão Enviar.
     Então #1503: eu vejo um balão informando que é obrigatório selecionar um item para Grupo.

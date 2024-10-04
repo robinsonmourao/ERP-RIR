@@ -11,8 +11,8 @@ E('#1501: eu já tenha criado um Atendimento, Status e Fatura previamente') do
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('fornecedor_principal', 'Fornecedor', 'Pendente')
-  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001RIR 002fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', Utils.next_25_day_date.to_s)
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Pendente')
+  SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', Utils.next_25_day_date.to_s)
 end
 
 E('#1501: eu já tenha criado um Atendimento e Status com valores alternativos') do
@@ -21,7 +21,7 @@ E('#1501: eu já tenha criado um Atendimento e Status com valores alternativos')
   SetUp.fornecedor('fornecedor_alternativo')
 
   SetUp.atendimento('RIR2', 'fornecedor_alternativo', '20')
-  SetUp.status('fornecedor_alternativo', 'Fornecedor', 'Ativo')
+  SetUp.status('001a 002RIR2 003fornecedor_alternativo', 'Ativo')
 end
 
 E('#1501: eu tiver passado o mouse sobre a aba {string}') do |aba|
@@ -70,7 +70,7 @@ Então('#1501: eu sou redirecionado para detalhes da Fatura contendo valores atu
                       '#vencimento-value' => '2024-09-30',
                       '#descricao_grupo-value' => 'Fatura não agrupada',
                       '#instalacao-value' => 'Sim',
-                      '#codigo_status-value' => '001f 002fornecedor_alternativo 003Ativo'
+                      '#codigo_status-value' => '001a 002(001a 002RIR2 003fornecedor_alternativo) 003Ativo'
   }
   expected_values.each do |id, value|
     expect(page.find(id).text).to eq(value)
