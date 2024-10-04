@@ -11,7 +11,7 @@ E('#1403: eu já tenha criado um Atendimento e Status previamente') do
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Pendente')
 end
 
 E('#1403: eu tiver passado o mouse sobre a aba {string}') do |aba|

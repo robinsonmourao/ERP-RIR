@@ -5,8 +5,13 @@ Dado('#1402: eu já tenha realizado meu cadastro previamente com '\
   SetUp.cadastrar(nome, password, permissao)
 end
 
-E('#1402: eu já tenha criado um Status previamente') do
-  SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
+E('#1402: eu já tenha criado um Atendimento e Status previamente') do
+  SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
+  SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
+  SetUp.fornecedor('fornecedor_principal')
+
+  SetUp.atendimento('RIR', 'fornecedor_principal', '10')
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Pendente')
 end
 
 E('#1402: eu tiver passado o mouse sobre a aba {string}') do |aba|

@@ -11,7 +11,7 @@ E('#1401: eu já tenha criado um Atendimento e Status previamente') do
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('001RIR 002fornecedor_principal', 'Atendimento', 'Pendente')
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Pendente')
 end
 
 E('#1401: eu tiver passado o mouse sobre a aba {string}') do |aba|
@@ -50,7 +50,7 @@ Então('#1401: eu sou redirecionado para detalhes da nova Fatura criada contendo
                       '#vencimento-value' => Utils.next_25_day_date.to_s,
                       '#descricao_grupo-value' => 'Fatura não agrupada',
                       '#instalacao-value' => 'Sim',
-                      '#codigo_status-value' => '001a 002(001RIR 002fornecedor_principal) 003Pendente'
+                      '#codigo_status-value' => '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente'
   }
   expected_values.each do |id, value|
     expect(page.find(id).text).to eq(value)
