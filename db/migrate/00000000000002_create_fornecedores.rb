@@ -2,6 +2,8 @@ class CreateFornecedores < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE fornecedors(
+        tabela_dto TEXT GENERATED ALWAYS AS ( '001' || 'f ' ||
+                                              '002' || nome_fornecedor) STORED,
         codigo_fornecedor INTEGER PRIMARY KEY AUTOINCREMENT,
         nome_fornecedor TEXT UNIQUE NOT NULL,
         endereco TEXT,

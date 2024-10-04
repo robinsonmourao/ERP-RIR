@@ -2,6 +2,9 @@ class CreateClientes < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE clientes(
+        tabela_dto TEXT GENERATED ALWAYS AS ( '001' || 'c ' ||
+                                              '002' || nome_cliente || ' ' ||
+                                              '003' || cnpj) STORED,
         codigo_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
         nome_cliente TEXT NOT NULL,
         endereco TEXT,

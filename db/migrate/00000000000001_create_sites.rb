@@ -2,6 +2,9 @@ class CreateSites < ActiveRecord::Migration[7.1]
   def up
     execute <<-SQL
       CREATE TABLE sites(
+        tabela_dto TEXT GENERATED ALWAYS AS ( '001' || 's ' ||
+                                              '002' || nome_site || ' ' ||
+                                              '003' || designacao) STORED,
         codigo_site INTEGER PRIMARY KEY AUTOINCREMENT,
         designacao TEXT UNIQUE NOT NULL,
         codigo_cliente INTEGER NOT NULL,

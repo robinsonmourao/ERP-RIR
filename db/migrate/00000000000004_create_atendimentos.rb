@@ -3,8 +3,11 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
     execute <<-SQL
       CREATE TABLE atendimentos(
         codigo_atendimento INTEGER PRIMARY KEY AUTOINCREMENT,
-        codigo_atendimento_composto TEXT GENERATED ALWAYS AS ( '001' || designacao || ' ' ||
-                                                               '002' || nome_fornecedor) STORED,
+        tabela_dto TEXT GENERATED ALWAYS AS ( '001' || 'a ' ||
+                                              '002' || designacao || ' ' ||
+                                              '003' || nome_fornecedor) STORED,
+        codigo_atendimento_composto TEXT UNIQUE GENERATED ALWAYS AS ( '001' || designacao || ' ' ||
+                                                                      '002' || nome_fornecedor) STORED,
         designacao TEXT NOT NULL,
         nome_fornecedor TEXT NOT NULL,
         codigo_tecnologia_link INTEGER,

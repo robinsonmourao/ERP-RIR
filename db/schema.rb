@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.1].define(version: 23) do
   create_table "atendimentos", primary_key: "codigo_atendimento", force: :cascade do |t|
     t.text "designacao", null: false
-    t.integer "nome_fornecedor", null: false
+    t.text "nome_fornecedor", null: false
     t.integer "codigo_tecnologia_link"
     t.integer "codigo_tipo_link"
     t.decimal "velocidade_down", null: false
@@ -140,7 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 23) do
   create_table "statuses", primary_key: "codigo_status", force: :cascade do |t|
     t.text "codigo_acfs_composto"
     t.text "descricao_acfs", null: false
-    t.string "tabela", limit: 1, null: false
+    t.string "tabela", limit: 1
     t.integer "codigo_situacao", default: 5
     t.date "data", default: -> { "CURRENT_DATE" }
   end
