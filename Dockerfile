@@ -1,8 +1,8 @@
 # Use a imagem oficial do Ruby como base
-FROM ruby:3.3
+FROM ruby:3.3.1-slim-bullseye
 
 # Instale dependências do sistema
-RUN apt-get update -qq && apt-get install -y nodejs sqlite3
+RUN apt-get update -qq && apt-get install -y nodejs sqlite3 build-essential
 RUN gem install bundler -v '2.5.9'
 
 # Configurar o diretório de trabalho
