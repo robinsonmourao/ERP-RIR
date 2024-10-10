@@ -46,7 +46,7 @@ E('#1901: eu clicar no botão Enviar.') do
 end
 
 Então('#1901: eu sou redirecionado para detalhes do Status contendo valores atualizados e valores autopreenchidos') do
-  expected_values = { '#codigo_acfs_composto-value' => '001a 002(001a 002RIR2 003fornecedor_alternativo) 003Pendente',
+  expected_values = { '#codigo_acfs_composto-value' => '001a 002(001a 002RIR2 003fornecedor_alternativo) 003Ativo',
                       '#tabela-value' => 'Atendimento',
                       '#codigo_situacao-value' => 'Pendente',
                       '#data-value' => Date.today.to_s
@@ -58,5 +58,5 @@ end
 
 E('#1901: eu vejo a informação de que o Status foi atualizado com sucesso com o valor de codigo acfs composto.') do
   @message = find('.div-success > div:nth-child(1)')
-  expect(@message.text).to eql "Status com codigo acfs composto '001a 002(001a 002RIR2 003fornecedor_alternativo) 003Pendente' foi ATUALIZADO com sucesso."
+  expect(@message.text).to eql "Status com codigo acfs composto '001a 002(001a 002RIR2 003fornecedor_alternativo) 003Ativo' foi ATUALIZADO com sucesso."
 end

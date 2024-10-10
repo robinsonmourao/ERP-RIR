@@ -16,7 +16,7 @@ Cenário: Validar obrigatoriedade para valor 'Grupo', demais campos válidos
         E #0804: eu tiver clicado em "Novo".
     Quando #0804: eu escolher o item da lista Atendimento "001RIR 002fornecedor_principal"
         E #0804: eu escolher o item da lista Fatura "001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada"
-        E #0804: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Ativo"
+        E #0804: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Pendente"
         E #0804: eu escolher o item da lista data de vencimento "2024-08-25"
         E #0804: eu clicar no botão Enviar.
     Então #0804: eu vejo um balão informando que é obrigatório selecionar um item para Fatura.

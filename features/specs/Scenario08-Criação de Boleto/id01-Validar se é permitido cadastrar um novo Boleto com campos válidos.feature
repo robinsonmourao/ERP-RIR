@@ -19,7 +19,7 @@ Cenário: Validar se é permitido criar um novo Boleto com dados válidos
     Quando #0801: eu escolher o item da lista Atendimento "001RIR 002fornecedor_principal"
         E #0801: eu escolher o item da lista Fatura "001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada"
         E #0801: eu escolher o item da lista Agrupamento "Fatura não agrupada"
-        E #0801: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Ativo"
+        E #0801: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Pendente"
         E #0801: eu escolher o item da lista data de vencimento "2024-08-25"
         E #0801: eu clicar no botão Enviar.
     Então #0801: eu sou redirecionado para detalhes do novo Boleto criado contendo valores informados e valores autopreenchidos

@@ -10,7 +10,7 @@ E('#0804: eu já tenha criado um Cliente, Site, Fornecedor, Atendimento e Status
   SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
   SetUp.fornecedor('fornecedor_principal')
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('001f 002fornecedor_principal', 'Ativo')
+  SetUp.status('001f 002fornecedor_principal', 'Pendente')
 end
 
 E('#0804: eu tiver passado o mouse sobre a aba {string}') do |aba|

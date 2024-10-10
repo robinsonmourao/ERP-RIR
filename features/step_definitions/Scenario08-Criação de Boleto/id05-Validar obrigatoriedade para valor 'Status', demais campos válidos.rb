@@ -10,7 +10,7 @@ E('#0805: eu já tenha criado um Cliente, Site, Fornecedor, Atendimento e Fatura
   SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
   SetUp.fornecedor('fornecedor_principal')
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.fatura('001RIR 002fornecedor_principal', '001f 002(001f 002fornecedor_principal) 003Ativo', 'Boleto', 'Fatura não agrupada', '2024-08-25')
+  SetUp.fatura('001RIR 002fornecedor_principal', '001f 002(001f 002fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', '2024-08-25')
 end
 
 E('#0805: eu tiver passado o mouse sobre a aba {string}') do |aba|

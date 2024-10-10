@@ -19,7 +19,7 @@ Cenário: Validar se é permitido criar um Boleto com campos obrigatórios E cam
     Quando #0809: eu escolher o item da lista Atendimento "001RIR 002fornecedor_principal"
         E #0809: eu escolher o item da lista Fatura "001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada"
         E #0809: eu escolher o item da lista Agrupamento "Fatura não agrupada"
-        E #0809: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Ativo"
+        E #0809: eu escolher o item da lista Status "001f 002(001f 002fornecedor_principal) 003Pendente"
         E #0809: eu escolher o item da lista data de vencimento "2024-08-25"
         E #0809: eu preencher o campo data de pagamento "2024-08-10"
         E #0809: eu clicar no botão Enviar.

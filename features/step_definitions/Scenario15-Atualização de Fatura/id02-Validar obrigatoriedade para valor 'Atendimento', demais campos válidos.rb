@@ -11,7 +11,7 @@ E('#1502: eu já tenha criado um Atendimento e Status e Fatura previamente') do
   SetUp.fornecedor('fornecedor_principal')
 
   SetUp.atendimento('RIR', 'fornecedor_principal', '10')
-  SetUp.status('001a 002RIR 003fornecedor_principal', 'Ativo')
+  SetUp.status('001a 002RIR 003fornecedor_principal', 'Pendente')
   SetUp.fatura('001RIR 002fornecedor_principal', '001a 002(001a 002RIR 003fornecedor_principal) 003Pendente', 'Boleto', 'Fatura não agrupada', '2024-08-25')
 end
 
