@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/execute_sql', to: 'sql#execute'
+  post '/execute_sql', to: 'sql#execute'
+
   resources :usuarios, except: [:new]
 
   resources :clientes

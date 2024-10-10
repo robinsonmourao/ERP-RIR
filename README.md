@@ -120,6 +120,10 @@ https://github.com/robinsonmourao/ERP-RIR/blob/end-to-end-tests_CUCUMBER/Roteiro
 - └── municipios
   - └── ufs (**Obrigatório**)
 
+# Banco de dados
+Há um endpoint dedicado para envio de instruções SQL o quel pode ser executado utilizando o endereço:
+`.../execute_sql?query=<comando-sql>`
+
 # Status de desenvolvimento
 
 | Tarefa             | Status        |

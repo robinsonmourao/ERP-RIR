@@ -38,3 +38,5 @@ Tabela owned
 [SITE]possuem duas chaves unicas, designacao e nome_site, definircomo vai ficar, em caso de duas unicidades, estrutura da api muda
 
 Se a tabela municipios for renderizada antes de qualquer outra tabela secundaria, o additional_collection é replicado na segunda tabela
+
+[ATENDIMENTO]codigo_atendimento_composto está como unico, na documentação informa que pode haver repetições
