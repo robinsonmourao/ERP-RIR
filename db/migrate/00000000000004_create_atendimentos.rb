@@ -6,7 +6,7 @@ class CreateAtendimentos < ActiveRecord::Migration[7.1]
         tabela_dto TEXT GENERATED ALWAYS AS ( '001' || 'a ' ||
                                               '002' || designacao || ' ' ||
                                               '003' || nome_fornecedor) STORED,
-        codigo_atendimento_composto TEXT UNIQUE GENERATED ALWAYS AS ( '001' || designacao || ' ' ||
+        codigo_atendimento_composto TEXT GENERATED ALWAYS AS ( '001' || designacao || ' ' ||
                                                                       '002' || nome_fornecedor) STORED,
         designacao TEXT NOT NULL,
         nome_fornecedor TEXT NOT NULL,
