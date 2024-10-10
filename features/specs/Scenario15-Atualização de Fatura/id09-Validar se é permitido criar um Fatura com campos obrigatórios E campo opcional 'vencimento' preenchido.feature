@@ -2,13 +2,7 @@
 
 @skip
 @apagar_usuario_ao_terminar
-@apagar_ultima_tabela_criada_ao_terminar
-
-@apagar_clientes_ao_terminar
-@apagar_sites_ao_terminar
-@apagar_fornecedores_ao_terminar
-@apagar_atendimentos_ao_terminar
-@apagar_statuses_ao_terminar
+@apagar_objetos_remanscentes_de_fatura
 Funcionalidade: Atualizar no sistema
 
 -Eu como usuário.
