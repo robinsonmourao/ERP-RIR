@@ -5,10 +5,11 @@ Dado('#0802: eu já tenha realizado meu cadastro previamente com '\
   SetUp.cadastrar(nome, password, permissao)
 end
 
-E('#0802: eu já tenha criado um Cliente, Site, Fornecedor, Status e Fatura previamente') do
+E('#0802: eu já tenha criado um Cliente, Site, Fornecedor, Atendimento, Status e Fatura previamente') do
   SetUp.cliente('cliente_principal', 'XXXXXXXXXXXX01')
   SetUp.site('cliente_principal', 'RIR', 'site_principal', '10')
   SetUp.fornecedor('fornecedor_principal')
+  SetUp.atendimento('RIR', 'fornecedor_principal', '10')
   SetUp.status('001f 002fornecedor_principal', 'Ativo')
   SetUp.fatura('001RIR 002fornecedor_principal', '001f 002(001f 002fornecedor_principal) 003Ativo', 'Boleto', 'Fatura não agrupada', '2024-08-25')
 end
