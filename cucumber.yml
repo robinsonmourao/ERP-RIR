@@ -1,7 +1,9 @@
 default:  -p ci  
           -p test
           -p fast_mode
+          -p wiping_connection
           -p case_skipping
+          -p headless
           -p terminal_drop_lines_each_case
           --publish-quiet
 
@@ -11,4 +13,5 @@ test: ENVIRONMENT_TYPE=test
 headless: HEADLESS=headless
 fast_mode: FAST_MODE=false
 case_skipping: CASE_SKIPPING=false
+wiping_connection: DATABASE_CONNECTION=ENDPOINT
 terminal_drop_lines_each_case: TERMINAL_DROP_LINES_EACH_CASE=true
