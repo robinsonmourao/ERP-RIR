@@ -33,14 +33,18 @@ Quando('#1902: eu escolher o item da Originário {string}') do |item|
   @form_status.selecionar_item('#select-originario', item)
 end
 
+E('#1902: eu escolher o item da lista Situação {string}') do |item|
+  @form_status.selecionar_item('#status_codigo_situacao', item)
+end
+
 E('#1902: eu clicar no botão Enviar.') do
   @form_status.clicar_enviar
 end
 
 Então('#1902: eu sou redirecionado para detalhes do Status contendo valores atualizados e valores autopreenchidos') do
-  expected_values = { '#codigo_acfs_composto-value' => '001c 002(001c 002cliente_alternativo 003XXXXXXXXXXXX02) 003Pendente',
+  expected_values = { '#codigo_acfs_composto-value' => '001c 002(001c 002cliente_alternativo 003XXXXXXXXXXXX02) 003Ativo',
                       '#tabela-value' => 'Cliente',
-                      '#codigo_situacao-value' => 'Pendente',
+                      '#codigo_situacao-value' => 'Ativo',
                       '#data-value' => Date.today.to_s
   }
   expected_values.each do |id, value|
@@ -50,5 +54,5 @@ end
 
 E('#1902: eu vejo a informação de que o Status foi atualizado com sucesso com o valor de codigo acfs composto.') do
   @message = find('.div-success > div:nth-child(1)')
-  expect(@message.text).to eql "Status com codigo acfs composto '001c 002(001c 002cliente_alternativo 003XXXXXXXXXXXX02) 003Pendente' foi ATUALIZADO com sucesso."
+  expect(@message.text).to eql "Status com codigo acfs composto '001c 002(001c 002cliente_alternativo 003XXXXXXXXXXXX02) 003Ativo' foi ATUALIZADO com sucesso."
 end

@@ -33,6 +33,10 @@ Quando('#1903: eu escolher o item da Originário {string}') do |item|
   @form_status.selecionar_item('#select-originario', item)
 end
 
+E('#1903: eu escolher o item da lista Situação {string}') do |item|
+  @form_status.selecionar_item('#status_codigo_situacao', item)
+end
+
 E('#1903: eu clicar no botão Enviar.') do
   @form_status.clicar_enviar
 end
@@ -40,7 +44,7 @@ end
 Então('#1903: eu sou redirecionado para detalhes do Status contendo valores atualizados e valores autopreenchidos') do
   expected_values = { '#codigo_acfs_composto-value' => '001f 002(001f 002fornecedor_alternativo) 003Ativo',
                       '#tabela-value' => 'Fornecedor',
-                      '#codigo_situacao-value' => 'Pendente',
+                      '#codigo_situacao-value' => 'Ativo',
                       '#data-value' => Date.today.to_s
   }
   expected_values.each do |id, value|
