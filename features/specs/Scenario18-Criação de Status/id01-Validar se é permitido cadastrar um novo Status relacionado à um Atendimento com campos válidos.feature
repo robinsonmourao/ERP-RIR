@@ -1,7 +1,8 @@
 # language: pt
 
-@skip
+
 @apagar_usuario_ao_terminar
+@apagar_atendimentos_remanscentes_ao_terminar
 @apagar_ultima_tabela_criada_ao_terminar
 Funcionalidade: Criar no sistema
 

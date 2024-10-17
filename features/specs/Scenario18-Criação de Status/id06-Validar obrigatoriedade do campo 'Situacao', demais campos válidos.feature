@@ -2,7 +2,7 @@
 
 @skip
 @apagar_usuario_ao_terminar
-@apagar_ultima_tabela_criada_ao_terminar
+@apagar_objetos_remanscentes_de_status
 Funcionalidade: Criar no sistema
 
 -Eu como usuário.
