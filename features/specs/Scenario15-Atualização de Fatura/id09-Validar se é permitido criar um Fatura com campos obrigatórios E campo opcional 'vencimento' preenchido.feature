@@ -1,6 +1,6 @@
 # language: pt
 
-@skip
+
 @apagar_usuario_ao_terminar
 @apagar_objetos_remanscentes_de_fatura
 Funcionalidade: Atualizar no sistema
