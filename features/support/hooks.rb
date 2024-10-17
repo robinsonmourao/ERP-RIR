@@ -1,7 +1,16 @@
 require 'sqlite3'
+require_relative 'global_variables'
 
 Before('@skip') do
   pending if ENV['CASE_SKIPPING'] == 'true'
+end
+
+Before do |scenario|
+  if scenario.source_tag_names.include?('@skip') && ENV['CASE_SKIPPING'] == 'true'
+    GlobalVariables.skip_command = true
+  elsif
+    GlobalVariables.skip_command = false
+  end
 end
 
 After('@logout') do
@@ -12,51 +21,66 @@ After('@apagar_usuario_ao_terminar') do
   SetDown.delete_usuario
 end
 
-After('@apagar_tabela_principal_ao_terminar') do
+After('@apagar_ultima_tabela_criada_ao_terminar') do
   SetDown.remove_last_table
 end
 
-# After('@apagar_atendimentos_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR 002fornecedor_principal';")
-#   SetDown.delete_by_query("DELETE FROM atendimentos WHERE codigo_atendimento_composto='001RIR2 002fornecedor_alternativo';")
-# end
+After('@apagar_atendimentos_remanscentes_ao_terminar') do
+  SetDown.apagar_entidades_ao_terminar('atendimentos', 'codigo_atendimento_composto', ['001RIR 002fornecedor_principal',
+                                                                                       '001RIR2 002fornecedor_alternativo'])
+end
 
-# After('@apagar_boletos_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM boletos WHERE codigo_boleto_composto='001(001RIR 002boleto_principal) 0022024-08-25 003Fatura não agrupada';")
-#   SetDown.delete_by_query("DELETE FROM boletos WHERE codigo_boleto_composto='001(001RIR2 002boleto_alternativo) 0022024-08-25 003Fatura não agrupada';")
-# end
+After('@apagar_clientes_remanscentes_ao_terminar') do
+  SetDown.apagar_entidades_ao_terminar('clientes', 'nome_cliente', ['cliente_principal', 'cliente_alternativo'])
+end
 
-# After('@apagar_contatos_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM contatos WHERE codigo_contato_composto='001contato_principal 002Dono';")
-#   SetDown.delete_by_query("DELETE FROM contatos WHERE codigo_contato_composto='001contato_alternativo 002Dono';")
-# end
+After('@apagar_objetos_remanscentes_de_atendimento') do
+  SetDown.remove_last_table
+  SetDown.apagar_entidades_ao_terminar('fornecedors', 'nome_fornecedor', ['fornecedor_principal', 'fornecedor_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('sites', 'nome_site', ['site_principal', 'site_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('clientes', 'nome_cliente', ['cliente_principal', 'cliente_alternativo'])
+end
 
-# After('@apagar_clientes_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_principal';")
-#   SetDown.delete_by_query("DELETE FROM clientes WHERE nome_cliente='cliente_alternativo';")
-# end
+After('@apagar_objetos_remanscentes_de_boleto') do
+  SetDown.remove_last_table
+  SetDown.apagar_entidades_ao_terminar('faturas', 'codigo_fatura_composto', ['001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada',
+                                                                             '001(001RIR2 002fornecedor_alternativo) 0022024-08-25 003Fatura não agrupada'])
+  SetDown.apagar_entidades_ao_terminar('statuses', 'codigo_acfs_composto', ['001f 002(001f 002fornecedor_principal) 003Pendente',
+                                                                            '001f 002(001f 002fornecedor_alternativo) 003Ativo'])
+  SetDown.apagar_entidades_ao_terminar('atendimentos', 'codigo_atendimento_composto', ['001RIR 002fornecedor_principal',
+                                                                                       '001RIR2 002fornecedor_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('fornecedors', 'nome_fornecedor', ['fornecedor_principal', 'fornecedor_alternativo'])  
+  SetDown.apagar_entidades_ao_terminar('sites', 'nome_site', ['site_principal', 'site_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('clientes', 'nome_cliente', ['cliente_principal', 'cliente_alternativo'])
+end
 
-# After('@apagar_faturas_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM faturas WHERE codigo_fatura_composto='001(001RIR 002fornecedor_principal) 0022024-08-25 003Fatura não agrupada';")
-#   SetDown.delete_by_query("DELETE FROM faturas WHERE codigo_fatura_composto='001(001RIR2 002fornecedor_alternativo) 0022024-08-25 003Fatura não agrupada';")
-# end
+After('@apagar_objetos_remanscentes_de_fornecedores') do
+  SetDown.remove_last_table
+  SetDown.apagar_entidades_ao_terminar('sites', 'nome_site', ['site_principal', 'site_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('clientes', 'nome_cliente', ['cliente_principal', 'cliente_alternativo'])
+end
 
-# After('@apagar_fornecedores_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM fornecedors WHERE nome_fornecedor='fornecedor_principal';")
-#   SetDown.delete_by_query("DELETE FROM fornecedors WHERE nome_fornecedor='fornecedor_alternativo';")
-# end
+After('@apagar_objetos_remanscentes_de_fatura') do
+  SetDown.remove_last_table
+  SetDown.apagar_entidades_ao_terminar('statuses', 'codigo_acfs_composto', ['001a 002(001a 002RIR 003fornecedor_principal) 003Pendente',
+                                                                            '001a 002(001a 002RIR2 003fornecedor_alternativo) 003Ativo'])
+  SetDown.apagar_entidades_ao_terminar('atendimentos', 'codigo_atendimento_composto', ['001RIR 002fornecedor_principal',
+                                                                                       '001RIR2 002fornecedor_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('fornecedors', 'nome_fornecedor', ['fornecedor_principal', 'fornecedor_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('sites', 'nome_site', ['site_principal', 'site_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('clientes', 'nome_cliente', ['cliente_principal', 'cliente_alternativo'])
+end
 
-# After('@apagar_sites_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM sites WHERE nome_site='site_principal';")
-#   SetDown.delete_by_query("DELETE FROM sites WHERE nome_site='site_alternativo';")
-# end
+After('@apagar_objetos_remanscentes_de_status') do
+  SetDown.remove_last_table
+  SetDown.apagar_entidades_ao_terminar('atendimentos', 'codigo_atendimento_composto', ['001RIR 002fornecedor_principal',
+                                                                                       '001RIR2 002fornecedor_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('fornecedors', 'nome_fornecedor', ['fornecedor_principal', 'fornecedor_alternativo'])  
+  SetDown.apagar_entidades_ao_terminar('sites', 'nome_site', ['site_principal', 'site_alternativo'])
+  SetDown.apagar_entidades_ao_terminar('clientes', 'nome_cliente', ['cliente_principal', 'cliente_alternativo'])
+end
 
-# After('@apagar_statuses_ao_terminar') do
-#   SetDown.delete_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001f 002fornecedor_principal 003Ativo';")
-#   SetDown.delete_by_query("DELETE FROM statuses WHERE codigo_acfs_composto='001f 002fornecedor_alternativo 003Pendente';")
-# end
-
-After do |scenario|
+After do
   print '] '
 end
 

@@ -15,16 +15,6 @@ module SetUp
     $objetos_map ||= []
   end
 
-  BASE_PATH = '/home/robinson/Desktop/ERP-RIR/'
-
-  def execute_sql(query)
-    db = SQLite3::Database.new "#{BASE_PATH}/storage/development.sqlite3"
-    result = db.execute(query)
-  ensure
-    db&.close
-    result
-  end
-
   def cadastrar(nome, password, permissao)
     @cadastrar_page = CadastrarPage.new
     @cadastrar_page.load
@@ -255,9 +245,11 @@ module SetUp
   end
 
   def capture_id_by_query(id_column_name, table_name, column_name, column_expected_value)
+    include Database
+
     query = "SELECT #{id_column_name} FROM #{table_name} WHERE #{column_name} = '#{column_expected_value}';"
     id = execute_sql(query)
-    if id.any?
+    if id&.any?
       $objetos_map << [table_name, id[0][0]]
       id[0][0]
     end
@@ -283,9 +275,10 @@ module SetUp
   end
 
   def wipe(entity)
-    include SetDown
+    include SetDown, Database
+
     if $objetos_map.any? && ($objetos_map.last[0] == SetDown.format_entity_to_table(entity))
-      SetDown.execute_sql("DELETE FROM #{$objetos_map.last[0]} WHERE codigo_#{entity} = #{$objetos_map.last[1]};")
+      Database.execute_sql("DELETE FROM #{$objetos_map.last[0]} WHERE codigo_#{entity} = #{$objetos_map.last[1]};")
     end
   end
 end
@@ -293,73 +286,58 @@ end
 module SetDown
   $nome_usuario_atual ||= nil
 
-  BASE_PATH = '/home/robinson/Desktop/ERP-RIR/'
-
-  def execute_sql(query)
-    db = SQLite3::Database.new "#{BASE_PATH}/storage/development.sqlite3"
-    db.execute(query)
-  ensure
-    db&.close
-  end
-
   def delete_usuario
+    include Database
+
     execute_sql("DELETE FROM usuarios WHERE nome = '#{$nome_usuario_atual}';")
   end
 
   def delete_by_query(query)
+    include Database
+
     execute_sql(query)
   end
 
   def remove_last_table
+    include Database
+
     if $objetos_map.any?
       entity = format_table_to_entity($objetos_map.last[0])
       execute_sql("DELETE FROM #{$objetos_map.last[0]} WHERE codigo_#{entity} = #{$objetos_map.last[1]};")
     end
   end
 
+  def apagar_entidades_ao_terminar(entidade, coluna, valores)
+    valores.each do |valor|
+      delete_by_query("DELETE FROM #{entidade} WHERE #{coluna}='#{valor}';")
+    end
+  end
+
   def format_table_to_entity(table)
     case table
-    when 'atendimentos'
-      'atendimento'
-    when 'boletos'
-      'boleto'
-    when 'contatos'
-      'contato'
-    when 'clientes'
-      'cliente'
-    when 'faturas'
-      'fatura'
-    when 'fornecedors'
-      'fornecedor'
-    when 'sites'
-      'site'
-    when 'statuses'
-      'status'
-    else
-      'Não foi possível converter tabela para entidade: Tabela não encontrada!'
+    when 'atendimentos' then 'atendimento'
+    when 'boletos' then 'boleto'
+    when 'contatos' then 'contato'
+    when 'clientes' then 'cliente'
+    when 'faturas' then 'fatura'
+    when 'fornecedors' then 'fornecedor'
+    when 'sites' then 'site'
+    when 'statuses' then 'status'
+    else 'Não foi possível converter tabela para entidade: Tabela não encontrada!'
     end
   end
 
   def format_entity_to_table(entity)
     case entity
-    when 'atendimento'
-      'atendimentos'
-    when 'boleto'
-      'boletos'
-    when 'contato'
-      'contatos'
-    when 'cliente'
-      'clientes'
-    when 'fatura'
-      'faturas'
-    when 'fornecedor'
-      'fornecedors'
-    when 'site'
-      'sites'
-    when 'status'
-      'statuses'
-    else
-      'Não foi possível converter entidade para tabela: Entidade não encontrada!'
+    when 'atendimento' then 'atendimentos'
+    when 'boleto' then 'boletos'
+    when 'contato' then 'contatos'
+    when 'cliente' then 'clientes'
+    when 'fatura' then 'faturas'
+    when 'fornecedor' then 'fornecedors'
+    when 'site' then 'sites'
+    when 'status' then 'statuses'
+    else 'Não foi possível converter entidade para tabela: Entidade não encontrada!'
     end
   end
 end
@@ -371,5 +349,32 @@ module Utils
 
   def change_day(date, expected_day)
     Date.new(date.year, date.month, expected_day)
+  end
+end
+
+module Database
+  def execute_sql(query)
+    require_relative 'global_variables'
+
+    return if GlobalVariables.skip_command == true
+
+    if ENV['DATABASE_CONNECTION'] == 'PATH'
+      base_path = '/home/robinson/Desktop/ERP-RIR/'
+
+      db = SQLite3::Database.new("#{base_path}/storage/development.sqlite3")
+      begin
+        db.execute(query)
+      ensure
+        db&.close
+      end
+
+    elsif ENV['DATABASE_CONNECTION'] == 'ENDPOINT'
+      encoded_query = query.gsub(' ', '%20')
+
+      @sql_link = ExecuteSqlLink.new(encoded_query)
+      @sql_link.visit_sql_page
+    else
+      raise "DATABASE_CONNECTION não está definido corretamente. Use 'PATH' ou 'ENDPOINT'."
+    end
   end
 end
