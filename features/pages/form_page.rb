@@ -28,6 +28,7 @@ class FormPage < SitePrism::Page
   end
 
   def preencher_campo(seletor, valor)
+    find(seletor).native.clear
     find(seletor).set valor
   end
 
